@@ -7,32 +7,35 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MemberPlatformDAL.Data;
 using MemberPlatformDAL.Models;
+using MemberPlatformDAL.UoW;
 
 namespace MemberPlatformApi.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonController : ControllerBase
+    public class PersonsController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly IUnitOfWork _uow;
 
-        public PersonController(DataContext context)
+        public PersonsController(IUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
-        // GET: api/Person
+        // GET: api/Persons
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Person>>> GetPersons()
         {
-            return await _context.Persons.ToListAsync();
+            var persons = await _uow.PersonRepository.GetAllAsync();
+            return persons.ToList();
         }
 
-        // GET: api/Person/5
+        // GET: api/Persons/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Person>> GetPerson(int id)
         {
-            var person = await _context.Persons.FindAsync(id);
+            var person = await _uow.PersonRepository.GetByIDAsync(id);
 
             if (person == null)
             {
@@ -42,21 +45,22 @@ namespace MemberPlatformApi.Controllers
             return person;
         }
 
-        // PUT: api/Person/5
+        // PUT: api/Persons/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPerson(int id, Person person)
         {
+
             if (id != person.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(person).State = EntityState.Modified;
+            _uow.PersonRepository.Update(person);
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _uow.SaveAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -69,40 +73,41 @@ namespace MemberPlatformApi.Controllers
                     throw;
                 }
             }
-
             return NoContent();
         }
 
-        // POST: api/Person
+        // POST: api/Persons
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Person>> PostPerson(Person person)
         {
-            _context.Persons.Add(person);
-            await _context.SaveChangesAsync();
+            _uow.PersonRepository.Insert(person);
+            await _uow.SaveAsync();
 
             return CreatedAtAction("GetPerson", new { id = person.Id }, person);
         }
 
-        // DELETE: api/Person/5
+        // DELETE: api/Persons/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePerson(int id)
         {
-            var person = await _context.Persons.FindAsync(id);
+            var person = await _uow.PersonRepository.GetByIDAsync(id);
             if (person == null)
             {
                 return NotFound();
             }
 
-            _context.Persons.Remove(person);
-            await _context.SaveChangesAsync();
+            _uow.PersonRepository.Delete(id);
+            await _uow.SaveAsync();
 
             return NoContent();
         }
 
         private bool PersonExists(int id)
         {
-            return _context.Persons.Any(e => e.Id == id);
+            return _uow.PersonRepository.Get(e => e.Id == id).Any();
         }
+
+
     }
 }

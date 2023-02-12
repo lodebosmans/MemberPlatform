@@ -1,6 +1,7 @@
 using MemberPlatformDAL.Data;
 using Microsoft.EntityFrameworkCore;
 using MemberPlatformDAL.Models;
+using MemberPlatformDAL.UoW;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,7 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-// builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
