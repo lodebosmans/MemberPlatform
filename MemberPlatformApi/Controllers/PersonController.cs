@@ -11,7 +11,6 @@ using MemberPlatformDAL.UoW;
 
 namespace MemberPlatformApi.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
     public class PersonsController : ControllerBase
