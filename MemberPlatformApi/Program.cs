@@ -2,6 +2,7 @@ using MemberPlatformDAL.Data;
 using Microsoft.EntityFrameworkCore;
 using MemberPlatformDAL.Models;
 using MemberPlatformDAL.UoW;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,13 +13,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
+// Add the Default Connection string
 // // https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-6.0&tabs=visual-studio#add-the-seed-initializer
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
+// Add the Unit Of Work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+// Prevent circular references
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+});
 
 var app = builder.Build();
 
@@ -29,8 +36,6 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     DbInitializer.Initialize(services);
 }
-
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
