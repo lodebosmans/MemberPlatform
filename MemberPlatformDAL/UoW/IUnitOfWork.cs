@@ -1,4 +1,4 @@
-﻿using MemberPlatformDAL.Models;
+using MemberPlatformDAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +10,7 @@ namespace MemberPlatformDAL.UoW
     public interface IUnitOfWork
     {
         GenericRepository<Person> PersonRepository { get; }
+        GenericRepository<RelationShip> RelationShipRepository { get; }
 
         Task SaveAsync();
     }

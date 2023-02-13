@@ -1,4 +1,4 @@
-﻿using MemberPlatformDAL.Models;
+using MemberPlatformDAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -23,7 +23,7 @@ namespace MemberPlatformDAL.Data
                 //{
                 //    return;   // DB has been seeded
                 //}
-
+                context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
 
                 context.Persons.AddRange(
@@ -31,9 +31,21 @@ namespace MemberPlatformDAL.Data
                     {
                         FirstName = "Lode",
                         LastName = "Bosmans"
+                    },
+                    new Person 
+                    {
+                        FirstName = "Johnny",
+                        LastName = "Urkens"
                     }
 
-                );
+                ) ;
+                context.SaveChanges();
+                context.Relationships.AddRange(
+                    new RelationShip
+                    {
+                        Name = "Partner"
+                    }
+                    );
 
                 context.SaveChanges();
             }

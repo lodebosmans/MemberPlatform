@@ -1,4 +1,4 @@
-﻿using MemberPlatformDAL.Data;
+using MemberPlatformDAL.Data;
 using MemberPlatformDAL.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +12,7 @@ namespace MemberPlatformDAL.UoW
     {
         private DataContext _context;
         private GenericRepository<Person> personRepository;
+        private GenericRepository<RelationShip> relationShipRepository;
 
         public UnitOfWork(DataContext context)
         {
@@ -27,6 +28,17 @@ namespace MemberPlatformDAL.UoW
                     personRepository = new GenericRepository<Person>(_context);
                 }
                 return personRepository;
+            }
+        }
+        public GenericRepository<RelationShip> RelationShipRepository
+        {
+            get
+            {
+                if (relationShipRepository == null)
+                {
+                    relationShipRepository = new GenericRepository<RelationShip>(_context);
+                }
+                return relationShipRepository;
             }
         }
 
