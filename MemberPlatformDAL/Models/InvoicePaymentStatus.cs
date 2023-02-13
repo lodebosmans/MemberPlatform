@@ -22,6 +22,12 @@ namespace MemberPlatformDAL.Models
         //Navigation property : 1 PaymentStatus per InvoicePaymentSatus
         public PaymentStatus PaymentStatus { get; set; }
 
+        //Foreign key relationShip
+        public int PersonId { get; set; }
+        //Navigation property : 1 approver(person) per InvoicePaymentStatus
+        public Person Approver { get; set; }
+
+
 
     }
 }
