@@ -13,6 +13,6 @@ namespace MemberPlatformDAL.Models
 
         //Navigation property
         //RelationShip can be related to 0 or more PersonRelationShips (1 to many relationShip)
-        public ICollection<PersonRelationShip> PersonRelationShips { get; set; }
+        //public ICollection<PersonRelationShip> PersonRelationShips { get; set; }
     }
 }

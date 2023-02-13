@@ -12,3 +12,17 @@ D:\OneDrive\Projecten\LedenPlatform\MemberPlatformApi\MemberPlatformDAL\obj\Debu
 D:\OneDrive\Projecten\LedenPlatform\MemberPlatformApi\MemberPlatformDAL\obj\Debug\net6.0\ref\MemberPlatformDAL.dll
 D:\OneDrive\Projecten\LedenPlatform\MemberPlatformApi\MemberPlatformDAL\obj\Debug\net6.0\MemberPlatformDAL.pdb
 D:\OneDrive\Projecten\LedenPlatform\MemberPlatformApi\MemberPlatformDAL\obj\Debug\net6.0\MemberPlatformDAL.genruntimeconfig.cache
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\bin\Debug\net6.0\MemberPlatformDAL.deps.json
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\bin\Debug\net6.0\MemberPlatformDAL.runtimeconfig.json
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\bin\Debug\net6.0\MemberPlatformDAL.dll
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\bin\Debug\net6.0\ref\MemberPlatformDAL.dll
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\bin\Debug\net6.0\MemberPlatformDAL.pdb
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\obj\Debug\net6.0\MemberPlatformDAL.csproj.AssemblyReference.cache
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\obj\Debug\net6.0\MemberPlatformDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\obj\Debug\net6.0\MemberPlatformDAL.AssemblyInfoInputs.cache
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\obj\Debug\net6.0\MemberPlatformDAL.AssemblyInfo.cs
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\obj\Debug\net6.0\MemberPlatformDAL.csproj.CoreCompileInputs.cache
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\obj\Debug\net6.0\MemberPlatformDAL.dll
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\obj\Debug\net6.0\ref\MemberPlatformDAL.dll
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\obj\Debug\net6.0\MemberPlatformDAL.pdb
+C:\Users\Urkens\Documents\Stage\MemberPlatform\MemberPlatformDAL\obj\Debug\net6.0\MemberPlatformDAL.genruntimeconfig.cache

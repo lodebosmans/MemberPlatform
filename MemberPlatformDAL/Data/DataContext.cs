@@ -13,6 +13,7 @@ namespace MemberPlatformDAL.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Person> Persons { get; set; }
+        public DbSet<RelationShip> Relationships { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,6 +28,7 @@ namespace MemberPlatformDAL.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Person>().ToTable("Person");
+            modelBuilder.Entity<RelationShip>().ToTable("RelationShip");
         }
     }
 }
