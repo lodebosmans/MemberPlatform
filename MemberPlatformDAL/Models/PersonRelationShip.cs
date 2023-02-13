@@ -10,6 +10,7 @@ namespace MemberPlatformDAL.Models
     {
         public int Id { get; set; }
 
+
         // Foreign key relationship
         public int RelationShipId { get; set; }
         //Navigation property  1 relationShip per PersonRelationShip
