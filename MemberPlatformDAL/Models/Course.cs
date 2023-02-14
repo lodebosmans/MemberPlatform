@@ -8,5 +8,6 @@ namespace MemberPlatformDAL.Models
 {
     public class Course
     {
+        public int Id { get; set; }
     }
 }

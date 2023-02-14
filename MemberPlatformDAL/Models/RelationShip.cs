@@ -12,7 +12,7 @@ namespace MemberPlatformDAL.Models
         public string Name { get; set; }
 
         //Navigation property
-        //RelationShip can be related to 0 or more PersonRelationShips (1 to many relationShip)
-        //public ICollection<PersonRelationShip> PersonRelationShips { get; set; }
+        //RelationShip can be related to 0 or more PersonRelationShips(1 to many relationShip)
+        public ICollection<PersonRelationShip> PersonRelationShips { get; set; }
     }
 }
