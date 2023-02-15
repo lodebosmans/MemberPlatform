@@ -12,6 +12,8 @@ namespace MemberPlatformDAL.UoW
         GenericRepository<Person> PersonRepository { get; }
         GenericRepository<RelationShip> RelationShipRepository { get; }
         GenericRepository<CourseType> CourseTypeRepository { get; }
+        GenericRepository<PaymentStatus> PaymentStatusRepository { get; }
+
 
         Task SaveAsync();
     }
