@@ -15,6 +15,7 @@ namespace MemberPlatformDAL.Data
         public DbSet<Person> Persons { get; set; }
         public DbSet<RelationShip> Relationships { get; set; }
         public DbSet<CourseType> courseTypes { get; set; }
+        public DbSet<PaymentStatus> PaymentStatuses { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -31,6 +32,7 @@ namespace MemberPlatformDAL.Data
             modelBuilder.Entity<Person>().ToTable("Person");
             modelBuilder.Entity<RelationShip>().ToTable("RelationShip");
             modelBuilder.Entity<CourseType>().ToTable("CourseType");
+            modelBuilder.Entity<PaymentStatus>().ToTable("PaymentStatus");
         }
     }
 }

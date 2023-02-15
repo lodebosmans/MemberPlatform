@@ -14,6 +14,7 @@ namespace MemberPlatformDAL.UoW
         private GenericRepository<Person> personRepository;
         private GenericRepository<RelationShip> relationShipRepository;
         private GenericRepository<CourseType> courseTypeRepository;
+        private GenericRepository<PaymentStatus> paymentStatusRepository;
 
         public UnitOfWork(DataContext context)
         {
@@ -51,6 +52,17 @@ namespace MemberPlatformDAL.UoW
                     courseTypeRepository = new GenericRepository<CourseType>(_context);
                 }
                 return courseTypeRepository;
+            }
+        }
+        public GenericRepository<PaymentStatus> PaymentStatusRepository
+        {
+            get
+            {
+                if (PaymentStatusRepository == null)
+                {
+                    paymentStatusRepository = new GenericRepository<PaymentStatus>(_context);
+                }
+                return paymentStatusRepository;
             }
         }
 
