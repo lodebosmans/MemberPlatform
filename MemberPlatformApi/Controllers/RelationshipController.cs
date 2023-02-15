@@ -13,11 +13,11 @@ namespace MemberPlatformApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RelationShipsController : ControllerBase
+    public class RelationshipController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
 
-        public RelationShipsController(IUnitOfWork uow)
+        public RelationshipController(IUnitOfWork uow)
         {
             _uow = uow;
         }
