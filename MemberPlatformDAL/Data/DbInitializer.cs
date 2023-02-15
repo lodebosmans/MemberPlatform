@@ -41,7 +41,7 @@ namespace MemberPlatformDAL.Data
                 ) ;
                 context.SaveChanges();
                 context.Relationships.AddRange(
-                    new RelationShip
+                    new Relationship
                     {
                         Name = "Partner"
                     }

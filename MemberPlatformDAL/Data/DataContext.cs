@@ -13,7 +13,7 @@ namespace MemberPlatformDAL.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Person> Persons { get; set; }
-        public DbSet<RelationShip> Relationships { get; set; }
+        public DbSet<Relationship> Relationships { get; set; }
         public DbSet<CourseType> courseTypes { get; set; }
         public DbSet<PaymentStatus> PaymentStatuses { get; set; }
 
@@ -30,7 +30,7 @@ namespace MemberPlatformDAL.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Person>().ToTable("Person");
-            modelBuilder.Entity<RelationShip>().ToTable("RelationShip");
+            modelBuilder.Entity<Relationship>().ToTable("Relationship");
             modelBuilder.Entity<CourseType>().ToTable("CourseType");
             modelBuilder.Entity<PaymentStatus>().ToTable("PaymentStatus");
         }
