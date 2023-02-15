@@ -13,11 +13,11 @@ namespace MemberPlatformApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CourseTypesController : ControllerBase
+    public class CourseTypeController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
 
-        public CourseTypesController(IUnitOfWork uow)
+        public CourseTypeController(IUnitOfWork uow)
         {
             _uow = uow;
         }
