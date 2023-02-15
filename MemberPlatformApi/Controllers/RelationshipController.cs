@@ -24,7 +24,7 @@ namespace MemberPlatformApi.Controllers
 
         // GET: api/RelationShips
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RelationShip>>> GetRelationships()
+        public async Task<ActionResult<IEnumerable<Relationship>>> GetRelationships()
         {
             var relationShips = await _uow.RelationShipRepository.GetAllAsync();
             return relationShips.ToList();
@@ -33,7 +33,7 @@ namespace MemberPlatformApi.Controllers
 
         // GET: api/RelationShips/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<RelationShip>> GetRelationShip(int id)
+        public async Task<ActionResult<Relationship>> GetRelationShip(int id)
         {
             var relationShip = await _uow.RelationShipRepository.GetByIDAsync(id);
 
@@ -48,7 +48,7 @@ namespace MemberPlatformApi.Controllers
         // PUT: api/RelationShips/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRelationShip(int id, RelationShip relationShip)
+        public async Task<IActionResult> PutRelationShip(int id, Relationship relationShip)
         {
             if (id != relationShip.Id)
             {
@@ -79,7 +79,7 @@ namespace MemberPlatformApi.Controllers
         // POST: api/RelationShips
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<RelationShip>> PostRelationShip(RelationShip relationShip)
+        public async Task<ActionResult<Relationship>> PostRelationShip(Relationship relationShip)
         {
             _uow.RelationShipRepository.Insert(relationShip);
             await _uow.SaveAsync();
