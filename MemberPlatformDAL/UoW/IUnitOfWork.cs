@@ -10,7 +10,7 @@ namespace MemberPlatformDAL.UoW
     public interface IUnitOfWork
     {
         GenericRepository<Person> PersonRepository { get; }
-        GenericRepository<Relationship> RelationShipRepository { get; }
+        GenericRepository<Relationship> RelationshipRepository { get; }
         GenericRepository<CourseType> CourseTypeRepository { get; }
         GenericRepository<PaymentStatus> PaymentStatusRepository { get; }
 

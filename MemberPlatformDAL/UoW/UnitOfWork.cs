@@ -32,7 +32,7 @@ namespace MemberPlatformDAL.UoW
                 return personRepository;
             }
         }
-        public GenericRepository<Relationship> RelationShipRepository
+        public GenericRepository<Relationship> RelationshipRepository
         {
             get
             {
