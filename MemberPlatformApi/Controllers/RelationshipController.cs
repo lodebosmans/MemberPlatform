@@ -22,40 +22,40 @@ namespace MemberPlatformApi.Controllers
             _uow = uow;
         }
 
-        // GET: api/RelationShips
+        // GET: api/Relationships
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Relationship>>> GetRelationships()
         {
-            var relationShips = await _uow.RelationShipRepository.GetAllAsync();
-            return relationShips.ToList();
+            var relationships = await _uow.RelationshipRepository.GetAllAsync();
+            return relationships.ToList();
         }
     
 
-        // GET: api/RelationShips/5
+        // GET: api/Relationships/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Relationship>> GetRelationShip(int id)
+        public async Task<ActionResult<Relationship>> GetRelationship(int id)
         {
-            var relationShip = await _uow.RelationShipRepository.GetByIDAsync(id);
+            var relationship = await _uow.RelationshipRepository.GetByIDAsync(id);
 
-        if (relationShip == null)
+        if (relationship == null)
             {
                 return NotFound();
             }
 
-            return relationShip;
+            return relationship;
         }
 
-        // PUT: api/RelationShips/5
+        // PUT: api/Relationships/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRelationShip(int id, Relationship relationShip)
+        public async Task<IActionResult> PutRelationship(int id, Relationship relationship)
         {
-            if (id != relationShip.Id)
+            if (id != relationship.Id)
             {
                 return BadRequest();
             }
 
-            _uow.RelationShipRepository.Update(relationShip);
+            _uow.RelationshipRepository.Update(relationship);
 
             try
             {
@@ -63,7 +63,7 @@ namespace MemberPlatformApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RelationShipExists(id))
+                if (!RelationshipExists(id))
                 {
                     return NotFound();
                 }
@@ -76,35 +76,35 @@ namespace MemberPlatformApi.Controllers
             return NoContent();
         }
 
-        // POST: api/RelationShips
+        // POST: api/Relationships
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Relationship>> PostRelationShip(Relationship relationShip)
+        public async Task<ActionResult<Relationship>> PostRelationship(Relationship relationship)
         {
-            _uow.RelationShipRepository.Insert(relationShip);
+            _uow.RelationshipRepository.Insert(relationship);
             await _uow.SaveAsync();
-            return CreatedAtAction("GetRelationShip", new { id = relationShip.Id }, relationShip);
+            return CreatedAtAction("GetRelationship", new { id = relationship.Id }, relationship);
         }
 
-        // DELETE: api/RelationShips/5
+        // DELETE: api/Relationships/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRelationShip(int id)
+        public async Task<IActionResult> DeleteRelationship(int id)
         {
-            var relationShip = await _uow.RelationShipRepository.GetByIDAsync(id);
-            if (relationShip == null)
+            var relationship = await _uow.RelationshipRepository.GetByIDAsync(id);
+            if (relationship == null)
             {
                 return NotFound();
             }
 
-            _uow.RelationShipRepository.Delete(id);
+            _uow.RelationshipRepository.Delete(id);
             await _uow.SaveAsync();
 
             return NoContent();
         }
 
-        private bool RelationShipExists(int id)
+        private bool RelationshipExists(int id)
         {
-            return _uow.RelationShipRepository.Get(e => e.Id == id).Any();
+            return _uow.RelationshipRepository.Get(e => e.Id == id).Any();
         }
     }
 }
