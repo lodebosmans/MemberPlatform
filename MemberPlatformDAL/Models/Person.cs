@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,9 @@ namespace MemberPlatformDAL.Models
         public ICollection<TrainerCourse> TrainerCourses { get; set; }
         public ICollection<PersonRole> PersonRoles { get; set; }
         public ICollection<Ticket> Tickets { get; set; }
+        [InverseProperty("Replyer")]
         public ICollection<TicketItem> TicketItemsReplier { get; set; }
+        [InverseProperty("Responsible")]
         public ICollection<TicketItem> TicketItemsResponsible { get; set; }
 
 
