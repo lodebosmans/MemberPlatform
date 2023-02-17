@@ -15,7 +15,7 @@ namespace MemberPlatformDAL.Models
         public string LastName { get; set; }
         public string Street { get; set; }
         public int HouseNumber { get; set; }
-        public string HouseBox { get; set; }
+        public string? Box { get; set; }
         public string PostalCode { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
@@ -25,14 +25,14 @@ namespace MemberPlatformDAL.Models
         public string MobilePhone { get; set; }
         public string EmailAddress { get; set; }
         public string IdentityNumber { get; set; }
-        public int GroupId { get; set; }
+        public int OfferId { get; set; }
 
         // public int EnrollmentStatusId { get; set; }
         public bool PrivacyApproval { get; set; }
 
 
         //// Navigation properties
-        public ICollection<SaleItem> SaleItems { get; set; }
+        public ICollection<SalesItem> SaleItems { get; set; }
         public ICollection<InvoicePaymentStatus> InvoicePaymentStatuses { get; set; }
         public ICollection<PersonCourse> PersonCoursesMember { get; set; }
         public ICollection<PersonCourse> PersonCoursesSubmitter { get; set; }
@@ -47,9 +47,10 @@ namespace MemberPlatformDAL.Models
         public ICollection<TicketItem> TicketItemsReplier { get; set; }
         [InverseProperty("Responsible")]
         public ICollection<TicketItem> TicketItemsResponsible { get; set; }
-
-
-
+        public ICollection<CourseSessionStatus> CourseSessionStatuses { get; set; }
+        public ICollection<CourseStatus> CourseStatuses { get; set; }
+        public ICollection<PaymentStatus> PaymentStatuses { get; set; }
+        public Offer Offer { get; set; }
 
     }
 }
