@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Models
 {
-    public class SaleItem
+    public class SalesItem
     {
         public int Id { get; set; }
         public string Name { get; set; }

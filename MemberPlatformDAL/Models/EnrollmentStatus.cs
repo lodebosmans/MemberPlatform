@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Models
 {
-    public class Offer
+    public class EnrollmentStatus
     {
         // Attributes
         public int Id { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; }
 
         // Navigation properties
-        ICollection<Person> Persons { get; set; }
-        ICollection<CourseOffer> CourseOffers { get; set; }
-
+        ICollection<PersonCourseEnrollmentStatus> PersonCourseEnrollmentStatuses { get; set; }
     }
 }
