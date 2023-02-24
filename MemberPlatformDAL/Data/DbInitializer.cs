@@ -40,14 +40,7 @@ namespace MemberPlatformDAL.Data
 
                 ) ;
                 context.SaveChanges();
-                context.Relationships.AddRange(
-                    new Relationship
-                    {
-                        Name = "Partner"
-                    }
-                    );
-
-                context.SaveChanges();
+              
             }
 
         }
