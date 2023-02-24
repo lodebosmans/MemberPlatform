@@ -12,7 +12,7 @@ namespace MemberPlatformDAL.Models
         public int Id { get; set; }
         public string Description { get; set; }
 
-        [ForeignKey("Sport")]
+        [ForeignKey("SportId")]
         public int SportId { get; set; }
         public Option Sport { get; set; }
 
