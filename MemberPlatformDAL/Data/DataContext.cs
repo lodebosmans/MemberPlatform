@@ -13,9 +13,20 @@ namespace MemberPlatformDAL.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Person> Persons { get; set; }
-        public DbSet<Relationship> Relationships { get; set; }
-        public DbSet<CourseType> courseTypes { get; set; }
-        public DbSet<PaymentStatus> PaymentStatuses { get; set; }
+        public DbSet<ContractPersonRole> ContractRoles { get; set; }
+        public DbSet<Option> Options { get; set; }
+        public DbSet<OptionType> OptionTypes { get; set; }
+        public DbSet<PersonRelationship> PersonRelationships { get; set; }
+        public DbSet<Agreement> Agreements { get; set; }
+        public DbSet<AgreementFormat> AgreementsFormat { get; set;}
+        public DbSet<AgreementProduct> AgreementsProduct { get; set;}
+        public DbSet<AgreementSport> AgreementSports { get; set; }
+        public DbSet<AgreementStatus> AgreementsStatus { get; set;}
+        public DbSet<Contract> Contracts { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<SalesItem> SalesItems { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<TicketItem> TicketItems { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,9 +41,22 @@ namespace MemberPlatformDAL.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Person>().ToTable("Person");
-            modelBuilder.Entity<Relationship>().ToTable("Relationship");
-            modelBuilder.Entity<CourseType>().ToTable("CourseType");
-            modelBuilder.Entity<PaymentStatus>().ToTable("PaymentStatus");
+            modelBuilder.Entity<ContractPersonRole>().ToTable("ContractPersonRole");
+            modelBuilder.Entity<Option>().ToTable("Option");
+            modelBuilder.Entity<OptionType>().ToTable("OptionType");
+            modelBuilder.Entity<PersonRelationship>().ToTable("PersonRelationship");
+            modelBuilder.Entity<Agreement>().ToTable("Agreement");
+            modelBuilder.Entity<AgreementFormat>().ToTable("AgreementFormat");
+            modelBuilder.Entity<AgreementProduct>().ToTable("AgreementProduct");
+            modelBuilder.Entity<AgreementSport>().ToTable("AgreementSport");
+            modelBuilder.Entity<AgreementStatus>().ToTable("AgreementStatus");
+            modelBuilder.Entity<Contract>().ToTable("Contract");
+            modelBuilder.Entity<Product>().ToTable("Product");
+            modelBuilder.Entity<SalesItem>().ToTable("SalesItem");
+            modelBuilder.Entity<Ticket>().ToTable("Ticket");
+            modelBuilder.Entity<TicketItem>().ToTable("TicketItem");
+
+
         }
     }
 }

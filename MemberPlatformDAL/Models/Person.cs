@@ -29,28 +29,45 @@ namespace MemberPlatformDAL.Models
 
         // public int EnrollmentStatusId { get; set; }
         public bool PrivacyApproval { get; set; }
+        //Foreign key relationship
+        public int OptionId { get; set; }
+        //Navigation property: 1 option per Person
+        public Option Option { get; set; }
 
 
         //// Navigation properties
-        public ICollection<SalesItem> SaleItems { get; set; }
-        public ICollection<InvoicePaymentStatus> InvoicePaymentStatuses { get; set; }
-        public ICollection<PersonCourse> PersonCoursesMember { get; set; }
-        public ICollection<PersonCourse> PersonCoursesSubmitter { get; set; }
-        public ICollection<PersonRelationship> PersonRelationshipsParent { get; set; }
-        public ICollection<PersonRelationship> PersonRelationshipsChild { get; set; }
-        public ICollection<PersonCourseEnrollmentStatus> PersonCourseEnrollmentStatuses { get; set; }
-        public ICollection<CourseSessionTrainer> CourseSessionTrainers { get; set; }
-        public ICollection<TrainerCourse> TrainerCourses { get; set; }
-        public ICollection<PersonRole> PersonRoles { get; set; }
-        public ICollection<Ticket> Tickets { get; set; }
-        [InverseProperty("Replyer")]
-        public ICollection<TicketItem> TicketItemsReplier { get; set; }
-        [InverseProperty("Responsible")]
-        public ICollection<TicketItem> TicketItemsResponsible { get; set; }
-        public ICollection<CourseSessionStatus> CourseSessionStatuses { get; set; }
-        public ICollection<CourseStatus> CourseStatuses { get; set; }
-        public ICollection<PaymentStatus> PaymentStatuses { get; set; }
-        public Offer Offer { get; set; }
+        public ICollection<ContractPersonRole> contractPersonRoles { get; set; }
+
+        [InverseProperty("Approver")]
+        public ICollection<AgreementStatus> AgreementStatusesApprover { get; set; }
+
+        //[InverseProperty("Parent")]
+        //public ICollection<PersonRelationship> PersonRelationshipsParent { get; set;}
+
+        //[InverseProperty("Child")]
+        //public ICollection<PersonRelationship> PersonRelationshipsChild { get; set; }
+
+
+
+        //public ICollection<SalesItem> SaleItems { get; set; }
+        //public ICollection<InvoicePaymentStatus> InvoicePaymentStatuses { get; set; }
+        //public ICollection<PersonCourse> PersonCoursesMember { get; set; }
+        //public ICollection<PersonCourse> PersonCoursesSubmitter { get; set; }
+        //public ICollection<PersonRelationship> PersonRelationshipsParent { get; set; }
+        //public ICollection<PersonRelationship> PersonRelationshipsChild { get; set; }
+        //public ICollection<PersonCourseEnrollmentStatus> PersonCourseEnrollmentStatuses { get; set; }
+        //public ICollection<CourseSessionTrainer> CourseSessionTrainers { get; set; }
+        //public ICollection<TrainerCourse> TrainerCourses { get; set; }
+        //public ICollection<PersonRole> PersonRoles { get; set; }
+        //public ICollection<Ticket> Tickets { get; set; }
+        //[InverseProperty("Replyer")]
+        //public ICollection<TicketItem> TicketItemsReplier { get; set; }
+        //[InverseProperty("Responsible")]
+        //public ICollection<TicketItem> TicketItemsResponsible { get; set; }
+        //public ICollection<CourseSessionStatus> CourseSessionStatuses { get; set; }
+        //public ICollection<CourseStatus> CourseStatuses { get; set; }
+        //public ICollection<PaymentStatus> PaymentStatuses { get; set; }
+        //public Offer Offer { get; set; }
 
     }
 }

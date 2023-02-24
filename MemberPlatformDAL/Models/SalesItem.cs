@@ -13,9 +13,8 @@ namespace MemberPlatformDAL.Models
         public string Description { get; set; }
         public int Price { get; set; }
         public DateTime EndDate { get; set; }
-        //Foreign key relationship
-        public int PersonId { get; set; }
-        //Navigation property : 1 person per SaleItem
-        public Person Person { get; set; }
+
+        public int PersonId { get; set; }        //Foreign key relationship
+        public Person Person { get; set; }        //Navigation property : 1 person per SaleItem
     }
 }

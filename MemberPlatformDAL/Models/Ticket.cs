@@ -9,11 +9,8 @@ namespace MemberPlatformDAL.Models
     public class Ticket
     {
         public int Id { get; set; }
-        public string Message { get; set; }
-        //Foreign key relationship
-        public int PersonId { get; set; }
-        //Navigation property : 1 person per ticket
-        public Person Person { get; set; }
+        public int PersonId { get; set; }        //Foreign key relationship
+        public Person Person { get; set; }        //Navigation property : 1 person per ticket
 
         //Navigation property
         //Ticket can be related to 0 or more TicketItem (1 to many relationShip)
