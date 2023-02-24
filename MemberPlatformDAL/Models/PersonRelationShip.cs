@@ -11,16 +11,16 @@ namespace MemberPlatformDAL.Models
     {
         public int Id { get; set; }
 
-        [ForeignKey("Parent")]
+        [ForeignKey("ParentId")]
         public int? ParentId { get; set; }
         public Person Parent { get; set; }
 
-        [ForeignKey("Child")]
+        [ForeignKey("ChildId")]
         public int? ChildId { get; set; }
         public Person Child { get; set; }
 
 
-        [ForeignKey("Relation")]
+        [ForeignKey("RelationId")]
         public int? RelationId { get; set; }        //Foreign key relationship
         public  Option Relation { get; set; }
     }

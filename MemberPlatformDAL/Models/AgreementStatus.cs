@@ -12,7 +12,7 @@ namespace MemberPlatformDAL.Models
         public int Id { get; set; }
         public string Comment { get; set; }
 
-        [ForeignKey("Status")]
+        [ForeignKey("StatusId")]
         public int? AgrreementStatusId { get; set; }   //Foreign key relationship  
         public Option Status { get; set; }    //Navigation property : 1 option per AgreementStatus
 
@@ -20,7 +20,7 @@ namespace MemberPlatformDAL.Models
         public Agreement Agreement { get; set; }   //Navigation property : 1 option per AgreementStatus
 
 
-        [ForeignKey("Approver")]
+        [ForeignKey("ApproverId")]
         public int? ApproverId { get; set; }        //Foreign key relationship
         public Person Approver { get; set; }        //Navigation property : 1 Approver(person) per TicketItem
 

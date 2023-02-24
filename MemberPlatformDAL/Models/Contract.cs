@@ -14,7 +14,7 @@ namespace MemberPlatformDAL.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        [ForeignKey("Type")]
+        [ForeignKey("TypeId")]
         public int TypeId { get; set; }        //Foreign key relationship
         public Option Type { get; set; }        //Navigation property: 1 type per Contract
 
