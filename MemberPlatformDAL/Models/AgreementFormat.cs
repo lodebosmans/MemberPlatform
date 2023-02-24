@@ -12,7 +12,7 @@ namespace MemberPlatformDAL.Models
         public int Id { get; set; }
         public string Description { get; set; }
 
-        [ForeignKey("Format")]
+        [ForeignKey("FormatId")]
         public int FormatId { get; set; }
         public Option Format { get; set; }
 

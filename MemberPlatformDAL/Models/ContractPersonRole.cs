@@ -17,7 +17,7 @@ namespace MemberPlatformDAL.Models
         public int? ContractId { get; set; }        //Foreign key relationship
         public Contract Contract { get; set; }     //Navigation property : 1 Contract per ContractPersonRole
 
-        [ForeignKey("Role")]
+        [ForeignKey("RoleId")]
         public int? RoleId { get; set; }         //Foreign key relationship
         public Option Role { get; set; }        //Navigation property: 1 Role per ContractRolePerson
     }
