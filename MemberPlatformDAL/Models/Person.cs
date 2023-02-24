@@ -41,11 +41,11 @@ namespace MemberPlatformDAL.Models
         [InverseProperty("Approver")]
         public ICollection<AgreementStatus> AgreementStatusesApprover { get; set; }
 
-        //[InverseProperty("Parent")]
-        //public ICollection<PersonRelationship> PersonRelationshipsParent { get; set;}
+        [InverseProperty("Parent")]
+        public ICollection<PersonRelationship> PersonRelationshipsParent { get; set; }
 
-        //[InverseProperty("Child")]
-        //public ICollection<PersonRelationship> PersonRelationshipsChild { get; set; }
+        [InverseProperty("Child")]
+        public ICollection<PersonRelationship> PersonRelationshipsChild { get; set; }
 
 
 
