@@ -33,5 +33,11 @@ namespace MemberPlatformDAL.Models
         [InverseProperty("Format")]
         public ICollection<AgreementFormat> AgreementFormatsFormat { get; set; }
 
+        [InverseProperty("ProductStatus")]
+        public ICollection<Product> productsProductStatus { get; set; }
+
+        [InverseProperty("UnitStatus")]
+        public ICollection<ProductUnit> productUnitsUnitStatus { get; set; }
+
     }
 }
