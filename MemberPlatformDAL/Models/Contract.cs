@@ -20,7 +20,7 @@ namespace MemberPlatformDAL.Models
 
         //Navigation property
         //Contract can be related to 0 or more ContractPersonRole (1 to many relationShip)
-        public ICollection<ContractPersonRole> contractPersonRoles { get; set; }
-        public ICollection<Agreement> agreements { get; set; }
+        public ICollection<ContractPersonRole> ContractPersonRoles { get; set; }
+        public ICollection<Agreement> Agreements { get; set; }
     }
 }

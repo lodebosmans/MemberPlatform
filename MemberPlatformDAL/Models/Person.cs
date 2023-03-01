@@ -47,6 +47,9 @@ namespace MemberPlatformDAL.Models
         [InverseProperty("Child")]
         public ICollection<PersonRelationship> PersonRelationshipsChild { get; set; }
 
+        [InverseProperty("DiscountApprover")]
+        public ICollection<AgreementDiscount> AgreementDiscountsDiscountApprover { get; set; }
+
 
 
         //public ICollection<SalesItem> SaleItems { get; set; }

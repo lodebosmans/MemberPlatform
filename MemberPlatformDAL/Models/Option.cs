@@ -22,7 +22,7 @@ namespace MemberPlatformDAL.Models
         public ICollection<AgreementStatus> AgreementStatusesStatus { get; set; }
 
         [InverseProperty("Type")]
-        public ICollection<Contract> contractsType { get; set; }
+        public ICollection<Contract> ContractsType { get; set; }
 
         [InverseProperty("Relation")]
         public ICollection<PersonRelationship> PersonRelationshipsRelation { get; set; }
@@ -34,10 +34,16 @@ namespace MemberPlatformDAL.Models
         public ICollection<AgreementFormat> AgreementFormatsFormat { get; set; }
 
         [InverseProperty("ProductStatus")]
-        public ICollection<Product> productsProductStatus { get; set; }
+        public ICollection<Product> ProductsProductStatus { get; set; }
 
         [InverseProperty("UnitStatus")]
-        public ICollection<ProductUnit> productUnitsUnitStatus { get; set; }
+        public ICollection<ProductUnit> ProductUnitsUnitStatus { get; set; }
+
+        [InverseProperty("TicketStatus")]
+        public ICollection<TicketItem> TicketItemsTicketStatus { get; set; }
+
+        [InverseProperty("Discount")]
+        public ICollection<AgreementDiscount> AgreementDiscountsDiscount { get; set; }
 
     }
 }

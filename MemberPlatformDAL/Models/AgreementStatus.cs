@@ -13,7 +13,7 @@ namespace MemberPlatformDAL.Models
         public string Comment { get; set; }
 
         [ForeignKey("StatusId")]
-        public int? AgrreementStatusId { get; set; }   //Foreign key relationship  
+        public int? StatusId { get; set; }   //Foreign key relationship  
         public Option Status { get; set; }    //Navigation property : 1 option per AgreementStatus
 
         public int? AgreementId { get; set; }     //Foreign key relationship

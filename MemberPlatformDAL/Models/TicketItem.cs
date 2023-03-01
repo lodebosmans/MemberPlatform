@@ -23,9 +23,9 @@ namespace MemberPlatformDAL.Models
 
         public Person Responsible { get; set; }    //Navigation Property : 1 Responsible(Person) per TicketItem
 
-
-        public int OptionId { get; set; }         //Foreign key relationship
-        public Option Option { get; set; }        //Naviagation property : 1 option per TicketItem
+        [ForeignKey("TicketStatusId")]
+        public int TicketStatusId { get; set; }         //Foreign key relationship
+        public Option TicketStatus { get; set; }        //Naviagation property : 1 option per TicketItem
 
 
 
