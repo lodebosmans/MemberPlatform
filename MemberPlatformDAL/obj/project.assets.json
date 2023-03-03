@@ -5319,11 +5319,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformApi\\MemberPlatformDAL\\MemberPlatformDAL.csproj",
+      "projectUniqueName": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformNet\\MemberPlatformDAL\\MemberPlatformDAL.csproj",
       "projectName": "MemberPlatformDAL",
-      "projectPath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformApi\\MemberPlatformDAL\\MemberPlatformDAL.csproj",
+      "projectPath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformNet\\MemberPlatformDAL\\MemberPlatformDAL.csproj",
       "packagesPath": "C:\\Users\\bosma\\.nuget\\packages\\",
-      "outputPath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformApi\\MemberPlatformDAL\\obj\\",
+      "outputPath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformNet\\MemberPlatformDAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bosma\\AppData\\Roaming\\NuGet\\NuGet.Config",
