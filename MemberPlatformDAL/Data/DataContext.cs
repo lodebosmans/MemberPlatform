@@ -25,6 +25,7 @@ namespace MemberPlatformDAL.Data
         public DbSet<AgreementStatus> AgreementsStatus { get; set;}
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductUnit> ProductUnits { get; set; }
         public DbSet<SalesItem> SalesItems { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<TicketItem> TicketItems { get; set; }
@@ -54,6 +55,7 @@ namespace MemberPlatformDAL.Data
             modelBuilder.Entity<AgreementStatus>().ToTable("AgreementStatus");
             modelBuilder.Entity<Contract>().ToTable("Contract");
             modelBuilder.Entity<Product>().ToTable("Product");
+            modelBuilder.Entity<ProductUnit>().ToTable("ProductUnit");
             modelBuilder.Entity<SalesItem>().ToTable("SalesItem");
             modelBuilder.Entity<Ticket>().ToTable("Ticket");
             modelBuilder.Entity<TicketItem>().ToTable("TicketItem");
