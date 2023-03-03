@@ -36,7 +36,7 @@ namespace MemberPlatformDAL.Data
                         Box = "3",
                         PostalCode = "2440",
                         City = "Geel",
-                        Country = "België",
+                        Country = "BelgiÃ«",
                         Gender = "male",
                         DateOfBirth = DateTime.Now,
                         InsuranceCompany = "CM",
@@ -48,18 +48,18 @@ namespace MemberPlatformDAL.Data
                     new Person
                     {
                         FirstName = "Lode",
-                        LastName = "dfsfsdfdfdsdfsfsd",
+                        LastName = "Bosmans",
                         Street = "Broekstraat",
                         HouseNumber = "14",
                         Box = "2",
                         PostalCode = "2260",
                         City = "Westerlo",
-                        Country = "België",
+                        Country = "BelgiÃ«",
                         Gender = "male",
                         DateOfBirth = DateTime.Now,
                         InsuranceCompany = "De Voorzorg",
                         MobilePhone = "0485785011",
-                        EmailAddress = "johnny@hotmail.com",
+                        EmailAddress = "Lode@hotmail.com",
                         IdentityNumber = "75010111991",
                         PrivacyApproval = true
                     }
