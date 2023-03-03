@@ -9820,11 +9820,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformNet\\MemberPlatformApi\\MemberPlatformApi.csproj",
+      "projectUniqueName": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatform\\MemberPlatformApi\\MemberPlatformApi.csproj",
       "projectName": "MemberPlatformApi",
-      "projectPath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformNet\\MemberPlatformApi\\MemberPlatformApi.csproj",
+      "projectPath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatform\\MemberPlatformApi\\MemberPlatformApi.csproj",
       "packagesPath": "C:\\Users\\bosma\\.nuget\\packages\\",
-      "outputPath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformNet\\MemberPlatformApi\\obj\\",
+      "outputPath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatform\\MemberPlatformApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bosma\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9841,8 +9841,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformNet\\MemberPlatformDAL\\MemberPlatformDAL.csproj": {
-              "projectPath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformNet\\MemberPlatformDAL\\MemberPlatformDAL.csproj"
+            "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatform\\MemberPlatformDAL\\MemberPlatformDAL.csproj": {
+              "projectPath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatform\\MemberPlatformDAL\\MemberPlatformDAL.csproj"
             }
           }
         }
