@@ -7,3 +7,5 @@ MemberPlatformDAL/obj/
 MemberPlatformApi/obj/
 MemberPlatformDAL/bin/
 MemberPlatformApi/bin/
+MemberPlatformApi/obj/Debug/net6.0/
+MemberPlatformDAL/obj/Debug/net6.0/
