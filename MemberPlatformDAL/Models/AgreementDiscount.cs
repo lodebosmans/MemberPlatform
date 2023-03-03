@@ -9,23 +9,20 @@ namespace MemberPlatformDAL.Models
 {
     public class AgreementDiscount
     {
+        // Attributes
         public int Id { get; set; }
-
         [ForeignKey("AgreementId")]
-        public int? AgreementId { get; set; }         //Foreign key relationship
-        public Agreement Agreement { get; set; }        //Navigation property: 1 Agreemnet per AgreementDiscount
-
-        [ForeignKey("DiscountId")]
-        public int? DiscountId { get; set; }         //Foreign key relationship
-        public Option Discount { get; set; }        //Navigation property: 1 Agreemnet per AgreementDiscount
-
+        public int AgreementId { get; set; }         //Foreign key relationship
+        [ForeignKey("DiscountTypeId")]
+        public int DiscountTypeId { get; set; }         //Foreign key relationship
         [ForeignKey("DiscountApproverId")]
-        public int? DiscountApproverId { get; set; }         //Foreign key relationship
-        public Person DiscountApprover { get; set; }        //Navigation property: 1 Agreemnet per AgreementDiscount
+        public int DiscountApproverId { get; set; }         //Foreign key relationship
+        public int DiscountAmount { get; set; }
 
-        public string DiscountAmount { get; set; } 
-
-
+        // Navigation properties
+        public Agreement Agreement { get; set; }        
+        public Option DiscountType { get; set; }       
+        public Person DiscountApprover { get; set; }        
 
     }
 }

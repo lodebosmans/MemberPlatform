@@ -9,19 +9,19 @@ namespace MemberPlatformDAL.Models
 {
     public class PersonRelationship
     {
+        // Attributes
         public int Id { get; set; }
-
         [ForeignKey("ParentId")]
         public int? ParentId { get; set; }
-        public Person Parent { get; set; }
-
         [ForeignKey("ChildId")]
         public int? ChildId { get; set; }
-        public Person Child { get; set; }
-
-
         [ForeignKey("RelationId")]
         public int? RelationId { get; set; }        //Foreign key relationship
-        public  Option Relation { get; set; }
+        
+
+        // Navigation properties
+        public Person Parent { get; set; }
+        public Person Child { get; set; }
+        public Option Relation { get; set; }
     }
 }

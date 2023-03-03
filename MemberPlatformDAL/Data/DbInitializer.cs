@@ -31,18 +31,41 @@ namespace MemberPlatformDAL.Data
                     {
                         FirstName = "Lode",
                         LastName = "Bosmans",
-                        City = "Geel"
+                        Street = "Kerkstraat",
+                        HouseNumber = "4",
+                        Box = "3",
+                        PostalCode = "2440",
+                        City = "Geel",
+                        Country = "België",
+                        Gender = "male",
+                        DateOfBirth = DateTime.Now,
+                        InsuranceCompany = "CM",
+                        MobilePhone = "0485785013",
+                        EmailAddress = "bosmanslode@hotmail.com",
+                        IdentityNumber = "85010111991",
+                        PrivacyApproval = true
                     },
-                    new Person 
+                    new Person
                     {
-                        FirstName = "Johnny",
-                        LastName = "Urkens",
-                        City = "Turnhout"
+                        FirstName = "Lode",
+                        LastName = "Bosmans",
+                        Street = "Broekstraat",
+                        HouseNumber = "14",
+                        Box = "2",
+                        PostalCode = "2260",
+                        City = "Westerlo",
+                        Country = "België",
+                        Gender = "male",
+                        DateOfBirth = DateTime.Now,
+                        InsuranceCompany = "De Voorzorg",
+                        MobilePhone = "0485785011",
+                        EmailAddress = "johnny@hotmail.com",
+                        IdentityNumber = "75010111991",
+                        PrivacyApproval = true
                     }
 
-                ) ;
+                );
                 context.SaveChanges();
-              
             }
 
         }

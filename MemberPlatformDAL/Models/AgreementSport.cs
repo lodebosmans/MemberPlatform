@@ -9,13 +9,14 @@ namespace MemberPlatformDAL.Models
 {
     public class AgreementSport
     {
+        // Attributes
         public int Id { get; set; }
         public string Description { get; set; }
-
         [ForeignKey("SportId")]
         public int SportId { get; set; }
-        public Option Sport { get; set; }
 
+        // Navigation properties
+        public Option Sport { get; set; }
         public ICollection<Agreement> Agreements { get; set; }
     }
 }
