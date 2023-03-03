@@ -9,12 +9,13 @@ namespace MemberPlatformDAL.Models
 {
     public class AgreementProduct
     {
+        // Attributes
         public int Id { get; set; }
         public string Description { get; set; }
-
         public int ProductId { get; set; }
-        public Product Product { get; set; }
 
+        // Navigation properties
+        public Product Product { get; set; }
         public ICollection<Agreement> Agreements { get; set; }
     }
 }

@@ -8,12 +8,12 @@ namespace MemberPlatformDAL.Models
 {
     public class OptionType
     {
+        // Attributes
         public int Id { get; set; }
         public string Name { get; set; }
 
-        //Navigation property
-        //OptionType can be related to 0 or more option (1 to many relationShip)
-        public ICollection<Option> options { get; set; }
+        //Navigation properties
+        public ICollection<Option> Options { get; set; } //OptionType can be related to 0 or more option (1 to many relationShip)
 
     }
 }

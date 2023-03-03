@@ -9,13 +9,14 @@ namespace MemberPlatformDAL.Models
 {
     public class AgreementFormat
     {
+        // Attributes
         public int Id { get; set; }
         public string Description { get; set; }
-
         [ForeignKey("FormatId")]
         public int FormatId { get; set; }
-        public Option Format { get; set; }
 
+        // Navigation properties
+        public Option Format { get; set; }
         public ICollection<Agreement> Agreements { get; set; }
     }
 }

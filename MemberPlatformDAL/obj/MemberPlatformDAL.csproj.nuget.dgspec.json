@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Urkens\\Documents\\Stage\\MemberPlatform\\MemberPlatformDAL\\MemberPlatformDAL.csproj": {}
+    "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformApi\\MemberPlatformDAL\\MemberPlatformDAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Urkens\\Documents\\Stage\\MemberPlatform\\MemberPlatformDAL\\MemberPlatformDAL.csproj": {
+    "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformApi\\MemberPlatformDAL\\MemberPlatformDAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Urkens\\Documents\\Stage\\MemberPlatform\\MemberPlatformDAL\\MemberPlatformDAL.csproj",
+        "projectUniqueName": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformApi\\MemberPlatformDAL\\MemberPlatformDAL.csproj",
         "projectName": "MemberPlatformDAL",
-        "projectPath": "C:\\Users\\Urkens\\Documents\\Stage\\MemberPlatform\\MemberPlatformDAL\\MemberPlatformDAL.csproj",
-        "packagesPath": "C:\\Users\\Urkens\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Urkens\\Documents\\Stage\\MemberPlatform\\MemberPlatformDAL\\obj\\",
+        "projectPath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformApi\\MemberPlatformDAL\\MemberPlatformDAL.csproj",
+        "packagesPath": "C:\\Users\\bosma\\.nuget\\packages\\",
+        "outputPath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformApi\\MemberPlatformDAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Urkens\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bosma\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

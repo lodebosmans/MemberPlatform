@@ -9,9 +9,9 @@ namespace MemberPlatformDAL.Models
 {
     public class ProductUnit
     {
+        // Attributes
         public int Id { get; set; }
-        public int? ProductId { get; set; }
-        public Product Product { get; set; }
+        public int ProductId { get; set; }
         public DateTime Date { get; set; }
         public string Comment { get; set; }
         public string Location { get; set; }
@@ -20,13 +20,12 @@ namespace MemberPlatformDAL.Models
         public DateTime StartTimeActual { get; set; }
         public DateTime EndTimeActual { get; set; }
 
-        [ForeignKey("unitStatusId")]
-        public int UnitStatusId { get; set; }        //Foreign key relationship
-        public Option UnitStatus { get; set; }
+        [ForeignKey("ProductUnitStatusId")]
+        public int ProductUnitStatusId { get; set; }        //Foreign key relationship
 
-
-
-
+        // Navigation properties
+        public Product Product { get; set; }
+        public Option ProductUnitStatus { get; set; }
 
 
     }

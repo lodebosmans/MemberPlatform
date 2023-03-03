@@ -9,41 +9,45 @@ namespace MemberPlatformDAL.Models
 {
     public class Option
     {
+        // Attributes
         public int Id { get; set; }
         public string Name { get; set; }
-
         public int OptionTypeId { get; set; }        //Foreign key relationship
+
+        // Navigation properties
         public OptionType OptionType { get; set; }   //Navigation property : 1 OptionType per Option
 
         [InverseProperty("Role")]
-        public ICollection<ContractPersonRole> ContractPersonRolesRole { get; set; }
+        public ICollection<ContractPersonRole> ContractPersonRoleType { get; set; }
 
         [InverseProperty("Status")]
-        public ICollection<AgreementStatus> AgreementStatusesStatus { get; set; }
+        public ICollection<AgreementStatus> AgreementStatusType { get; set; }
 
-        [InverseProperty("Type")]
-        public ICollection<Contract> ContractsType { get; set; }
+        [InverseProperty("ContractType")]
+        public ICollection<Contract> ContractType { get; set; }
 
         [InverseProperty("Relation")]
-        public ICollection<PersonRelationship> PersonRelationshipsRelation { get; set; }
+        public ICollection<PersonRelationship> PersonRelationshipType { get; set; }
 
         [InverseProperty("Sport")]
-        public ICollection<AgreementSport> AgreementSportsSport { get; set;}
+        public ICollection<AgreementSport> AgreementSportType { get; set;}
 
         [InverseProperty("Format")]
-        public ICollection<AgreementFormat> AgreementFormatsFormat { get; set; }
+        public ICollection<AgreementFormat> AgreementFormatType { get; set; }
 
         [InverseProperty("ProductStatus")]
-        public ICollection<Product> ProductsProductStatus { get; set; }
+        public ICollection<Product> ProductsStatus { get; set; }
 
-        [InverseProperty("UnitStatus")]
-        public ICollection<ProductUnit> ProductUnitsUnitStatus { get; set; }
+        [InverseProperty("ProductUnitStatus")]
+        public ICollection<ProductUnit> ProductUnitStatus { get; set; }
 
         [InverseProperty("TicketStatus")]
-        public ICollection<TicketItem> TicketItemsTicketStatus { get; set; }
+        public ICollection<TicketItem> TicketItemStatus { get; set; }
 
-        [InverseProperty("Discount")]
-        public ICollection<AgreementDiscount> AgreementDiscountsDiscount { get; set; }
+        [InverseProperty("DiscountType")]
+        public ICollection<AgreementDiscount> AgreementDiscountType { get; set; }
+        [InverseProperty("SalesItemType")]
+        public ICollection<SalesItem> SalesItemType { get; set; }
 
     }
 }

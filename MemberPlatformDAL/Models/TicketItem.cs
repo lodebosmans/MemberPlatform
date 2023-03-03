@@ -9,26 +9,22 @@ namespace MemberPlatformDAL.Models
 {
     public class TicketItem
     {
+        // Attributes
         public int Id { get; set; }
         public string Message { get; set; }
-        public int? TicketId { get; set; }        //Foreign key relationship
-        public Ticket Ticket { get; set; }        //Navigation property
-
+        public int TicketId { get; set; }        //Foreign key relationship
         [ForeignKey("ReplierId")]
         public int? ReplierId { get; set; }        //Foreign key relationship
-        public Person Replier { get; set; }       //Navigation property : 1 replyer(person) per TicketItem
-
         [ForeignKey("ResponsibleId")]
         public int? ResponsibleId { get; set; }     //Foreign key relationship
-
-        public Person Responsible { get; set; }    //Navigation Property : 1 Responsible(Person) per TicketItem
-
         [ForeignKey("TicketStatusId")]
         public int TicketStatusId { get; set; }         //Foreign key relationship
+        
+
+        // Navigation properties
+        public Ticket Ticket { get; set; }        //Navigation property
+        public Person Replier { get; set; }       //Navigation property : 1 replyer(person) per TicketItem
+        public Person Responsible { get; set; }    //Navigation Property : 1 Responsible(Person) per TicketItem
         public Option TicketStatus { get; set; }        //Naviagation property : 1 option per TicketItem
-
-
-
-
     }
 }
