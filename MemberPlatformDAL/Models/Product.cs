@@ -28,6 +28,8 @@ namespace MemberPlatformDAL.Models
 
         public ICollection<AgreementProduct> AgreementProducts { get; set; }
 
+        public ICollection<ProductUnit> ProductUnits { get; set; }
+
 
 
 

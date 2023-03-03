@@ -30,12 +30,14 @@ namespace MemberPlatformDAL.Data
                     new Person
                     {
                         FirstName = "Lode",
-                        LastName = "Bosmans"
+                        LastName = "Bosmans",
+                        City = "Geel"
                     },
                     new Person 
                     {
                         FirstName = "Johnny",
-                        LastName = "Urkens"
+                        LastName = "Urkens",
+                        City = "Turnhout"
                     }
 
                 ) ;

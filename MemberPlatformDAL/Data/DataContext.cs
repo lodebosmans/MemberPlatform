@@ -18,6 +18,7 @@ namespace MemberPlatformDAL.Data
         public DbSet<OptionType> OptionTypes { get; set; }
         public DbSet<PersonRelationship> PersonRelationships { get; set; }
         public DbSet<Agreement> Agreements { get; set; }
+        public DbSet<AgreementDiscount> AgreementsDiscount { get; set;}
         public DbSet<AgreementFormat> AgreementsFormat { get; set;}
         public DbSet<AgreementProduct> AgreementsProduct { get; set;}
         public DbSet<AgreementSport> AgreementSports { get; set; }
@@ -46,6 +47,7 @@ namespace MemberPlatformDAL.Data
             modelBuilder.Entity<OptionType>().ToTable("OptionType");
             modelBuilder.Entity<PersonRelationship>().ToTable("PersonRelationship");
             modelBuilder.Entity<Agreement>().ToTable("Agreement");
+            modelBuilder.Entity<AgreementDiscount>().ToTable("AgreementDiscount");
             modelBuilder.Entity<AgreementFormat>().ToTable("AgreementFormat");
             modelBuilder.Entity<AgreementProduct>().ToTable("AgreementProduct");
             modelBuilder.Entity<AgreementSport>().ToTable("AgreementSport");
