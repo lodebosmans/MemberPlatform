@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aVVi7/7gf/4tVlkQax8fcbxpzFUHcNqdFmJ2E56lP2D2ttbkkPnAcxDDlUJvzsCf1clFrAaohbR2z/7sqT5+lA==",
+  "dgSpecHash": "Iqo+sf7eyzX2yjlMxQx5X5QAOOYCYQz21Tv+zVpHi7Whu/NfQtGy5sGXFhY0GdsEep8RzrfYXi+PMrmazGzwPQ==",
   "success": true,
-  "projectFilePath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformApi\\MemberPlatformApi\\MemberPlatformApi.csproj",
+  "projectFilePath": "D:\\OneDrive\\Projecten\\LedenPlatform\\MemberPlatformNet\\MemberPlatformApi\\MemberPlatformApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bosma\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\bosma\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

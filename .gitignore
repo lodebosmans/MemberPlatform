@@ -1,3 +1,9 @@
 .vs/MemberPlatformApi/v17/
+.MemberPlatformDAL/obj/
 .MemberPlatformApi/obj/
 .MemberPlatformDAL/bin/
+.MemberPlatformApi/bin/
+MemberPlatformDAL/obj/
+MemberPlatformApi/obj/
+MemberPlatformDAL/bin/
+MemberPlatformApi/bin/
