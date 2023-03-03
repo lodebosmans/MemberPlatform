@@ -48,7 +48,7 @@ namespace MemberPlatformDAL.Data
                     new Person
                     {
                         FirstName = "Lode",
-                        LastName = "Bosmsdfsdfsdans",
+                        LastName = "dfsfsdfsdfsfsd",
                         Street = "Broekstraat",
                         HouseNumber = "14",
                         Box = "2",
