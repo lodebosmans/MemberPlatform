@@ -17,17 +17,14 @@ namespace MemberPlatformDAL.Data
         public DbSet<Person> Persons { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<TicketItem> TicketItems { get; set; }
-        public DbSet<PersonRelationship> PersonRelationships { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public DbSet<PersonPersonRelation> PersonPersonRelations { get; set; }
+        public DbSet<ProductDefinition> ProductDefinitions { get; set; }
         public DbSet<ProductUnit> ProductUnits { get; set; }
-        public DbSet<AgreementDiscount> AgreementsDiscount { get; set;}
-        public DbSet<AgreementFormat> AgreementsFormat { get; set;}
-        public DbSet<AgreementProduct> AgreementsProduct { get; set;}
-        public DbSet<AgreementSport> AgreementSports { get; set; }
-        public DbSet<AgreementStatus> AgreementsStatus { get; set;}
+        public DbSet<PriceAgreement> PriceAgreements { get; set;}
+        //public DbSet<Status> Statuses { get; set;}
         public DbSet<Contract> Contracts { get; set; }
-        public DbSet<Agreement> Agreements { get; set; }
-        public DbSet<ContractPersonRole> ContractRoles { get; set; }
+        public DbSet<ProductAgreement> ProductAgreements { get; set; }
+        public DbSet<ContractPersonInvolvement> ContractPersonInvolvements { get; set; }
 
 
 
@@ -50,27 +47,26 @@ namespace MemberPlatformDAL.Data
             //modelBuilder.Entity<ContractPersonRole>().ToTable("ContractPersonRole");
             modelBuilder.Entity<Option>().ToTable("Option");
             modelBuilder.Entity<OptionType>().ToTable("OptionType");
-            modelBuilder.Entity<PersonRelationship>().ToTable("PersonRelationship");
+            modelBuilder.Entity<PersonPersonRelation>().ToTable("PersonPersonRelation");
             //modelBuilder.Entity<Agreement>().ToTable("Agreement");
             //modelBuilder.Entity<AgreementDiscount>().ToTable("AgreementDiscount");
-            modelBuilder.Entity<AgreementFormat>().ToTable("AgreementFormat");
-            modelBuilder.Entity<AgreementProduct>().ToTable("AgreementProduct");
-            modelBuilder.Entity<AgreementSport>().ToTable("AgreementSport");
             //modelBuilder.Entity<AgreementStatus>().ToTable("AgreementStatus");
             modelBuilder.Entity<Contract>().ToTable("Contract");
-            modelBuilder.Entity<Product>().ToTable("Product");
+            //modelBuilder.Entity<ProductDefinition>().ToTable("ProductDefinition");
             //modelBuilder.Entity<ProductUnit>().ToTable("ProductUnit");
             modelBuilder.Entity<SalesItem>().ToTable("SalesItem");
             modelBuilder.Entity<Ticket>().ToTable("Ticket");
             modelBuilder.Entity<TicketItem>().ToTable("TicketItem");
 
-            modelBuilder.Entity<ContractPersonRole>()
-            .ToTable("ContractPersonRole")
+            // ContractPersonInvolvement
+            modelBuilder.Entity<ContractPersonInvolvement>()
+            .ToTable("ContractPersonInvolvement")
             .HasOne(cpr => cpr.Role)
             .WithMany()
             .HasForeignKey(cpr => cpr.RoleId)
             .OnDelete(DeleteBehavior.NoAction);
 
+            // Product Unit
             modelBuilder.Entity<ProductUnit>()
             .ToTable("ProductUnit")
             .HasOne(cpr => cpr.Product)
@@ -78,40 +74,82 @@ namespace MemberPlatformDAL.Data
             .HasForeignKey(cpr => cpr.ProductId)
             .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Agreement>()
-            .ToTable("Agreement")
-            .HasOne(cpr => cpr.AgreementProduct)
-            .WithMany()
-            .HasForeignKey(cpr => cpr.AgreementProductId)
-            .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<Agreement>()
-            .ToTable("Agreement")
-            .HasOne(cpr => cpr.AgreementSport)
-            .WithMany()
-            .HasForeignKey(cpr => cpr.AgreementSportId)
-            .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<Agreement>()
-            .ToTable("Agreement")
-            .HasOne(cpr => cpr.Contract)
-            .WithMany()
-            .HasForeignKey(cpr => cpr.ContractId)
-            .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<AgreementDiscount>()
-            .ToTable("AgreementDiscount")
+            // Discount type
+            modelBuilder.Entity<PriceAgreement>()
+            .ToTable("PriceAgreement")
             .HasOne(cpr => cpr.DiscountType)
             .WithMany()
             .HasForeignKey(cpr => cpr.DiscountTypeId)
             .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<AgreementStatus>()
-            .ToTable("AgreementStatus")
-            .HasOne(cpr => cpr.Status)
+            modelBuilder.Entity<PriceAgreement>()
+            .HasOne(pa => pa.DiscountType)
+            .WithMany(o => o.DiscountType)
+            .HasForeignKey(pa => pa.DiscountTypeId);
+
+            // Status price agreement
+            modelBuilder.Entity<PriceAgreement>()
+            .ToTable("PriceAgreement")
+            .HasOne(cpr => cpr.PriceAgreementStatus)
             .WithMany()
-            .HasForeignKey(cpr => cpr.StatusId)
+            .HasForeignKey(cpr => cpr.PriceAgreementStatusId)
             .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Option>()
+            .HasMany(o => o.PriceAgreementStatus)
+            .WithOne(pd => pd.PriceAgreementStatus)
+            .HasForeignKey(pd => pd.PriceAgreementStatusId);
+
+
+            //modelBuilder.Entity<Status>()
+            //.ToTable("Status")
+            //.HasOne(cpr => cpr.StatusType)
+            //.WithMany()
+            //.HasForeignKey(cpr => cpr.StatusTypeId)
+            //.OnDelete(DeleteBehavior.NoAction);
+
+            // Status productdefinition
+            modelBuilder.Entity<ProductDefinition>()
+            .ToTable("ProductDefinition")
+            .HasOne(cpr => cpr.ProductDefinitionStatus)
+            .WithMany()
+            .HasForeignKey(cpr => cpr.ProductDefinitionStatusId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Option>()
+            .HasMany(o => o.ProductDefinitionStatus)
+            .WithOne(pd => pd.ProductDefinitionStatus)
+            .HasForeignKey(pd => pd.ProductDefinitionStatusId);
+
+            // Sport
+            modelBuilder.Entity<ProductDefinition>()
+            .ToTable("ProductDefinition")
+            .HasOne(cpr => cpr.ProductDefinitionSport)
+            .WithMany()
+            .HasForeignKey(cpr => cpr.ProductDefinitionSportId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Option>()
+            .HasMany(o => o.ProductDefinitionSport)
+            .WithOne(pd => pd.ProductDefinitionSport)
+            .HasForeignKey(pd => pd.ProductDefinitionSportId);
+
+            // Parent ID
+            modelBuilder.Entity<ProductDefinition>()
+            .ToTable("ProductDefinition")
+            .HasOne(cpr => cpr.ParentProductDefinition)
+            .WithMany()
+            .HasForeignKey(cpr => cpr.ParentProductDefinitionId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+            // ProdutAgreement
+            modelBuilder.Entity<ProductAgreement>()
+            .ToTable("ProductAgreement")
+            .HasOne(cpr => cpr.ProductDefinition)
+            .WithMany()
+            .HasForeignKey(cpr => cpr.ProductDefinitionId)
+            .OnDelete(DeleteBehavior.NoAction);
+
 
         }
     }

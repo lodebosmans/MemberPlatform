@@ -17,14 +17,14 @@ namespace MemberPlatformDAL.Models
         public int? ReplierId { get; set; }        //Foreign key relationship
         [ForeignKey("ResponsibleId")]
         public int? ResponsibleId { get; set; }     //Foreign key relationship
-        [ForeignKey("TicketStatusId")]
-        public int TicketStatusId { get; set; }         //Foreign key relationship
+        [ForeignKey("TicketItemStatusId")]
+        public int TicketItemStatusId { get; set; }         //Foreign key relationship
         
 
         // Navigation properties
         public Ticket Ticket { get; set; }        //Navigation property
         public Person Replier { get; set; }       //Navigation property : 1 replyer(person) per TicketItem
         public Person Responsible { get; set; }    //Navigation Property : 1 Responsible(Person) per TicketItem
-        public Option TicketStatus { get; set; }        //Naviagation property : 1 option per TicketItem
+        public Option TicketItemStatus { get; set; }        //Naviagation property : 1 option per TicketItem
     }
 }

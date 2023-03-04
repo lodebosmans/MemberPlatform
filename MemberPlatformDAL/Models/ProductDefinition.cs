@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Models
 {
-    public class Product
+    public class ProductDefinition
     {
         // Attributes
         public int Id { get; set; }
@@ -22,21 +22,25 @@ namespace MemberPlatformDAL.Models
         public DateTime SubscriptionClosing { get; set; }
         public string? DayOfWeek { get; set; }
         public int? NumberOfGroups { get; set; }
+        public int? ParentProductDefinitionId { get; set; }
 
-        [ForeignKey("ProductStatusID")]
-        public int ProductStatusId { get; set; }        //Foreign key relationship
-        public int? ParentProductId { get; set; }
+        [ForeignKey("ProductDefinitionStatusId")]
+        public int ProductDefinitionStatusId { get; set; }        //Foreign key relationship
+        [ForeignKey("ProductDefinitionFormatId")]
+        public int ProductDefinitionFormatId { get; set; }
+        [ForeignKey("ProductDefinitionSportId")]
+        public int ProductDefinitionSportId { get; set; }
+        public string? ImageUrl { get; set; }
         
 
         // Navigation properties
-        public ICollection<AgreementProduct> AgreementProducts { get; set; }
+        public ICollection<ProductAgreement> ProductAgreements { get; set; }
         public ICollection<ProductUnit> ProductUnits { get; set; }
-        public Option ProductStatus { get; set; }
-        public Product ParentProduct { get; set; }
-
-
-
-
+        public ProductDefinition ParentProductDefinition { get; set; }
+        public Option ProductDefinitionStatus { get; set; }
+        public Option ProductDefinitionFormat { get; set; }
+        public Option ProductDefinitionSport { get; set; }
+        
 
 
     }

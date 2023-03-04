@@ -24,7 +24,7 @@ namespace MemberPlatformDAL.Models
         public int ProductUnitStatusId { get; set; }        //Foreign key relationship
 
         // Navigation properties
-        public Product Product { get; set; }
+        public ProductDefinition Product { get; set; }
         public Option ProductUnitStatus { get; set; }
 
 
