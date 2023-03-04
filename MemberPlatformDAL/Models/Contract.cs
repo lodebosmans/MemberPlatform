@@ -20,7 +20,7 @@ namespace MemberPlatformDAL.Models
 
         // Navigations properties
         public Option ContractType { get; set; }        //Navigation property: 1 type per Contract
-        public ICollection<ContractPersonRole> ContractPersonRoles { get; set; } //Contract can be related to 0 or more ContractPersonRole (1 to many relationShip)
-        public ICollection<Agreement> Agreements { get; set; }
+        public ICollection<ContractPersonInvolvement> ContractPersonInvolvements { get; set; } //Contract can be related to 0 or more ContractPersonRole (1 to many relationShip)
+        public ICollection<ProductAgreement> ProductAgreements { get; set; }
     }
 }

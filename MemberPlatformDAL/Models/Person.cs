@@ -29,19 +29,19 @@ namespace MemberPlatformDAL.Models
 
 
         //// Navigation properties
-        public ICollection<ContractPersonRole> ContractPersonRoles { get; set; }
+        public ICollection<ContractPersonInvolvement> ContractPersonInvolvements { get; set; }
 
-        [InverseProperty("Approver")]
-        public ICollection<AgreementStatus> AgreementStatusesApprover { get; set; }
+        //[InverseProperty("Approver")]
+        //public ICollection<Status> AgreementStatusesApprover { get; set; }
 
         [InverseProperty("Parent")]
-        public ICollection<PersonRelationship> PersonRelationshipsParent { get; set; }
+        public ICollection<PersonPersonRelation> PersonPersonRelationsParent { get; set; }
 
         [InverseProperty("Child")]
-        public ICollection<PersonRelationship> PersonRelationshipsChild { get; set; }
+        public ICollection<PersonPersonRelation> PersonPersonRelationsChild { get; set; }
 
-        [InverseProperty("DiscountApprover")]
-        public ICollection<AgreementDiscount> AgreementDiscountsDiscountApprover { get; set; }
+        [InverseProperty("Approver")]
+        public ICollection<PriceAgreement> PriceAgreementApprover { get; set; }
 
         public ICollection<Ticket> Tickets { get; set; }
         [InverseProperty("Responsible")]

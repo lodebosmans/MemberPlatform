@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Models
 {
-    public class ContractPersonRole
+    public class ContractPersonInvolvement
     {
         // Attributes
         public int Id { get; set; }

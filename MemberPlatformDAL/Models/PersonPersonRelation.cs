@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Models
 {
-    public class PersonRelationship
+    public class PersonPersonRelation
     {
         // Attributes
         public int Id { get; set; }

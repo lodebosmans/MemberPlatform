@@ -18,36 +18,32 @@ namespace MemberPlatformDAL.Models
         public OptionType OptionType { get; set; }   //Navigation property : 1 OptionType per Option
 
         [InverseProperty("Role")]
-        public ICollection<ContractPersonRole> ContractPersonRoleType { get; set; }
+        public ICollection<ContractPersonInvolvement> ContractPersonInvolvementType { get; set; }
 
-        [InverseProperty("Status")]
-        public ICollection<AgreementStatus> AgreementStatusType { get; set; }
+        //[InverseProperty("StatusType")]
+        //public ICollection<Status> StatusType { get; set; }
 
         [InverseProperty("ContractType")]
         public ICollection<Contract> ContractType { get; set; }
-
         [InverseProperty("Relation")]
-        public ICollection<PersonRelationship> PersonRelationshipType { get; set; }
-
-        [InverseProperty("Sport")]
-        public ICollection<AgreementSport> AgreementSportType { get; set;}
-
-        [InverseProperty("Format")]
-        public ICollection<AgreementFormat> AgreementFormatType { get; set; }
-
-        [InverseProperty("ProductStatus")]
-        public ICollection<Product> ProductsStatus { get; set; }
-
+        public ICollection<PersonPersonRelation> PersonPersonRelationType { get; set; }
         [InverseProperty("ProductUnitStatus")]
         public ICollection<ProductUnit> ProductUnitStatus { get; set; }
 
-        [InverseProperty("TicketStatus")]
+        [InverseProperty("TicketItemStatus")]
         public ICollection<TicketItem> TicketItemStatus { get; set; }
 
         [InverseProperty("DiscountType")]
-        public ICollection<AgreementDiscount> AgreementDiscountType { get; set; }
+        public ICollection<PriceAgreement> DiscountType { get; set; }
+        [InverseProperty("PriceAgreementStatus")]
+        public ICollection<PriceAgreement> PriceAgreementStatus { get; set; }
         [InverseProperty("SalesItemType")]
         public ICollection<SalesItem> SalesItemType { get; set; }
-
+        [InverseProperty("ProductDefinitionStatus")]
+        public ICollection<ProductDefinition> ProductDefinitionStatus { get; set; }
+        [InverseProperty("ProductDefinitionFormat")]
+        public ICollection<ProductDefinition> ProductDefinitionFormat { get; set; }
+        [InverseProperty("ProductDefinitionSport")]
+        public ICollection<ProductDefinition> ProductDefinitionSport { get; set; }
     }
 }

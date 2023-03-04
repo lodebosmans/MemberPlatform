@@ -12,9 +12,9 @@ namespace MemberPlatformDAL.UoW
     {
         private DataContext _context;
         private GenericRepository<Person> personRepository;
-        private GenericRepository<Relationship> relationshipRepository;
-        private GenericRepository<CourseType> courseTypeRepository;
-        private GenericRepository<PaymentStatus> paymentStatusRepository;
+        //private GenericRepository<Relationship> relationshipRepository;
+        //private GenericRepository<CourseType> courseTypeRepository;
+        //private GenericRepository<PaymentStatus> paymentStatusRepository;
 
         public UnitOfWork(DataContext context)
         {
@@ -32,39 +32,39 @@ namespace MemberPlatformDAL.UoW
                 return personRepository;
             }
         }
-        public GenericRepository<Relationship> RelationshipRepository
-        {
-            get
-            {
-                if (relationshipRepository == null)
-                {
-                    relationshipRepository = new GenericRepository<Relationship>(_context);
-                }
-                return relationshipRepository;
-            }
-        }
-        public GenericRepository<CourseType> CourseTypeRepository
-        {
-            get
-            {
-                if (courseTypeRepository == null)
-                {
-                    courseTypeRepository = new GenericRepository<CourseType>(_context);
-                }
-                return courseTypeRepository;
-            }
-        }
-        public GenericRepository<PaymentStatus> PaymentStatusRepository
-        {
-            get
-            {
-                if (PaymentStatusRepository == null)
-                {
-                    paymentStatusRepository = new GenericRepository<PaymentStatus>(_context);
-                }
-                return paymentStatusRepository;
-            }
-        }
+        //public GenericRepository<Relationship> RelationshipRepository
+        //{
+        //    get
+        //    {
+        //        if (relationshipRepository == null)
+        //        {
+        //            relationshipRepository = new GenericRepository<Relationship>(_context);
+        //        }
+        //        return relationshipRepository;
+        //    }
+        //}
+        //public GenericRepository<CourseType> CourseTypeRepository
+        //{
+        //    get
+        //    {
+        //        if (courseTypeRepository == null)
+        //        {
+        //            courseTypeRepository = new GenericRepository<CourseType>(_context);
+        //        }
+        //        return courseTypeRepository;
+        //    }
+        //}
+        //public GenericRepository<PaymentStatus> PaymentStatusRepository
+        //{
+        //    get
+        //    {
+        //        if (PaymentStatusRepository == null)
+        //        {
+        //            paymentStatusRepository = new GenericRepository<PaymentStatus>(_context);
+        //        }
+        //        return paymentStatusRepository;
+        //    }
+        //}
 
 
         public async Task SaveAsync()
