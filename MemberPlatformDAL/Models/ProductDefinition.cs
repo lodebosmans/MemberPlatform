@@ -22,6 +22,7 @@ namespace MemberPlatformDAL.Models
         public DateTime SubscriptionClosing { get; set; }
         public string? DayOfWeek { get; set; }
         public int? NumberOfGroups { get; set; }
+        // Self-referencing foreign key property
         public int? ParentProductDefinitionId { get; set; }
 
         [ForeignKey("ProductDefinitionStatusId")]
@@ -33,15 +34,16 @@ namespace MemberPlatformDAL.Models
         public string? ImageUrl { get; set; }
         
 
+
         // Navigation properties
         public ICollection<ProductAgreement> ProductAgreements { get; set; }
         public ICollection<ProductUnit> ProductUnits { get; set; }
-        public ProductDefinition ParentProductDefinition { get; set; }
+        public virtual ProductDefinition ParentProductDefinition { get; set; }  // This is the self-referential property
+        public virtual ICollection<ProductDefinition> ChildProductDefinitions { get; set; } // One-to-many relationship with child categories
+        //= new List<ProductDefinition>();
         public Option ProductDefinitionStatus { get; set; }
         public Option ProductDefinitionFormat { get; set; }
         public Option ProductDefinitionSport { get; set; }
         
-
-
     }
 }
