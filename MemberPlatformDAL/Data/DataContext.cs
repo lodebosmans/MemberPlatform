@@ -52,7 +52,7 @@ namespace MemberPlatformDAL.Data
             //modelBuilder.Entity<AgreementDiscount>().ToTable("AgreementDiscount");
             //modelBuilder.Entity<AgreementStatus>().ToTable("AgreementStatus");
             modelBuilder.Entity<Contract>().ToTable("Contract");
-            //modelBuilder.Entity<ProductDefinition>().ToTable("ProductDefinition");
+            modelBuilder.Entity<ProductDefinition>().ToTable("ProductDefinition");
             //modelBuilder.Entity<ProductUnit>().ToTable("ProductUnit");
             modelBuilder.Entity<SalesItem>().ToTable("SalesItem");
             modelBuilder.Entity<Ticket>().ToTable("Ticket");
@@ -134,14 +134,7 @@ namespace MemberPlatformDAL.Data
             .WithOne(pd => pd.ProductDefinitionSport)
             .HasForeignKey(pd => pd.ProductDefinitionSportId);
 
-            // Parent ID
-            modelBuilder.Entity<ProductDefinition>()
-            .ToTable("ProductDefinition")
-            .HasOne(cpr => cpr.ParentProductDefinition)
-            .WithMany()
-            .HasForeignKey(cpr => cpr.ParentProductDefinitionId)
-            .OnDelete(DeleteBehavior.NoAction);
-
+     
             // ProdutAgreement
             modelBuilder.Entity<ProductAgreement>()
             .ToTable("ProductAgreement")
@@ -154,3 +147,64 @@ namespace MemberPlatformDAL.Data
         }
     }
 }
+
+
+
+
+
+// Parent ID
+//    modelBuilder.Entity<ProductDefinition>()
+//    .ToTable("ProductDefinition")
+//    .HasOne(cpr => cpr.ParentProductDefinition)
+//    .WithMany()
+//    .HasForeignKey(cpr => cpr.ParentProductDefinitionId)
+//    .OnDelete(DeleteBehavior.NoAction);
+
+//    modelBuilder.Entity<ProductDefinition>()
+//.HasData(new ProductDefinition
+//{
+//    ProductDefinitionId = 1,
+//    // set other properties here
+//    Name = "Product A",
+//    Description = "This is product A",
+//    StartDate = DateTime.Parse("2022-01-01"),
+//    EndDate = DateTime.Parse("2022-12-31"),
+//    NumberOfSessions = 10,
+//    MaxAmountMembers = 50,
+//    Price = 100,
+//    SubscriptionOpening = DateTime.Parse("2021-12-01"),
+//    SubscriptionClosing = DateTime.Parse("2021-12-31"),
+//    ParentProductDefinitionId = 1, // set to null for the root product definition
+//    ProductDefinitionStatusId = 1,
+//    ProductDefinitionFormatId = 1,
+//    ProductDefinitionSportId = 1,
+
+//});
+
+//// Parent ID
+//modelBuilder.Entity<ProductDefinition>()
+//.ToTable("ProductDefinition")
+//.HasMany(cpr => cpr.ChildProductDefinitions)
+//.WithOne(cpr => cpr.ParentProductDefinition)
+//.HasForeignKey(cpr => cpr.ParentProductDefinitionId)
+//.OnDelete(DeleteBehavior.NoAction);
+
+//modelBuilder.Entity<ProductDefinition>()
+//.ToTable("ProductDefinition")
+//.HasOne(p => p.ParentProductDefinition)
+//.WithMany(p => p.ChildProductDefinitions)
+//.HasForeignKey(p => p.ParentProductDefinitionId)
+//.OnDelete(DeleteBehavior.Restrict);
+//modelBuilder.Entity<ProductDefinition>()
+//    .ToTable("ProductDefinition")
+//.HasKey(p => p.Id);
+
+//modelBuilder.Entity<ProductDefinition>()
+//    .Property(p => p.Name)
+//    .IsRequired();
+
+//modelBuilder.Entity<ProductDefinition>()
+//    .HasOne(p => p.ParentProductDefinition)
+//    .WithMany()
+//    .HasForeignKey(p => p.ParentProductDefinitionId)
+//    .OnDelete(DeleteBehavior.Restrict);
