@@ -12,6 +12,7 @@ namespace MemberPlatformDAL.UoW
     {
         private DataContext _context;
         private GenericRepository<Person> personRepository;
+        private GenericRepository<Address> addressRepository;
         //private GenericRepository<Relationship> relationshipRepository;
         //private GenericRepository<CourseType> courseTypeRepository;
         //private GenericRepository<PaymentStatus> paymentStatusRepository;
@@ -32,6 +33,19 @@ namespace MemberPlatformDAL.UoW
                 return personRepository;
             }
         }
+
+        public GenericRepository<Address> AddressRepository
+        {
+            get
+            {
+                if (addressRepository == null)
+                {
+                    addressRepository = new GenericRepository<Address>(_context);
+                }
+                return addressRepository;
+            }
+        }
+
         //public GenericRepository<Relationship> RelationshipRepository
         //{
         //    get
