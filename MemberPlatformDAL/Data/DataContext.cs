@@ -13,6 +13,7 @@ namespace MemberPlatformDAL.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
         public DbSet<OptionType> OptionTypes { get; set; }
         public DbSet<Option> Options { get; set; }
+        public DbSet<Address> Addresses { get; set; }   
         public DbSet<SalesItem> SalesItems { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
@@ -54,9 +55,10 @@ namespace MemberPlatformDAL.Data
             modelBuilder.Entity<Contract>().ToTable("Contract");
             modelBuilder.Entity<ProductDefinition>().ToTable("ProductDefinition");
             //modelBuilder.Entity<ProductUnit>().ToTable("ProductUnit");
-            modelBuilder.Entity<SalesItem>().ToTable("SalesItem");
-            modelBuilder.Entity<Ticket>().ToTable("Ticket");
+            //modelBuilder.Entity<SalesItem>().ToTable("SalesItem");
+            //modelBuilder.Entity<Ticket>().ToTable("Ticket");
             modelBuilder.Entity<TicketItem>().ToTable("TicketItem");
+            modelBuilder.Entity<Address>().ToTable("Address");
 
             // ContractPersonInvolvement
             modelBuilder.Entity<ContractPersonInvolvement>()
@@ -66,12 +68,24 @@ namespace MemberPlatformDAL.Data
             .HasForeignKey(cpr => cpr.RoleId)
             .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<ContractPersonInvolvement>()
+            .HasOne(p => p.Person)
+            .WithMany()
+            .HasForeignKey(p => p.PersonId)
+            .OnDelete(DeleteBehavior.NoAction);
+
             // Product Unit
             modelBuilder.Entity<ProductUnit>()
             .ToTable("ProductUnit")
             .HasOne(cpr => cpr.Product)
             .WithMany()
             .HasForeignKey(cpr => cpr.ProductId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<ProductUnit>()
+            .HasOne(p => p.Address)
+            .WithMany()
+            .HasForeignKey(p => p.AddressId)
             .OnDelete(DeleteBehavior.NoAction);
 
             // Discount type
@@ -86,6 +100,13 @@ namespace MemberPlatformDAL.Data
             .HasOne(pa => pa.DiscountType)
             .WithMany(o => o.DiscountType)
             .HasForeignKey(pa => pa.DiscountTypeId);
+
+            modelBuilder.Entity<PriceAgreement>()
+                .HasOne(pa => pa.Approver)
+                .WithMany()
+                .HasForeignKey(pa => pa.ApproverId)
+                .OnDelete(DeleteBehavior.NoAction);
+
 
             // Status price agreement
             modelBuilder.Entity<PriceAgreement>()
@@ -143,6 +164,36 @@ namespace MemberPlatformDAL.Data
             .HasForeignKey(cpr => cpr.ProductDefinitionId)
             .OnDelete(DeleteBehavior.NoAction);
 
+
+            //SalesItem
+            modelBuilder.Entity<SalesItem>()
+            .ToTable("SalesItem")
+            .HasOne(s => s.Person)
+            .WithMany()
+            .HasForeignKey(s => s.PersonId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+            //Ticket
+            modelBuilder.Entity<Ticket>()
+            .ToTable("Ticket")
+            .HasOne(s => s.Person)
+            .WithMany()
+            .HasForeignKey(s => s.PersonId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+            ////TicketItem
+            //modelBuilder.Entity<TicketItem>()
+            //.ToTable("TicketItem")
+            //.HasOne(s => s.Replier)
+            //.WithMany()
+            //.HasForeignKey(s => s.ReplierId)
+            //.OnDelete(DeleteBehavior.NoAction);
+
+            //modelBuilder.Entity<TicketItem>()
+            //.HasOne(s => s.Responsible)
+            //.WithMany()
+            //.HasForeignKey(s => s.ResponsibleId)
+            //.OnDelete(DeleteBehavior.NoAction);
 
         }
     }

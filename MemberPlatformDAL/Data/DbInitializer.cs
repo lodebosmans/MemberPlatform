@@ -25,46 +25,6 @@ namespace MemberPlatformDAL.Data
                 //}
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
-
-                context.Persons.AddRange(
-                    new Person
-                    {
-                        FirstName = "Lode",
-                        LastName = "Bosmans",
-                        Street = "Kerkstraat",
-                        HouseNumber = "4",
-                        Box = "3",
-                        PostalCode = "2440",
-                        City = "Geel",
-                        Country = "België",
-                        Gender = "male",
-                        DateOfBirth = DateTime.Now,
-                        InsuranceCompany = "CM",
-                        MobilePhone = "0485785013",
-                        EmailAddress = "bosmanslode@hotmail.com",
-                        IdentityNumber = "85010111991",
-                        PrivacyApproval = true
-                    },
-                    new Person
-                    {
-                        FirstName = "Lode",
-                        LastName = "Bosmans",
-                        Street = "Broekstraat",
-                        HouseNumber = "14",
-                        Box = "2",
-                        PostalCode = "2260",
-                        City = "Westerlo",
-                        Country = "België",
-                        Gender = "male",
-                        DateOfBirth = DateTime.Now,
-                        InsuranceCompany = "De Voorzorg",
-                        MobilePhone = "0485785011",
-                        EmailAddress = "Lode@hotmail.com",
-                        IdentityNumber = "75010111991",
-                        PrivacyApproval = true
-                    }
-                );
-                context.SaveChanges();
                 context.OptionTypes.AddRange(
                     new OptionType
                     {
@@ -93,6 +53,18 @@ namespace MemberPlatformDAL.Data
                     new OptionType
                     {
                         Name = "DocumentType"
+                    },
+                    new OptionType
+                    {
+                        Name = "Address"
+                    },
+                    new OptionType
+                    {
+                        Name = "DiscountType"
+                    },
+                    new OptionType
+                    {
+                        Name = "SalesItem"
                     }
                     );
                 context.SaveChanges();
@@ -126,58 +98,141 @@ namespace MemberPlatformDAL.Data
                     {
                         Name = "Subscription",
                         OptionTypeId = 3
+                    },
+                    new Option
+                    {
+                        Name = "TrainingFacilities",
+                        OptionTypeId = 8
+                    },
+                    new Option
+                    {
+                        Name = "Residential",
+                        OptionTypeId = 8
+                    },
+                    new Option
+                    {
+                        Name = "Sponsor reduction",
+                        OptionTypeId = 9
+                    },
+                    new Option
+                    {
+                        Name = "Family",
+                        OptionTypeId = 9
+                    },
+                    new Option
+                    {
+                        Name = "Pending",
+                        OptionTypeId = 6
+                    },
+                    new Option
+                    {
+                        Name = "Bikes",
+                        OptionTypeId = 6
                     }
+
+
                  ); ;
                 context.SaveChanges();
-                context.ProductDefinitions.AddRange(
+                context.Addresses.AddRange(
+                    new Address
+                    {
+                        Name = "Boswachtershuis",
+                        Street = "Bosstraat",
+                        Number = "1",
+                        City = "Westerlo",
+                        PostalCode = "2260",
+                        Country = "België",
+                        AddressTypeId = 7,
+                    },
+                    new Address
+                    {
+                        Street = "Zandstraat",
+                        Number= "2",
+                        City = "Geel",
+                        PostalCode = "2440",
+                        Country = "België",
+                        AddressTypeId = 8,
+                    }
+                    );
+                context.SaveChanges();
+                context.Persons.AddRange(
+                    new Person
+                    {
+                        FirstName = "Lode",
+                        LastName = "Bosmans",
+                        Gender = "male",
+                        DateOfBirth = DateTime.Now,
+                        InsuranceCompany = "CM",
+                        MobilePhone = "0485785013",
+                        EmailAddress = "bosmanslode@hotmail.com",
+                        IdentityNumber = "85010111991",
+                        PrivacyApproval = true,
+                        AddressId = 2
 
-             new ProductDefinition
-             {
-                 Name = "Triatlon",
-                 Description = "Start to triatlon",
-                 StartDate = DateTime.Parse("2022-01-01"),
-                 EndDate = DateTime.Parse("2022-12-31"),
-                 NumberOfSessions = 10,
-                 MaxAmountMembers = 50,
-                 Price = 100,
-                 SubscriptionOpening = DateTime.Parse("2021-12-01"),
-                 SubscriptionClosing = DateTime.Parse("2021-12-31"),
-           
-                 ProductDefinitionStatusId = 5,
-                 ProductDefinitionFormatId = 1,
-                 ProductDefinitionSportId = 2
-             });
+                    },
+                    new Person
+                    {
+                        FirstName = "Lode",
+                        LastName = "Bosmans",
+                        Gender = "male",
+                        DateOfBirth = DateTime.Now,
+                        InsuranceCompany = "De Voorzorg",
+                        MobilePhone = "0485785011",
+                        EmailAddress = "Lode@hotmail.com",
+                        IdentityNumber = "75010111991",
+                        PrivacyApproval = true,
+                        AddressId = 2
+                    }
+                ); ;
                 context.SaveChanges();
                 context.ProductDefinitions.AddRange(
-            new ProductDefinition
-            {
-                Name = "Running",
-                Description = "Running",
-                StartDate = DateTime.Parse("2022-02-01"),
-                EndDate = DateTime.Parse("2022-12-31"),
-                NumberOfSessions = 5,
-                MaxAmountMembers = 20,
-                Price = 50,
-                SubscriptionOpening = DateTime.Parse("2022-01-01"),
-                SubscriptionClosing = DateTime.Parse("2022-01-31"),
-                ParentProductDefinitionId = 1,
-                ProductDefinitionStatusId = 5,
-                ProductDefinitionFormatId = 1,
-                ProductDefinitionSportId = 3
-            });
+                     new ProductDefinition
+                     {
+                         Name = "Triatlon",
+                         Description = "Start to triatlon",
+                         StartDate = DateTime.Parse("2022-01-01"),
+                         EndDate = DateTime.Parse("2022-12-31"),
+                         NumberOfSessions = 10,
+                         MaxAmountMembers = 50,
+                         Price = 100,
+                         SubscriptionOpening = DateTime.Parse("2021-12-01"),
+                         SubscriptionClosing = DateTime.Parse("2021-12-31"),
+           
+                         ProductDefinitionStatusId = 5,
+                         ProductDefinitionFormatId = 1,
+                         ProductDefinitionSportId = 2
+                     });
+                        context.SaveChanges();
+                        context.ProductDefinitions.AddRange(
+                    new ProductDefinition
+                    {
+                        Name = "Running",
+                        Description = "Running",
+                        StartDate = DateTime.Parse("2022-02-01"),
+                        EndDate = DateTime.Parse("2022-12-31"),
+                        NumberOfSessions = 5,
+                        MaxAmountMembers = 20,
+                        Price = 50,
+                        SubscriptionOpening = DateTime.Parse("2022-01-01"),
+                        SubscriptionClosing = DateTime.Parse("2022-01-31"),
+                        ParentProductDefinitionId = 1,
+                        ProductDefinitionStatusId = 5,
+                        ProductDefinitionFormatId = 1,
+                        ProductDefinitionSportId = 3
+                    });
                 context.SaveChanges();
                 context.ProductUnits.AddRange(
                     new ProductUnit
                     {
                         Date = DateTime.Now,
                         Comment = "looptrainingen",
-                        Location = "boswachtershuis",
                         StartTimeScheduled = DateTime.Now,
                         EndTimeScheduled = DateTime.Now,
                         StartTimeActual = DateTime.Now,
                         EndTimeActual = DateTime.Now,
                         ProductUnitStatusId = 5,
-                        ProductId=1,
+                        ProductId = 1,
+                        AddressId = 1
                     }
                     );
                 context.SaveChanges();
@@ -198,6 +253,7 @@ namespace MemberPlatformDAL.Data
                         ProductDefinitionId = 1,
                     }
                     );
+                context.SaveChanges();
                 context.ContractPersonInvolvements.AddRange(
                     new ContractPersonInvolvement
                     {
@@ -207,7 +263,60 @@ namespace MemberPlatformDAL.Data
 
                     }
                     );
-
+                context.SaveChanges();
+                context.PriceAgreements.AddRange(
+                    new PriceAgreement
+                    {
+                        DiscountAmount = 10,
+                        PriceBillable = 150,
+                        StructuredMessage = "Message",
+                        PaymentDate = DateTime.Now.AddDays(30),
+                        Comment = "Commentaar",
+                        ContractId = 1,
+                        DiscountTypeId = 9,
+                        ApproverId = 1,
+                        PriceAgreementStatusId = 5,
+                    }
+                    );
+                context.SaveChanges();
+                context.PersonPersonRelations.AddRange(
+                    new PersonPersonRelation
+                    {
+                        ParentId = 1,
+                        ChildId = 2,
+                        RelationId = 10,
+                    }
+                    );
+                context.SaveChanges();
+                context.Tickets.AddRange(
+                    new Ticket
+                    {
+                        PersonId = 1,
+                    }
+                    );
+                context.SaveChanges();
+                context.TicketItems.AddRange(
+                    new TicketItem
+                    {
+                        Message = "Question of a member",
+                        ReplierId = 1,
+                        ResponsibleId = 1,
+                        TicketItemStatusId = 11,
+                        TicketId = 1,
+                    }
+                    );
+                context.SaveChanges();
+                context.SalesItems.AddRange(
+                    new SalesItem
+                    {
+                        Name = "koersfiets",
+                        Description = "kinderfiets maat 10",
+                        Price = 150,
+                        EndDate = DateTime.Now.AddDays(30),
+                        SalesItemTypeId = 1,
+                        PersonId = 1,
+                    }
+                    );
             };
 
 

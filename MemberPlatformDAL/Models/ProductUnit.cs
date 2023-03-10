@@ -14,11 +14,11 @@ namespace MemberPlatformDAL.Models
         public int ProductId { get; set; }
         public DateTime Date { get; set; }
         public string Comment { get; set; }
-        public string Location { get; set; }
         public DateTime StartTimeScheduled { get; set; }
         public DateTime EndTimeScheduled { get; set; }
         public DateTime StartTimeActual { get; set; }
         public DateTime EndTimeActual { get; set; }
+        public int AddressId { get; set; }
 
         [ForeignKey("ProductUnitStatusId")]
         public int ProductUnitStatusId { get; set; }        //Foreign key relationship
@@ -26,6 +26,7 @@ namespace MemberPlatformDAL.Models
         // Navigation properties
         public ProductDefinition Product { get; set; }
         public Option ProductUnitStatus { get; set; }
+        public Address Address { get; set; }
 
 
     }
