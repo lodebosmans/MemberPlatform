@@ -32,16 +32,59 @@ namespace MemberPlatformApi.Controllers
 
         // GET: api/Persons/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Person>> GetPerson(int id)
+        public PersonWithAddressDTO GetPersonWithAddress(int id)
+        //public async Task<ActionResult<Person>> GetPerson(int id)
         {
-            var person = await _uow.PersonRepository.GetByIDAsync(id);
+            //var person = await _uow.PersonRepository.GetByIDAsync(id, includeProperties: "Address");
 
+            //if (person == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //return person;
+            // Get the person with the specified id
+            var person = _uow.PersonRepository.Get(p => p.Id == id).FirstOrDefault();
             if (person == null)
             {
-                return NotFound();
+                return null;
             }
 
-            return person;
+            // Get the person's address
+            var address = _uow.AddressRepository.Get(a => a.Id == person.AddressId).FirstOrDefault();
+            if (address == null)
+            {
+                return null;
+              
+            }
+            // Map the person and address to a DTO
+            var dto = new PersonWithAddressDTO
+            {
+                Id = person.Id,
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                Gender = person.Gender,
+                DateOfBirth = person.DateOfBirth,
+                InsuranceCompany = person.InsuranceCompany,
+                MobilePhone = person.MobilePhone,
+                EmailAddress = person.EmailAddress,
+                IdentityNumber = person.IdentityNumber,
+                PrivacyApproval = person.PrivacyApproval,
+                Address = new AddressDTO
+                {
+                    Id = address.Id,
+                    Name = address.Name,
+                    Street = address.Street,
+                    Number = address.Number,
+                    Box = address.Box,
+                    PostalCode = address.PostalCode,
+                    City = address.City,
+                    Country = address.Country,
+                    AddressType = address.AddressType?.Name
+                }
+            };
+
+            return dto;
         }
 
         // PUT: api/Persons/5
@@ -107,6 +150,32 @@ namespace MemberPlatformApi.Controllers
             return _uow.PersonRepository.Get(e => e.Id == id).Any();
         }
 
+        public class PersonWithAddressDTO
+        {
+            public int Id { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Gender { get; set; }
+            public DateTime DateOfBirth { get; set; }
+            public string InsuranceCompany { get; set; }
+            public string MobilePhone { get; set; }
+            public string EmailAddress { get; set; }
+            public string IdentityNumber { get; set; }
+            public bool PrivacyApproval { get; set; }
+            public object Address { get; set; }
+        }
 
+        public class AddressDTO
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Street { get; set; }
+            public string Number { get; set; }
+            public string Box { get; set; }
+            public string PostalCode { get; set; }
+            public string City { get; set; }
+            public string Country { get; set; }
+            public string AddressType { get; set; }
+        }
     }
 }

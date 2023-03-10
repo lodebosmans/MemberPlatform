@@ -1,4 +1,4 @@
-﻿using MemberPlatformDAL.Data;
+using MemberPlatformDAL.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace MemberPlatformDAL.UoW
         }
 
 
-        public async Task<T> GetByIDAsync(int id)
+        public async Task<T> GetByIDAsync(int id, string includeProperties)
         {
             return await table.FindAsync(id);
         }
@@ -87,6 +87,11 @@ namespace MemberPlatformDAL.UoW
         public virtual IQueryable<T> AllQuery()
         {
             return table.AsQueryable<T>();
+        }
+
+        public async Task<T> GetByIDAsync(int id)
+        {
+            return await table.FindAsync(id);
         }
     }
 }
