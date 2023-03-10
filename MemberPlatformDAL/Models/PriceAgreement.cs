@@ -23,6 +23,8 @@ namespace MemberPlatformDAL.Models
         public int PriceBillable { get; set; }
         public string StructuredMessage { get; set; }
         public DateTime PaymentDate { get; set; }
+        public string Comment { get; set; }
+
 
 
         // Navigation properties
