@@ -30,6 +30,39 @@ namespace MemberPlatformApi.Controllers
             return persons.ToList();
         }
 
+        [HttpGet("withaddress")]
+        public async Task<ActionResult<IEnumerable<PersonWithAddressDTO>>> GetAllWithAddress()
+        {
+            var persons = await _uow.PersonRepository.GetAllWithAddressAsync();
+            var dtos = persons.Select(person => new PersonWithAddressDTO
+            {
+                Id = person.Id,
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                Gender = person.Gender,
+                DateOfBirth = person.DateOfBirth,
+                InsuranceCompany = person.InsuranceCompany,
+                MobilePhone = person.MobilePhone,
+                EmailAddress = person.EmailAddress,
+                IdentityNumber = person.IdentityNumber,
+                PrivacyApproval = person.PrivacyApproval,
+                Address = new AddressDTO
+                {
+                    Id = person.Address.Id,
+                    Name = person.Address.Name,
+                    Street = person.Address.Street,
+                    Number = person.Address.Number,
+                    Box = person.Address.Box,
+                    PostalCode = person.Address.PostalCode,
+                    City = person.Address.City,
+                    Country = person.Address.Country,
+                    AddressType = person.Address.AddressType?.Name
+                }
+            });
+
+            return dtos.ToList();
+        }
+
         // GET: api/Persons/5
         [HttpGet("{id}")]
         public PersonWithAddressDTO GetPersonWithAddress(int id)
