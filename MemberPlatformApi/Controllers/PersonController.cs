@@ -66,18 +66,11 @@ namespace MemberPlatformApi.Controllers
         // GET: api/Persons/5
         [HttpGet("{id}")]
         public PersonWithAddressDTO GetPersonWithAddress(int id)
-        //public async Task<ActionResult<Person>> GetPerson(int id)
         {
-            //var person = await _uow.PersonRepository.GetByIDAsync(id, includeProperties: "Address");
 
-            //if (person == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //return person;
             // Get the person with the specified id
             var person = _uow.PersonRepository.Get(p => p.Id == id).FirstOrDefault();
+
             if (person == null)
             {
                 return null;
@@ -85,6 +78,7 @@ namespace MemberPlatformApi.Controllers
 
             // Get the person's address
             var address = _uow.AddressRepository.Get(a => a.Id == person.AddressId).FirstOrDefault();
+           
             if (address == null)
             {
                 return null;
@@ -113,7 +107,7 @@ namespace MemberPlatformApi.Controllers
                     PostalCode = address.PostalCode,
                     City = address.City,
                     Country = address.Country,
-                    AddressType = address.AddressType?.Name
+                    AddressType = address.AddressType
                 }
             };
 
@@ -195,7 +189,7 @@ namespace MemberPlatformApi.Controllers
             public string EmailAddress { get; set; }
             public string IdentityNumber { get; set; }
             public bool PrivacyApproval { get; set; }
-            public object Address { get; set; }
+            public AddressDTO Address { get; set; }
         }
 
         public class AddressDTO
