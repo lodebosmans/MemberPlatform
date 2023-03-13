@@ -147,9 +147,18 @@ namespace MemberPlatformDAL.Data
                     new Address
                     {
                         Street = "Zandstraat",
-                        Number= "2",
+                        Number = "2",
                         City = "Geel",
                         PostalCode = "2440",
+                        Country = "België",
+                        AddressTypeId = 8,
+                    },
+                    new Address
+                    {
+                        Street = "Bergstraat",
+                        Number= "3",
+                        City = "Turnhout",
+                        PostalCode = "2300",
                         Country = "België",
                         AddressTypeId = 8,
                     }
@@ -182,6 +191,19 @@ namespace MemberPlatformDAL.Data
                         IdentityNumber = "75010111991",
                         PrivacyApproval = true,
                         AddressId = 2
+                    },new Person
+                    {
+                        FirstName = "Johnny",
+                        LastName = "Urkens",
+                        Gender = "Male",
+                        DateOfBirth = DateTime.Now.AddDays(-500),
+                        InsuranceCompany = "De Voorzorg",
+                        MobilePhone = "0476989727",
+                        EmailAddress = "johnny@gmail.com",
+                        IdentityNumber = "71040944569",
+                        PrivacyApproval = true,
+                        AddressId = 3
+
                     }
                 ); ;
                 context.SaveChanges();
