@@ -19,12 +19,12 @@ namespace MemberPlatformDAL.Models
         public string City { get; set; }
         public string Country { get; set; }
         [ForeignKey("AddressTypeId")]
-        public int AddressTypeId { get; set; }
+        public int? AddressTypeId { get; set; }
 
         // Navigation properties
-        public Option AddressType { get; set; }
-        public ICollection<ProductUnit> productUnits { get; set; }
-        public ICollection<Person> persons { get; set; }
+        public Option? AddressType { get; set; }
+        public ICollection<ProductUnit>? productUnits { get; set; }
+        public ICollection<Person>? persons { get; set; }
 
 
     }
