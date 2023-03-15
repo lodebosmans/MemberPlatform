@@ -78,11 +78,17 @@ namespace MemberPlatformApi.Controllers
 
             // Get the person's address
             var address = _uow.AddressRepository.Get(a => a.Id == person.AddressId).FirstOrDefault();
-           
+
             if (address == null)
             {
                 return null;
-              
+
+            }
+            //get the addressType for the persons address
+            var addressType = _uow.OptionRepository.Get(a => a.Id == address.AddressTypeId).FirstOrDefault();
+            if(addressType == null)
+            {
+                return null; 
             }
             // Map the person and address to a DTO
             var dto = new PersonWithAddressDTO
@@ -107,7 +113,7 @@ namespace MemberPlatformApi.Controllers
                     PostalCode = address.PostalCode,
                     City = address.City,
                     Country = address.Country,
-                    AddressType = address.AddressType
+                    AddressType = addressType.Name
                 }
             };
 
@@ -153,7 +159,10 @@ namespace MemberPlatformApi.Controllers
             _uow.PersonRepository.Insert(person);
             await _uow.SaveAsync();
 
-            return CreatedAtAction("GetPerson", new { id = person.Id }, person);
+
+            //return CreatedAtAction("GetPerson", new { id = person.Id }, person);
+            return CreatedAtAction(nameof(GetPersonWithAddress), new { id = person.Id }, person);
+
         }
 
         // DELETE: api/Persons/5

@@ -11,6 +11,8 @@ namespace MemberPlatformDAL.UoW
     {
         GenericRepository<Person> PersonRepository { get; }
         GenericRepository<Address> AddressRepository { get; }
+        GenericRepository<Option> OptionRepository { get; }
+        GenericRepository<OptionType> OptionTypeRepository { get; }
 
 
 

@@ -25,29 +25,29 @@ namespace MemberPlatformDAL.Models
 
         //// Navigation properties
 
-        public Address Address { get; set; }
-        public ICollection<ContractPersonInvolvement> ContractPersonInvolvements { get; set; }
+        public Address? Address { get; set; }
+        public ICollection<ContractPersonInvolvement>? ContractPersonInvolvements { get; set; }
 
         //[InverseProperty("Approver")]
         //public ICollection<Status> AgreementStatusesApprover { get; set; }
 
         [InverseProperty("Parent")]
-        public ICollection<PersonPersonRelation> PersonPersonRelationsParent { get; set; }
+        public ICollection<PersonPersonRelation>? PersonPersonRelationsParent { get; set; }
 
         [InverseProperty("Child")]
-        public ICollection<PersonPersonRelation> PersonPersonRelationsChild { get; set; }
+        public ICollection<PersonPersonRelation>? PersonPersonRelationsChild { get; set; }
 
         [InverseProperty("Approver")]
-        public ICollection<PriceAgreement> PriceAgreementApprover { get; set; }
+        public ICollection<PriceAgreement>? PriceAgreementApprover { get; set; }
 
-        public ICollection<Ticket> Tickets { get; set; }
+        public ICollection<Ticket>? Tickets { get; set; }
         [InverseProperty("Responsible")]
-        public ICollection<TicketItem> TicketItemsResponsible { get; set; }
+        public ICollection<TicketItem>? TicketItemsResponsible { get; set; }
 
         [InverseProperty("Replier")]
-        public ICollection<TicketItem> TicketItemsReplier { get; set; }
+        public ICollection<TicketItem>? TicketItemsReplier { get; set; }
 
-        public ICollection<SalesItem> SalesItems { get; set; }
+        public ICollection<SalesItem>? SalesItems { get; set; }
 
     }
 }
