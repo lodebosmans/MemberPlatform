@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MemberPlatformDAL\MemberPlatformDAL.csproj" />
+    <ProjectReference Include="..\MemberPlatformCore\MemberPlatformCore.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,22 +1,26 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemberPlatformDAL.Models
+namespace MemberPlatformDAL.Entities
 {
-    public class Person
+    public class PersonEntity
     {
         // Attributes
         public int Id { get; set; }
+        [MaxLength(50)]
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string? InsuranceCompany { get; set; }
         public string MobilePhone { get; set; }
+        [Required]
+        [EmailAddress]
         public string EmailAddress { get; set; }
         public string IdentityNumber { get; set; }
         public bool PrivacyApproval { get; set; }

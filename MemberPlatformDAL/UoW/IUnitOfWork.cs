@@ -1,4 +1,4 @@
-using MemberPlatformDAL.Models;
+using MemberPlatformDAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,6 @@ namespace MemberPlatformDAL.UoW
 {
     public interface IUnitOfWork
     {
-        GenericRepository<Person> PersonRepository { get; }
         GenericRepository<Address> AddressRepository { get; }
         GenericRepository<Option> OptionRepository { get; }
         GenericRepository<OptionType> OptionTypeRepository { get; }

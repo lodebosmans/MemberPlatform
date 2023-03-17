@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemberPlatformDAL.Models
+namespace MemberPlatformDAL.Entities
 {
     public class ContractPersonInvolvement
     {
@@ -19,7 +19,7 @@ namespace MemberPlatformDAL.Models
         public int RoleId { get; set; }         //Foreign key relationship
 
         // Navigation properties
-        public Person Person { get; set; }         //Navigation property : 1 person per ContractPersonRole
+        public PersonEntity Person { get; set; }         //Navigation property : 1 person per ContractPersonRole
         public Contract Contract { get; set; }     //Navigation property : 1 Contract per ContractPersonRole
         public Option Role { get; set; }        //Navigation property: 1 Role per ContractRolePerson
 

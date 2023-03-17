@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemberPlatformDAL.Models
+namespace MemberPlatformDAL.Entities
 {
     public class Address
     {
@@ -24,7 +24,7 @@ namespace MemberPlatformDAL.Models
         // Navigation properties
         public Option? AddressType { get; set; }
         public ICollection<ProductUnit>? productUnits { get; set; }
-        public ICollection<Person>? persons { get; set; }
+        public ICollection<PersonEntity>? persons { get; set; }
 
 
     }

@@ -1,4 +1,4 @@
-using MemberPlatformDAL.Models;
+using MemberPlatformDAL.Entities;
 using MemberPlatformDAL.UoW;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

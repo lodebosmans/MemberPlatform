@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemberPlatformDAL.Models
+namespace MemberPlatformDAL.Entities
 {
     public class TicketItem
     {
@@ -23,8 +23,8 @@ namespace MemberPlatformDAL.Models
 
         // Navigation properties
         public Ticket Ticket { get; set; }        //Navigation property
-        public Person Replier { get; set; }       //Navigation property : 1 replyer(person) per TicketItem
-        public Person Responsible { get; set; }    //Navigation Property : 1 Responsible(Person) per TicketItem
+        public PersonEntity Replier { get; set; }       //Navigation property : 1 replyer(person) per TicketItem
+        public PersonEntity Responsible { get; set; }    //Navigation Property : 1 Responsible(Person) per TicketItem
         public Option TicketItemStatus { get; set; }        //Naviagation property : 1 option per TicketItem
     }
 }
