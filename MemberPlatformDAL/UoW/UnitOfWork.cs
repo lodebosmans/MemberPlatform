@@ -12,7 +12,7 @@ namespace MemberPlatformDAL.UoW
     {
         private DataContext _context;
        
-        private GenericRepository<Address> addressRepository;
+        private GenericRepository<AddressEntity> addressRepository;
         private GenericRepository<Option> optionRepository;
         private GenericRepository<OptionType> optionTypeRepository;
         private GenericRepository<ProductDefinition> productDefinitionRepository;
@@ -28,13 +28,13 @@ namespace MemberPlatformDAL.UoW
             _context = context;
         }
 
-        public GenericRepository<Address> AddressRepository
+        public GenericRepository<AddressEntity> AddressRepository
         {
             get
             {
                 if (addressRepository == null)
                 {
-                    addressRepository = new GenericRepository<Address>(_context);
+                    addressRepository = new GenericRepository<AddressEntity>(_context);
                 }
                 return addressRepository;
             }

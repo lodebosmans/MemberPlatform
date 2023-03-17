@@ -23,6 +23,9 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<IPersonService, PersonService>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<IAddressService, AddressService>();
+
 
 // Prevent circular references
 builder.Services.AddControllers().AddJsonOptions(options =>

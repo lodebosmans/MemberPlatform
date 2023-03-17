@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class Address
+    public class AddressEntity
     {
         // Attributes
         public int Id { get; set; }
