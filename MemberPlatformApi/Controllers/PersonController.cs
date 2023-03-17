@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,11 +29,11 @@ namespace MemberPlatformApi.Controllers
         //    return persons.ToList();
         //}
 
-        //[HttpGet("withaddress")]
-        //public async Task<ActionResult<IEnumerable<Person>>> GetAllWithAddress()
-        //{
-
-        //}
+        [HttpGet("withaddress")]
+        public async Task<List<Person>> GetAllWithAddress()
+        {
+            return await _personService.GetAllWithAddressAsync();
+        }
 
         // GET: api/Persons/5
         [HttpGet("{id}")]

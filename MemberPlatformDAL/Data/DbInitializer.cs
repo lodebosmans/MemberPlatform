@@ -134,7 +134,7 @@ namespace MemberPlatformDAL.Data
                  ); ;
                 context.SaveChanges();
                 context.Addresses.AddRange(
-                    new Address
+                    new AddressEntity
                     {
                         Name = "Boswachtershuis",
                         Street = "Bosstraat",
@@ -144,7 +144,7 @@ namespace MemberPlatformDAL.Data
                         Country = "België",
                         AddressTypeId = 7,
                     },
-                    new Address
+                    new AddressEntity
                     {
                         Street = "Zandstraat",
                         Number = "2",
@@ -153,7 +153,7 @@ namespace MemberPlatformDAL.Data
                         Country = "België",
                         AddressTypeId = 8,
                     },
-                    new Address
+                    new AddressEntity
                     {
                         Street = "Bergstraat",
                         Number= "3",

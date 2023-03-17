@@ -20,7 +20,7 @@ namespace MemberPlatformApi.Controllers
         }
         // GET: api/Addresses
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Address>>> GetAddresses()
+        public async Task<ActionResult<IEnumerable<AddressEntity>>> GetAddresses()
         {
             var addresses = await _uow.AddressRepository.GetAllAsync();
             return addresses.ToList();
@@ -28,7 +28,7 @@ namespace MemberPlatformApi.Controllers
 
         // GET api/Address/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Address>> GetAddress(int id)
+        public async Task<ActionResult<AddressEntity>> GetAddress(int id)
         {
             var address = await _uow.AddressRepository.GetByIDAsync(id);
 
@@ -42,7 +42,7 @@ namespace MemberPlatformApi.Controllers
 
         // POST api/<AddressController>
         [HttpPost]
-        public async Task<ActionResult<Address>> PostAddress(Address address)
+        public async Task<ActionResult<AddressEntity>> PostAddress(AddressEntity address)
         {
             _uow.AddressRepository.Insert(address);
             await _uow.SaveAsync();
@@ -52,7 +52,7 @@ namespace MemberPlatformApi.Controllers
 
         // PUT api/Address/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAddress(int id, Address address)
+        public async Task<IActionResult> PutAddress(int id, AddressEntity address)
         {
 
             if (id != address.Id)

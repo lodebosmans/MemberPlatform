@@ -13,23 +13,23 @@ namespace MemberPlatformDAL.Entities
         // Attributes
         public int Id { get; set; }
         [MaxLength(50)]
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Gender { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public string? InsuranceCompany { get; set; }
-        public string MobilePhone { get; set; }
-        [Required]
         [EmailAddress]
-        public string EmailAddress { get; set; }
-        public string IdentityNumber { get; set; }
+        [Required]
         public bool PrivacyApproval { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public int AddressId { get; set; }
+        public string EmailAddress { get; set; }
+        public string FirstName { get; set; }
+        public string Gender { get; set; }
+        public string IdentityNumber { get; set; }
+        public string LastName { get; set; }
+        public string MobilePhone { get; set; }
+        public string? InsuranceCompany { get; set; }
 
 
         //// Navigation properties
 
-        public Address? Address { get; set; }
+        public AddressEntity? Address { get; set; }
         public ICollection<ContractPersonInvolvement>? ContractPersonInvolvements { get; set; }
 
         //[InverseProperty("Approver")]

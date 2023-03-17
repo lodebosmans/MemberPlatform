@@ -13,7 +13,7 @@ namespace MemberPlatformDAL.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
         public DbSet<OptionType> OptionTypes { get; set; }
         public DbSet<Option> Options { get; set; }
-        public DbSet<Address> Addresses { get; set; }   
+        public DbSet<AddressEntity> Addresses { get; set; }   
         public DbSet<SalesItem> SalesItems { get; set; }
         public DbSet<PersonEntity> Persons { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
@@ -58,7 +58,7 @@ namespace MemberPlatformDAL.Data
             //modelBuilder.Entity<SalesItem>().ToTable("SalesItem");
             //modelBuilder.Entity<Ticket>().ToTable("Ticket");
             modelBuilder.Entity<TicketItem>().ToTable("TicketItem");
-            modelBuilder.Entity<Address>().ToTable("Address");
+            modelBuilder.Entity<AddressEntity>().ToTable("Address");
 
             // ContractPersonInvolvement
             modelBuilder.Entity<ContractPersonInvolvement>()

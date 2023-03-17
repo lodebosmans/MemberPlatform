@@ -9,7 +9,7 @@ namespace MemberPlatformDAL.UoW
 {
     public interface IUnitOfWork
     {
-        GenericRepository<Address> AddressRepository { get; }
+        GenericRepository<AddressEntity> AddressRepository { get; }
         GenericRepository<Option> OptionRepository { get; }
         GenericRepository<OptionType> OptionTypeRepository { get; }
         GenericRepository<ProductDefinition> ProductDefinitionRepository { get; }
