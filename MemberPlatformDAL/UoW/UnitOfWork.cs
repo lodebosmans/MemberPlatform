@@ -15,6 +15,10 @@ namespace MemberPlatformDAL.UoW
         private GenericRepository<Address> addressRepository;
         private GenericRepository<Option> optionRepository;
         private GenericRepository<OptionType> optionTypeRepository;
+        private GenericRepository<ProductDefinition> productDefinitionRepository;
+        private GenericRepository<ProductUnit> productUnitRepository;
+        private GenericRepository<Contract> contractRepository;
+        private GenericRepository<ContractPersonInvolvement> contractPersonInvolvementRepository;
         //private GenericRepository<Relationship> relationshipRepository;
         //private GenericRepository<CourseType> courseTypeRepository;
         //private GenericRepository<PaymentStatus> paymentStatusRepository;
@@ -70,6 +74,52 @@ namespace MemberPlatformDAL.UoW
                     optionTypeRepository = new GenericRepository<OptionType>(_context);
                 }
                 return optionTypeRepository;
+            }
+        }
+
+        public GenericRepository<ProductDefinition> ProductDefinitionRepository
+        {
+            get
+            {
+                if(productDefinitionRepository == null)
+                {
+                    productDefinitionRepository = new GenericRepository<ProductDefinition>(_context);
+                }
+                return productDefinitionRepository;
+            }
+        }
+        public GenericRepository<ProductUnit> ProductUnitRepository
+        {
+            get
+            {
+                if(productUnitRepository==null)
+                {
+                    productUnitRepository = new GenericRepository<ProductUnit>(_context);
+                }
+                return productUnitRepository;
+            }
+        }
+
+        public GenericRepository<ContractPersonInvolvement> ContractPersonInvolvementRepository
+        {
+            get
+            {
+                if(contractPersonInvolvementRepository==null)
+                {
+                    contractPersonInvolvementRepository = new GenericRepository<ContractPersonInvolvement>(_context);
+                }
+                return contractPersonInvolvementRepository;
+            }
+        }
+        public GenericRepository<Contract> ContractRepository
+        {
+            get
+            {
+                if(contractRepository==null)
+                {
+                    contractRepository = new GenericRepository<Contract>(_context); 
+                }
+                return contractRepository;
             }
         }
         //public GenericRepository<Relationship> RelationshipRepository
