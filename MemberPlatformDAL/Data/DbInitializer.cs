@@ -170,24 +170,23 @@ namespace MemberPlatformDAL.Data
                         FirstName = "Lode",
                         LastName = "Bosmans",
                         Gender = "male",
-                        DateOfBirth = DateTime.Now,
+                        DateOfBirth = DateTime.Parse("1985-01-01"),
                         InsuranceCompany = "CM",
                         MobilePhone = "0485785013",
                         EmailAddress = "bosmanslode@hotmail.com",
                         IdentityNumber = "85010111991",
                         PrivacyApproval = true,
                         AddressId = 2
-
                     },
                     new Person
                     {
-                        FirstName = "Lode",
-                        LastName = "Bosmans",
+                        FirstName = "Ive",
+                        LastName = "Verstappen",
                         Gender = "male",
                         DateOfBirth = DateTime.Now,
                         InsuranceCompany = "De Voorzorg",
                         MobilePhone = "0485785011",
-                        EmailAddress = "Lode@hotmail.com",
+                        EmailAddress = "Ive@hotmail.com",
                         IdentityNumber = "75010111991",
                         PrivacyApproval = true,
                         AddressId = 2
@@ -196,7 +195,7 @@ namespace MemberPlatformDAL.Data
                         FirstName = "Johnny",
                         LastName = "Urkens",
                         Gender = "Male",
-                        DateOfBirth = DateTime.Now.AddDays(-500),
+                        DateOfBirth = DateTime.Parse("1974-04-09"),
                         InsuranceCompany = "De Voorzorg",
                         MobilePhone = "0476989727",
                         EmailAddress = "johnny@gmail.com",
