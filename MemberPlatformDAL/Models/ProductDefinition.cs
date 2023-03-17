@@ -36,14 +36,14 @@ namespace MemberPlatformDAL.Models
 
 
         // Navigation properties
-        public ICollection<ProductAgreement> ProductAgreements { get; set; }
-        public ICollection<ProductUnit> ProductUnits { get; set; }
-        public virtual ProductDefinition ParentProductDefinition { get; set; }  // This is the self-referential property
-        public virtual ICollection<ProductDefinition> ChildProductDefinitions { get; set; } // One-to-many relationship with child categories
+        public ICollection<ProductAgreement>? ProductAgreements { get; set; }
+        public ICollection<ProductUnit>? ProductUnits { get; set; }
+        public virtual ProductDefinition? ParentProductDefinition { get; set; }  // This is the self-referential property
+        public virtual ICollection<ProductDefinition>? ChildProductDefinitions { get; set; } // One-to-many relationship with child categories
         //= new List<ProductDefinition>();
-        public Option ProductDefinitionStatus { get; set; }
-        public Option ProductDefinitionFormat { get; set; }
-        public Option ProductDefinitionSport { get; set; }
+        public Option? ProductDefinitionStatus { get; set; }
+        public Option? ProductDefinitionFormat { get; set; }
+        public Option? ProductDefinitionSport { get; set; }
         
     }
 }

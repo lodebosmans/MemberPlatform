@@ -13,6 +13,11 @@ namespace MemberPlatformDAL.UoW
         GenericRepository<Address> AddressRepository { get; }
         GenericRepository<Option> OptionRepository { get; }
         GenericRepository<OptionType> OptionTypeRepository { get; }
+        GenericRepository<ProductDefinition> ProductDefinitionRepository { get; }
+        GenericRepository<ProductUnit> ProductUnitRepository { get; }
+        GenericRepository<ContractPersonInvolvement> ContractPersonInvolvementRepository { get;}
+        GenericRepository<Contract> ContractRepository { get; }
+
 
 
 
