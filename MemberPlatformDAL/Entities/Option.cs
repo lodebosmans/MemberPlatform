@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemberPlatformDAL.Models
+namespace MemberPlatformDAL.Entities
 {
     public class Option
     {

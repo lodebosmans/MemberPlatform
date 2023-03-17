@@ -1,8 +1,9 @@
 using MemberPlatformDAL.Data;
 using Microsoft.EntityFrameworkCore;
-using MemberPlatformDAL.Models;
 using MemberPlatformDAL.UoW;
 using System.Text.Json.Serialization;
+using MemberPlatformDAL.Repositories;
+using MemberPlatformCore.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 // Add the Unit Of Work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<IPersonService, PersonService>();
 
 // Prevent circular references
 builder.Services.AddControllers().AddJsonOptions(options =>

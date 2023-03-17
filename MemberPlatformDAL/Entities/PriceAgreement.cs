@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemberPlatformDAL.Models
+namespace MemberPlatformDAL.Entities
 {
     public class PriceAgreement
     {
@@ -30,7 +30,7 @@ namespace MemberPlatformDAL.Models
         // Navigation properties
         public Contract Contract { get; set; }        
         public Option DiscountType { get; set; }       
-        public Person Approver { get; set; }        
+        public PersonEntity Approver { get; set; }        
         public Option PriceAgreementStatus { get; set; }
         //public ICollection<Status> PriceAgreementStatus { get; set; }
 

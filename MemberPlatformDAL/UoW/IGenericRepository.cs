@@ -10,7 +10,6 @@ namespace MemberPlatformDAL.UoW
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByIDAsync(int id);
-        Task<IEnumerable<T>> GetAllWithAddressAsync();
 
         IQueryable<T> AllQuery();
         void Insert(T obj);

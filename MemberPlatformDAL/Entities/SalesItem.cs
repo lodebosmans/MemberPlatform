@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemberPlatformDAL.Models
+namespace MemberPlatformDAL.Entities
 {
     public class SalesItem
     {
@@ -19,7 +19,7 @@ namespace MemberPlatformDAL.Models
         public int PersonId { get; set; }
 
         // Navigation properties
-        public Person Person { get; set; }        //Navigation property : 1 person per SaleItem
+        public PersonEntity Person { get; set; }        //Navigation property : 1 person per SaleItem
         public Option SalesItemType { get; set; }
     }
 }

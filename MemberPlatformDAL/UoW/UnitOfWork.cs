@@ -1,5 +1,5 @@
 using MemberPlatformDAL.Data;
-using MemberPlatformDAL.Models;
+using MemberPlatformDAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace MemberPlatformDAL.UoW
     public class UnitOfWork : IUnitOfWork
     {
         private DataContext _context;
-        private GenericRepository<Person> personRepository;
+       
         private GenericRepository<Address> addressRepository;
         private GenericRepository<Option> optionRepository;
         private GenericRepository<OptionType> optionTypeRepository;
@@ -26,18 +26,6 @@ namespace MemberPlatformDAL.UoW
         public UnitOfWork(DataContext context)
         {
             _context = context;
-        }
-
-        public GenericRepository<Person> PersonRepository
-        {
-            get
-            {
-                if (personRepository == null)
-                {
-                    personRepository = new GenericRepository<Person>(_context);
-                }
-                return personRepository;
-            }
         }
 
         public GenericRepository<Address> AddressRepository

@@ -1,4 +1,4 @@
-using MemberPlatformDAL.Models;
+using MemberPlatformDAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace MemberPlatformDAL.Data
         public DbSet<Option> Options { get; set; }
         public DbSet<Address> Addresses { get; set; }   
         public DbSet<SalesItem> SalesItems { get; set; }
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<PersonEntity> Persons { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<TicketItem> TicketItems { get; set; }
         public DbSet<PersonPersonRelation> PersonPersonRelations { get; set; }
@@ -44,7 +44,7 @@ namespace MemberPlatformDAL.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Person>().ToTable("Person");
+            modelBuilder.Entity<PersonEntity>().ToTable("Person");
             //modelBuilder.Entity<ContractPersonRole>().ToTable("ContractPersonRole");
             modelBuilder.Entity<Option>().ToTable("Option");
             modelBuilder.Entity<OptionType>().ToTable("OptionType");

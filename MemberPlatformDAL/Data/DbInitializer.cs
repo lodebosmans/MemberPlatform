@@ -1,4 +1,4 @@
-using MemberPlatformDAL.Models;
+using MemberPlatformDAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -165,7 +165,7 @@ namespace MemberPlatformDAL.Data
                     );
                 context.SaveChanges();
                 context.Persons.AddRange(
-                    new Person
+                    new PersonEntity
                     {
                         FirstName = "Lode",
                         LastName = "Bosmans",
@@ -178,7 +178,7 @@ namespace MemberPlatformDAL.Data
                         PrivacyApproval = true,
                         AddressId = 2
                     },
-                    new Person
+                    new PersonEntity
                     {
                         FirstName = "Ive",
                         LastName = "Verstappen",
@@ -190,7 +190,7 @@ namespace MemberPlatformDAL.Data
                         IdentityNumber = "75010111991",
                         PrivacyApproval = true,
                         AddressId = 2
-                    },new Person
+                    },new PersonEntity
                     {
                         FirstName = "Johnny",
                         LastName = "Urkens",

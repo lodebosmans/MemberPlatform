@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemberPlatformDAL.Models
+namespace MemberPlatformDAL.Entities
 {
     public class PersonPersonRelation
     {
@@ -20,8 +20,8 @@ namespace MemberPlatformDAL.Models
         
 
         // Navigation properties
-        public Person Parent { get; set; }
-        public Person Child { get; set; }
+        public PersonEntity Parent { get; set; }
+        public PersonEntity Child { get; set; }
         public Option Relation { get; set; }
     }
 }
