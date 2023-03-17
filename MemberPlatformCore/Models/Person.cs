@@ -1,4 +1,4 @@
-﻿namespace MemberPlatformCore.Models
+namespace MemberPlatformCore.Models
 {
     public class Person
     {
