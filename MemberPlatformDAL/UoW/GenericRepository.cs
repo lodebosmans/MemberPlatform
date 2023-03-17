@@ -98,6 +98,5 @@ namespace MemberPlatformDAL.UoW
             return (IEnumerable<T>)await _context.Persons.Include(p => p.Address).ThenInclude(a => a.AddressType).ToListAsync();
         }
 
-
     }
 }

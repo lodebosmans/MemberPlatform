@@ -84,7 +84,8 @@ namespace MemberPlatformApi.Controllers
                 return null;
 
             }
-            //get the addressType for the persons address
+
+            // Get the addressType for the persons address
             var addressType = _uow.OptionRepository.Get(a => a.Id == address.AddressTypeId).FirstOrDefault();
             if(addressType == null)
             {
