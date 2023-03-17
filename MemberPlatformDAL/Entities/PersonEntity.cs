@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
@@ -12,10 +7,12 @@ namespace MemberPlatformDAL.Entities
     {
         // Attributes
         public int Id { get; set; }
+
         [MaxLength(50)]
         [EmailAddress]
         [Required]
         public bool PrivacyApproval { get; set; }
+
         public DateTime DateOfBirth { get; set; }
         public int AddressId { get; set; }
         public string EmailAddress { get; set; }
@@ -25,7 +22,6 @@ namespace MemberPlatformDAL.Entities
         public string LastName { get; set; }
         public string MobilePhone { get; set; }
         public string? InsuranceCompany { get; set; }
-
 
         //// Navigation properties
 
@@ -45,6 +41,7 @@ namespace MemberPlatformDAL.Entities
         public ICollection<PriceAgreement>? PriceAgreementApprover { get; set; }
 
         public ICollection<Ticket>? Tickets { get; set; }
+
         [InverseProperty("Responsible")]
         public ICollection<TicketItem>? TicketItemsResponsible { get; set; }
 
@@ -52,6 +49,5 @@ namespace MemberPlatformDAL.Entities
         public ICollection<TicketItem>? TicketItemsReplier { get; set; }
 
         public ICollection<SalesItem>? SalesItems { get; set; }
-
     }
 }

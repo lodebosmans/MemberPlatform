@@ -1,3 +1,4 @@
+using AutoMapper;
 using MemberPlatformCore.Models;
 using MemberPlatformDAL.Entities;
 using MemberPlatformDAL.Repositories;
@@ -8,31 +9,48 @@ namespace MemberPlatformCore.Services
     {
         private IPersonRepository _personRepository;
         private IAddressRepository _addressRepository;
+        private Mapper _mapper;
 
         public PersonService(IPersonRepository personRepository, IAddressRepository addressRepository)
         {
             _personRepository = personRepository;
             _addressRepository = addressRepository;
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<MappingProfile>();
+            });
+
+            _mapper = new Mapper(config);
         }
+
+        //public async Task<Person> GetPersonAsync(int id)
+        //{
+        //    PersonEntity entity = await _personRepository.GetByIDAsync(id);
+        //    Person person = new Person();
+        //    //Todo automapper
+        //    person.Id = entity.Id;
+        //    person.DateOfBirth = entity.DateOfBirth;
+        //    person.EmailAddress = entity.EmailAddress;
+        //    person.FirstName = entity.FirstName;
+        //    person.Gender = entity.Gender;
+        //    person.IdentityNumber = entity.IdentityNumber;
+        //    person.InsuranceCompany = entity.InsuranceCompany;
+        //    person.LastName = entity.LastName;
+        //    person.MobilePhone = entity.MobilePhone;
+        //    person.PrivacyApproval = entity.PrivacyApproval;
+        //    person.PostalCode = entity.Address.PostalCode;
+        //    person.Street = "Kerkstraat";
+
+        //    return person;
+        //}
         public async Task<Person> GetPersonAsync(int id)
         {
             PersonEntity entity = await _personRepository.GetByIDAsync(id);
-            Person person = new Person();
-            //Todo automapper
-            person.Id = entity.Id;
-            person.DateOfBirth = entity.DateOfBirth;
-            person.EmailAddress = entity.EmailAddress;
-            person.FirstName = entity.FirstName;
-            person.Gender = entity.Gender;
-            person.IdentityNumber = entity.IdentityNumber;
-            person.InsuranceCompany = entity.InsuranceCompany;
-            person.LastName = entity.LastName;
-            person.MobilePhone = entity.MobilePhone;
-            person.PrivacyApproval = entity.PrivacyApproval;
-            person.PostalCode = entity.Address.PostalCode;
-            person.Street = "Kerkstraat";
+            _ = await _addressRepository.GetByIDAsync(entity.AddressId);
+            Person person = _mapper.Map<Person>(entity);
 
-            return person; 
+            return person;
         }
 
         //public async Task<List<Person>> GetAllWithAddressAsync()
@@ -42,7 +60,6 @@ namespace MemberPlatformCore.Services
         //    person.Id = entity.Id;
         //    person.PostalCode = entity.Address.PostalCode;
         //    person.Country = entity.Address.Country;
-
 
         //    return person;
         //}
@@ -54,28 +71,26 @@ namespace MemberPlatformCore.Services
             {
                 Person person = new Person();
                 person.Id = entity.Id;
-                person.FirstName= entity.FirstName;
-                person.LastName= entity.LastName;
-                person.PrivacyApproval= entity.PrivacyApproval;
-                person.InsuranceCompany= entity.InsuranceCompany;
-                person.IdentityNumber= entity.IdentityNumber;
-                person.MobilePhone= entity.MobilePhone;
-                person.Gender= entity.Gender;
+                person.FirstName = entity.FirstName;
+                person.LastName = entity.LastName;
+                person.PrivacyApproval = entity.PrivacyApproval;
+                person.InsuranceCompany = entity.InsuranceCompany;
+                person.IdentityNumber = entity.IdentityNumber;
+                person.MobilePhone = entity.MobilePhone;
+                person.Gender = entity.Gender;
                 person.DateOfBirth = entity.DateOfBirth;
                 person.EmailAddress = entity.EmailAddress;
                 person.PostalCode = entity.Address.PostalCode;
                 person.Country = entity.Address.Country;
                 person.City = entity.Address.City;
-                person.Street= entity.Address.Street;
-                person.Box= entity.Address.Box;
-                person.Number= entity.Address.Number;
+                person.Street = entity.Address.Street;
+                person.Box = entity.Address.Box;
+                person.Number = entity.Address.Number;
 
                 people.Add(person);
             }
 
             return people;
         }
-
-
     }
 }
