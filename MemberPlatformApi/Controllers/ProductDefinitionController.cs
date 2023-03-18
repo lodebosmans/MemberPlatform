@@ -19,14 +19,14 @@ namespace MemberPlatformApi.Controllers
         }
         // GET: api/<ProductDefinitionController>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductDefinition>>> GetProductDefinitions()
+        public async Task<ActionResult<IEnumerable<ProductDefinitionEntity>>> GetProductDefinitions()
         {
             var productDefinitions = await _uow.ProductDefinitionRepository.GetAllAsync();
             return productDefinitions.ToList();
         }
         // GET api/ProductDefinition/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductDefinition>> GetProductDefinition(int id)
+        public async Task<ActionResult<ProductDefinitionEntity>> GetProductDefinition(int id)
         {
             var ProductDefinition = await _uow.ProductDefinitionRepository.GetByIDAsync(id);
 
@@ -40,7 +40,7 @@ namespace MemberPlatformApi.Controllers
 
         // POST api/ProductDefinition
         [HttpPost]
-        public async Task<ActionResult<ProductDefinition>> PostAddress(ProductDefinition productDefinition)
+        public async Task<ActionResult<ProductDefinitionEntity>> PostAddress(ProductDefinitionEntity productDefinition)
         {
             _uow.ProductDefinitionRepository.Insert(productDefinition);
             await _uow.SaveAsync();
@@ -50,7 +50,7 @@ namespace MemberPlatformApi.Controllers
 
         // PUT api/ProductDefinition/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductDefinition(int id, ProductDefinition productDefinition)
+        public async Task<IActionResult> PutProductDefinition(int id, ProductDefinitionEntity productDefinition)
         {
 
             if (id != productDefinition.Id)

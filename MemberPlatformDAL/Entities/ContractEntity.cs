@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class Contract
+    public class ContractEntity
     {
         // Attributes
         public int Id { get; set; }
@@ -19,8 +19,8 @@ namespace MemberPlatformDAL.Entities
         public int ContractTypeId { get; set; }        //Foreign key relationship
 
         // Navigations properties
-        public Option ContractType { get; set; }        //Navigation property: 1 type per Contract
-        public ICollection<ContractPersonInvolvement> ContractPersonInvolvements { get; set; } //Contract can be related to 0 or more ContractPersonRole (1 to many relationShip)
-        public ICollection<ProductAgreement> ProductAgreements { get; set; }
+        public OptionEntity ContractType { get; set; }        //Navigation property: 1 type per Contract
+        public ICollection<ContractPersonInvolvementEntity> ContractPersonInvolvements { get; set; } //Contract can be related to 0 or more ContractPersonRole (1 to many relationShip)
+        public ICollection<ProductAgreementEntity> ProductAgreements { get; set; }
     }
 }

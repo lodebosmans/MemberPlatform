@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class SalesItem
+    public class SalesItemEntity
     {
         // Attributes
         public int Id { get; set; }
@@ -20,6 +20,6 @@ namespace MemberPlatformDAL.Entities
 
         // Navigation properties
         public PersonEntity Person { get; set; }        //Navigation property : 1 person per SaleItem
-        public Option SalesItemType { get; set; }
+        public OptionEntity SalesItemType { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class Ticket
+    public class TicketEntity
     {
         // Attributes
         public int Id { get; set; }
@@ -18,7 +18,7 @@ namespace MemberPlatformDAL.Entities
         public PersonEntity Person { get; set; }        
 
         // Ticket can be related to 0 or more TicketItem (1 to many relationShip)
-        public ICollection<TicketItem> TicketItems { get; set; }
+        public ICollection<TicketItemEntity> TicketItems { get; set; }
 
 
     }

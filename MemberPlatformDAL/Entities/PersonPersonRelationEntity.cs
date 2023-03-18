@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class PersonPersonRelation
+    public class PersonPersonRelationEntity
     {
         // Attributes
         public int Id { get; set; }
@@ -22,6 +17,6 @@ namespace MemberPlatformDAL.Entities
         // Navigation properties
         public PersonEntity Parent { get; set; }
         public PersonEntity Child { get; set; }
-        public Option Relation { get; set; }
+        public OptionEntity Relation { get; set; }
     }
 }
