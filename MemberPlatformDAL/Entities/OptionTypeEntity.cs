@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class OptionType
+    public class OptionTypeEntity
     {
         // Attributes
         public int Id { get; set; }
         public string Name { get; set; }
 
         //Navigation properties
-        public ICollection<Option> Options { get; set; } //OptionType can be related to 0 or more option (1 to many relationShip)
+        public ICollection<OptionEntity> Options { get; set; } //OptionType can be related to 0 or more option (1 to many relationShip)
 
     }
 }

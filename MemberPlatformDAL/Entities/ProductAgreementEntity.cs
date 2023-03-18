@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class ProductAgreement
+    public class ProductAgreementEntity
     {
         // Attributes
         public int Id { get; set; }
@@ -17,8 +17,8 @@ namespace MemberPlatformDAL.Entities
 
 
         // Navigation properties
-        public Contract Contract { get; set; }        //Navigation property: 1 Contract per Agreement
-        public ProductDefinition ProductDefinition { get; set; }
+        public ContractEntity Contract { get; set; }        //Navigation property: 1 Contract per Agreement
+        public ProductDefinitionEntity ProductDefinition { get; set; }
 
     }
 }

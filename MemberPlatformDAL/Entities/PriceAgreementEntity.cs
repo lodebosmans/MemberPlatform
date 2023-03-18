@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class PriceAgreement
+    public class PriceAgreementEntity
     {
         // Attributes
         public int Id { get; set; }
@@ -28,10 +28,10 @@ namespace MemberPlatformDAL.Entities
 
 
         // Navigation properties
-        public Contract Contract { get; set; }        
-        public Option DiscountType { get; set; }       
+        public ContractEntity Contract { get; set; }        
+        public OptionEntity DiscountType { get; set; }       
         public PersonEntity Approver { get; set; }        
-        public Option PriceAgreementStatus { get; set; }
+        public OptionEntity PriceAgreementStatus { get; set; }
         //public ICollection<Status> PriceAgreementStatus { get; set; }
 
     }

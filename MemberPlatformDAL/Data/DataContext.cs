@@ -11,21 +11,21 @@ namespace MemberPlatformDAL.Data
     public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
-        public DbSet<OptionType> OptionTypes { get; set; }
-        public DbSet<Option> Options { get; set; }
+        public DbSet<OptionTypeEntity> OptionTypes { get; set; }
+        public DbSet<OptionEntity> Options { get; set; }
         public DbSet<AddressEntity> Addresses { get; set; }   
-        public DbSet<SalesItem> SalesItems { get; set; }
+        public DbSet<SalesItemEntity> SalesItems { get; set; }
         public DbSet<PersonEntity> Persons { get; set; }
-        public DbSet<Ticket> Tickets { get; set; }
-        public DbSet<TicketItem> TicketItems { get; set; }
-        public DbSet<PersonPersonRelation> PersonPersonRelations { get; set; }
-        public DbSet<ProductDefinition> ProductDefinitions { get; set; }
-        public DbSet<ProductUnit> ProductUnits { get; set; }
-        public DbSet<PriceAgreement> PriceAgreements { get; set;}
+        public DbSet<TicketEntity> Tickets { get; set; }
+        public DbSet<TicketItemEntity> TicketItems { get; set; }
+        public DbSet<PersonPersonRelationEntity> PersonPersonRelations { get; set; }
+        public DbSet<ProductDefinitionEntity> ProductDefinitions { get; set; }
+        public DbSet<ProductUnitEntity> ProductUnits { get; set; }
+        public DbSet<PriceAgreementEntity> PriceAgreements { get; set;}
         //public DbSet<Status> Statuses { get; set;}
-        public DbSet<Contract> Contracts { get; set; }
-        public DbSet<ProductAgreement> ProductAgreements { get; set; }
-        public DbSet<ContractPersonInvolvement> ContractPersonInvolvements { get; set; }
+        public DbSet<ContractEntity> Contracts { get; set; }
+        public DbSet<ProductAgreementEntity> ProductAgreements { get; set; }
+        public DbSet<ContractPersonInvolvementEntity> ContractPersonInvolvements { get; set; }
 
 
 
@@ -46,62 +46,62 @@ namespace MemberPlatformDAL.Data
         {
             modelBuilder.Entity<PersonEntity>().ToTable("Person");
             //modelBuilder.Entity<ContractPersonRole>().ToTable("ContractPersonRole");
-            modelBuilder.Entity<Option>().ToTable("Option");
-            modelBuilder.Entity<OptionType>().ToTable("OptionType");
-            modelBuilder.Entity<PersonPersonRelation>().ToTable("PersonPersonRelation");
+            modelBuilder.Entity<OptionEntity>().ToTable("Option");
+            modelBuilder.Entity<OptionTypeEntity>().ToTable("OptionType");
+            modelBuilder.Entity<PersonPersonRelationEntity>().ToTable("PersonPersonRelation");
             //modelBuilder.Entity<Agreement>().ToTable("Agreement");
             //modelBuilder.Entity<AgreementDiscount>().ToTable("AgreementDiscount");
             //modelBuilder.Entity<AgreementStatus>().ToTable("AgreementStatus");
-            modelBuilder.Entity<Contract>().ToTable("Contract");
-            modelBuilder.Entity<ProductDefinition>().ToTable("ProductDefinition");
+            modelBuilder.Entity<ContractEntity>().ToTable("Contract");
+            modelBuilder.Entity<ProductDefinitionEntity>().ToTable("ProductDefinition");
             //modelBuilder.Entity<ProductUnit>().ToTable("ProductUnit");
             //modelBuilder.Entity<SalesItem>().ToTable("SalesItem");
             //modelBuilder.Entity<Ticket>().ToTable("Ticket");
-            modelBuilder.Entity<TicketItem>().ToTable("TicketItem");
+            modelBuilder.Entity<TicketItemEntity>().ToTable("TicketItem");
             modelBuilder.Entity<AddressEntity>().ToTable("Address");
 
             // ContractPersonInvolvement
-            modelBuilder.Entity<ContractPersonInvolvement>()
+            modelBuilder.Entity<ContractPersonInvolvementEntity>()
             .ToTable("ContractPersonInvolvement")
             .HasOne(cpr => cpr.Role)
             .WithMany()
             .HasForeignKey(cpr => cpr.RoleId)
             .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<ContractPersonInvolvement>()
+            modelBuilder.Entity<ContractPersonInvolvementEntity>()
             .HasOne(p => p.Person)
             .WithMany()
             .HasForeignKey(p => p.PersonId)
             .OnDelete(DeleteBehavior.NoAction);
 
             // Product Unit
-            modelBuilder.Entity<ProductUnit>()
+            modelBuilder.Entity<ProductUnitEntity>()
             .ToTable("ProductUnit")
             .HasOne(cpr => cpr.Product)
             .WithMany()
             .HasForeignKey(cpr => cpr.ProductId)
             .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<ProductUnit>()
+            modelBuilder.Entity<ProductUnitEntity>()
             .HasOne(p => p.Address)
             .WithMany()
             .HasForeignKey(p => p.AddressId)
             .OnDelete(DeleteBehavior.NoAction);
 
             // Discount type
-            modelBuilder.Entity<PriceAgreement>()
+            modelBuilder.Entity<PriceAgreementEntity>()
             .ToTable("PriceAgreement")
             .HasOne(cpr => cpr.DiscountType)
             .WithMany()
             .HasForeignKey(cpr => cpr.DiscountTypeId)
             .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<PriceAgreement>()
+            modelBuilder.Entity<PriceAgreementEntity>()
             .HasOne(pa => pa.DiscountType)
             .WithMany(o => o.DiscountType)
             .HasForeignKey(pa => pa.DiscountTypeId);
 
-            modelBuilder.Entity<PriceAgreement>()
+            modelBuilder.Entity<PriceAgreementEntity>()
                 .HasOne(pa => pa.Approver)
                 .WithMany()
                 .HasForeignKey(pa => pa.ApproverId)
@@ -109,14 +109,14 @@ namespace MemberPlatformDAL.Data
 
 
             // Status price agreement
-            modelBuilder.Entity<PriceAgreement>()
+            modelBuilder.Entity<PriceAgreementEntity>()
             .ToTable("PriceAgreement")
             .HasOne(cpr => cpr.PriceAgreementStatus)
             .WithMany()
             .HasForeignKey(cpr => cpr.PriceAgreementStatusId)
             .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Option>()
+            modelBuilder.Entity<OptionEntity>()
             .HasMany(o => o.PriceAgreementStatus)
             .WithOne(pd => pd.PriceAgreementStatus)
             .HasForeignKey(pd => pd.PriceAgreementStatusId);
@@ -130,34 +130,34 @@ namespace MemberPlatformDAL.Data
             //.OnDelete(DeleteBehavior.NoAction);
 
             // Status productdefinition
-            modelBuilder.Entity<ProductDefinition>()
+            modelBuilder.Entity<ProductDefinitionEntity>()
             .ToTable("ProductDefinition")
             .HasOne(cpr => cpr.ProductDefinitionStatus)
             .WithMany()
             .HasForeignKey(cpr => cpr.ProductDefinitionStatusId)
             .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Option>()
+            modelBuilder.Entity<OptionEntity>()
             .HasMany(o => o.ProductDefinitionStatus)
             .WithOne(pd => pd.ProductDefinitionStatus)
             .HasForeignKey(pd => pd.ProductDefinitionStatusId);
 
             // Sport
-            modelBuilder.Entity<ProductDefinition>()
+            modelBuilder.Entity<ProductDefinitionEntity>()
             .ToTable("ProductDefinition")
             .HasOne(cpr => cpr.ProductDefinitionSport)
             .WithMany()
             .HasForeignKey(cpr => cpr.ProductDefinitionSportId)
             .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Option>()
+            modelBuilder.Entity<OptionEntity>()
             .HasMany(o => o.ProductDefinitionSport)
             .WithOne(pd => pd.ProductDefinitionSport)
             .HasForeignKey(pd => pd.ProductDefinitionSportId);
 
      
             // ProdutAgreement
-            modelBuilder.Entity<ProductAgreement>()
+            modelBuilder.Entity<ProductAgreementEntity>()
             .ToTable("ProductAgreement")
             .HasOne(cpr => cpr.ProductDefinition)
             .WithMany()
@@ -166,7 +166,7 @@ namespace MemberPlatformDAL.Data
 
 
             //SalesItem
-            modelBuilder.Entity<SalesItem>()
+            modelBuilder.Entity<SalesItemEntity>()
             .ToTable("SalesItem")
             .HasOne(s => s.Person)
             .WithMany()
@@ -174,7 +174,7 @@ namespace MemberPlatformDAL.Data
             .OnDelete(DeleteBehavior.NoAction);
 
             //Ticket
-            modelBuilder.Entity<Ticket>()
+            modelBuilder.Entity<TicketEntity>()
             .ToTable("Ticket")
             .HasOne(s => s.Person)
             .WithMany()

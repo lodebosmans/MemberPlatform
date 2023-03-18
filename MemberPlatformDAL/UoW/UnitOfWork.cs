@@ -13,12 +13,12 @@ namespace MemberPlatformDAL.UoW
         private DataContext _context;
        
         private GenericRepository<AddressEntity> addressRepository;
-        private GenericRepository<Option> optionRepository;
-        private GenericRepository<OptionType> optionTypeRepository;
-        private GenericRepository<ProductDefinition> productDefinitionRepository;
-        private GenericRepository<ProductUnit> productUnitRepository;
-        private GenericRepository<Contract> contractRepository;
-        private GenericRepository<ContractPersonInvolvement> contractPersonInvolvementRepository;
+        private GenericRepository<OptionEntity> optionRepository;
+        private GenericRepository<OptionTypeEntity> optionTypeRepository;
+        private GenericRepository<ProductDefinitionEntity> productDefinitionRepository;
+        private GenericRepository<ProductUnitEntity> productUnitRepository;
+        private GenericRepository<ContractEntity> contractRepository;
+        private GenericRepository<ContractPersonInvolvementEntity> contractPersonInvolvementRepository;
         //private GenericRepository<Relationship> relationshipRepository;
         //private GenericRepository<CourseType> courseTypeRepository;
         //private GenericRepository<PaymentStatus> paymentStatusRepository;
@@ -40,72 +40,72 @@ namespace MemberPlatformDAL.UoW
             }
         }
 
-        public GenericRepository<Option> OptionRepository
+        public GenericRepository<OptionEntity> OptionRepository
 
         {
             get
             {
                 if(optionRepository == null)
                 {
-                    optionRepository = new GenericRepository<Option>(_context);
+                    optionRepository = new GenericRepository<OptionEntity>(_context);
                 }
                 return optionRepository;
             }
         }
 
-        public GenericRepository<OptionType> OptionTypeRepository
+        public GenericRepository<OptionTypeEntity> OptionTypeRepository
         {
             get
             {
                 if(optionTypeRepository == null)
                 {
-                    optionTypeRepository = new GenericRepository<OptionType>(_context);
+                    optionTypeRepository = new GenericRepository<OptionTypeEntity>(_context);
                 }
                 return optionTypeRepository;
             }
         }
 
-        public GenericRepository<ProductDefinition> ProductDefinitionRepository
+        public GenericRepository<ProductDefinitionEntity> ProductDefinitionRepository
         {
             get
             {
                 if(productDefinitionRepository == null)
                 {
-                    productDefinitionRepository = new GenericRepository<ProductDefinition>(_context);
+                    productDefinitionRepository = new GenericRepository<ProductDefinitionEntity>(_context);
                 }
                 return productDefinitionRepository;
             }
         }
-        public GenericRepository<ProductUnit> ProductUnitRepository
+        public GenericRepository<ProductUnitEntity> ProductUnitRepository
         {
             get
             {
                 if(productUnitRepository==null)
                 {
-                    productUnitRepository = new GenericRepository<ProductUnit>(_context);
+                    productUnitRepository = new GenericRepository<ProductUnitEntity>(_context);
                 }
                 return productUnitRepository;
             }
         }
 
-        public GenericRepository<ContractPersonInvolvement> ContractPersonInvolvementRepository
+        public GenericRepository<ContractPersonInvolvementEntity> ContractPersonInvolvementRepository
         {
             get
             {
                 if(contractPersonInvolvementRepository==null)
                 {
-                    contractPersonInvolvementRepository = new GenericRepository<ContractPersonInvolvement>(_context);
+                    contractPersonInvolvementRepository = new GenericRepository<ContractPersonInvolvementEntity>(_context);
                 }
                 return contractPersonInvolvementRepository;
             }
         }
-        public GenericRepository<Contract> ContractRepository
+        public GenericRepository<ContractEntity> ContractRepository
         {
             get
             {
                 if(contractRepository==null)
                 {
-                    contractRepository = new GenericRepository<Contract>(_context); 
+                    contractRepository = new GenericRepository<ContractEntity>(_context); 
                 }
                 return contractRepository;
             }

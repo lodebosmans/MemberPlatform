@@ -26,105 +26,105 @@ namespace MemberPlatformDAL.Data
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
                 context.OptionTypes.AddRange(
-                    new OptionType
+                    new OptionTypeEntity
                     {
                         Name = "Format"
                     },
-                    new OptionType
+                    new OptionTypeEntity
                     {
                         Name = "Sport"
                     },
-                    new OptionType
+                    new OptionTypeEntity
                     {
                         Name = "ContractType"
                     },
-                    new OptionType
+                    new OptionTypeEntity
                     {
                         Name = "Role"
                     },
-                    new OptionType
+                    new OptionTypeEntity
                     {
                         Name = "PersonRole"
                     },
-                    new OptionType
+                    new OptionTypeEntity
                     {
                         Name = "Status"
                     },
-                    new OptionType
+                    new OptionTypeEntity
                     {
                         Name = "DocumentType"
                     },
-                    new OptionType
+                    new OptionTypeEntity
                     {
                         Name = "Address"
                     },
-                    new OptionType
+                    new OptionTypeEntity
                     {
                         Name = "DiscountType"
                     },
-                    new OptionType
+                    new OptionTypeEntity
                     {
                         Name = "SalesItem"
                     }
                     );
                 context.SaveChanges();
                 context.Options.AddRange(
-                    new Option
+                    new OptionEntity
                     {
                         Name = "Single day event",
                         OptionTypeId = 1,
                     },
-                    new Option
+                    new OptionEntity
                     {
                         Name = "Triatlon",
                         OptionTypeId = 2,
                     },
-                    new Option
+                    new OptionEntity
                     {
                         Name = "Runnning",
                         OptionTypeId = 2,
                     },
-                    new Option
+                    new OptionEntity
                     {
                         Name = "Swimming",
                         OptionTypeId = 2,
                     },
-                     new Option
+                     new OptionEntity
                      {
                          Name = "Approved",
                          OptionTypeId = 6,
                      },
-                    new Option
+                    new OptionEntity
                     {
                         Name = "Subscription",
                         OptionTypeId = 3
                     },
-                    new Option
+                    new OptionEntity
                     {
                         Name = "TrainingFacilities",
                         OptionTypeId = 8
                     },
-                    new Option
+                    new OptionEntity
                     {
                         Name = "Residential",
                         OptionTypeId = 8
                     },
-                    new Option
+                    new OptionEntity
                     {
                         Name = "Sponsor reduction",
                         OptionTypeId = 9
                     },
-                    new Option
+                    new OptionEntity
                     {
                         Name = "Family",
                         OptionTypeId = 9
                     },
-                    new Option
+                    new OptionEntity
                     {
                         Name = "Pending",
                         OptionTypeId = 6
                     },
-                    new Option
+                    new OptionEntity
                     {
                         Name = "Bikes",
                         OptionTypeId = 6
@@ -207,7 +207,7 @@ namespace MemberPlatformDAL.Data
                 ); ;
                 context.SaveChanges();
                 context.ProductDefinitions.AddRange(
-                     new ProductDefinition
+                     new ProductDefinitionEntity
                      {
                          Name = "Triatlon",
                          Description = "Start to triatlon",
@@ -225,7 +225,7 @@ namespace MemberPlatformDAL.Data
                      });
                         context.SaveChanges();
                         context.ProductDefinitions.AddRange(
-                    new ProductDefinition
+                    new ProductDefinitionEntity
                     {
                         Name = "Running",
                         Description = "Running",
@@ -243,7 +243,7 @@ namespace MemberPlatformDAL.Data
                     });
                 context.SaveChanges();
                 context.ProductUnits.AddRange(
-                    new ProductUnit
+                    new ProductUnitEntity
                     {
                         Date = DateTime.Now,
                         Comment = "looptrainingen",
@@ -258,7 +258,7 @@ namespace MemberPlatformDAL.Data
                     );
                 context.SaveChanges();
                 context.Contracts.AddRange(
-                    new Contract
+                    new ContractEntity
                     {
                         ContractDate = DateTime.Now,
                         StartDate = DateTime.Now.AddDays(5),
@@ -268,7 +268,7 @@ namespace MemberPlatformDAL.Data
                     );
                 context.SaveChanges();
                 context.ProductAgreements.AddRange(
-                    new ProductAgreement
+                    new ProductAgreementEntity
                     {
                         ContractId = 1,
                         ProductDefinitionId = 1,
@@ -276,7 +276,7 @@ namespace MemberPlatformDAL.Data
                     );
                 context.SaveChanges();
                 context.ContractPersonInvolvements.AddRange(
-                    new ContractPersonInvolvement
+                    new ContractPersonInvolvementEntity
                     {
                         ContractId = 1,
                         PersonId = 1,
@@ -286,7 +286,7 @@ namespace MemberPlatformDAL.Data
                     );
                 context.SaveChanges();
                 context.PriceAgreements.AddRange(
-                    new PriceAgreement
+                    new PriceAgreementEntity
                     {
                         DiscountAmount = 10,
                         PriceBillable = 150,
@@ -301,7 +301,7 @@ namespace MemberPlatformDAL.Data
                     );
                 context.SaveChanges();
                 context.PersonPersonRelations.AddRange(
-                    new PersonPersonRelation
+                    new PersonPersonRelationEntity
                     {
                         ParentId = 1,
                         ChildId = 2,
@@ -310,14 +310,14 @@ namespace MemberPlatformDAL.Data
                     );
                 context.SaveChanges();
                 context.Tickets.AddRange(
-                    new Ticket
+                    new TicketEntity
                     {
                         PersonId = 1,
                     }
                     );
                 context.SaveChanges();
                 context.TicketItems.AddRange(
-                    new TicketItem
+                    new TicketItemEntity
                     {
                         Message = "Question of a member",
                         ReplierId = 1,
@@ -328,7 +328,7 @@ namespace MemberPlatformDAL.Data
                     );
                 context.SaveChanges();
                 context.SalesItems.AddRange(
-                    new SalesItem
+                    new SalesItemEntity
                     {
                         Name = "koersfiets",
                         Description = "kinderfiets maat 10",

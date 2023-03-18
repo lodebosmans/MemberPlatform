@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class ContractPersonInvolvement
+    public class ContractPersonInvolvementEntity
     {
         // Attributes
         public int Id { get; set; }
@@ -20,8 +20,8 @@ namespace MemberPlatformDAL.Entities
 
         // Navigation properties
         public PersonEntity Person { get; set; }         //Navigation property : 1 person per ContractPersonRole
-        public Contract Contract { get; set; }     //Navigation property : 1 Contract per ContractPersonRole
-        public Option Role { get; set; }        //Navigation property: 1 Role per ContractRolePerson
+        public ContractEntity Contract { get; set; }     //Navigation property : 1 Contract per ContractPersonRole
+        public OptionEntity Role { get; set; }        //Navigation property: 1 Role per ContractRolePerson
 
     }
 }

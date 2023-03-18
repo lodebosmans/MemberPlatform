@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class ProductUnit
+    public class ProductUnitEntity
     {
         // Attributes
         public int Id { get; set; }
@@ -24,8 +24,8 @@ namespace MemberPlatformDAL.Entities
         public int ProductUnitStatusId { get; set; }        //Foreign key relationship
 
         // Navigation properties
-        public ProductDefinition? Product { get; set; }
-        public Option? ProductUnitStatus { get; set; }
+        public ProductDefinitionEntity? Product { get; set; }
+        public OptionEntity? ProductUnitStatus { get; set; }
         public AddressEntity? Address { get; set; }
 
 

@@ -22,8 +22,8 @@ namespace MemberPlatformDAL.Entities
         public int? AddressTypeId { get; set; }
 
         // Navigation properties
-        public Option? AddressType { get; set; }
-        public ICollection<ProductUnit>? productUnits { get; set; }
+        public OptionEntity? AddressType { get; set; }
+        public ICollection<ProductUnitEntity>? productUnits { get; set; }
         public ICollection<PersonEntity>? persons { get; set; }
 
 

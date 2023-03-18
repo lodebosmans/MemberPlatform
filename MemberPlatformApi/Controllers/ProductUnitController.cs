@@ -19,7 +19,7 @@ namespace MemberPlatformApi.Controllers
         }
         // GET: api/ProductUnits
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductUnit>>> GetProductUnits()
+        public async Task<ActionResult<IEnumerable<ProductUnitEntity>>> GetProductUnits()
         {
             var productunits = await _uow.ProductUnitRepository.GetAllAsync();
             return productunits.ToList();
@@ -27,7 +27,7 @@ namespace MemberPlatformApi.Controllers
 
         // GET api/ProductUnit/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductUnit>> GetProductUnit(int id)
+        public async Task<ActionResult<ProductUnitEntity>> GetProductUnit(int id)
         {
             var productUnit = await _uow.ProductUnitRepository.GetByIDAsync(id);
 
@@ -41,7 +41,7 @@ namespace MemberPlatformApi.Controllers
 
         // POST api/ProductUnit
         [HttpPost]
-        public async Task<ActionResult<ProductUnit>> PostProductUnit(ProductUnit productUnit)
+        public async Task<ActionResult<ProductUnitEntity>> PostProductUnit(ProductUnitEntity productUnit)
         {
             _uow.ProductUnitRepository.Insert(productUnit);
             await _uow.SaveAsync();
@@ -51,7 +51,7 @@ namespace MemberPlatformApi.Controllers
 
         // PUT api/Address/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductUnit(int id, ProductUnit productUnit)
+        public async Task<IActionResult> PutProductUnit(int id, ProductUnitEntity productUnit)
         {
 
             if (id != productUnit.Id)
