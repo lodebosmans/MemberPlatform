@@ -8,15 +8,18 @@ namespace MemberPlatformDAL.Entities
         // Attributes
         public int Id { get; set; }
 
-        [MaxLength(50)]
-        [EmailAddress]
-        [Required]
         public bool PrivacyApproval { get; set; }
 
         public DateTime DateOfBirth { get; set; }
         public int AddressId { get; set; }
+
+        [EmailAddress]
         public string EmailAddress { get; set; }
+
+        [MaxLength(50)]
+        [Required]
         public string FirstName { get; set; }
+
         public string Gender { get; set; }
         public string IdentityNumber { get; set; }
         public string LastName { get; set; }
