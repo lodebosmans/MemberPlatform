@@ -1,7 +1,6 @@
-using MemberPlatformDAL.Entities;
-using MemberPlatformDAL.UoW;
+using MemberPlatformCore.Models;
+using MemberPlatformCore.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,94 +10,92 @@ namespace MemberPlatformApi.Controllers
     [ApiController]
     public class AddressController : ControllerBase
     {
+        private readonly IAddressService _addressService;
 
-        private readonly IUnitOfWork _uow;
-
-        public AddressController(IUnitOfWork uow)
+        public AddressController(IAddressService addressService)
         {
-            _uow = uow;
+            _addressService = addressService;
         }
+
         // GET: api/Addresses
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AddressEntity>>> GetAddresses()
+        public async Task<List<Address>> GetAllAsync()
         {
-            var addresses = await _uow.AddressRepository.GetAllAsync();
-            return addresses.ToList();
+            return await _addressService.GetAllAsync();
         }
 
-        // GET api/Address/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AddressEntity>> GetAddress(int id)
-        {
-            var address = await _uow.AddressRepository.GetByIDAsync(id);
+        //    // GET api/Address/5
+        //    [HttpGet("{id}")]
+        //    public async Task<ActionResult<AddressEntity>> GetAddress(int id)
+        //    {
+        //        var address = await _uow.AddressRepository.GetByIDAsync(id);
 
-            if (address == null)
-            {
-                return NotFound();
-            }
+        //        if (address == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-            return address;
-        }
+        //        return address;
+        //    }
 
-        // POST api/<AddressController>
-        [HttpPost]
-        public async Task<ActionResult<AddressEntity>> PostAddress(AddressEntity address)
-        {
-            _uow.AddressRepository.Insert(address);
-            await _uow.SaveAsync();
+        //    // POST api/<AddressController>
+        //    [HttpPost]
+        //    public async Task<ActionResult<AddressEntity>> PostAddress(AddressEntity address)
+        //    {
+        //        _uow.AddressRepository.Insert(address);
+        //        await _uow.SaveAsync();
 
-            return CreatedAtAction("GetAddress", new { id = address.Id }, address);
-        }
+        //        return CreatedAtAction("GetAddress", new { id = address.Id }, address);
+        //    }
 
-        // PUT api/Address/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAddress(int id, AddressEntity address)
-        {
+        //    // PUT api/Address/5
+        //    [HttpPut("{id}")]
+        //    public async Task<IActionResult> PutAddress(int id, AddressEntity address)
+        //    {
+        //        if (id != address.Id)
+        //        {
+        //            return BadRequest();
+        //        }
 
-            if (id != address.Id)
-            {
-                return BadRequest();
-            }
+        //        _uow.AddressRepository.Update(address);
 
-            _uow.AddressRepository.Update(address);
+        //        try
+        //        {
+        //            await _uow.SaveAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!AddressExists(id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return NoContent();
+        //    }
 
-            try
-            {
-                await _uow.SaveAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AddressExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return NoContent();
-        }
+        //    private bool AddressExists(int id)
+        //    {
+        //        return _uow.AddressRepository.Get(e => e.Id == id).Any();
+        //    }
 
-        private bool AddressExists(int id)
-        {
-            return _uow.AddressRepository.Get(e => e.Id == id).Any();
-        }
+        //    // DELETE api/Address/5
+        //    [HttpDelete("{id}")]
+        //    public async Task<IActionResult> DeletePerson(int id)
+        //    {
+        //        var address = await _uow.AddressRepository.GetByIDAsync(id);
+        //        if (address == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-        // DELETE api/Address/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePerson(int id)
-        {
-            var address = await _uow.AddressRepository.GetByIDAsync(id);
-            if (address == null)
-            {
-                return NotFound();
-            }
+        //        _uow.AddressRepository.Delete(id);
+        //        await _uow.SaveAsync();
 
-            _uow.AddressRepository.Delete(id);
-            await _uow.SaveAsync();
-
-            return NoContent();
-        }
+        //        return NoContent();
+        //    }
     }
 }

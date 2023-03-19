@@ -1,6 +1,9 @@
-﻿namespace MemberPlatformCore.Services
+using MemberPlatformCore.Models;
+
+namespace MemberPlatformCore.Services
 {
     public interface IAddressService
     {
+        Task<List<Address>> GetAllAsync();
     }
 }

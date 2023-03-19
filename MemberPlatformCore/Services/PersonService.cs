@@ -24,26 +24,6 @@ namespace MemberPlatformCore.Services
             _mapper = new Mapper(config);
         }
 
-        //public async Task<Person> GetPersonAsync(int id)
-        //{
-        //    PersonEntity entity = await _personRepository.GetByIDAsync(id);
-        //    Person person = new Person();
-        //    //Todo automapper
-        //    person.Id = entity.Id;
-        //    person.DateOfBirth = entity.DateOfBirth;
-        //    person.EmailAddress = entity.EmailAddress;
-        //    person.FirstName = entity.FirstName;
-        //    person.Gender = entity.Gender;
-        //    person.IdentityNumber = entity.IdentityNumber;
-        //    person.InsuranceCompany = entity.InsuranceCompany;
-        //    person.LastName = entity.LastName;
-        //    person.MobilePhone = entity.MobilePhone;
-        //    person.PrivacyApproval = entity.PrivacyApproval;
-        //    person.PostalCode = entity.Address.PostalCode;
-        //    person.Street = "Kerkstraat";
-
-        //    return person;
-        //}
         public async Task<Person> GetPersonAsync(int id)
         {
             PersonEntity entity = await _personRepository.GetByIDAsync(id);
@@ -53,16 +33,6 @@ namespace MemberPlatformCore.Services
             return person;
         }
 
-        //public async Task<List<Person>> GetAllWithAddressAsync()
-        //{
-        //    PersonEntity entity = (PersonEntity)await _personRepository.GetAllWithAddressAsync();
-        //    Person person = new Person();
-        //    person.Id = entity.Id;
-        //    person.PostalCode = entity.Address.PostalCode;
-        //    person.Country = entity.Address.Country;
-
-        //    return person;
-        //}
         public async Task<List<Person>> GetAllWithAddressAsync()
         {
             List<PersonEntity> entities = (List<PersonEntity>)await _personRepository.GetAllWithAddressAsync();
@@ -94,3 +64,34 @@ namespace MemberPlatformCore.Services
         }
     }
 }
+
+//public async Task<Person> GetPersonAsync(int id)
+//{
+//    PersonEntity entity = await _personRepository.GetByIDAsync(id);
+//    Person person = new Person();
+//    //Todo automapper
+//    person.Id = entity.Id;
+//    person.DateOfBirth = entity.DateOfBirth;
+//    person.EmailAddress = entity.EmailAddress;
+//    person.FirstName = entity.FirstName;
+//    person.Gender = entity.Gender;
+//    person.IdentityNumber = entity.IdentityNumber;
+//    person.InsuranceCompany = entity.InsuranceCompany;
+//    person.LastName = entity.LastName;
+//    person.MobilePhone = entity.MobilePhone;
+//    person.PrivacyApproval = entity.PrivacyApproval;
+//    person.PostalCode = entity.Address.PostalCode;
+//    person.Street = "Kerkstraat";
+
+//    return person;
+//}
+//public async Task<List<Person>> GetAllWithAddressAsync()
+//{
+//    PersonEntity entity = (PersonEntity)await _personRepository.GetAllWithAddressAsync();
+//    Person person = new Person();
+//    person.Id = entity.Id;
+//    person.PostalCode = entity.Address.PostalCode;
+//    person.Country = entity.Address.Country;
+
+//    return person;
+//}

@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MemberPlatformCore.Models;
 using MemberPlatformCore.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace MemberPlatformApi.Controllers
 {
@@ -40,7 +34,6 @@ namespace MemberPlatformApi.Controllers
         public async Task<Person> GetPersonWithAddressAsync(int id)
         {
             return await _personService.GetPersonAsync(id);
-
         }
 
         //// PUT: api/Persons/5
@@ -48,7 +41,6 @@ namespace MemberPlatformApi.Controllers
         //[HttpPut("{id}")]
         //public async Task<IActionResult> PutPerson(int id, PersonEntity person)
         //{
-
         //    if (id != person.Id)
         //    {
         //        return BadRequest();
@@ -82,7 +74,6 @@ namespace MemberPlatformApi.Controllers
         //    _uow.PersonRepository.Insert(person);
         //    await _uow.SaveAsync();
 
-
         //    //return CreatedAtAction("GetPerson", new { id = person.Id }, person);
         //    return CreatedAtAction(nameof(GetPersonWithAddressAsync), new { id = person.Id }, person);
 
@@ -103,7 +94,5 @@ namespace MemberPlatformApi.Controllers
 
         //    return NoContent();
         //}
-
-
     }
 }
