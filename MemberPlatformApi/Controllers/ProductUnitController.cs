@@ -17,6 +17,7 @@ namespace MemberPlatformApi.Controllers
         {
             _uow = uow;
         }
+
         // GET: api/ProductUnits
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductUnitEntity>>> GetProductUnits()
@@ -29,7 +30,7 @@ namespace MemberPlatformApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductUnitEntity>> GetProductUnit(int id)
         {
-            var productUnit = await _uow.ProductUnitRepository.GetByIDAsync(id);
+            var productUnit = await _uow.ProductUnitRepository.GetByIdAsync(id);
 
             if (productUnit == null)
             {
@@ -53,7 +54,6 @@ namespace MemberPlatformApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProductUnit(int id, ProductUnitEntity productUnit)
         {
-
             if (id != productUnit.Id)
             {
                 return BadRequest();
@@ -84,12 +84,11 @@ namespace MemberPlatformApi.Controllers
             return _uow.ProductUnitRepository.Get(e => e.Id == id).Any();
         }
 
-
         // DELETE api/Address/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProductUnit(int id)
         {
-            var productUnit = await _uow.ProductUnitRepository.GetByIDAsync(id);
+            var productUnit = await _uow.ProductUnitRepository.GetByIdAsync(id);
             if (productUnit == null)
             {
                 return NotFound();

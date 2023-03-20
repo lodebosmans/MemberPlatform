@@ -26,8 +26,8 @@ namespace MemberPlatformCore.Services
 
         public async Task<Person> GetPersonAsync(int id)
         {
-            PersonEntity entity = await _personRepository.GetByIDAsync(id);
-            _ = await _addressRepository.GetByIDAsync(entity.AddressId);
+            PersonEntity entity = await _personRepository.GetByIdAsync(id);
+            _ = await _addressRepository.GetByIdAsync(entity.AddressId);
             Person person = _mapper.Map<Person>(entity);
 
             return person;

@@ -1,18 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Data
 {
     public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
     {
-
         // https://stackoverflow.com/questions/69410444/there-was-an-error-running-the-selected-code-generator-unable-to-resolve-servic
-
 
         public DataContext CreateDbContext(string[] args)
         {

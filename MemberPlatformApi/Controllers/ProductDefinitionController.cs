@@ -17,6 +17,7 @@ namespace MemberPlatformApi.Controllers
         {
             _uow = uow;
         }
+
         // GET: api/<ProductDefinitionController>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductDefinitionEntity>>> GetProductDefinitions()
@@ -24,11 +25,12 @@ namespace MemberPlatformApi.Controllers
             var productDefinitions = await _uow.ProductDefinitionRepository.GetAllAsync();
             return productDefinitions.ToList();
         }
+
         // GET api/ProductDefinition/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDefinitionEntity>> GetProductDefinition(int id)
         {
-            var ProductDefinition = await _uow.ProductDefinitionRepository.GetByIDAsync(id);
+            var ProductDefinition = await _uow.ProductDefinitionRepository.GetByIdAsync(id);
 
             if (ProductDefinition == null)
             {
@@ -52,7 +54,6 @@ namespace MemberPlatformApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProductDefinition(int id, ProductDefinitionEntity productDefinition)
         {
-
             if (id != productDefinition.Id)
             {
                 return BadRequest();
@@ -87,7 +88,7 @@ namespace MemberPlatformApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProductDefinition(int id)
         {
-            var productDefinition = await _uow.ProductDefinitionRepository.GetByIDAsync(id);
+            var productDefinition = await _uow.ProductDefinitionRepository.GetByIdAsync(id);
             if (productDefinition == null)
             {
                 return NotFound();

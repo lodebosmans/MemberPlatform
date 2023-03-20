@@ -13,7 +13,7 @@
 //        public int Id { get; set; }
 //        public string Comment { get; set; }
 //        [ForeignKey("StatusTypeId")]
-//        public int StatusTypeId { get; set; }   //Foreign key relationship  
+//        public int StatusTypeId { get; set; }   //Foreign key relationship
 //        public int AgreementId { get; set; }     //Foreign key relationship
 //        [ForeignKey("ApproverId")]
 //        public int ApproverId { get; set; }        //Foreign key relationship

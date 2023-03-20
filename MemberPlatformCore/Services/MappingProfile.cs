@@ -30,6 +30,13 @@ namespace MemberPlatformCore.Services
 
             CreateMap<OptionEntity, Option>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+
+            CreateMap<OptionTypeEntity, OptionType>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+
+            //om te kunnen updaten moet de mapping ook van model terug entiteit gaan
+            CreateMap<OptionType, OptionTypeEntity>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
         }
     }
 }
