@@ -31,6 +31,7 @@ namespace MemberPlatformDAL.Repositories
             await _context.SaveChangesAsync();
             return entity;
         }
+
         public async Task<OptionTypeEntity> AddAsync(OptionTypeEntity entity)
         {
             await _context.OptionTypes.AddAsync(entity);

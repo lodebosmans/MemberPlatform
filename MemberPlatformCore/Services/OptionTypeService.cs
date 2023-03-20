@@ -86,9 +86,6 @@ namespace MemberPlatformCore.Services
 
             // Map the deleted entity back to an OptionType object and return it
             return _mapper.Map<OptionType>(entity);
-
         }
     }
-      
-    }
-
+}
