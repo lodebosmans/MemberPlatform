@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
@@ -11,6 +6,7 @@ namespace MemberPlatformDAL.Entities
     {
         // Attributes
         public int Id { get; set; }
+
         public string? Name { get; set; }
         public string Street { get; set; }
         public string Number { get; set; }
@@ -18,14 +14,14 @@ namespace MemberPlatformDAL.Entities
         public string PostalCode { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+
         [ForeignKey("AddressTypeId")]
-        public int? AddressTypeId { get; set; }
+        public int AddressTypeId { get; set; }
 
         // Navigation properties
         public OptionEntity? AddressType { get; set; }
+
         public ICollection<ProductUnitEntity>? productUnits { get; set; }
         public ICollection<PersonEntity>? persons { get; set; }
-
-
     }
 }

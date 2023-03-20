@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
@@ -11,6 +6,7 @@ namespace MemberPlatformDAL.Entities
     {
         // Attributes
         public int Id { get; set; }
+
         public string Name { get; set; }
         public int? OptionTypeId { get; set; }        //Foreign key relationship
 
@@ -25,8 +21,10 @@ namespace MemberPlatformDAL.Entities
 
         [InverseProperty("ContractType")]
         public ICollection<ContractEntity>? ContractType { get; set; }
+
         [InverseProperty("Relation")]
         public ICollection<PersonPersonRelationEntity>? PersonPersonRelationType { get; set; }
+
         [InverseProperty("ProductUnitStatus")]
         public ICollection<ProductUnitEntity>? ProductUnitStatus { get; set; }
 
@@ -35,15 +33,23 @@ namespace MemberPlatformDAL.Entities
 
         [InverseProperty("DiscountType")]
         public ICollection<PriceAgreementEntity>? DiscountType { get; set; }
+
         [InverseProperty("PriceAgreementStatus")]
         public ICollection<PriceAgreementEntity>? PriceAgreementStatus { get; set; }
+
         [InverseProperty("SalesItemType")]
         public ICollection<SalesItemEntity>? SalesItemType { get; set; }
+
         [InverseProperty("ProductDefinitionStatus")]
         public ICollection<ProductDefinitionEntity>? ProductDefinitionStatus { get; set; }
+
         [InverseProperty("ProductDefinitionFormat")]
         public ICollection<ProductDefinitionEntity>? ProductDefinitionFormat { get; set; }
+
         [InverseProperty("ProductDefinitionSport")]
         public ICollection<ProductDefinitionEntity>? ProductDefinitionSport { get; set; }
+
+        [InverseProperty("AddressType")]
+        public ICollection<AddressEntity>? AddressType { get; set; }
     }
 }
