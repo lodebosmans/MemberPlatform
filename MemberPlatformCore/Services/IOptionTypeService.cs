@@ -9,5 +9,9 @@ namespace MemberPlatformCore.Services
         Task<OptionType> GetByIdAsync(int id);
 
         Task<OptionType> UpdateAsync(int id, OptionType optionType);
+
+        Task<OptionType> PostAsync(OptionType optionType);
+
+        Task<OptionType> DeleteAsync(int id);
     }
 }

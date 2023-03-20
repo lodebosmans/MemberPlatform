@@ -32,5 +32,17 @@ namespace MemberPlatformApi.Controllers
         {
             return await _optionTypeService.UpdateAsync(id, optionType);
         }
+
+        [HttpPost]
+        public async Task<OptionType> PostAsync(OptionType optionType)
+        {
+            return await _optionTypeService.PostAsync(optionType);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<OptionType> DeleteAsync(int id)
+        {
+            return await _optionTypeService.DeleteAsync(id);
+        }
     }
 }
