@@ -22,7 +22,8 @@ namespace MemberPlatformDAL.Repositories
         public async Task<List<AddressEntity>> GetAllAsync()
         {
             return await _context.Addresses
-                   .ToListAsync();
+                .Include(a => a.AddressType)
+                 .ToListAsync();
         }
     }
 }

@@ -24,6 +24,12 @@ namespace MemberPlatformCore.Services
                 .ForMember(dest => dest.PostalCode, opt => opt.MapFrom(src => src.Address.PostalCode))
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Address.City))
                 .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Address.Country));
+
+            CreateMap<AddressEntity, Address>()
+                .ForMember(dest => dest.AddressType, opt => opt.MapFrom(src => src.AddressType.Name));
+
+            CreateMap<OptionEntity, Option>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
         }
     }
 }
