@@ -1,19 +1,14 @@
 using MemberPlatformDAL.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.UoW
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-
         private DataContext _context;
         private DbSet<T> table = null;
+
         public GenericRepository(DataContext context)
         {
             _context = context;
@@ -25,12 +20,10 @@ namespace MemberPlatformDAL.UoW
             return await table.ToListAsync();
         }
 
-
-        public async Task<T> GetByIDAsync(int id, string includeProperties)
+        public async Task<T> GetByIdAsync(int id, string includeProperties)
         {
             return await table.FindAsync(id);
         }
-
 
         public async Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>,
                                                     IOrderedQueryable<T>> orderBy = null,
@@ -73,11 +66,13 @@ namespace MemberPlatformDAL.UoW
             table.Add(obj);
             _context.SaveChanges();
         }
+
         public void Update(T obj)
         {
             table.Attach(obj);
             _context.Entry(obj).State = EntityState.Modified;
         }
+
         public void Delete(int id)
         {
             T existing = table.Find(id);
@@ -89,11 +84,9 @@ namespace MemberPlatformDAL.UoW
             return table.AsQueryable<T>();
         }
 
-        public async Task<T> GetByIDAsync(int id)
+        public async Task<T> GetByIdAsync(int id)
         {
             return await table.FindAsync(id);
         }
-
-
     }
 }

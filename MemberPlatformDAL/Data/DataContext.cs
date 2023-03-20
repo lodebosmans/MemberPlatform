@@ -1,19 +1,17 @@
 using MemberPlatformDAL.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Data
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
+        }
+
         public DbSet<OptionTypeEntity> OptionTypes { get; set; }
         public DbSet<OptionEntity> Options { get; set; }
-        public DbSet<AddressEntity> Addresses { get; set; }   
+        public DbSet<AddressEntity> Addresses { get; set; }
         public DbSet<SalesItemEntity> SalesItems { get; set; }
         public DbSet<PersonEntity> Persons { get; set; }
         public DbSet<TicketEntity> Tickets { get; set; }
@@ -21,17 +19,13 @@ namespace MemberPlatformDAL.Data
         public DbSet<PersonPersonRelationEntity> PersonPersonRelations { get; set; }
         public DbSet<ProductDefinitionEntity> ProductDefinitions { get; set; }
         public DbSet<ProductUnitEntity> ProductUnits { get; set; }
-        public DbSet<PriceAgreementEntity> PriceAgreements { get; set;}
+        public DbSet<PriceAgreementEntity> PriceAgreements { get; set; }
+
         //public DbSet<Status> Statuses { get; set;}
         public DbSet<ContractEntity> Contracts { get; set; }
+
         public DbSet<ProductAgreementEntity> ProductAgreements { get; set; }
         public DbSet<ContractPersonInvolvementEntity> ContractPersonInvolvements { get; set; }
-
-
-
-
-
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -40,7 +34,6 @@ namespace MemberPlatformDAL.Data
                 optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MemberPlatformApi;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -107,7 +100,6 @@ namespace MemberPlatformDAL.Data
                 .HasForeignKey(pa => pa.ApproverId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-
             // Status price agreement
             modelBuilder.Entity<PriceAgreementEntity>()
             .ToTable("PriceAgreement")
@@ -120,7 +112,6 @@ namespace MemberPlatformDAL.Data
             .HasMany(o => o.PriceAgreementStatus)
             .WithOne(pd => pd.PriceAgreementStatus)
             .HasForeignKey(pd => pd.PriceAgreementStatusId);
-
 
             //modelBuilder.Entity<Status>()
             //.ToTable("Status")
@@ -155,7 +146,6 @@ namespace MemberPlatformDAL.Data
             .WithOne(pd => pd.ProductDefinitionSport)
             .HasForeignKey(pd => pd.ProductDefinitionSportId);
 
-     
             // ProdutAgreement
             modelBuilder.Entity<ProductAgreementEntity>()
             .ToTable("ProductAgreement")
@@ -163,7 +153,6 @@ namespace MemberPlatformDAL.Data
             .WithMany()
             .HasForeignKey(cpr => cpr.ProductDefinitionId)
             .OnDelete(DeleteBehavior.NoAction);
-
 
             //SalesItem
             modelBuilder.Entity<SalesItemEntity>()
@@ -194,14 +183,9 @@ namespace MemberPlatformDAL.Data
             //.WithMany()
             //.HasForeignKey(s => s.ResponsibleId)
             //.OnDelete(DeleteBehavior.NoAction);
-
         }
     }
 }
-
-
-
-
 
 // Parent ID
 //    modelBuilder.Entity<ProductDefinition>()

@@ -5,8 +5,10 @@ namespace MemberPlatformDAL.Repositories
 {
     public interface IOptionRepository : IGenericRepository<OptionEntity>
     {
-        Task<OptionEntity> GetByIDAsync(int id);
+        Task<OptionEntity> GetByIdAsync(int id);
+
         bool OptionExists(int id);
-      
+
+        Task<List<OptionEntity>> GetAllAsync();
     }
 }

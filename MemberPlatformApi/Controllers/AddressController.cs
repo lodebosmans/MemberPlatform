@@ -26,11 +26,11 @@ namespace MemberPlatformApi.Controllers
 
         //    // GET api/Address/5
         [HttpGet("{id}")]
-
-        public async Task<Address> GetByIdAsync(int id )
+        public async Task<Address> GetByIdAsync(int id)
         {
-            return await _addressService.GetByIDAsync(id);
+            return await _addressService.GetByIdAsync(id);
         }
+
         //    public async Task<ActionResult<AddressEntity>> GetAddress(int id)
         //    {
         //        var address = await _uow.AddressRepository.GetByIDAsync(id);

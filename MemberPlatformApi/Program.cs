@@ -26,7 +26,9 @@ builder.Services.AddScoped<IPersonService, PersonService>();
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddScoped<IOptionRepository, OptionRepository>();
-builder.Services.AddScoped<IOptionSevice, OptionService>();
+builder.Services.AddScoped<IOptionService, OptionService>();
+builder.Services.AddScoped<IOptionTypeRepository, OptionTypeRepository>();
+builder.Services.AddScoped<IOptionTypeService, OptionTypeService>();
 
 // Prevent circular references
 builder.Services.AddControllers().AddJsonOptions(options =>

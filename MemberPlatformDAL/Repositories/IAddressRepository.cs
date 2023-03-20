@@ -7,7 +7,7 @@ namespace MemberPlatformDAL.Repositories
     {
         bool AddressExists(int id);
 
-        Task<AddressEntity> GetByIDAsync(int id);
+        Task<AddressEntity> GetByIdAsync(int id);
 
         Task<List<AddressEntity>> GetAllAsync();
     }

@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Entities
 {
@@ -11,6 +6,7 @@ namespace MemberPlatformDAL.Entities
     {
         // Attributes
         public int Id { get; set; }
+
         public int ProductId { get; set; }
         public DateTime Date { get; set; }
         public string Comment { get; set; }
@@ -25,9 +21,8 @@ namespace MemberPlatformDAL.Entities
 
         // Navigation properties
         public ProductDefinitionEntity? Product { get; set; }
+
         public OptionEntity? ProductUnitStatus { get; set; }
         public AddressEntity? Address { get; set; }
-
-
     }
 }

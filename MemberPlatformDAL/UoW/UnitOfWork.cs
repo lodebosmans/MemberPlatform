@@ -1,17 +1,12 @@
 using MemberPlatformDAL.Data;
 using MemberPlatformDAL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.UoW
 {
     public class UnitOfWork : IUnitOfWork
     {
         private DataContext _context;
-       
+
         private GenericRepository<AddressEntity> addressRepository;
         private GenericRepository<OptionEntity> optionRepository;
         private GenericRepository<OptionTypeEntity> optionTypeRepository;
@@ -45,7 +40,7 @@ namespace MemberPlatformDAL.UoW
         {
             get
             {
-                if(optionRepository == null)
+                if (optionRepository == null)
                 {
                     optionRepository = new GenericRepository<OptionEntity>(_context);
                 }
@@ -57,7 +52,7 @@ namespace MemberPlatformDAL.UoW
         {
             get
             {
-                if(optionTypeRepository == null)
+                if (optionTypeRepository == null)
                 {
                     optionTypeRepository = new GenericRepository<OptionTypeEntity>(_context);
                 }
@@ -69,18 +64,19 @@ namespace MemberPlatformDAL.UoW
         {
             get
             {
-                if(productDefinitionRepository == null)
+                if (productDefinitionRepository == null)
                 {
                     productDefinitionRepository = new GenericRepository<ProductDefinitionEntity>(_context);
                 }
                 return productDefinitionRepository;
             }
         }
+
         public GenericRepository<ProductUnitEntity> ProductUnitRepository
         {
             get
             {
-                if(productUnitRepository==null)
+                if (productUnitRepository == null)
                 {
                     productUnitRepository = new GenericRepository<ProductUnitEntity>(_context);
                 }
@@ -92,24 +88,26 @@ namespace MemberPlatformDAL.UoW
         {
             get
             {
-                if(contractPersonInvolvementRepository==null)
+                if (contractPersonInvolvementRepository == null)
                 {
                     contractPersonInvolvementRepository = new GenericRepository<ContractPersonInvolvementEntity>(_context);
                 }
                 return contractPersonInvolvementRepository;
             }
         }
+
         public GenericRepository<ContractEntity> ContractRepository
         {
             get
             {
-                if(contractRepository==null)
+                if (contractRepository == null)
                 {
-                    contractRepository = new GenericRepository<ContractEntity>(_context); 
+                    contractRepository = new GenericRepository<ContractEntity>(_context);
                 }
                 return contractRepository;
             }
         }
+
         //public GenericRepository<Relationship> RelationshipRepository
         //{
         //    get
@@ -143,7 +141,6 @@ namespace MemberPlatformDAL.UoW
         //        return paymentStatusRepository;
         //    }
         //}
-
 
         public async Task SaveAsync()
         {

@@ -45,10 +45,10 @@ namespace MemberPlatformCore.Services
             return addresses;
         }
 
-        public async Task<Address> GetByIDAsync(int id)
+        public async Task<Address> GetByIdAsync(int id)
         {
-            AddressEntity entity = await _addressRepository.GetByIDAsync(id);
-            _ = await _optionRepository.GetByIDAsync(entity.AddressTypeId);
+            AddressEntity entity = await _addressRepository.GetByIdAsync(id);
+            _ = await _optionRepository.GetByIdAsync(entity.AddressTypeId);
             Address address = _mapper.Map<Address>(entity);
 
             return address;

@@ -1,20 +1,13 @@
 using MemberPlatformDAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Data
 {
     public class DbInitializer
     {
-
         public static void Initialize(IServiceProvider serviceProvider)
         {
-
             using (var context = new DataContext(
                 serviceProvider.GetRequiredService<
                     DbContextOptions<DataContext>>()))
@@ -130,7 +123,6 @@ namespace MemberPlatformDAL.Data
                         OptionTypeId = 6
                     }
 
-
                  ); ;
                 context.SaveChanges();
                 context.Addresses.AddRange(
@@ -156,7 +148,7 @@ namespace MemberPlatformDAL.Data
                     new AddressEntity
                     {
                         Street = "Bergstraat",
-                        Number= "3",
+                        Number = "3",
                         City = "Turnhout",
                         PostalCode = "2300",
                         Country = "België",
@@ -190,7 +182,7 @@ namespace MemberPlatformDAL.Data
                         IdentityNumber = "75010111991",
                         PrivacyApproval = true,
                         AddressId = 2
-                    },new PersonEntity
+                    }, new PersonEntity
                     {
                         FirstName = "Johnny",
                         LastName = "Urkens",
@@ -202,7 +194,6 @@ namespace MemberPlatformDAL.Data
                         IdentityNumber = "71040944569",
                         PrivacyApproval = true,
                         AddressId = 3
-
                     }
                 ); ;
                 context.SaveChanges();
@@ -218,29 +209,29 @@ namespace MemberPlatformDAL.Data
                          Price = 100,
                          SubscriptionOpening = DateTime.Parse("2021-12-01"),
                          SubscriptionClosing = DateTime.Parse("2021-12-31"),
-           
+
                          ProductDefinitionStatusId = 5,
                          ProductDefinitionFormatId = 1,
                          ProductDefinitionSportId = 2
                      });
-                        context.SaveChanges();
-                        context.ProductDefinitions.AddRange(
-                    new ProductDefinitionEntity
-                    {
-                        Name = "Running",
-                        Description = "Running",
-                        StartDate = DateTime.Parse("2022-02-01"),
-                        EndDate = DateTime.Parse("2022-12-31"),
-                        NumberOfSessions = 5,
-                        MaxAmountMembers = 20,
-                        Price = 50,
-                        SubscriptionOpening = DateTime.Parse("2022-01-01"),
-                        SubscriptionClosing = DateTime.Parse("2022-01-31"),
-                        ParentProductDefinitionId = 1,
-                        ProductDefinitionStatusId = 5,
-                        ProductDefinitionFormatId = 1,
-                        ProductDefinitionSportId = 3
-                    });
+                context.SaveChanges();
+                context.ProductDefinitions.AddRange(
+            new ProductDefinitionEntity
+            {
+                Name = "Running",
+                Description = "Running",
+                StartDate = DateTime.Parse("2022-02-01"),
+                EndDate = DateTime.Parse("2022-12-31"),
+                NumberOfSessions = 5,
+                MaxAmountMembers = 20,
+                Price = 50,
+                SubscriptionOpening = DateTime.Parse("2022-01-01"),
+                SubscriptionClosing = DateTime.Parse("2022-01-31"),
+                ParentProductDefinitionId = 1,
+                ProductDefinitionStatusId = 5,
+                ProductDefinitionFormatId = 1,
+                ProductDefinitionSportId = 3
+            });
                 context.SaveChanges();
                 context.ProductUnits.AddRange(
                     new ProductUnitEntity
@@ -281,7 +272,6 @@ namespace MemberPlatformDAL.Data
                         ContractId = 1,
                         PersonId = 1,
                         RoleId = 6,
-
                     }
                     );
                 context.SaveChanges();
@@ -339,14 +329,6 @@ namespace MemberPlatformDAL.Data
                     }
                     );
             };
-
-
-
-        
-
-
-            }
-
         }
     }
-
+}

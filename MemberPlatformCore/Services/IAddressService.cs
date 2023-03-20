@@ -6,6 +6,6 @@ namespace MemberPlatformCore.Services
     {
         Task<List<Address>> GetAllAsync();
 
-        Task<Address> GetByIDAsync(int id);
+        Task<Address> GetByIdAsync(int id);
     }
 }
