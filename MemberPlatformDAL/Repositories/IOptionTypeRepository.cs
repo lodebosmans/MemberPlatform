@@ -10,5 +10,9 @@ namespace MemberPlatformDAL.Repositories
         Task<List<OptionTypeEntity>> GetAllAsync();
 
         Task<OptionTypeEntity> UpdateAsync(OptionTypeEntity entity);
+
+        Task<OptionTypeEntity> AddAsync(OptionTypeEntity entity);
+
+        Task DeleteAsync(OptionTypeEntity entity);
     }
 }

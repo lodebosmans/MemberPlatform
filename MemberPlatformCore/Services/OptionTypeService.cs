@@ -60,30 +60,32 @@ namespace MemberPlatformCore.Services
             return updatedOptionType;
         }
 
-        //public async Task<OptionType> UpdateAsync(int id, OptionType optionType)
-        //{
-        //    if (id != optionType.Id)
-        //    {
-        //        return BadRequest();
-        //    }
+        public async Task<OptionType> PostAsync(OptionType optionType)
+        {
+            // Map the OptionType object to an OptionTypeEntity object
+            OptionTypeEntity entity = _mapper.Map<OptionTypeEntity>(optionType);
 
-        //    _optionTypeRepository.UpdateAsync(optionType);
+            // Call the AddAsync method of the repository to add the entity
+            entity = await _optionTypeRepository.AddAsync(entity);
 
-        //    try
-        //    {
-        //        await _optionTypeRepository.SaveAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!OptionTypeExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-        //    return NoContent();
+            // Map the added entity back to an OptionType object
+            OptionType addedOptionType = _mapper.Map<OptionType>(entity);
+
+            return addedOptionType;
+        }
+
+        public async Task<OptionType> DeleteAsync(int id)
+        {
+            OptionTypeEntity entity = await _optionTypeRepository.GetByIdAsync(id);
+            if (entity == null)
+            {
+                throw new ArgumentException($"OptionType with id {id} not found");
+            }
+            // Delete the entity from the repository
+            await _optionTypeRepository.DeleteAsync(entity);
+
+            // Map the deleted entity back to an OptionType object and return it
+            return _mapper.Map<OptionType>(entity);
+        }
     }
 }
