@@ -22,7 +22,21 @@ namespace MemberPlatformDAL.Repositories
         public async Task<List<OptionEntity>> GetAllAsync()
         {
             return await _context.Options
+                .Include(o => o.OptionType)
                 .ToListAsync();
+        }
+
+        public async Task<OptionEntity> UpdateAsync(OptionEntity entity)
+        {
+            _context.Options.Update(entity);
+            await _context.SaveChangesAsync();
+            return entity;
+        }
+
+        public async Task DeleteAsync(OptionEntity entity)
+        {
+            _context.Options.Remove(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }

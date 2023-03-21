@@ -29,7 +29,12 @@ namespace MemberPlatformCore.Services
                 .ForMember(dest => dest.AddressType, opt => opt.MapFrom(src => src.AddressType.Name));
 
             CreateMap<OptionEntity, Option>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.OptionType, opt => opt.MapFrom(src => src.OptionType.Name));
+
+            CreateMap<Option, OptionEntity>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForPath(dest => dest.OptionType.Name, opt => opt.MapFrom(src => src.OptionType));
 
             CreateMap<OptionTypeEntity, OptionType>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
