@@ -44,5 +44,10 @@ namespace MemberPlatformDAL.Repositories
             _context.OptionTypes.Remove(entity);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<OptionTypeEntity> GetByNameAsync(string name)
+        {
+            return await _context.OptionTypes.FirstOrDefaultAsync(x => x.Name == name);
+        }
     }
 }

@@ -10,5 +10,9 @@ namespace MemberPlatformDAL.Repositories
         bool OptionExists(int id);
 
         Task<List<OptionEntity>> GetAllAsync();
+
+        Task DeleteAsync(OptionEntity entity);
+
+        Task<OptionEntity> UpdateAsync(OptionEntity entity);
     }
 }
