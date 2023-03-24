@@ -9,15 +9,6 @@ namespace MemberPlatformCore.Services
         public MappingProfile()
         {
             CreateMap<PersonEntity, Person>()
-                //.ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
-                //.ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
-                //.ForMember(dest => dest.IdentityNumber, opt => opt.MapFrom(src => src.IdentityNumber))
-                //.ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.DateOfBirth))
-                //.ForMember(dest => dest.MobilePhone, opt => opt.MapFrom(src => src.MobilePhone))
-                //.ForMember(dest => dest.EmailAddress, opt => opt.MapFrom(src => src.EmailAddress))
-                //.ForMember(dest => dest.InsuranceCompany, opt => opt.MapFrom(src => src.InsuranceCompany))
-                //.ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender))
-                //.ForMember(dest => dest.PrivacyApproval, opt => opt.MapFrom(src => src.PrivacyApproval))
                 .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Address.Street))
                 .ForMember(dest => dest.Number, opt => opt.MapFrom(src => src.Address.Number))
                 .ForMember(dest => dest.Box, opt => opt.MapFrom(src => src.Address.Box))
@@ -30,15 +21,13 @@ namespace MemberPlatformCore.Services
 
 
             CreateMap<AddressEntity, Address>()
-                .ReverseMap()
-                .ForPath(x => x.AddressType.Name, opt => opt.Ignore())
-                .ForPath(x => x.AddressType.OptionTypeId, opt => opt.Ignore());
+                .ReverseMap();
+                //.ForPath(x => x.AddressType.Name, opt => opt.Ignore())
+                //.ForPath(x => x.AddressType.OptionTypeId, opt => opt.Ignore());
 
 
 
             CreateMap<OptionEntity, Option>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dest => dest.OptionType, opt => opt.MapFrom(src => src.OptionType.Name))
                 .ReverseMap();
 
             CreateMap<OptionTypeEntity, OptionType>()
