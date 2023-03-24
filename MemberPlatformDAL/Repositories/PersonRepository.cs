@@ -1,4 +1,4 @@
-﻿using MemberPlatformDAL.Data;
+using MemberPlatformDAL.Data;
 using MemberPlatformDAL.Entities;
 using MemberPlatformDAL.UoW;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +25,13 @@ namespace MemberPlatformDAL.Repositories
                 .Include(p => p.Address)
                 .ThenInclude(a => a.AddressType)
                 .ToListAsync();
+        }
+
+        public async Task<PersonEntity> UpdateAsync(PersonEntity entity)
+        {
+            _context.Persons.Update(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
     }
 }

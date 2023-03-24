@@ -10,5 +10,10 @@ namespace MemberPlatformDAL.Repositories
         Task<AddressEntity> GetByIdAsync(int id);
 
         Task<List<AddressEntity>> GetAllAsync();
+
+        Task<AddressEntity> UpdateAsync(AddressEntity entity);
+        Task SaveAsync();
+        Task DeleteAsync(AddressEntity entity);
+        Task<AddressEntity> AddAsync(AddressEntity entity);
     }
 }

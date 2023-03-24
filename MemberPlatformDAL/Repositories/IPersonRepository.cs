@@ -8,5 +8,6 @@ namespace MemberPlatformDAL.Repositories
         Task<IEnumerable<PersonEntity>> GetAllWithAddressAsync();
 
         bool PersonExists(int id);
+        Task<PersonEntity> UpdateAsync(PersonEntity entity);
     }
 }

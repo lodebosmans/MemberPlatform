@@ -11,5 +11,7 @@ namespace MemberPlatformCore.Services
         Task<Option> DeleteAsync(int id);
 
         Task<Option> UpdateAsync(int id, Option option);
+
+        Task<Option> PostAsync(Option option);
     }
 }
