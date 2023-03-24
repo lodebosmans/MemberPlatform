@@ -41,63 +41,13 @@ namespace MemberPlatformApi.Controllers
         {
             return await _personService.UpdateAsync(id, person);
         }
-        //// PUT: api/Persons/5
-        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutPerson(int id, PersonEntity person)
-        //{
-        //    if (id != person.Id)
-        //    {
-        //        return BadRequest();
-        //    }
 
-        //    _uow.PersonRepository.Update(person);
 
-        //    try
-        //    {
-        //        await _uow.SaveAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!PersonExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-        //    return NoContent();
-        //}
+        [HttpDelete("{id}")]
+        public async Task<Person> DeleteAsync(int id)
+        {
+            return await _personService.DeleteAsync(id);
+        }
 
-        //// POST: api/Persons
-        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPost]
-        //public async Task<ActionResult<PersonEntity>> PostPerson(PersonEntity person)
-        //{
-        //    _uow.PersonRepository.Insert(person);
-        //    await _uow.SaveAsync();
-
-        //    //return CreatedAtAction("GetPerson", new { id = person.Id }, person);
-        //    return CreatedAtAction(nameof(GetPersonWithAddressAsync), new { id = person.Id }, person);
-
-        //}
-
-        //// DELETE: api/Persons/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeletePerson(int id)
-        //{
-        //    var person = await _uow.PersonRepository.GetByIDAsync(id);
-        //    if (person == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _uow.PersonRepository.Delete(id);
-        //    await _uow.SaveAsync();
-
-        //    return NoContent();
-        //}
     }
 }

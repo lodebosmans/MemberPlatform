@@ -67,59 +67,65 @@ namespace MemberPlatformCore.Services
             return people;
         }
 
+
+        //public async Task<Person> UpdateAsync(int id, Person person)
+        //{
+        //    // Map the Person object to a PersonEntity object
+        //    PersonEntity entity = _mapper.Map<PersonEntity>(person);
+        //    entity.Id = id;
+
+        //    //// Check if the AddressType already exists based on its name
+        //    //OptionEntity optionEntity optionEntity = await _optionRepository.GetByIdAsync(person.address.AddressTypeId);
+        //    //if (addressEntity == null)
+        //    //{
+        //    //    //// If the AddressType doesn't exist, create a new one
+        //    //    //AddressTypeEntity newAddressTypeEntity = new AddressTypeEntity { Name = person.AddressType };
+        //    //    //addressTypeEntity = await _addressTypeRepository.AddAsync(newAddressTypeEntity);
+        //    //    throw new ArgumentException("AddressType not found");
+        //    //}
+
+        //    //// Set the AddressTypeId on the AddressEntity
+        //    //entity.Address.AddressType = addressEntity.AddressType;
+
+        //    // Call the UpdateAsync method of the repository to update the entity
+        //    entity = await _personRepository.UpdateAsync(entity);
+
+        //    // Map the updated entity back to a Person object
+        //    Person updatedPerson = _mapper.Map<Person>(entity);
+
+        //    return updatedPerson;
+        //}
         public async Task<Person> UpdateAsync(int id, Person person)
         {
             // Map the Person object to an PersonEntity object
             PersonEntity entity = _mapper.Map<PersonEntity>(person);
             entity.Id = id;
 
-            // Check if the AddressType already exists based on its name
-            OptionEntity optionEntity = await _optionRepository.GetByNameAsync(person.AddressType);
-            if (optionEntity == null)
-            {
-                throw new ArgumentException("AddressType not found");
-            }
-
-            // Use the existing AddressType
-            entity.Address.AddressType = optionEntity;
-            // Call the UpdateAsync method of the repository to update the entity
+            // Call the UpdateAsync method of the repository to update the Person entity
             entity = await _personRepository.UpdateAsync(entity);
 
-            // Map the updated entity back to an OptionType object
+            // Map the updated entity back to a Person object
             Person updatedPerson = _mapper.Map<Person>(entity);
 
             return updatedPerson;
         }
+
+
+        public async Task<Person> DeleteAsync(int id)
+        {
+            PersonEntity entity = await _personRepository.GetByIdAsync(id);
+            if (entity == null)
+            {
+                throw new ArgumentException($"Person with id {id} not found");
+            }
+            // Delete the entity from the repository
+            await _personRepository.DeleteAsync(entity);
+
+            // Map the deleted entity back to an OptionType object and return it
+            return _mapper.Map<Person>(entity);
+        }
+
     }
 }
 
-//public async Task<Person> GetPersonAsync(int id)
-//{
-//    PersonEntity entity = await _personRepository.GetByIDAsync(id);
-//    Person person = new Person();
-//    //Todo automapper
-//    person.Id = entity.Id;
-//    person.DateOfBirth = entity.DateOfBirth;
-//    person.EmailAddress = entity.EmailAddress;
-//    person.FirstName = entity.FirstName;
-//    person.Gender = entity.Gender;
-//    person.IdentityNumber = entity.IdentityNumber;
-//    person.InsuranceCompany = entity.InsuranceCompany;
-//    person.LastName = entity.LastName;
-//    person.MobilePhone = entity.MobilePhone;
-//    person.PrivacyApproval = entity.PrivacyApproval;
-//    person.PostalCode = entity.Address.PostalCode;
-//    person.Street = "Kerkstraat";
 
-//    return person;
-//}
-//public async Task<List<Person>> GetAllWithAddressAsync()
-//{
-//    PersonEntity entity = (PersonEntity)await _personRepository.GetAllWithAddressAsync();
-//    Person person = new Person();
-//    person.Id = entity.Id;
-//    person.PostalCode = entity.Address.PostalCode;
-//    person.Country = entity.Address.Country;
-
-//    return person;
-//}

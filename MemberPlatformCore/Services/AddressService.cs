@@ -54,28 +54,6 @@ namespace MemberPlatformCore.Services
             return address;
         }
 
-        //public async Task<Address> UpdateAsync(int id, Address address)
-        //{
-        //    // Map the Address object to an AddressEntity object
-        //    AddressEntity entity = _mapper.Map<AddressEntity>(address);
-        //    entity.Id = id;
-
-        //    // Check if the AddressType already exists based on its name
-        //    OptionEntity optionEntity = await _optionRepository.GetByNameAsync(address.AddressType);
-        //    if (optionEntity != null)
-        //    {
-        //        // Use the existing AddressType
-        //        entity.AddressType = optionEntity;
-        //    }
-
-        //    // Call the UpdateAsync method of the repository to update the entity
-        //    entity = await _addressRepository.UpdateAsync(entity);
-
-        //    // Map the updated entity back to an Address object
-        //    Address updatedAddress = _mapper.Map<Address>(entity);
-
-        //    return updatedAddress;
-        //}
         public async Task<Address> UpdateAsync(int id, Address address)
         {
             // Map the Address object to an AddressEntity object
@@ -101,20 +79,6 @@ namespace MemberPlatformCore.Services
             return updatedAddress;
         }
 
-
-        //public async Task<Address> PostAsync(Address address)
-        //{
-        //    // Map the Address object to an AddressEntity object
-        //    AddressEntity entity = _mapper.Map<AddressEntity>(address);
-
-        //    // Call the AddAsync method of the repository to add the entity
-        //    entity = await _addressRepository.AddAsync(entity);
-
-        //    // Map the added entity back to an OptionType object
-        //    Address addedAddress = _mapper.Map<Address>(entity);
-
-        //    return addedAddress;
-        //}
         public async Task<Address> PostAsync(Address address)
         {
             // Map the Address object to an AddressEntity object
