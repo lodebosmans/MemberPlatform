@@ -15,23 +15,34 @@ namespace MemberPlatformCore.Services
                 .ForMember(dest => dest.PostalCode, opt => opt.MapFrom(src => src.Address.PostalCode))
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Address.City))
                 .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Address.Country))
-                .ForMember(dest => dest.AddressType, opt => opt.MapFrom(src => src.Address.AddressType.Name))
                 .ForMember(dest => dest.AddressId, opt => opt.MapFrom(src => src.Address.Id))
                 .ReverseMap();
 
 
             CreateMap<AddressEntity, Address>()
                 .ReverseMap();
-                //.ForPath(x => x.AddressType.Name, opt => opt.Ignore())
-                //.ForPath(x => x.AddressType.OptionTypeId, opt => opt.Ignore());
+            //.ForPath(x => x.AddressType.Name, opt => opt.Ignore())
+            //.ForPath(x => x.AddressType.OptionTypeId, opt => opt.Ignore());
 
+            CreateMap<ContractEntity, Contract>()
+                .ReverseMap();
 
+            CreateMap<ContractPersonInvolvementEntity, ContractPersonInvolvement>()
+                .ReverseMap();
+
+            CreateMap<PriceAgreementEntity, PriceAgreement>()
+                .ReverseMap();
+
+            CreateMap<ProductAgreementEntity, ProductAgreement>()
+                .ReverseMap();
+
+            CreateMap<ProductDefinitionEntity, ProductDefinition>()
+                .ReverseMap();
 
             CreateMap<OptionEntity, Option>()
                 .ReverseMap();
 
             CreateMap<OptionTypeEntity, OptionType>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ReverseMap();
 
         }

@@ -29,6 +29,18 @@ builder.Services.AddScoped<IOptionRepository, OptionRepository>();
 builder.Services.AddScoped<IOptionService, OptionService>();
 builder.Services.AddScoped<IOptionTypeRepository, OptionTypeRepository>();
 builder.Services.AddScoped<IOptionTypeService, OptionTypeService>();
+builder.Services.AddScoped<IContractRepository, ContractRepository>();
+builder.Services.AddScoped<IContractService, ContractService>();
+builder.Services.AddScoped<IContractPersonInvolvementRepository, ContractPersonInvolvementRepository>();
+builder.Services.AddScoped<IContractPersonInvolvementService, ContractPersonInvolvementService>();
+builder.Services.AddScoped<IPriceAgreementRepository, PriceAgreementRepository>();
+builder.Services.AddScoped<IPriceAgreementService, PriceAgreementService>();
+builder.Services.AddScoped<IProductAgreementRepository, ProductAgreementRepository>();
+builder.Services.AddScoped<IProductAgreementService, ProductAgreementService>();
+builder.Services.AddScoped<IProductDefinitionRepository, ProductDefinitionRepository>();
+builder.Services.AddScoped<IProductDefinitionService, ProductDefinitionService>();
+
+
 
 // Prevent circular references
 builder.Services.AddControllers().AddJsonOptions(options =>

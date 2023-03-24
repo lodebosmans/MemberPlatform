@@ -1,3 +1,5 @@
+using MemberPlatformCore.Models;
+using MemberPlatformCore.Services;
 using MemberPlatformDAL.Entities;
 using MemberPlatformDAL.UoW;
 using Microsoft.AspNetCore.Mvc;
@@ -11,93 +13,41 @@ namespace MemberPlatformApi.Controllers
     [ApiController]
     public class ProductDefinitionController : ControllerBase
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IProductDefinitionService _productDefinitionService;
 
-        public ProductDefinitionController(IUnitOfWork uow)
+        public ProductDefinitionController(IProductDefinitionService productDefinitionService)
         {
-            _uow = uow;
+            _productDefinitionService = productDefinitionService;
         }
 
-        // GET: api/<ProductDefinitionController>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductDefinitionEntity>>> GetProductDefinitions()
+        public async Task<List<ProductDefinition>> GetAllAsync()
         {
-            var productDefinitions = await _uow.ProductDefinitionRepository.GetAllAsync();
-            return productDefinitions.ToList();
+            return await _productDefinitionService.GetAllAsync();
         }
 
-        // GET api/ProductDefinition/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductDefinitionEntity>> GetProductDefinition(int id)
+        public async Task<ProductDefinition> GetByIdAsync(int id)
         {
-            var ProductDefinition = await _uow.ProductDefinitionRepository.GetByIdAsync(id);
-
-            if (ProductDefinition == null)
-            {
-                return NotFound();
-            }
-
-            return ProductDefinition;
+            return await _productDefinitionService.GetByIdAsync(id);
         }
 
-        // POST api/ProductDefinition
-        [HttpPost]
-        public async Task<ActionResult<ProductDefinitionEntity>> PostAddress(ProductDefinitionEntity productDefinition)
-        {
-            _uow.ProductDefinitionRepository.Insert(productDefinition);
-            await _uow.SaveAsync();
-
-            return CreatedAtAction("GetProductDefinition", new { id = productDefinition.Id }, productDefinition);
-        }
-
-        // PUT api/ProductDefinition/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductDefinition(int id, ProductDefinitionEntity productDefinition)
+        public async Task<ProductDefinition> UpdateAsync(int id, ProductDefinition productDefinition)
         {
-            if (id != productDefinition.Id)
-            {
-                return BadRequest();
-            }
-
-            _uow.ProductDefinitionRepository.Update(productDefinition);
-
-            try
-            {
-                await _uow.SaveAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductDefinitionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return NoContent();
+            return await _productDefinitionService.UpdateAsync(id, productDefinition);
         }
 
-        private bool ProductDefinitionExists(int id)
+        [HttpPost]
+        public async Task<ProductDefinition> PostAsync(ProductDefinition productDefinition)
         {
-            return _uow.ProductDefinitionRepository.Get(e => e.Id == id).Any();
+            return await _productDefinitionService.PostAsync(productDefinition);
         }
 
-        // DELETE api/ProductDefinition/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProductDefinition(int id)
+        public async Task<ProductDefinition> DeleteAsync(int id)
         {
-            var productDefinition = await _uow.ProductDefinitionRepository.GetByIdAsync(id);
-            if (productDefinition == null)
-            {
-                return NotFound();
-            }
-
-            _uow.ProductDefinitionRepository.Delete(id);
-            await _uow.SaveAsync();
-
-            return NoContent();
+            return await _productDefinitionService.DeleteAsync(id);
         }
     }
 }
