@@ -25,7 +25,6 @@ namespace MemberPlatformCore.Services
         public async Task<OptionType> GetByIdAsync(int id)
         {
             OptionTypeEntity entity = await _optionTypeRepository.GetByIdAsync(id);
-
             OptionType optionType = _mapper.Map<OptionType>(entity);
 
             return optionType;
@@ -33,13 +32,11 @@ namespace MemberPlatformCore.Services
 
         public async Task<List<OptionType>> GetAllAsync()
         {
-            List<OptionTypeEntity> entities = await _optionTypeRepository.GetAllAsync();
+            List<OptionTypeEntity> entities = (List<OptionTypeEntity>)await _optionTypeRepository.GetAllAsync();
             List<OptionType> optionTypes = new List<OptionType>();
             foreach (OptionTypeEntity entity in entities)
             {
-                OptionType optionType = new OptionType();
-                optionType.Id = entity.Id;
-                optionType.Name = entity.Name;
+                OptionType optionType = _mapper.Map<OptionType>(entity);
                 optionTypes.Add(optionType);
             }
             return optionTypes;
@@ -47,31 +44,18 @@ namespace MemberPlatformCore.Services
 
         public async Task<OptionType> UpdateAsync(int id, OptionType optionType)
         {
-            // Map the OptionType object to an OptionTypeEntity object
-            OptionTypeEntity entity = _mapper.Map<OptionTypeEntity>(optionType);
-            entity.Id = id;
+            OptionTypeEntity optionTypeEntity = _mapper.Map<OptionTypeEntity>(optionType);
+            await _optionTypeRepository.Update(optionTypeEntity);
 
-            // Call the UpdateAsync method of the repository to update the entity
-            entity = await _optionTypeRepository.UpdateAsync(entity);
-
-            // Map the updated entity back to an OptionType object
-            OptionType updatedOptionType = _mapper.Map<OptionType>(entity);
-
-            return updatedOptionType;
+            return optionType;
         }
 
         public async Task<OptionType> PostAsync(OptionType optionType)
         {
-            // Map the OptionType object to an OptionTypeEntity object
-            OptionTypeEntity entity = _mapper.Map<OptionTypeEntity>(optionType);
+            OptionTypeEntity optionTypeEntity = _mapper.Map<OptionTypeEntity>(optionType);
+            await _optionTypeRepository.Insert(optionTypeEntity);
 
-            // Call the AddAsync method of the repository to add the entity
-            entity = await _optionTypeRepository.AddAsync(entity);
-
-            // Map the added entity back to an OptionType object
-            OptionType addedOptionType = _mapper.Map<OptionType>(entity);
-
-            return addedOptionType;
+            return optionType;
         }
 
         public async Task<OptionType> DeleteAsync(int id)
@@ -82,7 +66,7 @@ namespace MemberPlatformCore.Services
                 throw new ArgumentException($"OptionType with id {id} not found");
             }
             // Delete the entity from the repository
-            await _optionTypeRepository.DeleteAsync(entity);
+            await _optionTypeRepository.Delete(entity.Id);
 
             // Map the deleted entity back to an OptionType object and return it
             return _mapper.Map<OptionType>(entity);

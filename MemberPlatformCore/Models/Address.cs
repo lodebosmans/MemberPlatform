@@ -10,6 +10,7 @@ namespace MemberPlatformCore.Models
         public string PostalCode { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public Option AddressType { get; set; }
+        ////public Option AddressType { get; set; }
+        public int AddressTypeId { get; set; }
     }
 }

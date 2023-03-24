@@ -8,16 +8,13 @@ namespace MemberPlatformDAL.Entities
         public int Id { get; set; }
 
         public string Name { get; set; }
-        public int? OptionTypeId { get; set; }        //Foreign key relationship
+        public int OptionTypeId { get; set; }        //Foreign key relationship
 
         // Navigation properties
         public OptionTypeEntity? OptionType { get; set; }   //Navigation property : 1 OptionType per Option
 
         [InverseProperty("Role")]
         public ICollection<ContractPersonInvolvementEntity>? ContractPersonInvolvementType { get; set; }
-
-        //[InverseProperty("StatusType")]
-        //public ICollection<Status> StatusType { get; set; }
 
         [InverseProperty("ContractType")]
         public ICollection<ContractEntity>? ContractType { get; set; }
