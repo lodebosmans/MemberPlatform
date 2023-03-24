@@ -27,18 +27,18 @@ namespace MemberPlatformDAL.Repositories
                 .ToListAsync();
         }
 
-        public async Task<PersonEntity> UpdateAsync(PersonEntity entity)
-        {
-            _context.Persons.Update(entity);
-            await _context.SaveChangesAsync();
-            return entity;
-        }
+        //public async Task<PersonEntity> UpdateAsync(PersonEntity entity)
+        //{
+        //    _context.Persons.Update(entity);
+        //    await _context.SaveChangesAsync();
+        //    return entity;
+        //}
 
-        public async Task DeleteAsync(PersonEntity entity)
-        {
-            _context.Persons.Remove(entity);
-            await _context.SaveChangesAsync();
-        }
+        //public async Task DeleteAsync(PersonEntity entity)
+        //{
+        //    _context.Persons.Remove(entity);
+        //    await _context.SaveChangesAsync();
+        //}
 
     }
 }

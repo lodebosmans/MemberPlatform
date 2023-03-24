@@ -61,22 +61,24 @@ namespace MemberPlatformDAL.UoW
             return query.ToList();
         }
 
-        public void Insert(T obj)
+        public async Task Insert(T obj)
         {
             table.Add(obj);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(T obj)
+        public async Task Update(T obj)
         {
             table.Attach(obj);
             _context.Entry(obj).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             T existing = table.Find(id);
             table.Remove(existing);
+            await _context.SaveChangesAsync();
         }
 
         public virtual IQueryable<T> AllQuery()
@@ -84,7 +86,7 @@ namespace MemberPlatformDAL.UoW
             return table.AsQueryable<T>();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async virtual Task<T> GetByIdAsync(int id)
         {
             return await table.FindAsync(id);
         }

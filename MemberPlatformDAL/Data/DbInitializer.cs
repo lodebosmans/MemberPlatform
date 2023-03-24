@@ -185,7 +185,7 @@ namespace MemberPlatformDAL.Data
                         Name = "Wetsuit",
                         OptionTypeId = 10
                     }
-                 ); ;
+                 );
                 context.SaveChanges();
                 context.Addresses.AddRange(
                     new AddressEntity
@@ -196,7 +196,7 @@ namespace MemberPlatformDAL.Data
                         City = "Westerlo",
                         PostalCode = "2260",
                         Country = "België",
-                        AddressTypeId = 7,
+                        AddressTypeId = 16,
                     },
                     new AddressEntity
                     {
@@ -206,7 +206,7 @@ namespace MemberPlatformDAL.Data
                         City = "Geel",
                         PostalCode = "2440",
                         Country = "België",
-                        AddressTypeId = 8,
+                        AddressTypeId = 17,
                     },
                     new AddressEntity
                     {
@@ -215,7 +215,7 @@ namespace MemberPlatformDAL.Data
                         City = "Turnhout",
                         PostalCode = "2300",
                         Country = "België",
-                        AddressTypeId = 8,
+                        AddressTypeId = 17,
                     }
                     );
                 context.SaveChanges();
