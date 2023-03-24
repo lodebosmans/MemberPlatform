@@ -19,38 +19,21 @@ namespace MemberPlatformDAL.Repositories
             return _context.Addresses.Any(a => a.Id == id);
         }
 
-        public async Task<List<AddressEntity>> GetAllAsync()
+        public async Task<List<AddressEntity>> GetAllWithAddressTypeAsync()
         {
             return await _context.Addresses
                 .Include(a => a.AddressType)
-                 .ToListAsync();
+                .ToListAsync();
         }
-        public async Task<AddressEntity> UpdateAsync(AddressEntity entity)
+
+        public async Task<AddressEntity> GetAddressWithAddressType(int id)
         {
-            _context.Addresses.Update(entity);
-            await _context.SaveChangesAsync();
-            return entity;
+            return await _context.Addresses
+                .Include(a => a.AddressType)
+                .ThenInclude(t => t.OptionType)
+                .Where(x => x.Id == id)
+                .SingleAsync();
         }
-
-        public async Task DeleteAsync(AddressEntity entity)
-        {
-            _context.Addresses.Remove(entity);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task<AddressEntity> AddAsync(AddressEntity entity)
-        {
-            await _context.Addresses.AddAsync(entity);
-            await _context.SaveChangesAsync();
-            return entity;
-        }
-
-        public async Task SaveAsync()
-        {
-            await _context.SaveChangesAsync();
-        }
-
-
 
     }
 }

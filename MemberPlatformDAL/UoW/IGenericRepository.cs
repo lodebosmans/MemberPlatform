@@ -8,10 +8,10 @@ namespace MemberPlatformDAL.UoW
 
         IQueryable<T> AllQuery();
 
-        void Insert(T obj);
+        Task Insert(T obj);
 
-        void Delete(int id);
+        Task Delete(int id);
 
-        void Update(T obj);
+        Task Update(T obj);
     }
 }

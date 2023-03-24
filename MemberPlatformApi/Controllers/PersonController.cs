@@ -37,16 +37,16 @@ namespace MemberPlatformApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<Person> UpdateAsync(int id, Person person)
+        public async Task UpdateAsync(int id, Person person)
         {
-            return await _personService.UpdateAsync(id, person);
+            await _personService.UpdateAsync(id, person);
         }
 
 
         [HttpDelete("{id}")]
-        public async Task<Person> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            return await _personService.DeleteAsync(id);
+            await _personService.DeleteAsync(id);
         }
 
     }

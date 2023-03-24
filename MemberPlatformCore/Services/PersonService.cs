@@ -29,8 +29,8 @@ namespace MemberPlatformCore.Services
         public async Task<Person> GetPersonAsync(int id)
         {
             PersonEntity entity = await _personRepository.GetByIdAsync(id);
-            _ = await _addressRepository.GetByIdAsync(entity.AddressId);
-            _ = await _optionRepository.GetByIdAsync(entity.Address.AddressTypeId);
+            //_ = await _addressRepository.GetByIdAsync(entity.AddressId);
+            //_ = await _optionRepository.GetByIdAsync(entity.Address.AddressTypeId);
             Person person = _mapper.Map<Person>(entity);
 
             return person;
@@ -42,25 +42,7 @@ namespace MemberPlatformCore.Services
             List<Person> people = new List<Person>();
             foreach (PersonEntity entity in entities)
             {
-                Person person = new Person();
-                person.Id = entity.Id;
-                person.FirstName = entity.FirstName;
-                person.LastName = entity.LastName;
-                person.PrivacyApproval = entity.PrivacyApproval;
-                person.InsuranceCompany = entity.InsuranceCompany;
-                person.IdentityNumber = entity.IdentityNumber;
-                person.MobilePhone = entity.MobilePhone;
-                person.Gender = entity.Gender;
-                person.DateOfBirth = entity.DateOfBirth;
-                person.EmailAddress = entity.EmailAddress;
-                person.PostalCode = entity.Address.PostalCode;
-                person.Country = entity.Address.Country;
-                person.City = entity.Address.City;
-                person.Street = entity.Address.Street;
-                person.Box = entity.Address.Box;
-                person.Number = entity.Address.Number;
-                person.AddressType = entity.Address.AddressType.Name;
-
+                Person person = _mapper.Map<Person>(entity);
                 people.Add(person);
             }
 
@@ -95,23 +77,17 @@ namespace MemberPlatformCore.Services
 
         //    return updatedPerson;
         //}
-        public async Task<Person> UpdateAsync(int id, Person person)
+        public async Task UpdateAsync(int id, Person person)
         {
             // Map the Person object to an PersonEntity object
             PersonEntity entity = _mapper.Map<PersonEntity>(person);
-            entity.Id = id;
 
             // Call the UpdateAsync method of the repository to update the Person entity
-            entity = await _personRepository.UpdateAsync(entity);
-
-            // Map the updated entity back to a Person object
-            Person updatedPerson = _mapper.Map<Person>(entity);
-
-            return updatedPerson;
+            await _personRepository.Update(entity);
         }
 
 
-        public async Task<Person> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             PersonEntity entity = await _personRepository.GetByIdAsync(id);
             if (entity == null)
@@ -119,10 +95,8 @@ namespace MemberPlatformCore.Services
                 throw new ArgumentException($"Person with id {id} not found");
             }
             // Delete the entity from the repository
-            await _personRepository.DeleteAsync(entity);
+            await _personRepository.Delete(entity.Id);
 
-            // Map the deleted entity back to an OptionType object and return it
-            return _mapper.Map<Person>(entity);
         }
 
     }

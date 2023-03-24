@@ -25,38 +25,26 @@ namespace MemberPlatformCore.Services
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Address.City))
                 .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Address.Country))
                 .ForMember(dest => dest.AddressType, opt => opt.MapFrom(src => src.Address.AddressType.Name))
-                .ForMember(dest => dest.AddressId, opt => opt.MapFrom(src => src.Address.Id));
-                
-           
-            CreateMap<Person, PersonEntity>()
-                .ForPath(dest => dest.Address.Street, opt => opt.MapFrom(src => src.Street))
-                .ForPath(dest => dest.Address.Number, opt => opt.MapFrom(src => src.Number))
-                .ForPath(dest => dest.Address.Box, opt => opt.MapFrom(src => src.Box))
-                .ForPath(dest => dest.Address.PostalCode, opt => opt.MapFrom(src => src.PostalCode))
-                .ForPath(dest => dest.Address.City, opt => opt.MapFrom(src => src.City))
-                .ForPath(dest => dest.Address.Country, opt => opt.MapFrom(src => src.Country))
-                .ForPath(dest => dest.Address.AddressType.Name, opt => opt.MapFrom(src => src.AddressType))
-                .ForPath(dest => dest.Address.Id, opt => opt.MapFrom(src => src.AddressId));
+                .ForMember(dest => dest.AddressId, opt => opt.MapFrom(src => src.Address.Id))
+                .ReverseMap();
+
 
             CreateMap<AddressEntity, Address>()
-                .ForMember(dest => dest.AddressType, opt => opt.MapFrom(src => src.AddressType.Name));
-            CreateMap<Address, AddressEntity>()
-                .ForPath(dest => dest.AddressType.Name, opt => opt.MapFrom(src => src.AddressType));
+                .ReverseMap()
+                .ForPath(x => x.AddressType.Name, opt => opt.Ignore())
+                .ForPath(x => x.AddressType.OptionTypeId, opt => opt.Ignore());
+
+
 
             CreateMap<OptionEntity, Option>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dest => dest.OptionType, opt => opt.MapFrom(src => src.OptionType.Name));
-
-            CreateMap<Option, OptionEntity>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                .ForPath(dest => dest.OptionType.Name, opt => opt.MapFrom(src => src.OptionType));
+                .ForMember(dest => dest.OptionType, opt => opt.MapFrom(src => src.OptionType.Name))
+                .ReverseMap();
 
             CreateMap<OptionTypeEntity, OptionType>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ReverseMap();
 
-            //om te kunnen updaten moet de mapping ook van model terug entiteit gaan
-            CreateMap<OptionType, OptionTypeEntity>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
         }
     }
 }
