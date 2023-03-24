@@ -62,11 +62,23 @@ namespace MemberPlatformDAL.Data
                     );
                 context.SaveChanges();
                 context.Options.AddRange(
+                    // Type of events
                     new OptionEntity
                     {
                         Name = "Single day event",
                         OptionTypeId = 1,
                     },
+                    new OptionEntity
+                    {
+                        Name = "Multi day event",
+                        OptionTypeId = 1,
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Training series",
+                        OptionTypeId = 1,
+                    },
+                    // Sports
                     new OptionEntity
                     {
                         Name = "Triatlon",
@@ -82,19 +94,57 @@ namespace MemberPlatformDAL.Data
                         Name = "Swimming",
                         OptionTypeId = 2,
                     },
-                     new OptionEntity
-                     {
-                         Name = "Approved",
-                         OptionTypeId = 6,
-                     },
+                    new OptionEntity
+                    {
+                        Name = "Mountainbike",
+                        OptionTypeId = 2,
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Start to triatlon",
+                        OptionTypeId = 2,
+                    },
+                    // Statuses
+                    new OptionEntity
+                    {
+                        Name = "Submitted",
+                        OptionTypeId = 6,
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Cancelled",
+                        OptionTypeId = 6,
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Approved",
+                        OptionTypeId = 6,
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Not approved",
+                        OptionTypeId = 6,
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Action needed",
+                        OptionTypeId = 6,
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Pending",
+                        OptionTypeId = 6
+                    },
+                    // Contract types
                     new OptionEntity
                     {
                         Name = "Subscription",
                         OptionTypeId = 3
                     },
+                    // Address types
                     new OptionEntity
                     {
-                        Name = "TrainingFacilities",
+                        Name = "Training facility",
                         OptionTypeId = 8
                     },
                     new OptionEntity
@@ -102,27 +152,39 @@ namespace MemberPlatformDAL.Data
                         Name = "Residential",
                         OptionTypeId = 8
                     },
+                    // Reduction types
                     new OptionEntity
                     {
                         Name = "Sponsor reduction",
                         OptionTypeId = 9
                     },
+                    // Person person relationships
                     new OptionEntity
                     {
                         Name = "Family",
                         OptionTypeId = 9
                     },
-                    new OptionEntity
-                    {
-                        Name = "Pending",
-                        OptionTypeId = 6
-                    },
+                    // Sales item types
                     new OptionEntity
                     {
                         Name = "Bikes",
-                        OptionTypeId = 6
+                        OptionTypeId = 10
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Bike shoes",
+                        OptionTypeId = 10
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Trisuit",
+                        OptionTypeId = 10
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Wetsuit",
+                        OptionTypeId = 10
                     }
-
                  ); ;
                 context.SaveChanges();
                 context.Addresses.AddRange(
@@ -138,8 +200,9 @@ namespace MemberPlatformDAL.Data
                     },
                     new AddressEntity
                     {
-                        Street = "Zandstraat",
-                        Number = "2",
+                        Street = "Kerkstraat",
+                        Number = "4",
+                        Box = "3",
                         City = "Geel",
                         PostalCode = "2440",
                         Country = "België",
@@ -194,6 +257,30 @@ namespace MemberPlatformDAL.Data
                         IdentityNumber = "71040944569",
                         PrivacyApproval = true,
                         AddressId = 3
+                    }, new PersonEntity
+                    {
+                        FirstName = "Veerle",
+                        LastName = "Bosmans",
+                        Gender = "Female",
+                        DateOfBirth = DateTime.Parse("1979-04-09"),
+                        InsuranceCompany = "CM",
+                        MobilePhone = "0476989727",
+                        EmailAddress = "veerle@gmail.com",
+                        IdentityNumber = "71040944569",
+                        PrivacyApproval = true,
+                        AddressId = 2
+                    }, new PersonEntity
+                    {
+                        FirstName = "Wim",
+                        LastName = "Bosmans",
+                        Gender = "Male",
+                        DateOfBirth = DateTime.Parse("1983-04-09"),
+                        InsuranceCompany = "CM",
+                        MobilePhone = "0476989727",
+                        EmailAddress = "wim@gmail.com",
+                        IdentityNumber = "71040944569",
+                        PrivacyApproval = true,
+                        AddressId = 2
                     }
                 ); ;
                 context.SaveChanges();
