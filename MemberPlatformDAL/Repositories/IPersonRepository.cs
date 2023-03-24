@@ -9,5 +9,6 @@ namespace MemberPlatformDAL.Repositories
 
         bool PersonExists(int id);
         Task<PersonEntity> UpdateAsync(PersonEntity entity);
+        Task DeleteAsync(PersonEntity entity);
     }
 }
