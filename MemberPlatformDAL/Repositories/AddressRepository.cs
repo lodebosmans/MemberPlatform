@@ -25,5 +25,30 @@ namespace MemberPlatformDAL.Repositories
                 .Include(a => a.AddressType)
                  .ToListAsync();
         }
+        public async Task<AddressEntity> UpdateAsync(AddressEntity entity)
+        {
+            _context.Addresses.Update(entity);
+            await _context.SaveChangesAsync();
+            return entity;
+        }
+
+        public async Task DeleteAsync(AddressEntity entity)
+        {
+            _context.Addresses.Remove(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<AddressEntity> AddAsync(AddressEntity entity)
+        {
+            await _context.Addresses.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return entity;
+        }
+
+        public async Task SaveAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

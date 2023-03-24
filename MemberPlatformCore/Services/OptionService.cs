@@ -71,6 +71,20 @@ namespace MemberPlatformCore.Services
             return updatedOption;
         }
 
+        public async Task<Option> PostAsync(Option option)
+        {
+            // Map the Option object to an OptionEntity object
+            OptionEntity entity = _mapper.Map<OptionEntity>(option);
+
+            // Call the AddAsync method of the repository to add the entity
+            entity = await _optionRepository.AddAsync(entity);
+
+            // Map the added entity back to an Option object
+            Option addedOption = _mapper.Map<Option>(entity);
+
+            return addedOption;
+        }
+
         public async Task<Option> DeleteAsync(int id)
         {
             OptionEntity entity = await _optionRepository.GetByIdAsync(id);

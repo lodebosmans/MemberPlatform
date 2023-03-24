@@ -33,10 +33,20 @@ namespace MemberPlatformDAL.Repositories
             return entity;
         }
 
+        public async Task<OptionEntity> AddAsync(OptionEntity entity)
+        {
+            await _context.Options.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return entity;
+        }
         public async Task DeleteAsync(OptionEntity entity)
         {
             _context.Options.Remove(entity);
             await _context.SaveChangesAsync();
+        }
+        public async Task<OptionEntity> GetByNameAsync(string name)
+        {
+            return await _context.Options.FirstOrDefaultAsync(x => x.Name == name);
         }
     }
 }

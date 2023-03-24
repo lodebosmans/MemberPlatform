@@ -36,6 +36,11 @@ namespace MemberPlatformApi.Controllers
             return await _personService.GetPersonAsync(id);
         }
 
+        [HttpPut("{id}")]
+        public async Task<Person> UpdateAsync(int id, Person person)
+        {
+            return await _personService.UpdateAsync(id, person);
+        }
         //// PUT: api/Persons/5
         //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         //[HttpPut("{id}")]

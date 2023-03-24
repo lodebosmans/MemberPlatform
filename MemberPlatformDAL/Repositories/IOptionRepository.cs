@@ -14,5 +14,7 @@ namespace MemberPlatformDAL.Repositories
         Task DeleteAsync(OptionEntity entity);
 
         Task<OptionEntity> UpdateAsync(OptionEntity entity);
+        Task<OptionEntity> GetByNameAsync(string addressType);
+        Task<OptionEntity> AddAsync(OptionEntity entity);
     }
 }

@@ -31,76 +31,23 @@ namespace MemberPlatformApi.Controllers
             return await _addressService.GetByIdAsync(id);
         }
 
-        //    public async Task<ActionResult<AddressEntity>> GetAddress(int id)
-        //    {
-        //        var address = await _uow.AddressRepository.GetByIDAsync(id);
+        [HttpPut("{id}")]
+        public async Task<Address> UpdateAsync(int id, Address address)
+        {
+            return await _addressService.UpdateAsync(id, address);
+        }
 
-        //        if (address == null)
-        //        {
-        //            return NotFound();
-        //        }
+        [HttpPost]
+        public async Task<Address> PostAsync(Address address)
+        {
+            return await _addressService.PostAsync(address);
+        }
 
-        //        return address;
-        //    }
+        [HttpDelete("{id}")]
+        public async Task<Address> DeleteAsync(int id)
+        {
+            return await _addressService.DeleteAsync(id);
+        }
 
-        //    // POST api/<AddressController>
-        //    [HttpPost]
-        //    public async Task<ActionResult<AddressEntity>> PostAddress(AddressEntity address)
-        //    {
-        //        _uow.AddressRepository.Insert(address);
-        //        await _uow.SaveAsync();
-
-        //        return CreatedAtAction("GetAddress", new { id = address.Id }, address);
-        //    }
-
-        //    // PUT api/Address/5
-        //    [HttpPut("{id}")]
-        //    public async Task<IActionResult> PutAddress(int id, AddressEntity address)
-        //    {
-        //        if (id != address.Id)
-        //        {
-        //            return BadRequest();
-        //        }
-
-        //        _uow.AddressRepository.Update(address);
-
-        //        try
-        //        {
-        //            await _uow.SaveAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!AddressExists(id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return NoContent();
-        //    }
-
-        //    private bool AddressExists(int id)
-        //    {
-        //        return _uow.AddressRepository.Get(e => e.Id == id).Any();
-        //    }
-
-        //    // DELETE api/Address/5
-        //    [HttpDelete("{id}")]
-        //    public async Task<IActionResult> DeletePerson(int id)
-        //    {
-        //        var address = await _uow.AddressRepository.GetByIDAsync(id);
-        //        if (address == null)
-        //        {
-        //            return NotFound();
-        //        }
-
-        //        _uow.AddressRepository.Delete(id);
-        //        await _uow.SaveAsync();
-
-        //        return NoContent();
-        //    }
     }
 }

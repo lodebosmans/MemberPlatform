@@ -9,12 +9,14 @@ namespace MemberPlatformCore.Services
     {
         private IPersonRepository _personRepository;
         private IAddressRepository _addressRepository;
+        private IOptionRepository _optionRepository;
         private Mapper _mapper;
 
-        public PersonService(IPersonRepository personRepository, IAddressRepository addressRepository)
+        public PersonService(IPersonRepository personRepository, IAddressRepository addressRepository, IOptionRepository optionRepository)
         {
             _personRepository = personRepository;
             _addressRepository = addressRepository;
+            _optionRepository = optionRepository;
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -28,6 +30,7 @@ namespace MemberPlatformCore.Services
         {
             PersonEntity entity = await _personRepository.GetByIdAsync(id);
             _ = await _addressRepository.GetByIdAsync(entity.AddressId);
+            _ = await _optionRepository.GetByIdAsync(entity.Address.AddressTypeId);
             Person person = _mapper.Map<Person>(entity);
 
             return person;
@@ -56,11 +59,36 @@ namespace MemberPlatformCore.Services
                 person.Street = entity.Address.Street;
                 person.Box = entity.Address.Box;
                 person.Number = entity.Address.Number;
+                person.AddressType = entity.Address.AddressType.Name;
 
                 people.Add(person);
             }
 
             return people;
+        }
+
+        public async Task<Person> UpdateAsync(int id, Person person)
+        {
+            // Map the Person object to an PersonEntity object
+            PersonEntity entity = _mapper.Map<PersonEntity>(person);
+            entity.Id = id;
+
+            // Check if the AddressType already exists based on its name
+            OptionEntity optionEntity = await _optionRepository.GetByNameAsync(person.AddressType);
+            if (optionEntity == null)
+            {
+                throw new ArgumentException("AddressType not found");
+            }
+
+            // Use the existing AddressType
+            entity.Address.AddressType = optionEntity;
+            // Call the UpdateAsync method of the repository to update the entity
+            entity = await _personRepository.UpdateAsync(entity);
+
+            // Map the updated entity back to an OptionType object
+            Person updatedPerson = _mapper.Map<Person>(entity);
+
+            return updatedPerson;
         }
     }
 }

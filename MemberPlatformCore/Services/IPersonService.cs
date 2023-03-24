@@ -7,5 +7,7 @@ namespace MemberPlatformCore.Services
         Task<Person> GetPersonAsync(int id);
 
         Task<List<Person>> GetAllWithAddressAsync();
+
+        Task<Person> UpdateAsync(int id, Person person);
     }
 }
