@@ -86,7 +86,7 @@ namespace MemberPlatformDAL.UoW
             return table.AsQueryable<T>();
         }
 
-        public async virtual Task<T> GetByIdAsync(int id)
+        public virtual async Task<T> GetByIdAsync(int id)
         {
             return await table.FindAsync(id);
         }

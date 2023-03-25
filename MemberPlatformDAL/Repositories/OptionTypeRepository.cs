@@ -1,7 +1,6 @@
 using MemberPlatformDAL.Data;
 using MemberPlatformDAL.Entities;
 using MemberPlatformDAL.UoW;
-using Microsoft.EntityFrameworkCore;
 
 namespace MemberPlatformDAL.Repositories
 {
@@ -18,6 +17,5 @@ namespace MemberPlatformDAL.Repositories
         {
             return _context.OptionTypes.Any(e => e.Id == id);
         }
-
     }
 }

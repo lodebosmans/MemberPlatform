@@ -42,12 +42,10 @@ namespace MemberPlatformApi.Controllers
             await _personService.UpdateAsync(id, person);
         }
 
-
         [HttpDelete("{id}")]
         public async Task DeleteAsync(int id)
         {
             await _personService.DeleteAsync(id);
         }
-
     }
 }

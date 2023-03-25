@@ -2,11 +2,6 @@ using AutoMapper;
 using MemberPlatformCore.Models;
 using MemberPlatformDAL.Entities;
 using MemberPlatformDAL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformCore.Services
 {
@@ -18,7 +13,6 @@ namespace MemberPlatformCore.Services
         public ContractService(IContractRepository contractRepository)
         {
             _contractRepository = contractRepository;
-
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -39,6 +33,7 @@ namespace MemberPlatformCore.Services
             }
             return contracts;
         }
+
         public async Task<Contract> GetByIdAsync(int id)
         {
             ContractEntity entity = await _contractRepository.GetByIdAsync(id);

@@ -48,6 +48,5 @@ namespace MemberPlatformApi.Controllers
         {
             return await _addressService.DeleteAsync(id);
         }
-
     }
 }

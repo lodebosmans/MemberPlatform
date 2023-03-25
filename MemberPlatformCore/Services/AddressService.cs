@@ -30,7 +30,6 @@ namespace MemberPlatformCore.Services
             List<Address> addresses = new List<Address>();
             foreach (AddressEntity entity in entities)
             {
-
                 Address address = _mapper.Map<Address>(entity);
                 addresses.Add(address);
             }
@@ -61,7 +60,6 @@ namespace MemberPlatformCore.Services
             return address;
         }
 
-
         public async Task<Address> DeleteAsync(int id)
         {
             AddressEntity entity = await _addressRepository.GetByIdAsync(id);
@@ -75,6 +73,5 @@ namespace MemberPlatformCore.Services
             // Map the deleted entity back to an OptionType object and return it
             return _mapper.Map<Address>(entity);
         }
-
     }
 }

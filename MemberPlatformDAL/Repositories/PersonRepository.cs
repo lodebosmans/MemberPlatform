@@ -39,6 +39,5 @@ namespace MemberPlatformDAL.Repositories
         //    _context.Persons.Remove(entity);
         //    await _context.SaveChangesAsync();
         //}
-
     }
 }

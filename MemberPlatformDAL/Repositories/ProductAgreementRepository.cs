@@ -1,11 +1,6 @@
 using MemberPlatformDAL.Data;
 using MemberPlatformDAL.Entities;
 using MemberPlatformDAL.UoW;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformDAL.Repositories
 {
@@ -22,6 +17,5 @@ namespace MemberPlatformDAL.Repositories
         {
             return _context.ProductAgreements.Any(e => e.Id == id);
         }
-
     }
 }

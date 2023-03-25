@@ -18,7 +18,6 @@ namespace MemberPlatformCore.Services
                 .ForMember(dest => dest.AddressId, opt => opt.MapFrom(src => src.Address.Id))
                 .ReverseMap();
 
-
             CreateMap<AddressEntity, Address>()
                 .ReverseMap();
             //.ForPath(x => x.AddressType.Name, opt => opt.Ignore())
@@ -39,12 +38,23 @@ namespace MemberPlatformCore.Services
             CreateMap<ProductDefinitionEntity, ProductDefinition>()
                 .ReverseMap();
 
+            CreateMap<ProductUnitEntity, ProductUnit>()
+                .ReverseMap();
+
             CreateMap<OptionEntity, Option>()
                 .ReverseMap();
 
             CreateMap<OptionTypeEntity, OptionType>()
                 .ReverseMap();
 
+            CreateMap<SalesItemEntity, SalesItem>()
+                .ReverseMap();
+
+            CreateMap<TicketEntity, Ticket>()
+                .ReverseMap();
+
+            CreateMap<TicketItemEntity, TicketItem>()
+                .ReverseMap();
         }
     }
 }

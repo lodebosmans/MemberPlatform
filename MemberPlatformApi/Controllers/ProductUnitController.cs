@@ -1,7 +1,6 @@
-using MemberPlatformDAL.Entities;
-using MemberPlatformDAL.UoW;
+using MemberPlatformCore.Models;
+using MemberPlatformCore.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,93 +10,41 @@ namespace MemberPlatformApi.Controllers
     [ApiController]
     public class ProductUnitController : ControllerBase
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IProductUnitService _productUnitService;
 
-        public ProductUnitController(IUnitOfWork uow)
+        public ProductUnitController(IProductUnitService productUnitService)
         {
-            _uow = uow;
+            _productUnitService = productUnitService;
         }
 
-        // GET: api/ProductUnits
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductUnitEntity>>> GetProductUnits()
+        public async Task<List<ProductUnit>> GetAllAsync()
         {
-            var productunits = await _uow.ProductUnitRepository.GetAllAsync();
-            return productunits.ToList();
+            return await _productUnitService.GetAllAsync();
         }
 
-        // GET api/ProductUnit/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductUnitEntity>> GetProductUnit(int id)
+        public async Task<ProductUnit> GetByIdAsync(int id)
         {
-            var productUnit = await _uow.ProductUnitRepository.GetByIdAsync(id);
-
-            if (productUnit == null)
-            {
-                return NotFound();
-            }
-
-            return productUnit;
+            return await _productUnitService.GetByIdAsync(id);
         }
 
-        // POST api/ProductUnit
-        [HttpPost]
-        public async Task<ActionResult<ProductUnitEntity>> PostProductUnit(ProductUnitEntity productUnit)
-        {
-            _uow.ProductUnitRepository.Insert(productUnit);
-            await _uow.SaveAsync();
-
-            return CreatedAtAction("GetProductUnit", new { id = productUnit.Id }, productUnit);
-        }
-
-        // PUT api/Address/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductUnit(int id, ProductUnitEntity productUnit)
+        public async Task<ProductUnit> UpdateAsync(int id, ProductUnit productUnit)
         {
-            if (id != productUnit.Id)
-            {
-                return BadRequest();
-            }
-
-            _uow.ProductUnitRepository.Update(productUnit);
-
-            try
-            {
-                await _uow.SaveAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductUnitExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return NoContent();
+            return await _productUnitService.UpdateAsync(id, productUnit);
         }
 
-        private bool ProductUnitExists(int id)
+        [HttpPost]
+        public async Task<ProductUnit> PostAsync(ProductUnit productUnit)
         {
-            return _uow.ProductUnitRepository.Get(e => e.Id == id).Any();
+            return await _productUnitService.PostAsync(productUnit);
         }
 
-        // DELETE api/Address/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProductUnit(int id)
+        public async Task<ProductUnit> DeleteAsync(int id)
         {
-            var productUnit = await _uow.ProductUnitRepository.GetByIdAsync(id);
-            if (productUnit == null)
-            {
-                return NotFound();
-            }
-
-            _uow.AddressRepository.Delete(id);
-            await _uow.SaveAsync();
-
-            return NoContent();
+            return await _productUnitService.DeleteAsync(id);
         }
     }
 }

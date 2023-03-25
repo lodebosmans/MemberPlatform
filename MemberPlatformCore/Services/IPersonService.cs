@@ -9,6 +9,7 @@ namespace MemberPlatformCore.Services
         Task<List<Person>> GetAllWithAddressAsync();
 
         Task UpdateAsync(int id, Person person);
+
         Task DeleteAsync(int id);
     }
 }

@@ -1,6 +1,5 @@
 using MemberPlatformCore.Models;
 using MemberPlatformCore.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MemberPlatformApi.Controllers
@@ -9,7 +8,6 @@ namespace MemberPlatformApi.Controllers
     [ApiController]
     public class ProductAgreementController : ControllerBase
     {
-
         private readonly IProductAgreementService _productAgreementService;
 
         public ProductAgreementController(IProductAgreementService productAgreementService)

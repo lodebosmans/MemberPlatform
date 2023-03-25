@@ -34,6 +34,5 @@ namespace MemberPlatformDAL.Repositories
                 .Where(x => x.Id == id)
                 .SingleAsync();
         }
-
     }
 }
