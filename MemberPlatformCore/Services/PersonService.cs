@@ -49,7 +49,6 @@ namespace MemberPlatformCore.Services
             return people;
         }
 
-
         //public async Task<Person> UpdateAsync(int id, Person person)
         //{
         //    // Map the Person object to a PersonEntity object
@@ -86,7 +85,6 @@ namespace MemberPlatformCore.Services
             await _personRepository.Update(entity);
         }
 
-
         public async Task DeleteAsync(int id)
         {
             PersonEntity entity = await _personRepository.GetByIdAsync(id);
@@ -96,10 +94,6 @@ namespace MemberPlatformCore.Services
             }
             // Delete the entity from the repository
             await _personRepository.Delete(entity.Id);
-
         }
-
     }
 }
-
-

@@ -1,6 +1,5 @@
 using MemberPlatformCore.Models;
 using MemberPlatformCore.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MemberPlatformApi.Controllers

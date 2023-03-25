@@ -2,11 +2,6 @@ using AutoMapper;
 using MemberPlatformCore.Models;
 using MemberPlatformDAL.Entities;
 using MemberPlatformDAL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MemberPlatformCore.Services
 {
@@ -18,7 +13,6 @@ namespace MemberPlatformCore.Services
         public ProductAgreementService(IProductAgreementRepository productAgreementRepository)
         {
             _ProductAgreementRepository = productAgreementRepository;
-
 
             var config = new MapperConfiguration(cfg =>
             {

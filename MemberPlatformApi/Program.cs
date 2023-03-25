@@ -39,8 +39,14 @@ builder.Services.AddScoped<IProductAgreementRepository, ProductAgreementReposito
 builder.Services.AddScoped<IProductAgreementService, ProductAgreementService>();
 builder.Services.AddScoped<IProductDefinitionRepository, ProductDefinitionRepository>();
 builder.Services.AddScoped<IProductDefinitionService, ProductDefinitionService>();
-
-
+builder.Services.AddScoped<IProductUnitRepository, ProductUnitRepository>();
+builder.Services.AddScoped<ITicketRepository, TicketRepository>();
+builder.Services.AddScoped<ITicketService, TicketService>();
+builder.Services.AddScoped<IProductUnitService, ProductUnitService>();
+builder.Services.AddScoped<ISalesItemRepository, SalesItemRepository>();
+builder.Services.AddScoped<ISalesItemService, SalesItemService>();
+builder.Services.AddScoped<ITicketItemRepository, TicketItemRepository>();
+builder.Services.AddScoped<ITicketItemService, TicketItemService>();
 
 // Prevent circular references
 builder.Services.AddControllers().AddJsonOptions(options =>
