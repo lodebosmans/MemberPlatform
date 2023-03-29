@@ -5,7 +5,6 @@ namespace MemberPlatformDAL.Repositories
 {
     public interface IAddressRepository : IGenericRepository<AddressEntity>
     {
-        bool AddressExists(int id);
 
         Task<AddressEntity> GetAddressWithAddressType(int id);
 

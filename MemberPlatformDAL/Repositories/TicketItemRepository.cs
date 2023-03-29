@@ -12,10 +12,5 @@ namespace MemberPlatformDAL.Repositories
         {
             _context = context;
         }
-
-        public bool TicketItemExists(int id)
-        {
-            return _context.TicketItems.Any(e => e.Id == id);
-        }
     }
 }

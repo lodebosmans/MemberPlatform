@@ -12,10 +12,5 @@ namespace MemberPlatformDAL.Repositories
         {
             _context = context;
         }
-
-        public bool ProductDefinitionExists(int id)
-        {
-            return _context.ProductDefinitions.Any(a => a.Id == id);
-        }
     }
 }

@@ -5,6 +5,5 @@ namespace MemberPlatformDAL.Repositories
 {
     public interface ITicketItemRepository : IGenericRepository<TicketItemEntity>
     {
-        bool TicketItemExists(int id);
     }
 }

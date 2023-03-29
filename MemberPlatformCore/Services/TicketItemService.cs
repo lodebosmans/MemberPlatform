@@ -8,18 +8,12 @@ namespace MemberPlatformCore.Services
     public class TicketItemService : ITicketItemService
     {
         private ITicketItemRepository _ticketItemRepository;
-        private Mapper _mapper;
+        private IMapper _mapper;
 
-        public TicketItemService(ITicketItemRepository ticketItemRepository)
+        public TicketItemService(ITicketItemRepository ticketItemRepository, IMapper mapper)
         {
             _ticketItemRepository = ticketItemRepository;
-
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = new Mapper(config);
+            _mapper = mapper;
         }
 
         public async Task<List<TicketItem>> GetAllAsync()

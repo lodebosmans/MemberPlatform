@@ -1,8 +1,9 @@
+using MemberPlatformDAL.UoW;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class AddressEntity
+    public class AddressEntity : IEntity
     {
         // Attributes
         public int Id { get; set; }

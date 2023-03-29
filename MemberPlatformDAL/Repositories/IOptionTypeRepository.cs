@@ -5,6 +5,5 @@ namespace MemberPlatformDAL.Repositories
 {
     public interface IOptionTypeRepository : IGenericRepository<OptionTypeEntity>
     {
-        bool OptionTypeExists(int id);
     }
 }

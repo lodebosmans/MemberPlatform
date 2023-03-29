@@ -1,6 +1,8 @@
+using MemberPlatformDAL.UoW;
+
 namespace MemberPlatformDAL.Entities
 {
-    public class SalesItemEntity
+    public class SalesItemEntity : IEntity
     {
         // Attributes
         public int Id { get; set; }

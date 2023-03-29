@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace MemberPlatformDAL.UoW
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class, IEntity
     {
         private DataContext _context;
         private DbSet<T> table = null;
@@ -89,6 +89,11 @@ namespace MemberPlatformDAL.UoW
         public virtual async Task<T> GetByIdAsync(int id)
         {
             return await table.FindAsync(id);
+        }
+
+        public async Task<bool> ExistsAsync(int id)
+        {
+            return await table.AnyAsync(e => e.Id == id);
         }
     }
 }

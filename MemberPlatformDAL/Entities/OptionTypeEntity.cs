@@ -1,6 +1,8 @@
+using MemberPlatformDAL.UoW;
+
 namespace MemberPlatformDAL.Entities
 {
-    public class OptionTypeEntity
+    public class OptionTypeEntity : IEntity
     {
         // Attributes
         public int Id { get; set; }

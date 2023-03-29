@@ -19,6 +19,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// set up automapper
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
 // Add the Unit Of Work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();

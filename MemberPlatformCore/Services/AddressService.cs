@@ -9,19 +9,20 @@ namespace MemberPlatformCore.Services
     {
         private IAddressRepository _addressRepository;
         private IOptionRepository _optionRepository;
-        private Mapper _mapper;
+        private IMapper _mapper;
 
-        public AddressService(IAddressRepository addressRepository, IOptionRepository optionRepository)
+        public AddressService(IAddressRepository addressRepository, IOptionRepository optionRepository, IMapper mapper)
         {
             _addressRepository = addressRepository;
             _optionRepository = optionRepository;
+            _mapper = mapper;
 
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
+            //var config = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.AddProfile<MappingProfile>();
+            //});
 
-            _mapper = new Mapper(config);
+            //_mapper = new Mapper(config);
         }
 
         public async Task<List<Address>> GetAllAsync()

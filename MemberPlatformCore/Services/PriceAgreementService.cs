@@ -9,18 +9,12 @@ namespace MemberPlatformCore.Services
     {
         private IPriceAgreementRepository _priceAgreementRepository;
 
-        private Mapper _mapper;
+        private IMapper _mapper;
 
-        public PriceAgreementService(IPriceAgreementRepository priceAgreementRepository)
+        public PriceAgreementService(IPriceAgreementRepository priceAgreementRepository, IMapper mapper)
         {
             _priceAgreementRepository = priceAgreementRepository;
-
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = new Mapper(config);
+            _mapper = mapper;
         }
 
         public async Task<PriceAgreement> GetByIdAsync(int id)

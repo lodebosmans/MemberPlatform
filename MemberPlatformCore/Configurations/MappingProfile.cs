@@ -16,7 +16,16 @@ namespace MemberPlatformCore.Services
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Address.City))
                 .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Address.Country))
                 .ForMember(dest => dest.AddressId, opt => opt.MapFrom(src => src.Address.Id))
-                .ReverseMap();
+                .ForMember(dest => dest.AddressTypeId, opt => opt.MapFrom(src => src.Address.AddressType.Id))
+                .ReverseMap()
+                .ForPath(dest => dest.Address.Street, opt => opt.MapFrom(src => src.Street))
+                .ForPath(dest => dest.Address.Number, opt => opt.MapFrom(src => src.Number))
+                .ForPath(dest => dest.Address.Box, opt => opt.MapFrom(src => src.Box))
+                .ForPath(dest => dest.Address.PostalCode, opt => opt.MapFrom(src => src.PostalCode))
+                .ForPath(dest => dest.Address.City, opt => opt.MapFrom(src => src.City))
+                .ForPath(dest => dest.Address.Country, opt => opt.MapFrom(src => src.Country))
+                .ForPath(dest => dest.Address.Id, opt => opt.MapFrom(src => src.Id))
+                .ForPath(dest => dest.Address.AddressType.Id, opt => opt.MapFrom(src => src.AddressTypeId));
 
             CreateMap<AddressEntity, Address>()
                 .ReverseMap();

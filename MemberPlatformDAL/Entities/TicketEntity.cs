@@ -1,6 +1,8 @@
+using MemberPlatformDAL.UoW;
+
 namespace MemberPlatformDAL.Entities
 {
-    public class TicketEntity
+    public class TicketEntity : IEntity
     {
         // Attributes
         public int Id { get; set; }
