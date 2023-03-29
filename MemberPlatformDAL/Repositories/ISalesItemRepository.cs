@@ -5,6 +5,5 @@ namespace MemberPlatformDAL.Repositories
 {
     public interface ISalesItemRepository : IGenericRepository<SalesItemEntity>
     {
-        bool SalesItemExists(int id);
     }
 }

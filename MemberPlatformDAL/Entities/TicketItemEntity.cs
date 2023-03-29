@@ -1,8 +1,9 @@
+using MemberPlatformDAL.UoW;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class TicketItemEntity
+    public class TicketItemEntity : IEntity
     {
         // Attributes
         public int Id { get; set; }

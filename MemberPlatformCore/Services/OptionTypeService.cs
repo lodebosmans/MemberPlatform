@@ -8,18 +8,12 @@ namespace MemberPlatformCore.Services
     public class OptionTypeService : IOptionTypeService
     {
         private IOptionTypeRepository _optionTypeRepository;
-        private Mapper _mapper;
+        private IMapper _mapper;
 
-        public OptionTypeService(IOptionTypeRepository optionTypeRepository)
+        public OptionTypeService(IOptionTypeRepository optionTypeRepository, IMapper mapper)
         {
             _optionTypeRepository = optionTypeRepository;
-
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = new Mapper(config);
+            _mapper = mapper;
         }
 
         public async Task<OptionType> GetByIdAsync(int id)

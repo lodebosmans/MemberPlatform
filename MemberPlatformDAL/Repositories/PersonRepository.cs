@@ -14,11 +14,6 @@ namespace MemberPlatformDAL.Repositories
             _context = context;
         }
 
-        public bool PersonExists(int id)
-        {
-            return _context.Persons.Any(e => e.Id == id);
-        }
-
         public async Task<IEnumerable<PersonEntity>> GetAllWithAddressAsync()
         {
             return await _context.Persons

@@ -11,5 +11,6 @@ namespace MemberPlatformCore.Services
         Task UpdateAsync(int id, Person person);
 
         Task DeleteAsync(int id);
+        Task<Person> PostAsync(Person person);
     }
 }

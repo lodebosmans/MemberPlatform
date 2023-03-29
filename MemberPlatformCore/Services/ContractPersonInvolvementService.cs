@@ -8,18 +8,12 @@ namespace MemberPlatformCore.Services
     public class ContractPersonInvolvementService : IContractPersonInvolvementService
     {
         private IContractPersonInvolvementRepository _contractPersonInvolvementRepository;
-        private Mapper _mapper;
+        private IMapper _mapper;
 
-        public ContractPersonInvolvementService(IContractPersonInvolvementRepository contractPersonInvolvementRepository)
+        public ContractPersonInvolvementService(IContractPersonInvolvementRepository contractPersonInvolvementRepository, IMapper mapper)
         {
             _contractPersonInvolvementRepository = contractPersonInvolvementRepository;
-
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = new Mapper(config);
+            _mapper = mapper;
         }
 
         public async Task<ContractPersonInvolvement> GetByIdAsync(int id)

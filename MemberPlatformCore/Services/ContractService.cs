@@ -8,18 +8,12 @@ namespace MemberPlatformCore.Services
     public class ContractService : IContractService
     {
         private IContractRepository _contractRepository;
-        private Mapper _mapper;
+        private IMapper _mapper;
 
-        public ContractService(IContractRepository contractRepository)
+        public ContractService(IContractRepository contractRepository, IMapper mapper)
         {
             _contractRepository = contractRepository;
-
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = new Mapper(config);
+            _mapper = mapper;
         }
 
         public async Task<List<Contract>> GetAllAsync()

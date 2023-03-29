@@ -14,11 +14,6 @@ namespace MemberPlatformDAL.Repositories
             _context = context;
         }
 
-        public bool OptionExists(int id)
-        {
-            return _context.Options.Any(e => e.Id == id);
-        }
-
         public async Task<List<OptionEntity>> GetAllAsync()
         {
             return await _context.Options

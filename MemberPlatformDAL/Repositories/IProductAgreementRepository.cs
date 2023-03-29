@@ -5,6 +5,5 @@ namespace MemberPlatformDAL.Repositories
 {
     public interface IProductAgreementRepository : IGenericRepository<ProductAgreementEntity>
     {
-        bool ProductAgreementExists(int id);
     }
 }
