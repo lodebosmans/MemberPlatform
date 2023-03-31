@@ -29,5 +29,6 @@ namespace MemberPlatformCore.Models
         public string Street { get; set; }
         public int AddressTypeId { get; set; }
         public int AddressId { get; set; }
+        public string FullName { get { return FirstName + ' ' + LastName; } }
     }
 }

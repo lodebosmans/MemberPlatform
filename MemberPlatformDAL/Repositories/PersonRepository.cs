@@ -22,6 +22,14 @@ namespace MemberPlatformDAL.Repositories
                 .ToListAsync();
         }
 
+        public async override Task<PersonEntity> GetByIdAsync(int id)
+        {
+            return await _context.Persons
+           .Include(p => p.Address)
+           .ThenInclude(a => a.AddressType)
+           .SingleOrDefaultAsync(x => x.Id == id);
+        }
+
         //public async Task<PersonEntity> UpdateAsync(PersonEntity entity)
         //{
         //    _context.Persons.Update(entity);

@@ -28,9 +28,9 @@ namespace MemberPlatformCore.Services
                 .ForPath(dest => dest.Address.AddressType.Id, opt => opt.MapFrom(src => src.AddressTypeId));
 
             CreateMap<AddressEntity, Address>()
-                .ReverseMap();
-            //.ForPath(x => x.AddressType.Name, opt => opt.Ignore())
-            //.ForPath(x => x.AddressType.OptionTypeId, opt => opt.Ignore());
+                .ReverseMap()
+            .ForPath(x => x.AddressType.Name, opt => opt.Ignore())
+            .ForPath(x => x.AddressTypeId, opt => opt.Ignore());
 
             CreateMap<ContractEntity, Contract>()
                 .ReverseMap();
