@@ -24,6 +24,7 @@ namespace MemberPlatformCore.Test
         [SetUp]
         public void Setup()
         {
+
         }
 
         [Test]
