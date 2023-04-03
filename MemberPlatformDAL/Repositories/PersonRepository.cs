@@ -27,7 +27,10 @@ namespace MemberPlatformDAL.Repositories
             return await _context.Persons
            .Include(p => p.Address)
            .ThenInclude(a => a.AddressType)
-           .SingleOrDefaultAsync(x => x.Id == id);
+           .Where(x => x.Id == id)
+           .SingleAsync();
+            
+
         }
 
         //public async Task<PersonEntity> UpdateAsync(PersonEntity entity)
