@@ -8,18 +8,12 @@ namespace MemberPlatformCore.Services
     public class SalesItemService : ISalesItemService
     {
         private ISalesItemRepository _salesItemRepository;
-        private Mapper _mapper;
+        private IMapper _mapper;
 
-        public SalesItemService(ISalesItemRepository salesItemRepository)
+        public SalesItemService(ISalesItemRepository salesItemRepository, IMapper mapper)
         {
             _salesItemRepository = salesItemRepository;
-
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = new Mapper(config);
+            _mapper = mapper;
         }
 
         public async Task<List<SalesItem>> GetAllAsync()

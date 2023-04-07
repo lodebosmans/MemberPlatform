@@ -8,18 +8,12 @@ namespace MemberPlatformCore.Services
     public class ProductAgreementService : IProductAgreementService
     {
         private IProductAgreementRepository _ProductAgreementRepository;
-        private Mapper _mapper;
+        private IMapper _mapper;
 
-        public ProductAgreementService(IProductAgreementRepository productAgreementRepository)
+        public ProductAgreementService(IProductAgreementRepository productAgreementRepository, IMapper mapper)
         {
             _ProductAgreementRepository = productAgreementRepository;
-
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = new Mapper(config);
+            _mapper = mapper;
         }
 
         public async Task<List<ProductAgreement>> GetAllAsync()

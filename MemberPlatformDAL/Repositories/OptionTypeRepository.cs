@@ -13,9 +13,5 @@ namespace MemberPlatformDAL.Repositories
             _context = context;
         }
 
-        public bool OptionTypeExists(int id)
-        {
-            return _context.OptionTypes.Any(e => e.Id == id);
-        }
     }
 }

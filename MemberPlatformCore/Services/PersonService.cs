@@ -8,29 +8,18 @@ namespace MemberPlatformCore.Services
     public class PersonService : IPersonService
     {
         private IPersonRepository _personRepository;
-        private IAddressRepository _addressRepository;
-        private IOptionRepository _optionRepository;
-        private Mapper _mapper;
+        private IMapper _mapper;
 
-        public PersonService(IPersonRepository personRepository, IAddressRepository addressRepository, IOptionRepository optionRepository)
+        public PersonService(IPersonRepository personRepository, IMapper mapper)
         {
             _personRepository = personRepository;
-            _addressRepository = addressRepository;
-            _optionRepository = optionRepository;
 
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = new Mapper(config);
+            _mapper = mapper;
         }
 
         public async Task<Person> GetPersonAsync(int id)
         {
             PersonEntity entity = await _personRepository.GetByIdAsync(id);
-            //_ = await _addressRepository.GetByIdAsync(entity.AddressId);
-            //_ = await _optionRepository.GetByIdAsync(entity.Address.AddressTypeId);
             Person person = _mapper.Map<Person>(entity);
 
             return person;
@@ -49,40 +38,78 @@ namespace MemberPlatformCore.Services
             return people;
         }
 
-        //public async Task<Person> UpdateAsync(int id, Person person)
-        //{
-        //    // Map the Person object to a PersonEntity object
-        //    PersonEntity entity = _mapper.Map<PersonEntity>(person);
-        //    entity.Id = id;
-
-        //    //// Check if the AddressType already exists based on its name
-        //    //OptionEntity optionEntity optionEntity = await _optionRepository.GetByIdAsync(person.address.AddressTypeId);
-        //    //if (addressEntity == null)
-        //    //{
-        //    //    //// If the AddressType doesn't exist, create a new one
-        //    //    //AddressTypeEntity newAddressTypeEntity = new AddressTypeEntity { Name = person.AddressType };
-        //    //    //addressTypeEntity = await _addressTypeRepository.AddAsync(newAddressTypeEntity);
-        //    //    throw new ArgumentException("AddressType not found");
-        //    //}
-
-        //    //// Set the AddressTypeId on the AddressEntity
-        //    //entity.Address.AddressType = addressEntity.AddressType;
-
-        //    // Call the UpdateAsync method of the repository to update the entity
-        //    entity = await _personRepository.UpdateAsync(entity);
-
-        //    // Map the updated entity back to a Person object
-        //    Person updatedPerson = _mapper.Map<Person>(entity);
-
-        //    return updatedPerson;
-        //}
         public async Task UpdateAsync(int id, Person person)
         {
-            // Map the Person object to an PersonEntity object
+            //// Map the Person object to an PersonEntity object
+            //PersonEntity entity = _mapper.Map<PersonEntity>(person);
+
+            //// Call the UpdateAsync method of the repository to update the Person entity
+            //await _personRepository.Update(entity);
+            //await _addressRepository.Update(entity.Address);
+            // Map Person object to PersonEntity object
             PersonEntity entity = _mapper.Map<PersonEntity>(person);
 
-            // Call the UpdateAsync method of the repository to update the Person entity
-            await _personRepository.Update(entity);
+            //using (var transaction = _context.Database.BeginTransaction())
+            //{
+            //    try
+            //    {
+            //        // Update person in person repository
+            //        await _personRepository.Update(entity);
+
+            //        // Map Address object to AddressEntity object
+            //        AddressEntity addressEntity = _mapper.Map<AddressEntity>(entity.Address);
+
+            //        // Update address in address repository
+            //        await _addressRepository.Update(addressEntity);
+
+            //        // Commit the transaction
+            //        await transaction.CommitAsync();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        // If an exception is thrown, roll back the transaction
+            //        await transaction.RollbackAsync();
+            //        throw ex;
+            //    }
+            //}
+        }
+
+        public async Task<Person> PostAsync(Person person)
+        {
+            //    // Map Person object to PersonEntity object
+            //    PersonEntity entity = _mapper.Map<PersonEntity>(person);
+
+            //    // Map Address object to AddressEntity object
+            //    AddressEntity addressEntity = _mapper.Map<AddressEntity>(entity.Address);
+
+            //    using (var transaction = _context.Database.BeginTransaction())
+            //    {
+            //        try
+            //        {
+            //            // Add address to address repository
+            //            await _addressRepository.Insert(addressEntity);
+
+            //            // Set address ID in person entity
+            //            entity.AddressId = addressEntity.Id;
+
+            //            // Add person to person repository
+            //            await _personRepository.Insert(entity);
+
+            //            // Commit the transaction
+            //            await transaction.CommitAsync();
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            // If an exception is thrown, roll back the transaction
+            //            await transaction.RollbackAsync();
+            //            throw ex;
+            //        }
+            //    }
+
+            //    // Map PersonEntity object back to Person object and return
+            //    return _mapper.Map<Person>(entity);
+
+            throw new NotImplementedException();    
         }
 
         public async Task DeleteAsync(int id)

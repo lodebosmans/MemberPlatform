@@ -1,9 +1,10 @@
+using MemberPlatformDAL.UoW;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MemberPlatformDAL.Entities
 {
-    public class PersonEntity
+    public class PersonEntity : IEntity
     {
         // Attributes
         public int Id { get; set; }

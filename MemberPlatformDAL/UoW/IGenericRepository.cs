@@ -13,5 +13,7 @@ namespace MemberPlatformDAL.UoW
         Task Delete(int id);
 
         Task Update(T obj);
+
+        Task<bool> ExistsAsync(int id);
     }
 }

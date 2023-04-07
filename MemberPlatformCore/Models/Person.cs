@@ -34,5 +34,6 @@ namespace MemberPlatformCore.Models
         public string Token { get; set; }
         public DateTime TokenCreated { get; set; }
         public DateTime TokenExpires { get; set; }
+        public string FullName { get { return FirstName + ' ' + LastName; } }
     }
 }

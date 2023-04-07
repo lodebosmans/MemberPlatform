@@ -7,8 +7,6 @@ namespace MemberPlatformDAL.Repositories
     {
         Task<OptionEntity> GetByIdAsync(int id);
 
-        bool OptionExists(int id);
-
         Task<OptionEntity> GetByNameAsync(string addressType);
     }
 }

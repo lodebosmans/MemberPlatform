@@ -8,18 +8,13 @@ namespace MemberPlatformCore.Services
     public class ProductDefinitionService : IProductDefinitionService
     {
         private IProductDefinitionRepository _productDefinitionRepository;
-        private Mapper _mapper;
+        private IMapper _mapper;
 
-        public ProductDefinitionService(IProductDefinitionRepository productDefinitionRepository)
+        public ProductDefinitionService(IProductDefinitionRepository productDefinitionRepository, IMapper mapper)
         {
             _productDefinitionRepository = productDefinitionRepository;
+            _mapper = mapper;
 
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = new Mapper(config);
         }
 
         public async Task<List<ProductDefinition>> GetAllAsync()
