@@ -8,27 +8,30 @@ namespace MemberPlatformDAL.Entities
     {
         // Attributes
         public int Id { get; set; }
-
         public bool PrivacyApproval { get; set; }
-
         public DateTime DateOfBirth { get; set; }
         public int AddressId { get; set; }
-
         [EmailAddress]
         public string EmailAddress { get; set; }
-
         [MaxLength(50)]
         [Required]
         public string FirstName { get; set; }
-
         public string Gender { get; set; }
         public string IdentityNumber { get; set; }
         public string LastName { get; set; }
         public string MobilePhone { get; set; }
         public string? InsuranceCompany { get; set; }
 
-        //// Navigation properties
+        //// Attributes for registration
+        //public byte[] PasswordSalt { get; set; }
+        //public byte[] PasswordHash { get; set; }
+        //public string Token { get; set; }
+        //public DateTime TokenCreated { get; set; }
+        //public DateTime TokenExpires { get; set; }
 
+
+
+        // Navigation properties
         public AddressEntity? Address { get; set; }
         public ICollection<ContractPersonInvolvementEntity>? ContractPersonInvolvements { get; set; }
 

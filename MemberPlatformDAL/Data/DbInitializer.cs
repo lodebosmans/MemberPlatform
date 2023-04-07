@@ -228,7 +228,7 @@ namespace MemberPlatformDAL.Data
                         DateOfBirth = DateTime.Parse("1985-01-01"),
                         InsuranceCompany = "CM",
                         MobilePhone = "0485785013",
-                        EmailAddress = "bosmanslode@hotmail.com",
+                        EmailAddress = "bosmanslode@gmail.com",
                         IdentityNumber = "85010111991",
                         PrivacyApproval = true,
                         AddressId = 2

@@ -6,11 +6,11 @@ namespace MemberPlatformApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonsController : ControllerBase
+    public class PersonController : ControllerBase
     {
         private readonly IPersonService _personService;
 
-        public PersonsController(IPersonService personService)
+        public PersonController(IPersonService personService)
         {
             _personService = personService;
         }

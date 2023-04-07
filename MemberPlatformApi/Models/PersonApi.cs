@@ -1,19 +1,10 @@
-namespace MemberPlatformCore.Models
+namespace MemberPlatformApi.Models
 {
-    public class Person
+    public class PersonApi
     {
         public int Id { get; set; }
         public bool PrivacyApproval { get; set; }
         public DateTime DateOfBirth { get; set; }
-
-        public int Age
-        {
-            get
-            {
-                return DateTime.Now.Year - DateOfBirth.Year;
-            }
-        }
-
         public string? Box { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
@@ -34,6 +25,5 @@ namespace MemberPlatformCore.Models
         public string Token { get; set; }
         public DateTime TokenCreated { get; set; }
         public DateTime TokenExpires { get; set; }
-        public string FullName { get { return FirstName + ' ' + LastName; } }
     }
 }

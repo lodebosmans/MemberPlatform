@@ -1,10 +1,12 @@
 using MemberPlatformCore.Models;
 using MemberPlatformCore.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MemberPlatformApi.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class SalesItemController : ControllerBase
     {
