@@ -74,5 +74,17 @@ namespace MemberPlatformCore.Services
             // Map the deleted entity back to an OptionType object and return it
             return _mapper.Map<Address>(entity);
         }
+
+        public async  Task<List<Address>> GetTrainingFacilities()
+        {
+            List<AddressEntity> entities = (List<AddressEntity>)await _addressRepository.GetTrainingFacilities();
+            List<Address> addresses = new List<Address>();
+            foreach (AddressEntity entity in entities)
+            {
+                Address address = _mapper.Map<Address>(entity);
+                addresses.Add(address);
+            }
+            return addresses;
+        }
     }
 }

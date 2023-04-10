@@ -9,5 +9,7 @@ namespace MemberPlatformDAL.Repositories
         Task<AddressEntity> GetAddressWithAddressType(int id);
 
         Task<List<AddressEntity>> GetAllWithAddressTypeAsync();
+
+        Task<List<AddressEntity>> GetTrainingFacilities();
     }
 }

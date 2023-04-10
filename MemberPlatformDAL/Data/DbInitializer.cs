@@ -325,15 +325,15 @@ namespace MemberPlatformDAL.Data
                     {
                         Date = DateTime.Now,
                         Comment = "looptrainingen",
-                        StartTimeScheduled = DateTime.Now,
-                        EndTimeScheduled = DateTime.Now,
-                        StartTimeActual = DateTime.Now,
-                        EndTimeActual = DateTime.Now,
+                        StartTimeScheduled = new TimeSpan(9, 0, 0),
+                        EndTimeScheduled = new TimeSpan(10, 0, 0),
+                        StartTimeActual = new TimeSpan(18, 0, 0),
+                        EndTimeActual = new TimeSpan(19, 0, 0),
                         ProductUnitStatusId = 5,
                         ProductId = 1,
                         AddressId = 1
                     }
-                    );
+                    ) ;
                 context.SaveChanges();
                 context.Contracts.AddRange(
                     new ContractEntity

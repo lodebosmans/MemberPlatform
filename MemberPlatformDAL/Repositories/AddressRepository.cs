@@ -29,5 +29,13 @@ namespace MemberPlatformDAL.Repositories
                 .Where(x => x.Id == id)
                 .SingleAsync();
         }
+
+        public async Task<List<AddressEntity>> GetTrainingFacilities()
+        {
+            return await _context.Addresses
+                .Include(a => a.AddressType)
+                .Where(x => x.AddressType.Name == "Training facility")
+                .ToListAsync();
+        }
     }
 }
