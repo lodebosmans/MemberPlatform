@@ -12,5 +12,12 @@ namespace MemberPlatformDAL.Repositories
         {
             _context = context;
         }
+        public async Task<PriceAgreementEntity> SaveAsync(PriceAgreementEntity priceAgreementEntity, int contractId)
+        {
+            priceAgreementEntity.ContractId = contractId;
+            _context.PriceAgreements.Add(priceAgreementEntity);
+            await _context.SaveChangesAsync();
+            return priceAgreementEntity;
+        }
     }
 }

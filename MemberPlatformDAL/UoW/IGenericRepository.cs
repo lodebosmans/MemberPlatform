@@ -1,3 +1,5 @@
+using MemberPlatformDAL.Entities;
+
 namespace MemberPlatformDAL.UoW
 {
     public interface IGenericRepository<T>
