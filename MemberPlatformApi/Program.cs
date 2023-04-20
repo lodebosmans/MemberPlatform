@@ -1,3 +1,4 @@
+using MemberPlatformApi.Controllers;
 using MemberPlatformApi.Models;
 using MemberPlatformCore.Services;
 using MemberPlatformDAL.Data;
@@ -30,6 +31,8 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Add the Unit Of Work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<SubscriptionService>();
+builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<IPersonService, PersonService>();
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
@@ -56,6 +59,9 @@ builder.Services.AddScoped<ISalesItemRepository, SalesItemRepository>();
 builder.Services.AddScoped<ISalesItemService, SalesItemService>();
 builder.Services.AddScoped<ITicketItemRepository, TicketItemRepository>();
 builder.Services.AddScoped<ITicketItemService, TicketItemService>();
+builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
+
+
 
 // Prevent circular references
 builder.Services.AddControllers().AddJsonOptions(options =>
