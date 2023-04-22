@@ -13,13 +13,20 @@ namespace MemberPlatformCore.Services
         public PersonService(IPersonRepository personRepository, IMapper mapper)
         {
             _personRepository = personRepository;
-
             _mapper = mapper;
         }
 
         public async Task<Person> GetPersonAsync(int id)
         {
             PersonEntity entity = await _personRepository.GetByIdAsync(id);
+            Person person = _mapper.Map<Person>(entity);
+
+            return person;
+        }
+
+        public async Task<Person> GetPersonByEmailAddressAsync(string emailAddress)
+        {
+            PersonEntity entity = await _personRepository.GetByEmailAddressAsync(emailAddress);
             Person person = _mapper.Map<Person>(entity);
 
             return person;
@@ -38,40 +45,14 @@ namespace MemberPlatformCore.Services
             return people;
         }
 
-        public async Task UpdateAsync(int id, Person person)
+        public async Task<Person> UpdateAsync(int id, Person person)
         {
-            //// Map the Person object to an PersonEntity object
-            //PersonEntity entity = _mapper.Map<PersonEntity>(person);
-
-            //// Call the UpdateAsync method of the repository to update the Person entity
-            //await _personRepository.Update(entity);
-            //await _addressRepository.Update(entity.Address);
-            // Map Person object to PersonEntity object
+            // Map the Person object to an PersonEntity object
             PersonEntity entity = _mapper.Map<PersonEntity>(person);
+            await _personRepository.Update(entity);
 
-            //using (var transaction = _context.Database.BeginTransaction())
-            //{
-            //    try
-            //    {
-            //        // Update person in person repository
-            //        await _personRepository.Update(entity);
+            return person;
 
-            //        // Map Address object to AddressEntity object
-            //        AddressEntity addressEntity = _mapper.Map<AddressEntity>(entity.Address);
-
-            //        // Update address in address repository
-            //        await _addressRepository.Update(addressEntity);
-
-            //        // Commit the transaction
-            //        await transaction.CommitAsync();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        // If an exception is thrown, roll back the transaction
-            //        await transaction.RollbackAsync();
-            //        throw ex;
-            //    }
-            //}
         }
 
         public async Task<Person> PostAsync(Person person)

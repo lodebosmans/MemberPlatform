@@ -1,4 +1,5 @@
 using MemberPlatformDAL.UoW;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,6 +13,7 @@ namespace MemberPlatformDAL.Entities
         public DateTime DateOfBirth { get; set; }
         public int AddressId { get; set; }
         [EmailAddress]
+        [Required]
         public string EmailAddress { get; set; }
         [MaxLength(50)]
         [Required]
@@ -22,9 +24,9 @@ namespace MemberPlatformDAL.Entities
         public string MobilePhone { get; set; }
         public string? InsuranceCompany { get; set; }
 
-        //// Attributes for registration
-        //public byte[] PasswordSalt { get; set; }
-        //public byte[] PasswordHash { get; set; }
+        // Attributes for registration
+        //public byte[]? PasswordSalt { get; set; }
+        //public byte[]? PasswordHash { get; set; }
         //public string Token { get; set; }
         //public DateTime TokenCreated { get; set; }
         //public DateTime TokenExpires { get; set; }

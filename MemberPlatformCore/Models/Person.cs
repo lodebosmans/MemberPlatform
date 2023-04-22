@@ -29,11 +29,11 @@ namespace MemberPlatformCore.Models
         public string Street { get; set; }
         public int AddressTypeId { get; set; }
         public int AddressId { get; set; }
-        public byte[] PasswordSalt { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public string Token { get; set; }
-        public DateTime TokenCreated { get; set; }
-        public DateTime TokenExpires { get; set; }
+        //public byte[] PasswordSalt { get; set; }
+        //public byte[] PasswordHash { get; set; }
+        //public string Token { get; set; }
+        //public DateTime TokenCreated { get; set; }
+        //public DateTime TokenExpires { get; set; }
         public string FullName { get { return FirstName + ' ' + LastName; } }
     }
 }
