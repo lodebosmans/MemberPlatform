@@ -231,7 +231,10 @@ namespace MemberPlatformDAL.Data
                         EmailAddress = "bosmanslode@gmail.com",
                         IdentityNumber = "85010111991",
                         PrivacyApproval = true,
-                        AddressId = 2
+                        AddressId = 2,
+                        //Token = "123",
+                        //TokenCreated = DateTime.Parse("2023-02-09"),
+                        //TokenExpires = DateTime.Parse("2023-03-09"),
                     },
                     new PersonEntity
                     {
@@ -244,7 +247,10 @@ namespace MemberPlatformDAL.Data
                         EmailAddress = "Ive@hotmail.com",
                         IdentityNumber = "75010111991",
                         PrivacyApproval = true,
-                        AddressId = 2
+                        AddressId = 2,
+                        //Token = "123",
+                        //TokenCreated = DateTime.Parse("2023-02-09"),
+                        //TokenExpires = DateTime.Parse("2023-03-09"),
                     }, new PersonEntity
                     {
                         FirstName = "Johnny",
@@ -256,7 +262,10 @@ namespace MemberPlatformDAL.Data
                         EmailAddress = "johnny@gmail.com",
                         IdentityNumber = "71040944569",
                         PrivacyApproval = true,
-                        AddressId = 3
+                        AddressId = 3,
+                        //Token = "123",
+                        //TokenCreated = DateTime.Parse("2023-02-09"),
+                        //TokenExpires = DateTime.Parse("2023-03-09"),
                     }, new PersonEntity
                     {
                         FirstName = "Veerle",
@@ -268,7 +277,10 @@ namespace MemberPlatformDAL.Data
                         EmailAddress = "veerle@gmail.com",
                         IdentityNumber = "71040944569",
                         PrivacyApproval = true,
-                        AddressId = 2
+                        AddressId = 2,
+                        //Token = "123",
+                        //TokenCreated = DateTime.Parse("2023-02-09"),
+                        //TokenExpires = DateTime.Parse("2023-03-09"),
                     }, new PersonEntity
                     {
                         FirstName = "Wim",
@@ -280,7 +292,10 @@ namespace MemberPlatformDAL.Data
                         EmailAddress = "wim@gmail.com",
                         IdentityNumber = "71040944569",
                         PrivacyApproval = true,
-                        AddressId = 2
+                        AddressId = 2,
+                        //Token = "123",
+                        //TokenCreated = DateTime.Parse("2023-02-09"),
+                        //TokenExpires = DateTime.Parse("2023-03-09"),
                     }
                 ); ;
                 context.SaveChanges();

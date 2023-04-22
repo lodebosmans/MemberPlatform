@@ -37,6 +37,7 @@ namespace MemberPlatformDAL.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<PersonEntity>().HasAlternateKey(p => p.EmailAddress);
             modelBuilder.Entity<PersonEntity>().ToTable("Person");
             //modelBuilder.Entity<ContractPersonRole>().ToTable("ContractPersonRole");
             modelBuilder.Entity<OptionEntity>().ToTable("Option");
