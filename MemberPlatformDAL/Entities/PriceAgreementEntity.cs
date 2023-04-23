@@ -12,19 +12,19 @@ namespace MemberPlatformDAL.Entities
         public int ContractId { get; set; }         //Foreign key relationship
 
         [ForeignKey("DiscountTypeId")]
-        public int DiscountTypeId { get; set; }         //Foreign key relationship
+        public int? DiscountTypeId { get; set; }         //Foreign key relationship
 
         [ForeignKey("ApproverId")]
-        public int ApproverId { get; set; }         //Foreign key relationship
+        public int? ApproverId { get; set; }         //Foreign key relationship
 
         [ForeignKey("PriceAgreementStatusId")]
         public int PriceAgreementStatusId { get; set; }
 
-        public int DiscountAmount { get; set; }
+        public int? DiscountAmount { get; set; }
         public int PriceBillable { get; set; }
-        public string StructuredMessage { get; set; }
-        public DateTime PaymentDate { get; set; }
-        public string Comment { get; set; }
+        public string? StructuredMessage { get; set; }
+        public DateTime? PaymentDate { get; set; }
+        public string? Comment { get; set; }
 
         // Navigation properties
         public ContractEntity Contract { get; set; }

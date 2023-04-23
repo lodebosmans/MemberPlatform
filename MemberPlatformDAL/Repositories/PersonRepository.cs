@@ -32,6 +32,13 @@ namespace MemberPlatformDAL.Repositories
             
 
         }
+        public async Task<PersonEntity> SaveAsync(PersonEntity personEntity, int addressId)
+        {
+            personEntity.AddressId = addressId;
+            _context.Persons.Add(personEntity);
+            await _context.SaveChangesAsync();
+            return personEntity;
+        }
 
         //public async Task<PersonEntity> UpdateAsync(PersonEntity entity)
         //{

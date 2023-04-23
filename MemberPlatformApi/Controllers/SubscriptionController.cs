@@ -9,9 +9,9 @@ namespace MemberPlatformApi.Controllers
     [ApiController]
     public class SubscriptionController : ControllerBase
     {
-        private readonly SubscriptionService _service;
+        private readonly ISubscriptionService _service;
 
-        public SubscriptionController(SubscriptionService service)
+        public SubscriptionController(ISubscriptionService service)
         {
             _service = service;
         }

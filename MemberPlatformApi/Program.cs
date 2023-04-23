@@ -60,6 +60,7 @@ builder.Services.AddScoped<ISalesItemService, SalesItemService>();
 builder.Services.AddScoped<ITicketItemRepository, TicketItemRepository>();
 builder.Services.AddScoped<ITicketItemService, TicketItemService>();
 builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
+builder.Services.AddScoped<IPersonAddressService, PersonAddressService>();
 
 
 
