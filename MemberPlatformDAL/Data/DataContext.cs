@@ -84,22 +84,22 @@ namespace MemberPlatformDAL.Data
 
             // Discount type
             modelBuilder.Entity<PriceAgreementEntity>()
-            .ToTable("PriceAgreement")
-            .HasOne(cpr => cpr.DiscountType)
-            .WithMany()
-            .HasForeignKey(cpr => cpr.DiscountTypeId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .ToTable("PriceAgreement");
+            //.HasOne(cpr => cpr.DiscountType)
+            //.WithMany(o => o.DiscountType)
+            //.HasForeignKey(cpr => cpr.DiscountTypeId)
+            //.OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<PriceAgreementEntity>()
-            .HasOne(pa => pa.DiscountType)
-            .WithMany(o => o.DiscountType)
-            .HasForeignKey(pa => pa.DiscountTypeId);
+            //modelBuilder.Entity<PriceAgreementEntity>()
+            //.HasOne(pa => pa.DiscountType)
+            //.WithMany(o => o.DiscountType)
+            //.HasForeignKey(pa => pa.DiscountTypeId);
 
-            modelBuilder.Entity<PriceAgreementEntity>()
-                .HasOne(pa => pa.Approver)
-                .WithMany()
-                .HasForeignKey(pa => pa.ApproverId)
-                .OnDelete(DeleteBehavior.NoAction);
+            //modelBuilder.Entity<PriceAgreementEntity>()
+            //    .HasOne(pa => pa.Approver)
+            //    .WithMany()
+            //    .HasForeignKey(pa => pa.ApproverId)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
             // Status price agreement
             modelBuilder.Entity<PriceAgreementEntity>()

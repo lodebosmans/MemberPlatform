@@ -354,8 +354,8 @@ namespace MemberPlatformDAL.Data
                     new ContractEntity
                     {
                         ContractDate = DateTime.Now,
-                        StartDate = DateTime.Now.AddDays(5),
-                        EndDate = DateTime.Now.AddDays(50),
+                        //StartDate = DateTime.Now.AddDays(5),
+                        //EndDate = DateTime.Now.AddDays(50),
                         ContractTypeId = 6,
                     }
                     );
