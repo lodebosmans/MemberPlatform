@@ -25,12 +25,17 @@ namespace MemberPlatformDAL.Repositories
         public async override Task<PersonEntity> GetByIdAsync(int id)
         {
             return await _context.Persons
-           .Include(p => p.Address)
-           .ThenInclude(a => a.AddressType)
-           .Where(x => x.Id == id)
-           .SingleAsync();
-            
+               .Include(p => p.Address)
+               .ThenInclude(a => a.AddressType)
+               .Where(x => x.Id == id)
+               .SingleAsync();
+        }
 
+        public async Task<PersonEntity> GetByEmailAddressAsync(string emailAddress)
+        {
+            return await _context.Persons
+               .Where(x => x.EmailAddress == emailAddress)
+               .SingleOrDefaultAsync();
         }
         public async Task<PersonEntity> SaveAsync(PersonEntity personEntity, int addressId)
         {
