@@ -8,5 +8,8 @@ namespace MemberPlatformDAL.Repositories
         Task<OptionEntity> GetByIdAsync(int id);
 
         Task<OptionEntity> GetByNameAsync(string addressType);
+        Task<int> GetContractTypeIdForSubscriptionAsync();
+        Task<int> GetPriceAgreementStatusIdForSubscriptionAsync();
+        Task<int> GetRoleIdForSubscription();
     }
 }
