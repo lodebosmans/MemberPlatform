@@ -184,6 +184,17 @@ namespace MemberPlatformDAL.Data
                     {
                         Name = "Wetsuit",
                         OptionTypeId = 10
+                    },
+                    // Roles
+                    new OptionEntity
+                    {
+                        Name = "Member",
+                        OptionTypeId = 4
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Trainer",
+                        OptionTypeId = 4
                     }
                  );
                 context.SaveChanges();
@@ -348,7 +359,7 @@ namespace MemberPlatformDAL.Data
                         ProductId = 1,
                         AddressId = 1
                     }
-                    ) ;
+                    );
                 context.SaveChanges();
                 context.Contracts.AddRange(
                     new ContractEntity

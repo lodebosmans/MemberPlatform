@@ -21,7 +21,7 @@ namespace MemberPlatformApi.Controllers
         {
             try
             {
-                await _service.SaveDataAsync(myData.Contract, myData.ContractPersonInvolvement, myData.PriceAgreement, myData.ProductAgreement);
+                await _service.SaveDataAsync(myData.productId, myData.personId);
                 return Ok();
             }
             catch (Exception ex)
@@ -29,5 +29,17 @@ namespace MemberPlatformApi.Controllers
                 return StatusCode(500, new { error = ex.Message });
             }
         }
+        //public async Task<IActionResult> SaveDataAsync([FromBody] SubscriptionDTO myData)
+        //{
+        //    try
+        //    {
+        //        await _service.SaveDataAsync(myData.Contract, myData.ContractPersonInvolvement, myData.PriceAgreement, myData.ProductAgreement);
+        //        return Ok();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, new { error = ex.Message });
+        //    }
+        //}
     }
 }

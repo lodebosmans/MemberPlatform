@@ -4,6 +4,7 @@ namespace MemberPlatformCore.Services
 {
     public interface ISubscriptionService
     {
-        Task SaveDataAsync(Contract contract, ContractPersonInvolvement contractPersonInvolvement, PriceAgreement priceAgreement, ProductAgreement productAgreement);
+        //Task SaveDataAsync(Contract contract, ContractPersonInvolvement contractPersonInvolvement, PriceAgreement priceAgreement, ProductAgreement productAgreement);
+        Task SaveDataAsync(int productId, int personId);
     }
 }
