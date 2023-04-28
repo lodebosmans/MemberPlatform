@@ -2,12 +2,14 @@ using AutoMapper;
 using MemberPlatformCore.Models;
 using MemberPlatformDAL.Entities;
 using MemberPlatformDAL.Repositories;
+using System.Transactions;
 
 namespace MemberPlatformCore.Services
 {
     public class PersonService : IPersonService
     {
         private IPersonRepository _personRepository;
+        private IAddressRepository _addressRepository;
         private IMapper _mapper;
 
         public PersonService(IPersonRepository personRepository, IMapper mapper)
@@ -24,12 +26,19 @@ namespace MemberPlatformCore.Services
             return person;
         }
 
-        public async Task<Person> GetPersonByEmailAddressAsync(string emailAddress)
+        public async Task<int?> GetPersonByEmailAddressAsync(string emailAddress)
         {
             PersonEntity entity = await _personRepository.GetByEmailAddressAsync(emailAddress);
             Person person = _mapper.Map<Person>(entity);
 
-            return person;
+            if (person == null)
+            {
+                return null;
+            }
+            else
+            {
+                return person.Id;
+            }
         }
 
         public async Task<List<Person>> GetAllWithAddressAsync()
@@ -57,40 +66,36 @@ namespace MemberPlatformCore.Services
 
         public async Task<Person> PostAsync(Person person)
         {
-            //    // Map Person object to PersonEntity object
-            //    PersonEntity entity = _mapper.Map<PersonEntity>(person);
+            // Map Person object to PersonEntity object
+            PersonEntity personEntity = _mapper.Map<PersonEntity>(person);
 
-            //    // Map Address object to AddressEntity object
-            //    AddressEntity addressEntity = _mapper.Map<AddressEntity>(entity.Address);
+            // Map Address object to AddressEntity object
+            AddressEntity addressEntity = _mapper.Map<AddressEntity>(personEntity.Address);
 
-            //    using (var transaction = _context.Database.BeginTransaction())
-            //    {
-            //        try
-            //        {
-            //            // Add address to address repository
-            //            await _addressRepository.Insert(addressEntity);
+            using var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
+            {
+                try
+                {
+                    // Add address to address repository
+                    await _addressRepository.Insert(addressEntity);
+                    // Get address again
 
-            //            // Set address ID in person entity
-            //            entity.AddressId = addressEntity.Id;
+                    // Add id to person
+                    
+                    // Add person to person repository
+                    await _personRepository.Insert(personEntity);
 
-            //            // Add person to person repository
-            //            await _personRepository.Insert(entity);
+                    // Commit the transaction
+                    transaction.Complete();
 
-            //            // Commit the transaction
-            //            await transaction.CommitAsync();
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            // If an exception is thrown, roll back the transaction
-            //            await transaction.RollbackAsync();
-            //            throw ex;
-            //        }
-            //    }
+                }
+                catch (Exception ex)
+                {
+                    throw new ApplicationException("Failed to save data.", ex);
+                }
 
-            //    // Map PersonEntity object back to Person object and return
-            //    return _mapper.Map<Person>(entity);
-
-            throw new NotImplementedException();    
+                return person;
+            } 
         }
 
         public async Task DeleteAsync(int id)

@@ -30,15 +30,9 @@ namespace MemberPlatformApi.Controllers
         }
 
         [HttpGet("byemailaddress/{emailAddress}")]
-        public async Task<Boolean> GetByEmailAddress(string emailAddress)
+        public async Task<int?> GetByEmailAddress(string emailAddress)
         {
-            Person person = await _personService.GetPersonByEmailAddressAsync(emailAddress);
-
-            if (person == null) {
-                return false;
-            } else {
-                return true;
-            }
+            return await _personService.GetPersonByEmailAddressAsync(emailAddress);
         }
 
         // GET: api/Persons/5
