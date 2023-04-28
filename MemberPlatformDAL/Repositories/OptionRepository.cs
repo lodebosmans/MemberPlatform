@@ -21,40 +21,16 @@ namespace MemberPlatformDAL.Repositories
                 .ToListAsync();
         }
 
-        public async Task<OptionEntity> GetByNameAsync(string name)
+        public async Task<OptionEntity> GetOptionAsync(string optionName)
         {
-            return await _context.Options.FirstOrDefaultAsync(x => x.Name == name);
-        }
-
-        public async Task<int> GetContractTypeIdForSubscriptionAsync()
-        {
-            OptionEntity option = await _context.Options.SingleOrDefaultAsync(o => o.Name == "Subscription");
+            OptionEntity option = await _context.Options.SingleOrDefaultAsync(o => o.Name == optionName);
             if (option == null)
             {
-                throw new ApplicationException("Option for subscription not found.");
+                throw new ApplicationException("Option for " + optionName + " not found.");
             }
-
-            return option.Id;
+            return option;
         }
 
-        public async Task<int> GetPriceAgreementStatusIdForSubscriptionAsync()
-        {
-            OptionEntity option = await _context.Options.SingleOrDefaultAsync(o => o.Name == "Submitted");
-            if (option == null)
-            {
-                throw new ApplicationException("Option for Submitted not found.");
-            }
-            return option.Id;
-        }
 
-        public async Task<int> GetRoleIdForSubscription()
-        {
-            OptionEntity option = await _context.Options.SingleOrDefaultAsync(o => o.Name == "Member");
-            if (option == null)
-            {
-                throw new ApplicationException("Option for Member not found.");
-            }
-            return option.Id;
-        }
     }
 }
