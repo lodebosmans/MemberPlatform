@@ -6,10 +6,7 @@ namespace MemberPlatformDAL.Repositories
     public interface IOptionRepository : IGenericRepository<OptionEntity>
     {
         Task<OptionEntity> GetByIdAsync(int id);
-
-        Task<OptionEntity> GetByNameAsync(string addressType);
-        Task<int> GetContractTypeIdForSubscriptionAsync();
-        Task<int> GetPriceAgreementStatusIdForSubscriptionAsync();
-        Task<int> GetRoleIdForSubscription();
+        Task<OptionEntity> GetOptionAsync(string optionName);
+        //Task<int> GetOptionId(string optionName);
     }
 }

@@ -40,21 +40,21 @@ namespace MemberPlatformCore.Services
         }
         public async Task SaveDataAsync(int productId, int personId)
         {
-            int contractTypeId = await _optionRepository.GetContractTypeIdForSubscriptionAsync();
+            OptionEntity contractType = await _optionRepository.GetOptionAsync("Subscription");
             ProductDefinitionEntity product = await _productDefinitionRepository.GetByIdAsync(productId);
-            int statusId = await _optionRepository.GetPriceAgreementStatusIdForSubscriptionAsync();
-            int roleId = await _optionRepository.GetRoleIdForSubscription();
+            OptionEntity status = await _optionRepository.GetOptionAsync("Submitted");
+            OptionEntity role = await _optionRepository.GetOptionAsync("Member");
 
             ContractEntity contractEntity = new ContractEntity();
             contractEntity.ContractDate = DateTime.Now;
-            contractEntity.ContractTypeId = contractTypeId;
+            contractEntity.ContractTypeId = contractType.Id;
             ProductAgreementEntity productAgreementEntity = new ProductAgreementEntity();
             productAgreementEntity.ProductDefinitionId = productId;
             ContractPersonInvolvementEntity contractPersonInvolvementEntity = new ContractPersonInvolvementEntity();
             contractPersonInvolvementEntity.PersonId = personId;
-            contractPersonInvolvementEntity.RoleId = roleId;
+            contractPersonInvolvementEntity.RoleId = role.Id;
             PriceAgreementEntity priceAgreementEntity = new PriceAgreementEntity();
-            priceAgreementEntity.PriceAgreementStatusId = statusId;
+            priceAgreementEntity.PriceAgreementStatusId = status.Id;
             priceAgreementEntity.PriceBillable = product.Price;
             using var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
             try
