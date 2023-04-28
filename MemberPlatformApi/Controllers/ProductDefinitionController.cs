@@ -28,6 +28,11 @@ namespace MemberPlatformApi.Controllers
         {
             return await _productDefinitionService.GetByIdAsync(id);
         }
+        [HttpGet("AllById/{id}")]
+        public async Task<List<ProductDefinition>> GetAllByIdAsync(int id)
+        {
+            return await _productDefinitionService.GetAllByIdAsync(id);
+        }
 
         [HttpPut("{id}")]
         public async Task<ProductDefinition> UpdateAsync(int id, ProductDefinition productDefinition)

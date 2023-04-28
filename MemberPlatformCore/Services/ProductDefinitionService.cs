@@ -58,13 +58,24 @@ namespace MemberPlatformCore.Services
             ProductDefinitionEntity entity = await _productDefinitionRepository.GetByIdAsync(id);
             if (entity == null)
             {
-                throw new ArgumentException($"OptionType with id {id} not found");
+                throw new ArgumentException($"ProductDefinition with id {id} not found");
             }
             // Delete the entity from the repository
             await _productDefinitionRepository.Delete(entity.Id);
 
             // Map the deleted entity back to an OptionType object and return it
             return _mapper.Map<ProductDefinition>(entity);
+        }
+        public async Task<List<ProductDefinition>> GetAllByIdAsync(int id)
+        {
+            List<ProductDefinitionEntity> entities = (List<ProductDefinitionEntity>)await _productDefinitionRepository.GetAllByIdAsync(id);
+            List<ProductDefinition> productDefinitions = new List<ProductDefinition>();
+            foreach (ProductDefinitionEntity entity in entities)
+            {
+                ProductDefinition productDefinition = _mapper.Map<ProductDefinition>(entity);
+                productDefinitions.Add(productDefinition);
+            }
+            return productDefinitions;
         }
     }
 }

@@ -30,7 +30,5 @@ namespace MemberPlatformDAL.Repositories
             }
             return option;
         }
-
-
     }
 }
