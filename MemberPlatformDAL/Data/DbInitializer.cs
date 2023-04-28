@@ -243,9 +243,7 @@ namespace MemberPlatformDAL.Data
                         IdentityNumber = "85010111991",
                         PrivacyApproval = true,
                         AddressId = 2,
-                        //Token = "123",
-                        //TokenCreated = DateTime.Parse("2023-02-09"),
-                        //TokenExpires = DateTime.Parse("2023-03-09"),
+                        ParentId = null
                     },
                     new PersonEntity
                     {
@@ -259,9 +257,7 @@ namespace MemberPlatformDAL.Data
                         IdentityNumber = "75010111991",
                         PrivacyApproval = true,
                         AddressId = 2,
-                        //Token = "123",
-                        //TokenCreated = DateTime.Parse("2023-02-09"),
-                        //TokenExpires = DateTime.Parse("2023-03-09"),
+                        ParentId = null
                     }, new PersonEntity
                     {
                         FirstName = "Johnny",
@@ -274,9 +270,7 @@ namespace MemberPlatformDAL.Data
                         IdentityNumber = "71040944569",
                         PrivacyApproval = true,
                         AddressId = 3,
-                        //Token = "123",
-                        //TokenCreated = DateTime.Parse("2023-02-09"),
-                        //TokenExpires = DateTime.Parse("2023-03-09"),
+                        ParentId = null
                     }, new PersonEntity
                     {
                         FirstName = "Veerle",
@@ -289,9 +283,7 @@ namespace MemberPlatformDAL.Data
                         IdentityNumber = "71040944569",
                         PrivacyApproval = true,
                         AddressId = 2,
-                        //Token = "123",
-                        //TokenCreated = DateTime.Parse("2023-02-09"),
-                        //TokenExpires = DateTime.Parse("2023-03-09"),
+                        ParentId = null
                     }, new PersonEntity
                     {
                         FirstName = "Wim",
@@ -303,12 +295,37 @@ namespace MemberPlatformDAL.Data
                         EmailAddress = "wim@gmail.com",
                         IdentityNumber = "71040944569",
                         PrivacyApproval = true,
+                        AddressId = 2
+                    },
+                    new PersonEntity
+                    {
+                        FirstName = "Lenno",
+                        LastName = "Bosmans",
+                        Gender = "male",
+                        DateOfBirth = DateTime.Parse("2015-01-01"),
+                        InsuranceCompany = "CM",
+                        MobilePhone = "0485785013",
+                        EmailAddress = null,
+                        IdentityNumber = "85010111991",
+                        PrivacyApproval = true,
                         AddressId = 2,
-                        //Token = "123",
-                        //TokenCreated = DateTime.Parse("2023-02-09"),
-                        //TokenExpires = DateTime.Parse("2023-03-09"),
+                        ParentId = 1
+                    },
+                    new PersonEntity
+                    {
+                        FirstName = "Lyas",
+                        LastName = "Bosmans",
+                        Gender = "male",
+                        DateOfBirth = DateTime.Parse("2010-01-01"),
+                        InsuranceCompany = "CM",
+                        MobilePhone = "0485785013",
+                        EmailAddress = null,
+                        IdentityNumber = "85010111991",
+                        PrivacyApproval = true,
+                        AddressId = 2,
+                        ParentId = 1
                     }
-                ); ;
+                ) ;
                 context.SaveChanges();
                 context.ProductDefinitions.AddRange(
                      new ProductDefinitionEntity

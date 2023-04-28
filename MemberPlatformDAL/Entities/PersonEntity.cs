@@ -13,8 +13,7 @@ namespace MemberPlatformDAL.Entities
         public DateTime DateOfBirth { get; set; }
         public int AddressId { get; set; }
         [EmailAddress]
-        [Required]
-        public string EmailAddress { get; set; }
+        public string? EmailAddress { get; set; }
         [MaxLength(50)]
         [Required]
         public string FirstName { get; set; }
@@ -23,14 +22,7 @@ namespace MemberPlatformDAL.Entities
         public string LastName { get; set; }
         public string MobilePhone { get; set; }
         public string? InsuranceCompany { get; set; }
-
-        // Attributes for registration
-        //public byte[]? PasswordSalt { get; set; }
-        //public byte[]? PasswordHash { get; set; }
-        //public string Token { get; set; }
-        //public DateTime TokenCreated { get; set; }
-        //public DateTime TokenExpires { get; set; }
-
+        public int? ParentId { get; set; }
 
 
         // Navigation properties
@@ -58,5 +50,9 @@ namespace MemberPlatformDAL.Entities
         public ICollection<TicketItemEntity>? TicketItemsReplier { get; set; }
 
         public ICollection<SalesItemEntity>? SalesItems { get; set; }
+
+        public PersonEntity? Parent { get; set; }
+
+        public ICollection<PersonEntity>? Children { get; set; }
     }
 }

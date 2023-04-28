@@ -10,11 +10,17 @@ namespace MemberPlatformCore.Services
     {
         private IPersonRepository _personRepository;
         private IAddressRepository _addressRepository;
+        private IOptionRepository _optionRepository;
         private IMapper _mapper;
 
-        public PersonService(IPersonRepository personRepository, IMapper mapper)
+        public PersonService(IPersonRepository personRepository, 
+            IAddressRepository addressRepository,
+            IOptionRepository optionRepository,
+            IMapper mapper)
         {
             _personRepository = personRepository;
+            _addressRepository = addressRepository;
+            _optionRepository = optionRepository;
             _mapper = mapper;
         }
 
@@ -26,18 +32,58 @@ namespace MemberPlatformCore.Services
             return person;
         }
 
-        public async Task<int?> GetPersonByEmailAddressAsync(string emailAddress)
+        public async Task<List<int>> GetPersonIdsAsync(string emailAddress)
         {
-            PersonEntity entity = await _personRepository.GetByEmailAddressAsync(emailAddress);
-            Person person = _mapper.Map<Person>(entity);
+            PersonEntity personEntity = await _personRepository.GetByEmailAddressAsync(emailAddress);
 
-            if (person == null)
+            if (personEntity == null)
             {
                 return null;
             }
             else
             {
-                return person.Id;
+                // Create a list for the person IDs we need to collect.
+                List<int> ids = new List<int>();
+
+                // Get the IDs of the parent and add it to the list
+                ids.Add(personEntity.Id);
+
+                // Get the IDs of the children, if any, and add them to the list
+                if (personEntity.Children != null)
+                {
+                    foreach (PersonEntity child in personEntity.Children)
+                    {
+                        ids.Add(child.Id);
+                    }
+                }
+                return ids;
+            }
+        }
+
+        public async Task<List<Person>> GetPersonByEmailAddressAsync(string emailAddress)
+        {
+            int test = 1;
+            List<int> ids = await GetPersonIdsAsync(emailAddress);
+
+            if (ids == null)
+            {
+                return null;
+            }
+            else
+            {
+                // 
+                List<Person> people = new List<Person>();
+
+                // Loop over the collected IDs
+                foreach (int id in ids) 
+                {
+                    // Fetch the person object with that ID
+                    PersonEntity personEntity_bis = await _personRepository.GetByIdAsync(id);
+                    Person person = _mapper.Map<Person>(personEntity_bis);
+                    people.Add(person);
+                }
+
+                return people;
             }
         }
 
@@ -71,6 +117,10 @@ namespace MemberPlatformCore.Services
 
             // Map Address object to AddressEntity object
             AddressEntity addressEntity = _mapper.Map<AddressEntity>(personEntity.Address);
+            // Get the Option for a residential address
+            OptionEntity optionEntity = await _optionRepository.GetOptionAsync("Residential");
+            addressEntity.AddressTypeId = optionEntity.Id;
+            addressEntity.AddressType = optionEntity;
 
             using var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
             {
@@ -78,9 +128,6 @@ namespace MemberPlatformCore.Services
                 {
                     // Add address to address repository
                     await _addressRepository.Insert(addressEntity);
-                    // Get address again
-
-                    // Add id to person
                     
                     // Add person to person repository
                     await _personRepository.Insert(personEntity);
