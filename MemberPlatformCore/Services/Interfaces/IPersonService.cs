@@ -12,6 +12,6 @@ namespace MemberPlatformCore.Services
         Task DeleteAsync(int id);
         Task<Person> PostAsync(Person person);
         Task<Person> UpdateAsync(int id, Person person);
-        Task<Person> GetPersonByEmailAddressAsync(string emailAddress);
+        Task<int?> GetPersonByEmailAddressAsync(string emailAddress);
     }
 }
