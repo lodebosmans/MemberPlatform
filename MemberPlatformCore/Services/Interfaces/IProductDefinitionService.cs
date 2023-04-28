@@ -13,5 +13,7 @@ namespace MemberPlatformCore.Services
         Task<ProductDefinition> PostAsync(ProductDefinition productDefinition);
 
         Task<ProductDefinition> UpdateAsync(int id, ProductDefinition productDefinition);
+
+        Task<List<ProductDefinition>> GetAllByIdAsync(int id);
     }
 }
