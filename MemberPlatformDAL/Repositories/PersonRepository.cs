@@ -35,6 +35,7 @@ namespace MemberPlatformDAL.Repositories
         {
             return await _context.Persons
                .Where(x => x.EmailAddress == emailAddress)
+               .Include(p => p.Children)
                .SingleOrDefaultAsync();
         }
         public async Task<PersonEntity> SaveAsync(PersonEntity personEntity, int addressId)

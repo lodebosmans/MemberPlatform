@@ -7,6 +7,5 @@ namespace MemberPlatformDAL.Repositories
     {
         Task<OptionEntity> GetByIdAsync(int id);
         Task<OptionEntity> GetOptionAsync(string optionName);
-        //Task<int> GetOptionId(string optionName);
     }
 }

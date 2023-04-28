@@ -37,8 +37,8 @@ namespace MemberPlatformDAL.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PersonEntity>().HasAlternateKey(p => p.EmailAddress);
-            modelBuilder.Entity<PersonEntity>().ToTable("Person");
+            //modelBuilder.Entity<PersonEntity>().HasAlternateKey(p => p.EmailAddress); // Disabled, as emailaddress should be nullable for children of parent person
+            //modelBuilder.Entity<PersonEntity>().ToTable("Person");
             //modelBuilder.Entity<ContractPersonRole>().ToTable("ContractPersonRole");
             modelBuilder.Entity<OptionEntity>().ToTable("Option");
             modelBuilder.Entity<OptionTypeEntity>().ToTable("OptionType");
@@ -53,6 +53,14 @@ namespace MemberPlatformDAL.Data
             //modelBuilder.Entity<Ticket>().ToTable("Ticket");
             modelBuilder.Entity<TicketItemEntity>().ToTable("TicketItem");
             modelBuilder.Entity<AddressEntity>().ToTable("Address");
+
+            // Person
+            modelBuilder.Entity<PersonEntity>()
+            .ToTable("Person")
+            .HasOne(p => p.Parent)
+            .WithMany(p => p.Children)
+            .HasForeignKey(p => p.ParentId)
+            .OnDelete(DeleteBehavior.NoAction);
 
             // ContractPersonInvolvement
             modelBuilder.Entity<ContractPersonInvolvementEntity>()
