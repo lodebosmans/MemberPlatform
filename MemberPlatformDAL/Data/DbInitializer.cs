@@ -227,8 +227,27 @@ namespace MemberPlatformDAL.Data
                         PostalCode = "2300",
                         Country = "België",
                         AddressTypeId = 17,
-                    }
-                    );
+                    },
+                    new AddressEntity
+                    {
+                        Street = "Lennostraat",
+                        Number = "4",
+                        Box = "3",
+                        City = "Geel",
+                        PostalCode = "2440",
+                        Country = "België",
+                        AddressTypeId = 17,
+                    },
+                    new AddressEntity
+                    {
+                        Street = "Lyasstraat",
+                        Number = "4",
+                        Box = "3",
+                        City = "Geel",
+                        PostalCode = "2440",
+                        Country = "België",
+                        AddressTypeId = 17,
+                    });
                 context.SaveChanges();
                 context.Persons.AddRange(
                     new PersonEntity
@@ -308,7 +327,7 @@ namespace MemberPlatformDAL.Data
                         EmailAddress = null,
                         IdentityNumber = "85010111991",
                         PrivacyApproval = true,
-                        AddressId = 2,
+                        AddressId = 4,
                         ParentId = 1
                     },
                     new PersonEntity
@@ -322,7 +341,7 @@ namespace MemberPlatformDAL.Data
                         EmailAddress = null,
                         IdentityNumber = "85010111991",
                         PrivacyApproval = true,
-                        AddressId = 2,
+                        AddressId = 5,
                         ParentId = 1
                     }
                 ) ;
