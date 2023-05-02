@@ -47,6 +47,7 @@ namespace MemberPlatformApi.Controllers
         {
             await _personService.UpdateAsync(id, person);
         }
+
         [HttpPost]
         public async Task<Person> PostAsync(Person person)
         {
