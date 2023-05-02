@@ -24,14 +24,14 @@ namespace MemberPlatformDAL.Repositories
         //        .ToListAsync();
         //}
 
-        public async Task<List<ProductDefinitionEntity>> GetAllByIdAsync(int personId)
+        public async Task<List<ProductDefinitionEntity>> GetAllByIdAsync(int personId, int year)
         {
             var contracts = await _context.Contracts
                 .Include(c => c.ProductAgreements)
                 .ThenInclude(pa => pa.ProductDefinition)
                 .Include(c => c.ContractPersonInvolvements)
                 .ThenInclude(cpi => cpi.Person)
-                .Where(c => c.ContractPersonInvolvements.Any(cpi => cpi.PersonId == personId))
+                .Where(c => c.ContractPersonInvolvements.Any(cpi => cpi.PersonId == personId)&& c.ContractDate.Year == year)
                 .ToListAsync();
 
             var productAgreements = contracts.SelectMany(c => c.ProductAgreements).ToList();

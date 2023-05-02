@@ -13,5 +13,6 @@ namespace MemberPlatformCore.Services
         Task<Contract> DeleteAsync(int id);
 
         Task<Contract> PostAsync(Contract contract);
+        Task<bool> ContractExists(int productId, int personId);
     }
 }

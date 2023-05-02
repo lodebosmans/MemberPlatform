@@ -40,38 +40,75 @@ namespace MemberPlatformCore.Services
         }
         public async Task SaveDataAsync(int productId, int personId)
         {
-            OptionEntity contractType = await _optionRepository.GetOptionAsync("Subscription");
-            ProductDefinitionEntity product = await _productDefinitionRepository.GetByIdAsync(productId);
-            OptionEntity status = await _optionRepository.GetOptionAsync("Submitted");
-            OptionEntity role = await _optionRepository.GetOptionAsync("Member");
-
-            ContractEntity contractEntity = new ContractEntity();
-            contractEntity.ContractDate = DateTime.Now;
-            contractEntity.ContractTypeId = contractType.Id;
-            ProductAgreementEntity productAgreementEntity = new ProductAgreementEntity();
-            productAgreementEntity.ProductDefinitionId = productId;
-            ContractPersonInvolvementEntity contractPersonInvolvementEntity = new ContractPersonInvolvementEntity();
-            contractPersonInvolvementEntity.PersonId = personId;
-            contractPersonInvolvementEntity.RoleId = role.Id;
-            PriceAgreementEntity priceAgreementEntity = new PriceAgreementEntity();
-            priceAgreementEntity.PriceAgreementStatusId = status.Id;
-            priceAgreementEntity.PriceBillable = product.Price;
-            using var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
-            try
+            var exist = await _contractRepository.ContractExists(productId, personId);
+            if (exist == false)
             {
-                await _contractRepository.Insert(contractEntity);
-                var savedContract = await _contractRepository.GetByIdAsync(contractEntity.Id);
-                await _productAgreementRepository.SaveAsync(productAgreementEntity, savedContract.Id);
-                await _priceAgreementRepository.SaveAsync(priceAgreementEntity, savedContract.Id);
-                await _personInvolvementRepository.SaveAsync(contractPersonInvolvementEntity, savedContract.Id);
+                OptionEntity contractType = await _optionRepository.GetOptionAsync("Subscription");
+                ProductDefinitionEntity product = await _productDefinitionRepository.GetByIdAsync(productId);
+                OptionEntity status = await _optionRepository.GetOptionAsync("Submitted");
+                OptionEntity role = await _optionRepository.GetOptionAsync("Member");
 
-                transaction.Complete();
+                ContractEntity contractEntity = new ContractEntity();
+                contractEntity.ContractDate = DateTime.Now;
+                contractEntity.ContractTypeId = contractType.Id;
+                ProductAgreementEntity productAgreementEntity = new ProductAgreementEntity();
+                productAgreementEntity.ProductDefinitionId = productId;
+                ContractPersonInvolvementEntity contractPersonInvolvementEntity = new ContractPersonInvolvementEntity();
+                contractPersonInvolvementEntity.PersonId = personId;
+                contractPersonInvolvementEntity.RoleId = role.Id;
+                PriceAgreementEntity priceAgreementEntity = new PriceAgreementEntity();
+                priceAgreementEntity.PriceAgreementStatusId = status.Id;
+                priceAgreementEntity.PriceBillable = product.Price;
+                using var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
+                try
+                {
+                    await _contractRepository.Insert(contractEntity);
+                    var savedContract = await _contractRepository.GetByIdAsync(contractEntity.Id);
+                    await _productAgreementRepository.SaveAsync(productAgreementEntity, savedContract.Id);
+                    await _priceAgreementRepository.SaveAsync(priceAgreementEntity, savedContract.Id);
+                    await _personInvolvementRepository.SaveAsync(contractPersonInvolvementEntity, savedContract.Id);
+
+                    transaction.Complete();
+                }
+                catch (Exception ex)
+                {
+                    throw new ApplicationException("Failed to save data.", ex);
+                }
             }
-            catch (Exception ex)
+
+        }
+        public async Task<List<Subscription>> GetAllById(int personId, int year)
+        {
+            var sub = await _productDefinitionRepository.GetAllByIdAsync(personId, year);
+            List<Subscription> subs = new List<Subscription>();
+            int id = 0;
+            foreach (var subItem in sub)
             {
-                throw new ApplicationException("Failed to save data.", ex);
-            }
+              
+                var x = await _priceAgreementRepository.GetByProductPersonYear(subItem.Id, personId, year);
+                var status = await _optionRepository.GetByIdAsync(x[x.Count - 1].PriceAgreementStatusId);
+                Subscription subscription = new Subscription
+                {
+                    Name = subItem.Name,
+                    PersonId = personId,
+                    PriceAgreementStatusId = x[x.Count - 1].PriceAgreementStatusId,
+                    PriceAgreementId = x[x.Count - 1].Id,
+                    Status = status.Name,
+                    Id = id
+                };
+                //subscription.Name = subItem.Name;
+                //subscription.PersonId = personId;
+                //subscription.PriceAgreementStatusId = x[x.Count - 1].PriceAgreementStatusId;
+                //subscription.PriceAgreementId = x[x.Count - 1].Id;
 
+                //subscription.Status = status.Name;
+                //subscription.Id = id;
+                
+
+                subs.Add(subscription);
+                id = id + 1;
+            }
+            return subs;
         }
     }
 }
