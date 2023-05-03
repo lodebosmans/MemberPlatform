@@ -28,10 +28,10 @@ namespace MemberPlatformApi.Controllers
         {
             return await _productDefinitionService.GetByIdAsync(id);
         }
-        [HttpGet("AllById/{id}")]
-        public async Task<List<ProductDefinition>> GetAllByIdAsync(int id)
+        [HttpGet("AllById/{id}/{year}")]
+        public async Task<List<ProductDefinition>> GetAllByIdAsync(int id, int year)
         {
-            return await _productDefinitionService.GetAllByIdAsync(id);
+            return await _productDefinitionService.GetAllByIdAsync(id, year);
         }
 
         [HttpPut("{id}")]

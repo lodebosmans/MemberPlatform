@@ -13,5 +13,6 @@ namespace MemberPlatformCore.Services
         Task<Person> PostAsync(Person person);
         Task<Person> UpdateAsync(int id, Person person);
         Task<List<Person>> GetPersonByEmailAddressAsync(string emailAddress);
+        Task<List<int>> GetPersonIdsAsync(string emailAddress);
     }
 }

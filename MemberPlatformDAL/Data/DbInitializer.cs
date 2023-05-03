@@ -285,7 +285,7 @@ namespace MemberPlatformDAL.Data
                         DateOfBirth = DateTime.Parse("1974-04-09"),
                         InsuranceCompany = "De Voorzorg",
                         MobilePhone = "0476989727",
-                        EmailAddress = "johnny@gmail.com",
+                        EmailAddress = "be90242@gmail.com",
                         IdentityNumber = "71040944569",
                         PrivacyApproval = true,
                         AddressId = 3,
@@ -343,6 +343,34 @@ namespace MemberPlatformDAL.Data
                         PrivacyApproval = true,
                         AddressId = 5,
                         ParentId = 1
+                    },
+                     new PersonEntity
+                     {
+                         FirstName = "Emiel",
+                         LastName = "Urkens",
+                         Gender = "male",
+                         DateOfBirth = DateTime.Parse("2015-03-12"),
+                         InsuranceCompany = "Solidaris",
+                         MobilePhone = "0485785013",
+                         EmailAddress = null,
+                         IdentityNumber = "85010111991",
+                         PrivacyApproval = true,
+                         AddressId = 3,
+                         ParentId = 3
+                     },
+                    new PersonEntity
+                    {
+                        FirstName = "Warre",
+                        LastName = "Urkens",
+                        Gender = "male",
+                        DateOfBirth = DateTime.Parse("2008-01-01"),
+                        InsuranceCompany = "Solidaris",
+                        MobilePhone = "0485785013",
+                        EmailAddress = null,
+                        IdentityNumber = "85010111991",
+                        PrivacyApproval = true,
+                        AddressId = 3,
+                        ParentId = 3
                     }
                 ) ;
                 context.SaveChanges();
@@ -404,13 +432,34 @@ namespace MemberPlatformDAL.Data
                         //StartDate = DateTime.Now.AddDays(5),
                         //EndDate = DateTime.Now.AddDays(50),
                         ContractTypeId = 6,
+                    },
+                    new ContractEntity
+                    {
+                        ContractDate = new DateTime(2022,02,20),
+                        ContractTypeId = 7,
+                    },
+                    new ContractEntity
+                    {
+                        ContractDate = new DateTime(2022, 02, 20),
+                        ContractTypeId = 7,
                     }
+
                     );
                 context.SaveChanges();
                 context.ProductAgreements.AddRange(
                     new ProductAgreementEntity
                     {
                         ContractId = 1,
+                        ProductDefinitionId = 1,
+                    },
+                    new ProductAgreementEntity
+                    {
+                        ContractId = 2,
+                        ProductDefinitionId = 2,
+                    },
+                    new ProductAgreementEntity
+                    {
+                        ContractId = 3,
                         ProductDefinitionId = 1,
                     }
                     );
@@ -420,6 +469,18 @@ namespace MemberPlatformDAL.Data
                     {
                         ContractId = 1,
                         PersonId = 1,
+                        RoleId = 6,
+                    },
+                    new ContractPersonInvolvementEntity
+                    {
+                        ContractId = 2,
+                        PersonId = 8,
+                        RoleId = 6,
+                    },
+                    new ContractPersonInvolvementEntity
+                    {
+                        ContractId = 3,
+                        PersonId = 9,
                         RoleId = 6,
                     }
                     );
@@ -435,7 +496,31 @@ namespace MemberPlatformDAL.Data
                         ContractId = 1,
                         DiscountTypeId = 9,
                         ApproverId = 1,
-                        PriceAgreementStatusId = 5,
+                        PriceAgreementStatusId = 12,
+                    },
+                    new PriceAgreementEntity
+                    {
+                        DiscountAmount = 10,
+                        PriceBillable = 150,
+                        StructuredMessage = "Message",
+                        PaymentDate = DateTime.Now.AddDays(30),
+                        Comment = "Commentaar",
+                        ContractId = 2,
+                        DiscountTypeId = 9,
+                        ApproverId = 1,
+                        PriceAgreementStatusId = 12,
+                    },
+                    new PriceAgreementEntity
+                    {
+                        DiscountAmount = 10,
+                        PriceBillable = 150,
+                        StructuredMessage = "Message",
+                        PaymentDate = DateTime.Now.AddDays(30),
+                        Comment = "geupdate",
+                        ContractId = 1,
+                        DiscountTypeId = 9,
+                        ApproverId = 1,
+                        PriceAgreementStatusId = 14,
                     }
                     );
                 context.SaveChanges();

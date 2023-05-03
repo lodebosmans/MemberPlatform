@@ -13,5 +13,6 @@ namespace MemberPlatformCore.Services
         Task<PriceAgreement> PostAsync(PriceAgreement priceAgreement);
 
         Task<PriceAgreement> UpdateAsync(int id, PriceAgreement priceAgreement);
+        Task<List<PriceAgreement>> GetByProductPersonYear(int contractId, int personId, int year);
     }
 }

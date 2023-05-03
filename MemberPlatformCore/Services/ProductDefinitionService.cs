@@ -66,9 +66,9 @@ namespace MemberPlatformCore.Services
             // Map the deleted entity back to an OptionType object and return it
             return _mapper.Map<ProductDefinition>(entity);
         }
-        public async Task<List<ProductDefinition>> GetAllByIdAsync(int id)
+        public async Task<List<ProductDefinition>> GetAllByIdAsync(int id, int year)
         {
-            List<ProductDefinitionEntity> entities = (List<ProductDefinitionEntity>)await _productDefinitionRepository.GetAllByIdAsync(id);
+            List<ProductDefinitionEntity> entities = (List<ProductDefinitionEntity>)await _productDefinitionRepository.GetAllByIdAsync(id, year);
             List<ProductDefinition> productDefinitions = new List<ProductDefinition>();
             foreach (ProductDefinitionEntity entity in entities)
             {

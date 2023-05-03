@@ -14,6 +14,6 @@ namespace MemberPlatformCore.Services
 
         Task<ProductDefinition> UpdateAsync(int id, ProductDefinition productDefinition);
 
-        Task<List<ProductDefinition>> GetAllByIdAsync(int id);
+        Task<List<ProductDefinition>> GetAllByIdAsync(int id, int year);
     }
 }

@@ -22,6 +22,11 @@ namespace MemberPlatformApi.Controllers
         //    var persons = await _uow.PersonRepository.GetAllAsync();
         //    return persons.ToList();
         //}
+        [HttpGet("personsIds/{emailAddress}")]
+        public async Task<List<int>> GetPersonIdsAsync(string emailAddress)
+        {
+            return await _personService.GetPersonIdsAsync(emailAddress);
+        }
 
         [HttpGet("withaddress")]
         public async Task<List<Person>> GetAllWithAddress()
