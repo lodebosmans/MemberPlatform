@@ -69,6 +69,7 @@ namespace MemberPlatformDAL.UoW
 
         public async Task Update(T obj)
         {
+            //_context.Entry(obj).State = EntityState.Detached;
             table.Attach(obj);
             _context.Entry(obj).State = EntityState.Modified;
             await _context.SaveChangesAsync();
