@@ -46,12 +46,12 @@ namespace MemberPlatformDAL.Repositories
             return personEntity;
         }
 
-        //public async Task<PersonEntity> UpdateAsync(PersonEntity entity)
-        //{
-        //    _context.Persons.Update(entity);
-        //    await _context.SaveChangesAsync();
-        //    return entity;
-        //}
+        public async Task<PersonEntity> UpdateAsync(PersonEntity entity)
+        {
+            _context.Persons.Update(entity);
+            await _context.SaveChangesAsync();
+            return entity;
+        }
 
         //public async Task DeleteAsync(PersonEntity entity)
         //{

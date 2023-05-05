@@ -8,5 +8,7 @@ namespace MemberPlatformDAL.Repositories
         Task<IEnumerable<PersonEntity>> GetAllWithAddressAsync();
         Task<PersonEntity> SaveAsync(PersonEntity personEntity, int addressId);
         Task<PersonEntity> GetByEmailAddressAsync(string emailAddress);
+        Task<PersonEntity> UpdateAsync(PersonEntity personEntity);
+        //Task SaveAsync();
     }
 }
