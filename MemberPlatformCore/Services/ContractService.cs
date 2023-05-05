@@ -65,5 +65,12 @@ namespace MemberPlatformCore.Services
             // Map the deleted entity back to an OptionType object and return it
             return _mapper.Map<Contract>(entity);
         }
+
+        public async Task<bool> ContractExists(int productId, int personId)
+        {
+            return await _contractRepository.ContractExists(productId, personId);
+       
+
+        }
     }
 }

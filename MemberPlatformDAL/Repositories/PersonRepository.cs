@@ -31,6 +31,8 @@ namespace MemberPlatformDAL.Repositories
                .SingleAsync();
         }
 
+
+
         public async Task<PersonEntity> GetByEmailAddressAsync(string emailAddress)
         {
             return await _context.Persons
@@ -46,12 +48,20 @@ namespace MemberPlatformDAL.Repositories
             return personEntity;
         }
 
+
         public async Task<PersonEntity> UpdateAsync(PersonEntity entity)
         {
             _context.Persons.Update(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
+
+        //public async Task<List<PersonEntity>> GetAllSubscriptionsByIdAsync(int personId)
+        //{
+
+        //}
+
+
 
         //public async Task DeleteAsync(PersonEntity entity)
         //{

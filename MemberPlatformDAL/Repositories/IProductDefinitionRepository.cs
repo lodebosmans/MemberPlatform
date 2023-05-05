@@ -5,6 +5,6 @@ namespace MemberPlatformDAL.Repositories
 {
     public interface IProductDefinitionRepository : IGenericRepository<ProductDefinitionEntity>
     {
-        Task<List<ProductDefinitionEntity>> GetAllByIdAsync(int id);
+        Task<List<ProductDefinitionEntity>> GetAllByIdAsync(int id, int year);
     }
 }
