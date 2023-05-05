@@ -101,51 +101,31 @@ namespace MemberPlatformCore.Services
 
         public async Task<Person> UpdateAsync(int id, Person person)
         {
-            // Original
-            // --------
-            // Get the original person entity
-            var personEntityOriginal = await _personRepository.GetByIdAsync(id);
-            // Get the original address entity
-            var addressEntityOriginal = await _addressRepository.GetByIdAsync(personEntityOriginal.AddressId);
-
-            // New
-            // ---
             // Map the Person object to an PersonEntity object
-            //PersonEntity personEntity = _mapper.Map<PersonEntity>(person);
-            personEntityOriginal = _mapper.Map<PersonEntity>(person);
+            PersonEntity personEntity = _mapper.Map<PersonEntity>(person);
+            // Get the Option for a residential address
+            OptionEntity optionEntity = await _optionRepository.GetOptionAsync("Residential");
+            personEntity.Address.AddressTypeId = optionEntity.Id;
+            personEntity.Address.AddressType = optionEntity;
+            personEntity.AddressId = person.AddressId;
+            personEntity.Address.Id = person.AddressId;
 
-            // Map the missing address stuff
-            personEntityOriginal.Address.Id = addressEntityOriginal.Id;
-            personEntityOriginal.AddressId = addressEntityOriginal.Id;
-            personEntityOriginal.Address.AddressTypeId = addressEntityOriginal.AddressTypeId;
-            personEntityOriginal.Address.AddressType = addressEntityOriginal.AddressType;
-
-
-
-
-            //addressEntity.AddressTypeId = addressEntityOriginal.AddressTypeId;
-            //addressEntity.AddressType = addressEntityOriginal.AddressType;
-            //// Map the Address object to an AddressEntity object
-            //AddressEntity addressEntity = _mapper.Map<AddressEntity>(person);
-            //addressEntity.Id = addressEntityOriginal.Id;
-            //addressEntity.AddressTypeId = addressEntityOriginal.AddressTypeId;
-            //addressEntity.AddressType = addressEntityOriginal.AddressType;
-
+            // Map the address entity
+            AddressEntity addressEntity = _mapper.Map<AddressEntity>(personEntity.Address);
+            addressEntity.Id = person.AddressId;
 
             using var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
             {
                 try
                 {
                     // Add address to address repository
-                    //await _addressRepository.Update(addressEntity);
+                    await _addressRepository.Update(addressEntity);
 
                     // Add person to person repository
-                    //await _personRepository.Update(personEntityOriginal);
-                    await _personRepository.Update(personEntityOriginal);
+                    await _personRepository.Update(personEntity);
 
                     // Commit the transaction
                     transaction.Complete();
-
                 }
                 catch (Exception ex)
                 {
