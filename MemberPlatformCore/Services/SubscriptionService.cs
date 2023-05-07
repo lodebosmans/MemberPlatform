@@ -18,6 +18,7 @@ namespace MemberPlatformCore.Services
         private readonly IPriceAgreementRepository _priceAgreementRepository;
         private readonly IProductAgreementRepository _productAgreementRepository;
         private readonly IOptionRepository _optionRepository;
+        private readonly IOptionTypeRepository _optionTypeRepository;
         private readonly IProductDefinitionRepository _productDefinitionRepository;
         private IMapper _mapper;
 
@@ -27,6 +28,7 @@ namespace MemberPlatformCore.Services
             IProductAgreementRepository productAgreementRepository,
             IPriceAgreementRepository priceAgreementRepository,
             IOptionRepository optionRepository,
+            IOptionTypeRepository optionTypeRepository,
             IProductDefinitionRepository productDefinitionRepository,
             IMapper mapper)
         {
@@ -35,6 +37,7 @@ namespace MemberPlatformCore.Services
             _productAgreementRepository = productAgreementRepository;
             _priceAgreementRepository = priceAgreementRepository;
             _optionRepository = optionRepository;
+            _optionTypeRepository = optionTypeRepository;
             _productDefinitionRepository = productDefinitionRepository;
             _mapper = mapper;
         }
@@ -43,10 +46,16 @@ namespace MemberPlatformCore.Services
             var exist = await _contractRepository.ContractExists(productId, personId);
             if (exist == false)
             {
-                OptionEntity contractType = await _optionRepository.GetOptionAsync("Subscription");
+                OptionTypeEntity contractOptionTypeEntity = await _optionTypeRepository.GetOptionTypeAsync("ContractType");
+                OptionEntity contractType = await _optionRepository.GetOptionAsync("Subscription", contractOptionTypeEntity.Id);
+
+                OptionTypeEntity statusOptionTypeEntity = await _optionTypeRepository.GetOptionTypeAsync("Status");
+                OptionEntity status = await _optionRepository.GetOptionAsync("Submitted", statusOptionTypeEntity.Id);
+
+                OptionTypeEntity roleOptionTypeEntity = await _optionTypeRepository.GetOptionTypeAsync("Role");
+                OptionEntity role = await _optionRepository.GetOptionAsync("Participant", roleOptionTypeEntity.Id);
+
                 ProductDefinitionEntity product = await _productDefinitionRepository.GetByIdAsync(productId);
-                OptionEntity status = await _optionRepository.GetOptionAsync("Submitted");
-                OptionEntity role = await _optionRepository.GetOptionAsync("Member");
 
                 ContractEntity contractEntity = new ContractEntity();
                 contractEntity.ContractDate = DateTime.Now;
