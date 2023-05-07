@@ -36,6 +36,12 @@ namespace MemberPlatformApi.Controllers
             return await _service.GetAllById(personId, year);
             
         }
+        [HttpGet("all")]
+
+        public async Task<List<Subscription>> GetSubscriptionsAsync()
+        {
+            return await _service.GetSubscriptionsAsync();
+        }
 
 
 

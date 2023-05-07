@@ -105,44 +105,100 @@ namespace MemberPlatformCore.Services
                     Status = status.Name,
                     Id = id
                 };
-                //subscription.Name = subItem.Name;
-                //subscription.PersonId = personId;
-                //subscription.PriceAgreementStatusId = x[x.Count - 1].PriceAgreementStatusId;
-                //subscription.PriceAgreementId = x[x.Count - 1].Id;
-
-                //subscription.Status = status.Name;
-                //subscription.Id = id;
-                
-
                 subs.Add(subscription);
                 id = id + 1;
             }
             return subs;
         }
+        //public async Task<List<Subscription>> GetSubscriptionsAsync()
+        //{
+        //    var contracts = await _contractRepository.GetAllWithPropsAsync();
+
+        //    var subscriptions = contracts
+        //        .SelectMany(c => c.ProductAgreements, (c, pa) => new { Contract = c, ProductAgreement = pa })
+        //          .SelectMany(cp => cp.Contract.PriceAgreements, (cp, pr) => new { cp.Contract, cp.ProductAgreement, PriceAgreement= pr })
+        //        .SelectMany(cp => cp.Contract.ContractPersonInvolvements, (cp, cpi) => new { cp.Contract, cp.PriceAgreement, cp.ProductAgreement, cpi.Person })
+        //      .GroupBy(cp => cp.Contract.Id)
+        //      .Select(g => g.OrderByDescending(cp => cp.PriceAgreement.Id).FirstOrDefault())
+        //        .Select(cp => new Subscription
+        //        {
+
+        //            Name = cp.ProductAgreement.ProductDefinition.Name,
+        //            PriceAgreementStatusId = cp.PriceAgreement.PriceAgreementStatusId,
+        //            PriceAgreementId = cp.PriceAgreement.Id,
+        //            PersonId = cp.Person.Id,
+        //            Status = cp.PriceAgreement.PriceAgreementStatus.Name
+        //        })
+        //        .ToList();
+
+        //    return subscriptions;
+        //}
+        public async Task<List<Subscription>> GetSubscriptionsAsync()
+        {
+            var contracts = await _contractRepository.GetAllWithPropsAsync();
+
+            var subscriptions = contracts
+                .SelectMany(c => c.ProductAgreements, (c, pa) => new { Contract = c, ProductAgreement = pa })
+                .SelectMany(cp => cp.Contract.PriceAgreements, (cp, pr) => new { cp.Contract, cp.ProductAgreement, PriceAgreement = pr })
+                 .SelectMany(cp => cp.Contract.ContractPersonInvolvements, (cp, cpi) => new { cp.Contract, cp.PriceAgreement, cp.ProductAgreement, cpi.Person })
+
+                .Select(cp => new Subscription
+                {
+                   
+                    ContractId= cp.Contract.Id,
+                  
+                    PriceAgreements = new List<PriceAgreement> // Create an empty list of price agreements
+                    {
+                new PriceAgreement // Add a new price agreement object
+                {
+                    Id = cp.PriceAgreement.Id,
+                    PriceAgreementStatusId = cp.PriceAgreement.PriceAgreementStatusId,
+                    ContractId = cp.Contract.Id,
+                    DiscountTypeId = cp.PriceAgreement.DiscountTypeId,
+                    ApproverId = cp.PriceAgreement.ApproverId,
+                    Comment = cp.PriceAgreement.Comment,
+                    DiscountAmount = cp.PriceAgreement.DiscountAmount,
+                    StructuredMessage = cp.PriceAgreement.StructuredMessage,
+                    PaymentDate = cp.PriceAgreement.PaymentDate,
+                    PriceBillable = cp.PriceAgreement.PriceBillable,
+                    Status = cp.PriceAgreement.PriceAgreementStatus.Name,
+                    
+
+
+
+                }
+                    },
+                    PersonId = cp.Person.Id,
+                   
+                    Status = cp.PriceAgreement.PriceAgreementStatus.Name,
+                    PriceAgreementStatusId = cp.PriceAgreement.PriceAgreementStatusId,
+                    PriceAgreementId = cp.PriceAgreement.Id,
+                    Name = cp.ProductAgreement.ProductDefinition.Name,
+                    LastName = cp.Contract.ContractPersonInvolvements.FirstOrDefault().Person.FirstName
+                })
+                .ToList();
+
+            var contractSubscriptions = subscriptions
+                .GroupBy(s => s.ContractId)
+                .Select(g => new Subscription
+                {
+                    ContractId = g.Key,
+                    Name = g.Select(s => s.Name).FirstOrDefault(),
+                    PersonId = g.Select(s => s.PersonId).FirstOrDefault(),
+                    Status = g.Select(s => s.Status).LastOrDefault(),
+                    PriceAgreementStatusId = g.Select(s => s.PriceAgreementStatusId).LastOrDefault(),
+                    PriceAgreementId = g.Select(s => s.PriceAgreementId).LastOrDefault(),   
+
+
+                    PriceAgreements = g.SelectMany(s => s.PriceAgreements).ToList() // Flatten the list of price agreements
+        })
+                .ToList();
+
+            return contractSubscriptions;
+        }
+
+
+
     }
 }
 
-
-//public async Task SaveDataAsync(
-//    Contract contract, ContractPersonInvolvement contractPersonInvolvement, PriceAgreement priceAgreement, ProductAgreement productAgreement)
-//{
-//    ContractEntity contractEntity = _mapper.Map<ContractEntity>(contract);
-//    ContractPersonInvolvementEntity contractPersonInvolvementEntity = _mapper.Map<ContractPersonInvolvementEntity>(contractPersonInvolvement);
-//    PriceAgreementEntity priceAgreementEntity = _mapper.Map<PriceAgreementEntity>(priceAgreement);
-//    ProductAgreementEntity productAgreementEntity = _mapper.Map<ProductAgreementEntity>(productAgreement);
-//    using var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
-//    try
-//    {
-//        await _contractRepository.Insert(contractEntity);
-//        var savedContract = await _contractRepository.GetByIdAsync(contractEntity.Id);
-//        await _productAgreementRepository.SaveAsync(productAgreementEntity, savedContract.Id);
-//        await _priceAgreementRepository.SaveAsync(priceAgreementEntity, savedContract.Id);
-//        await _personInvolvementRepository.SaveAsync(contractPersonInvolvementEntity, savedContract.Id);
-
-//        transaction.Complete();
-//    }
-//    catch (Exception ex)
-//    {
-//        throw new ApplicationException("Failed to save data.", ex);
-//    }
-//}
