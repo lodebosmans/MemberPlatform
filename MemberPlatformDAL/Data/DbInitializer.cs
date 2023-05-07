@@ -31,10 +31,12 @@ namespace MemberPlatformDAL.Data
                     {
                         Name = "ContractType"
                     },
+                    // Contract involvement role (Westfit, sponsor, participant, trainer)
                     new OptionTypeEntity
                     {
                         Name = "Role"
                     },
+                    // Platform role (member, trainer, admin)
                     new OptionTypeEntity
                     {
                         Name = "PersonRole"
@@ -78,6 +80,7 @@ namespace MemberPlatformDAL.Data
                         Name = "Training series",
                         OptionTypeId = 1,
                     },
+
                     // Sports
                     new OptionEntity
                     {
@@ -104,6 +107,46 @@ namespace MemberPlatformDAL.Data
                         Name = "Start to triatlon",
                         OptionTypeId = 2,
                     },
+
+                    // Contract types
+                    new OptionEntity
+                    {
+                        Name = "Subscription",
+                        OptionTypeId = 3
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Trainer",
+                        OptionTypeId = 3
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Sponsor",
+                        OptionTypeId = 3
+                    },
+
+                    // Involvement roles
+                    new OptionEntity
+                    {
+                        Name = "Participant",
+                        OptionTypeId = 4
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Trainer",
+                        OptionTypeId = 4
+                    },                    
+                    new OptionEntity
+                    {
+                        Name = "Sponsor",
+                        OptionTypeId = 4
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Westfit",
+                        OptionTypeId = 4
+                    },
+
                     // Statuses
                     new OptionEntity
                     {
@@ -135,12 +178,7 @@ namespace MemberPlatformDAL.Data
                         Name = "Pending",
                         OptionTypeId = 6
                     },
-                    // Contract types
-                    new OptionEntity
-                    {
-                        Name = "Subscription",
-                        OptionTypeId = 3
-                    },
+
                     // Address types
                     new OptionEntity
                     {
@@ -152,16 +190,11 @@ namespace MemberPlatformDAL.Data
                         Name = "Residential",
                         OptionTypeId = 8
                     },
+
                     // Reduction types
                     new OptionEntity
                     {
                         Name = "Sponsor reduction",
-                        OptionTypeId = 9
-                    },
-                    // Person person relationships
-                    new OptionEntity
-                    {
-                        Name = "Family",
                         OptionTypeId = 9
                     },
                     // Sales item types
@@ -184,17 +217,6 @@ namespace MemberPlatformDAL.Data
                     {
                         Name = "Wetsuit",
                         OptionTypeId = 10
-                    },
-                    // Roles
-                    new OptionEntity
-                    {
-                        Name = "Member",
-                        OptionTypeId = 4
-                    },
-                    new OptionEntity
-                    {
-                        Name = "Trainer",
-                        OptionTypeId = 4
                     }
                  );
                 context.SaveChanges();

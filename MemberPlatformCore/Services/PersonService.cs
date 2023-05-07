@@ -11,16 +11,19 @@ namespace MemberPlatformCore.Services
         private IPersonRepository _personRepository;
         private IAddressRepository _addressRepository;
         private IOptionRepository _optionRepository;
+        private IOptionTypeRepository _optionTypeRepository;
         private IMapper _mapper;
 
         public PersonService(IPersonRepository personRepository, 
             IAddressRepository addressRepository,
             IOptionRepository optionRepository,
+            IOptionTypeRepository optionTypeRepository,
             IMapper mapper)
         {
             _personRepository = personRepository;
             _addressRepository = addressRepository;
             _optionRepository = optionRepository;
+            _optionTypeRepository = optionTypeRepository;
             _mapper = mapper;
         }
 
@@ -104,7 +107,8 @@ namespace MemberPlatformCore.Services
             // Map the Person object to an PersonEntity object
             PersonEntity personEntity = _mapper.Map<PersonEntity>(person);
             // Get the Option for a residential address
-            OptionEntity optionEntity = await _optionRepository.GetOptionAsync("Residential");
+            OptionTypeEntity addressOptionTypeEntity = await _optionTypeRepository.GetOptionTypeAsync("Address");
+            OptionEntity optionEntity = await _optionRepository.GetOptionAsync("Residential", addressOptionTypeEntity.Id);
             personEntity.Address.AddressTypeId = optionEntity.Id;
             personEntity.Address.AddressType = optionEntity;
             personEntity.AddressId = person.AddressId;
@@ -143,7 +147,8 @@ namespace MemberPlatformCore.Services
             // Map Address object to AddressEntity object
             AddressEntity addressEntity = _mapper.Map<AddressEntity>(personEntity.Address);
             // Get the Option for a residential address
-            OptionEntity optionEntity = await _optionRepository.GetOptionAsync("Residential");
+            OptionTypeEntity addressOptionTypeEntity = await _optionTypeRepository.GetOptionTypeAsync("Address");
+            OptionEntity optionEntity = await _optionRepository.GetOptionAsync("Residential", addressOptionTypeEntity.Id);
             addressEntity.AddressTypeId = optionEntity.Id;
             addressEntity.AddressType = optionEntity;
 

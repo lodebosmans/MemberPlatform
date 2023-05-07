@@ -21,9 +21,9 @@ namespace MemberPlatformDAL.Repositories
                 .ToListAsync();
         }
 
-        public async Task<OptionEntity> GetOptionAsync(string optionName)
+        public async Task<OptionEntity> GetOptionAsync(string optionName, int optionTypeId)
         {
-            OptionEntity option = await _context.Options.SingleOrDefaultAsync(o => o.Name == optionName);
+            OptionEntity option = await _context.Options.SingleOrDefaultAsync(o => o.Name == optionName && o.OptionTypeId == optionTypeId);
             if (option == null)
             {
                 throw new ApplicationException("Option for " + optionName + " not found.");
