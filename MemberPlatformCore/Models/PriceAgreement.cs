@@ -12,5 +12,6 @@ namespace MemberPlatformCore.Models
         public string? StructuredMessage { get; set; }
         public DateTime? PaymentDate { get; set; }
         public string? Comment { get; set; }
+        public string? Status { get; set; }
     }
 }

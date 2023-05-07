@@ -14,5 +14,8 @@ namespace MemberPlatformCore.Models
         public int? PriceAgreementId { get; set; }
         public int PersonId { get; set; }
         public string? Status { get; set; }
+        public int? ContractId { get; set; }
+        public string? LastName { get; set; }
+        public List<PriceAgreement>? PriceAgreements { get; set; } = new List<PriceAgreement>();
     }
 }

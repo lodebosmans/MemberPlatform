@@ -20,5 +20,6 @@ namespace MemberPlatformDAL.Entities
 
         public ICollection<ContractPersonInvolvementEntity> ContractPersonInvolvements { get; set; } //Contract can be related to 0 or more ContractPersonRole (1 to many relationShip)
         public ICollection<ProductAgreementEntity> ProductAgreements { get; set; }
+        public ICollection<PriceAgreementEntity> PriceAgreements { get; set; }
     }
 }
