@@ -162,19 +162,16 @@ namespace MemberPlatformCore.Services
                     PaymentDate = cp.PriceAgreement.PaymentDate,
                     PriceBillable = cp.PriceAgreement.PriceBillable,
                     Status = cp.PriceAgreement.PriceAgreementStatus.Name,
-                    
-
-
-
                 }
                     },
                     PersonId = cp.Person.Id,
-                   
+                    ContractDate = cp.Contract.ContractDate,
                     Status = cp.PriceAgreement.PriceAgreementStatus.Name,
                     PriceAgreementStatusId = cp.PriceAgreement.PriceAgreementStatusId,
                     PriceAgreementId = cp.PriceAgreement.Id,
                     Name = cp.ProductAgreement.ProductDefinition.Name,
-                    LastName = cp.Contract.ContractPersonInvolvements.FirstOrDefault().Person.FirstName
+                    LastName = cp.Person.LastName,
+                    FirstName = cp.Person.FirstName
                 })
                 .ToList();
 
@@ -187,7 +184,10 @@ namespace MemberPlatformCore.Services
                     PersonId = g.Select(s => s.PersonId).FirstOrDefault(),
                     Status = g.Select(s => s.Status).LastOrDefault(),
                     PriceAgreementStatusId = g.Select(s => s.PriceAgreementStatusId).LastOrDefault(),
-                    PriceAgreementId = g.Select(s => s.PriceAgreementId).LastOrDefault(),   
+                    PriceAgreementId = g.Select(s => s.PriceAgreementId).LastOrDefault(),
+                    LastName = g.Select(s => s.LastName).FirstOrDefault(),
+                    FirstName = g.Select(s => s.FirstName).FirstOrDefault(),
+                    ContractDate = g.Select(s => s.ContractDate).FirstOrDefault(),
 
 
                     PriceAgreements = g.SelectMany(s => s.PriceAgreements).ToList() // Flatten the list of price agreements
