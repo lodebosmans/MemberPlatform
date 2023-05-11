@@ -518,7 +518,7 @@ namespace MemberPlatformDAL.Data
                         ContractId = 1,
                         DiscountTypeId = 9,
                         ApproverId = 1,
-                        PriceAgreementStatusId = 12,
+                        PriceAgreementStatusId = 16,
                     },
                     new PriceAgreementEntity
                     {
@@ -530,7 +530,7 @@ namespace MemberPlatformDAL.Data
                         ContractId = 2,
                         DiscountTypeId = 9,
                         ApproverId = 1,
-                        PriceAgreementStatusId = 12,
+                        PriceAgreementStatusId = 16,
                     },
                     new PriceAgreementEntity
                     {
@@ -542,7 +542,7 @@ namespace MemberPlatformDAL.Data
                         ContractId = 1,
                         DiscountTypeId = 9,
                         ApproverId = 1,
-                        PriceAgreementStatusId = 14,
+                        PriceAgreementStatusId = 18,
                     },
                     new PriceAgreementEntity
                     {
@@ -554,7 +554,7 @@ namespace MemberPlatformDAL.Data
                         ContractId = 2,
                         DiscountTypeId = 9,
                         ApproverId = 1,
-                        PriceAgreementStatusId = 14,
+                        PriceAgreementStatusId = 18,
                     }
                     );
                 context.SaveChanges();
