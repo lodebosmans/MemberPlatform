@@ -44,5 +44,10 @@ namespace MemberPlatformApi.Controllers
         {
             return await _optionService.DeleteAsync(id);
         }
+        [HttpGet("type")]
+        public async Task<List<Option>> GetOptionsByTypeAsync(string type)
+        {
+            return await _optionService.GetAllByTypeAsync(type);
+        }
     }
 }
