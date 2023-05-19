@@ -566,6 +566,27 @@ namespace MemberPlatformDAL.Data
                         DiscountTypeId = 9,
                         ApproverId = 1,
                         PriceAgreementStatusId = 18,
+                    },
+                    new PriceAgreementEntity
+                    {
+                        DiscountAmount = 10,
+                        PriceBillable = 150,
+                        StructuredMessage = "Message",
+                        PaymentDate = DateTime.Now.AddDays(30),
+                        Comment = "geupdate",
+                        ContractId = 2,
+                        DiscountTypeId = 9,
+                        ApproverId = 1,
+                        PriceAgreementStatusId = 18,
+                    }
+                    );
+                context.SaveChanges();
+                context.PersonPersonRelations.AddRange(
+                    new PersonPersonRelationEntity
+                    {
+                        ParentId = 1,
+                        ChildId = 2,
+                        RelationId = 10,
                     }
                     );
                 context.SaveChanges();

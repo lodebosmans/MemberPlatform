@@ -21,8 +21,20 @@ namespace MemberPlatformDAL.Repositories
                  .Include(pa => pa.ProductAgreements)
                  .ThenInclude(pr => pr.ProductDefinition)
                  .AnyAsync(c => c.ContractPersonInvolvements.Any(cpi => cpi.PersonId == personId) && c.ProductAgreements.Any(pr => pr.ProductDefinitionId == productId && c.ContractDate.Year == DateTime.Now.Year));
-                
+        }
 
+        public async Task<List<ContractEntity>> GetAllWithPropsAsync()
+        {
+            return await _context.Contracts
+                   .Include(c => c.ContractPersonInvolvements)
+                   .ThenInclude(p => p.Person)
+                 .Include(pa => pa.ProductAgreements)
+                 .ThenInclude(pr => pr.ProductDefinition)
+                 .Include(pa => pa.PriceAgreements)
+                 .ThenInclude(o => o.PriceAgreementStatus)
+                 .Where(c => c.ContractPersonInvolvements.Any(cpi => cpi.ContractId == c.Id)
+                   && c.PriceAgreements.Any(pa => pa.ContractId == c.Id) && c.ProductAgreements.Any(pr =>pr.ProductDefinition.Id == pr.ProductDefinitionId))
+                 .ToListAsync();
         }
     }
 }

@@ -30,5 +30,13 @@ namespace MemberPlatformDAL.Repositories
             }
             return option;
         }
+        public async Task<List<OptionEntity>> GetAllByType(int typeId)
+        {
+            return await _context.Options
+           .Include(o => o.OptionType)
+           .Where(o => o.OptionTypeId == typeId)
+           .ToListAsync();
+
+        }
     }
 }

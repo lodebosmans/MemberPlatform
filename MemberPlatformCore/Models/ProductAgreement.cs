@@ -5,5 +5,6 @@ namespace MemberPlatformCore.Models
         public int Id { get; set; }
         public int ContractId { get; set; }
         public int ProductDefinitionId { get; set; }
+        
     }
 }
