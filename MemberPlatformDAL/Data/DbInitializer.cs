@@ -27,6 +27,7 @@ namespace MemberPlatformDAL.Data
                     {
                         Name = "Sport"
                     },
+                    // Contract type (Subscription, trainer, sponsor, admin)
                     new OptionTypeEntity
                     {
                         Name = "ContractType"
@@ -124,6 +125,11 @@ namespace MemberPlatformDAL.Data
                         Name = "Sponsor",
                         OptionTypeId = 3
                     },
+                    new OptionEntity
+                    {
+                        Name = "Admin",
+                        OptionTypeId = 3
+                    },
 
                     // Involvement roles
                     new OptionEntity
@@ -145,6 +151,23 @@ namespace MemberPlatformDAL.Data
                     {
                         Name = "Westfit",
                         OptionTypeId = 4
+                    },
+
+                    // Person roles
+                    new OptionEntity
+                    {
+                        Name = "Member",
+                        OptionTypeId = 5
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Trainer",
+                        OptionTypeId = 5
+                    },
+                    new OptionEntity
+                    {
+                        Name = "Admin",
+                        OptionTypeId = 5
                     },
 
                     // Statuses
@@ -567,6 +590,15 @@ namespace MemberPlatformDAL.Data
                     }
                     );
                 context.SaveChanges();
+                //context.PersonPersonRelations.AddRange(
+                //    new PersonPersonRelationEntity
+                //    {
+                //        ParentId = 1,
+                //        ChildId = 2,
+                //        RelationId = 10,
+                //    }
+                //    );
+                //context.SaveChanges();
                 context.Tickets.AddRange(
                     new TicketEntity
                     {
