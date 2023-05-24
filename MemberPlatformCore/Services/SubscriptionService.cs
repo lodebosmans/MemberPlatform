@@ -63,6 +63,8 @@ namespace MemberPlatformCore.Services
                 ContractEntity contractEntity = new ContractEntity();
                 contractEntity.ContractDate = DateTime.Now;
                 contractEntity.ContractTypeId = contractType.Id;
+                contractEntity.StartDate = new DateTime(product.StartDate.Year, 1, 1);
+                contractEntity.EndDate = new DateTime(product.StartDate.Year, 12, 31);
                 ProductAgreementEntity productAgreementEntity = new ProductAgreementEntity();
                 productAgreementEntity.ProductDefinitionId = productId;
                 ContractPersonInvolvementEntity contractPersonInvolvementEntity = new ContractPersonInvolvementEntity();
@@ -98,6 +100,7 @@ namespace MemberPlatformCore.Services
             {
 
                 var x = await _priceAgreementRepository.GetByProductPersonYear(subItem.Id, personId, year);
+
                     var status = await _optionRepository.GetByIdAsync(x[x.Count - 1].PriceAgreementStatusId);
                     var person = await _personRepository.GetByIdAsync(personId);
                     Subscription subscription = new Subscription
@@ -115,6 +118,7 @@ namespace MemberPlatformCore.Services
                     subs.Add(subscription);
                     id = id + 1;
                 }
+
             return subs;
         }
         //public async Task<List<Subscription>> GetSubscriptionsAsync()
