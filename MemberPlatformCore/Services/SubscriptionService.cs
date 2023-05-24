@@ -20,6 +20,7 @@ namespace MemberPlatformCore.Services
         private readonly IOptionRepository _optionRepository;
         private readonly IOptionTypeRepository _optionTypeRepository;
         private readonly IProductDefinitionRepository _productDefinitionRepository;
+        private readonly IPersonRepository _personRepository;
         private IMapper _mapper;
 
         public SubscriptionService(
@@ -30,6 +31,7 @@ namespace MemberPlatformCore.Services
             IOptionRepository optionRepository,
             IOptionTypeRepository optionTypeRepository,
             IProductDefinitionRepository productDefinitionRepository,
+            IPersonRepository personRepository,
             IMapper mapper)
         {
             _contractRepository = contractRepository;
@@ -39,6 +41,7 @@ namespace MemberPlatformCore.Services
             _optionRepository = optionRepository;
             _optionTypeRepository = optionTypeRepository;
             _productDefinitionRepository = productDefinitionRepository;
+            _personRepository = personRepository;
             _mapper = mapper;
         }
         public async Task SaveDataAsync(int productId, int personId)
@@ -93,21 +96,25 @@ namespace MemberPlatformCore.Services
             int id = 0;
             foreach (var subItem in sub)
             {
-              
+
                 var x = await _priceAgreementRepository.GetByProductPersonYear(subItem.Id, personId, year);
-                var status = await _optionRepository.GetByIdAsync(x[x.Count - 1].PriceAgreementStatusId);
-                Subscription subscription = new Subscription
-                {
-                    Name = subItem.Name,
-                    PersonId = personId,
-                    PriceAgreementStatusId = x[x.Count - 1].PriceAgreementStatusId,
-                    PriceAgreementId = x[x.Count - 1].Id,
-                    Status = status.Name,
-                    Id = id
-                };
-                subs.Add(subscription);
-                id = id + 1;
-            }
+                    var status = await _optionRepository.GetByIdAsync(x[x.Count - 1].PriceAgreementStatusId);
+                    var person = await _personRepository.GetByIdAsync(personId);
+                    Subscription subscription = new Subscription
+                    {
+                        Name = subItem.Name,
+                        PersonId = personId,
+                        PriceAgreementStatusId = x[x.Count - 1].PriceAgreementStatusId,
+                        PriceAgreementId = x[x.Count - 1].Id,
+                        Status = status.Name,
+                        Id = id,
+                        LastName = person.LastName,
+                        FirstName = person.FirstName,
+
+                    };
+                    subs.Add(subscription);
+                    id = id + 1;
+                }
             return subs;
         }
         //public async Task<List<Subscription>> GetSubscriptionsAsync()
