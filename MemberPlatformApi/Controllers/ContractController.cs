@@ -33,6 +33,12 @@ namespace MemberPlatformApi.Controllers
             return await _contractService.ContractExists(productId, personId);
         }
 
+        [HttpGet("adminRightsExists/{personId}")]
+        public async Task<bool> adminExists(int personId)
+        {
+            return await _contractService.AdminRightsExists(personId);
+        }
+
         [HttpPut("{id}")]
         public async Task<Contract> UpdateAsync(int id, Contract contract)
         {

@@ -7,5 +7,6 @@ namespace MemberPlatformDAL.Repositories
     {
         Task<bool> ContractExists(int productId, int personId);
         Task<List<ContractEntity>> GetAllWithPropsAsync();
+        Task<bool> AdminRightsExists(int personId);
     }
 }

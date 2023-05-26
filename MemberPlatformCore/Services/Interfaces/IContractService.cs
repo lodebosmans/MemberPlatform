@@ -14,5 +14,6 @@ namespace MemberPlatformCore.Services
 
         Task<Contract> PostAsync(Contract contract);
         Task<bool> ContractExists(int productId, int personId);
+        Task<bool> AdminRightsExists(int personId);
     }
 }

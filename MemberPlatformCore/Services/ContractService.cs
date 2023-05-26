@@ -69,8 +69,11 @@ namespace MemberPlatformCore.Services
         public async Task<bool> ContractExists(int productId, int personId)
         {
             return await _contractRepository.ContractExists(productId, personId);
-       
+        }
 
+        public async Task<bool> AdminRightsExists(int personId)
+        {
+            return await _contractRepository.AdminRightsExists(personId);
         }
 
     }
