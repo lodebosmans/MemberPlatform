@@ -21,63 +21,78 @@ namespace MemberPlatformDAL.Data
                 context.OptionTypes.AddRange(
                     new OptionTypeEntity
                     {
+                        // id = 1
                         Name = "Format"
                     },
                     new OptionTypeEntity
                     {
+                        // id = 2
                         Name = "Sport"
                     },
                     // Contract type (Subscription, trainer, sponsor, admin)
                     new OptionTypeEntity
                     {
+                        // id = 3
                         Name = "ContractType"
                     },
                     // Contract involvement role (Westfit, sponsor, participant, trainer)
                     new OptionTypeEntity
                     {
+                        // id = 4
                         Name = "Role"
                     },
                     // Platform role (member, trainer, admin)
                     new OptionTypeEntity
                     {
-                        Name = "PersonRole"
+                        // id = 5
+                        Name = "PlatformRole"
                     },
                     new OptionTypeEntity
                     {
+                        // id = 6
                         Name = "Status"
                     },
                     new OptionTypeEntity
                     {
+                        // id = 7
                         Name = "DocumentType"
                     },
                     new OptionTypeEntity
                     {
+                        // id = 8
                         Name = "Address"
                     },
                     new OptionTypeEntity
                     {
+                        // id = 9
                         Name = "DiscountType"
                     },
                     new OptionTypeEntity
                     {
+                        // id = 10
                         Name = "SalesItem"
                     }
                     );
                 context.SaveChanges();
+
+
                 context.Options.AddRange(
                     // Type of events
                     new OptionEntity
                     {
+                        // id = 1
                         Name = "Single day event",
                         OptionTypeId = 1,
                     },
                     new OptionEntity
                     {
+                        // id = 2
                         Name = "Multi day event",
                         OptionTypeId = 1,
                     },
                     new OptionEntity
                     {
+                        // id = 3
                         Name = "Training series",
                         OptionTypeId = 1,
                     },
@@ -85,26 +100,31 @@ namespace MemberPlatformDAL.Data
                     // Sports
                     new OptionEntity
                     {
+                        // id = 4
                         Name = "Triatlon",
                         OptionTypeId = 2,
                     },
                     new OptionEntity
                     {
+                        // id = 5
                         Name = "Runnning",
                         OptionTypeId = 2,
                     },
                     new OptionEntity
                     {
+                        // id = 6
                         Name = "Swimming",
                         OptionTypeId = 2,
                     },
                     new OptionEntity
                     {
+                        // id = 7
                         Name = "Mountainbike",
                         OptionTypeId = 2,
                     },
                     new OptionEntity
                     {
+                        // id = 8
                         Name = "Start to triatlon",
                         OptionTypeId = 2,
                     },
@@ -112,21 +132,25 @@ namespace MemberPlatformDAL.Data
                     // Contract types
                     new OptionEntity
                     {
+                        // id = 9
                         Name = "Subscription",
                         OptionTypeId = 3
                     },
                     new OptionEntity
                     {
+                        // id = 10
                         Name = "Trainer",
                         OptionTypeId = 3
                     },
                     new OptionEntity
                     {
+                        // id = 11
                         Name = "Sponsor",
                         OptionTypeId = 3
                     },
                     new OptionEntity
                     {
+                        // id = 12
                         Name = "Admin",
                         OptionTypeId = 3
                     },
@@ -134,38 +158,45 @@ namespace MemberPlatformDAL.Data
                     // Involvement roles
                     new OptionEntity
                     {
+                        // id = 13
                         Name = "Participant",
                         OptionTypeId = 4
                     },
                     new OptionEntity
                     {
+                        // id = 14
                         Name = "Trainer",
                         OptionTypeId = 4
                     },                    
                     new OptionEntity
                     {
+                        // id = 15
                         Name = "Sponsor",
                         OptionTypeId = 4
                     },
                     new OptionEntity
                     {
+                        // id = 16
                         Name = "Westfit",
                         OptionTypeId = 4
                     },
 
-                    // Person roles
+                    // Platform roles
                     new OptionEntity
                     {
+                        // id = 17
                         Name = "Member",
                         OptionTypeId = 5
                     },
                     new OptionEntity
                     {
+                        // id = 18
                         Name = "Trainer",
                         OptionTypeId = 5
                     },
                     new OptionEntity
                     {
+                        // id = 19
                         Name = "Admin",
                         OptionTypeId = 5
                     },
@@ -173,31 +204,37 @@ namespace MemberPlatformDAL.Data
                     // Statuses
                     new OptionEntity
                     {
+                        // id = 20
                         Name = "Submitted",
                         OptionTypeId = 6,
                     },
                     new OptionEntity
                     {
+                        // id = 21
                         Name = "Cancelled",
                         OptionTypeId = 6,
                     },
                     new OptionEntity
                     {
+                        // id = 22
                         Name = "Approved",
                         OptionTypeId = 6,
                     },
                     new OptionEntity
                     {
+                        // id = 23
                         Name = "Not approved",
                         OptionTypeId = 6,
                     },
                     new OptionEntity
                     {
+                        // id = 24
                         Name = "Action needed",
                         OptionTypeId = 6,
                     },
                     new OptionEntity
                     {
+                        // id = 25
                         Name = "Pending",
                         OptionTypeId = 6
                     },
@@ -205,11 +242,13 @@ namespace MemberPlatformDAL.Data
                     // Address types
                     new OptionEntity
                     {
+                        // id = 26
                         Name = "Training facility",
                         OptionTypeId = 8
                     },
                     new OptionEntity
                     {
+                        // id = 27
                         Name = "Residential",
                         OptionTypeId = 8
                     },
@@ -217,35 +256,43 @@ namespace MemberPlatformDAL.Data
                     // Reduction types
                     new OptionEntity
                     {
+                        // id = 28
                         Name = "Sponsor reduction",
                         OptionTypeId = 9
                     },
                     // Sales item types
                     new OptionEntity
                     {
+                        // id = 29
                         Name = "Bikes",
                         OptionTypeId = 10
                     },
                     new OptionEntity
                     {
+                        // id = 30
                         Name = "Bike shoes",
                         OptionTypeId = 10
                     },
                     new OptionEntity
                     {
+                        // id = 31
                         Name = "Trisuit",
                         OptionTypeId = 10
                     },
                     new OptionEntity
                     {
+                        // id = 32
                         Name = "Wetsuit",
                         OptionTypeId = 10
                     }
                  );
                 context.SaveChanges();
+
+
                 context.Addresses.AddRange(
                     new AddressEntity
                     {
+                        // id = 1
                         Name = "Boswachtershuis",
                         Street = "Bosstraat",
                         Number = "1",
@@ -256,6 +303,7 @@ namespace MemberPlatformDAL.Data
                     },
                     new AddressEntity
                     {
+                        // id = 2
                         Street = "Kerkstraat",
                         Number = "4",
                         Box = "3",
@@ -266,6 +314,7 @@ namespace MemberPlatformDAL.Data
                     },
                     new AddressEntity
                     {
+                        // id = 3
                         Street = "Bergstraat",
                         Number = "3",
                         City = "Turnhout",
@@ -275,6 +324,7 @@ namespace MemberPlatformDAL.Data
                     },
                     new AddressEntity
                     {
+                        // id = 4
                         Street = "Lennostraat",
                         Number = "4",
                         Box = "3",
@@ -285,6 +335,7 @@ namespace MemberPlatformDAL.Data
                     },
                     new AddressEntity
                     {
+                        // id = 5
                         Street = "Lyasstraat",
                         Number = "4",
                         Box = "3",
@@ -292,11 +343,36 @@ namespace MemberPlatformDAL.Data
                         PostalCode = "2440",
                         Country = "België",
                         AddressTypeId = 17,
+                    },
+                    new AddressEntity
+                    {
+                        // id = 6
+                        Street = "Westfit Admin straat",
+                        Number = "1",
+                        Box = "1",
+                        City = "Geel",
+                        PostalCode = "2440",
+                        Country = "België",
+                        AddressTypeId = 17,
+                    },
+                    new AddressEntity
+                    {
+                        // id = 7
+                        Street = "Westfit Member straat",
+                        Number = "1",
+                        Box = "2",
+                        City = "Geel",
+                        PostalCode = "2440",
+                        Country = "België",
+                        AddressTypeId = 17,
                     });
                 context.SaveChanges();
+
+
                 context.Persons.AddRange(
                     new PersonEntity
                     {
+                        // id = 1
                         FirstName = "Lode",
                         LastName = "Bosmans",
                         Gender = "male",
@@ -311,6 +387,7 @@ namespace MemberPlatformDAL.Data
                     },
                     new PersonEntity
                     {
+                        // id = 2
                         FirstName = "Ive",
                         LastName = "Verstappen",
                         Gender = "male",
@@ -324,6 +401,7 @@ namespace MemberPlatformDAL.Data
                         ParentId = null
                     }, new PersonEntity
                     {
+                        // id = 3
                         FirstName = "Johnny",
                         LastName = "Urkens",
                         Gender = "Male",
@@ -337,32 +415,36 @@ namespace MemberPlatformDAL.Data
                         ParentId = null
                     }, new PersonEntity
                     {
-                        FirstName = "Veerle",
-                        LastName = "Bosmans",
+                        // id = 4
+                        FirstName = "Admin",
+                        LastName = "Westfit",
                         Gender = "Female",
-                        DateOfBirth = DateTime.Parse("1979-04-09"),
+                        DateOfBirth = DateTime.Parse("1979-01-01"),
                         InsuranceCompany = "CM",
-                        MobilePhone = "0476989727",
-                        EmailAddress = "veerle@gmail.com",
-                        IdentityNumber = "71040944569",
+                        MobilePhone = "0495123456",
+                        EmailAddress = "admin@westfit.com",
+                        IdentityNumber = "01234567890",
                         PrivacyApproval = true,
-                        AddressId = 2,
+                        AddressId = 6,
                         ParentId = null
                     }, new PersonEntity
                     {
-                        FirstName = "Wim",
-                        LastName = "Bosmans",
+                        // id = 5
+                        FirstName = "Member",
+                        LastName = "Westfit",
                         Gender = "Male",
-                        DateOfBirth = DateTime.Parse("1983-04-09"),
+                        DateOfBirth = DateTime.Parse("1983-01-01"),
                         InsuranceCompany = "CM",
-                        MobilePhone = "0476989727",
-                        EmailAddress = "wim@gmail.com",
-                        IdentityNumber = "71040944569",
+                        MobilePhone = "0495654321",
+                        EmailAddress = "member@westfit.com",
+                        IdentityNumber = "09876543210",
                         PrivacyApproval = true,
-                        AddressId = 2
+                        AddressId = 7,
+                        ParentId = null
                     },
                     new PersonEntity
                     {
+                        // id = 6
                         FirstName = "Lenno",
                         LastName = "Bosmans",
                         Gender = "male",
@@ -377,6 +459,7 @@ namespace MemberPlatformDAL.Data
                     },
                     new PersonEntity
                     {
+                        // id = 7
                         FirstName = "Lyas",
                         LastName = "Bosmans",
                         Gender = "male",
@@ -391,6 +474,7 @@ namespace MemberPlatformDAL.Data
                     },
                      new PersonEntity
                      {
+                         // id = 8
                          FirstName = "Emiel",
                          LastName = "Urkens",
                          Gender = "male",
@@ -405,6 +489,7 @@ namespace MemberPlatformDAL.Data
                      },
                     new PersonEntity
                     {
+                        // id = 9
                         FirstName = "Warre",
                         LastName = "Urkens",
                         Gender = "male",
@@ -419,6 +504,8 @@ namespace MemberPlatformDAL.Data
                     }
                 ) ;
                 context.SaveChanges();
+
+
                 context.ProductDefinitions.AddRange(
                      new ProductDefinitionEntity
                      {
@@ -473,22 +560,64 @@ namespace MemberPlatformDAL.Data
                 context.Contracts.AddRange(
                     new ContractEntity
                     {
+                        // id = 1
                         ContractDate = DateTime.Now,
-                        //StartDate = DateTime.Now.AddDays(5),
-                        //EndDate = DateTime.Now.AddDays(50),
-                        ContractTypeId = 6,
+                        StartDate = new DateTime(2023, 1, 1),
+                        EndDate = new DateTime(2023, 12, 31),
+                        ContractTypeId = 9,
                     },
                     new ContractEntity
                     {
+                        // id = 2
                         ContractDate = new DateTime(2022,02,20),
-                        ContractTypeId = 7,
+                        StartDate = new DateTime(2023, 1, 1),
+                        EndDate = new DateTime(2023, 12, 31),
+                        ContractTypeId = 9,
                     },
                     new ContractEntity
                     {
+                        // id = 3
                         ContractDate = new DateTime(2022, 02, 20),
-                        ContractTypeId = 7,
+                        StartDate = new DateTime(2023, 1, 1),
+                        EndDate = new DateTime(2023, 12, 31),
+                        ContractTypeId = 9,
+                    },
+                    new ContractEntity
+                    {
+                        // id = 4
+                        // Contract Lode
+                        ContractDate = new DateTime(2023, 02, 20),
+                        StartDate = new DateTime(2023, 1, 1),
+                        EndDate = new DateTime(2099, 12, 31),
+                        ContractTypeId = 12,
+                    },
+                    new ContractEntity
+                    {
+                        // id = 5
+                        // Contract Johnny
+                        ContractDate = new DateTime(2023, 02, 20),
+                        StartDate = new DateTime(2023, 1, 1),
+                        EndDate = new DateTime(2099, 12, 31),
+                        ContractTypeId = 12,
+                    },
+                    new ContractEntity
+                    {
+                        // id = 6
+                        // Contract Admin westfit
+                        ContractDate = new DateTime(2023, 02, 20),
+                        StartDate = new DateTime(2023, 1, 1),
+                        EndDate = new DateTime(2099, 12, 31),
+                        ContractTypeId = 12,
+                    },
+                    new ContractEntity
+                    {
+                        // id = 7
+                        // Contract member westfit
+                        ContractDate = new DateTime(2023, 02, 20),
+                        StartDate = new DateTime(2023, 1, 1),
+                        EndDate = new DateTime(2099, 12, 31),
+                        ContractTypeId = 12,
                     }
-
                     );
                 context.SaveChanges();
                 context.ProductAgreements.AddRange(
@@ -527,6 +656,34 @@ namespace MemberPlatformDAL.Data
                         ContractId = 3,
                         PersonId = 9,
                         RoleId = 6,
+                    },
+                    new ContractPersonInvolvementEntity
+                    {
+                        // Contract Lode admin
+                        ContractId = 4,
+                        PersonId = 1,
+                        RoleId = 19,
+                    },
+                    new ContractPersonInvolvementEntity
+                    {
+                        // Contract Johnny admin
+                        ContractId = 5,
+                        PersonId = 3,
+                        RoleId = 19,
+                    },
+                    new ContractPersonInvolvementEntity
+                    {
+                        // Contract westfit admin
+                        ContractId = 6,
+                        PersonId = 4,
+                        RoleId = 19,
+                    },
+                    new ContractPersonInvolvementEntity
+                    {
+                        // Contract westfit member
+                        ContractId = 7,
+                        PersonId = 5,
+                        RoleId = 17,
                     }
                     );
                 context.SaveChanges();
@@ -581,15 +738,15 @@ namespace MemberPlatformDAL.Data
                     }
                     );
                 context.SaveChanges();
-                context.PersonPersonRelations.AddRange(
-                    new PersonPersonRelationEntity
-                    {
-                        ParentId = 1,
-                        ChildId = 2,
-                        RelationId = 10,
-                    }
-                    );
-                context.SaveChanges();
+                //context.PersonPersonRelations.AddRange(
+                //    new PersonPersonRelationEntity
+                //    {
+                //        ParentId = 1,
+                //        ChildId = 2,
+                //        RelationId = 10,
+                //    }
+                //    );
+                //context.SaveChanges();
                 //context.PersonPersonRelations.AddRange(
                 //    new PersonPersonRelationEntity
                 //    {

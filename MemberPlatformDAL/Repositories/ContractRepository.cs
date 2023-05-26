@@ -23,11 +23,19 @@ namespace MemberPlatformDAL.Repositories
                  .AnyAsync(c => c.ContractPersonInvolvements.Any(cpi => cpi.PersonId == personId) && c.ProductAgreements.Any(pr => pr.ProductDefinitionId == productId && c.ContractDate.Year == DateTime.Now.Year));
         }
 
+        public async Task<bool> AdminRightsExists(int personId)
+        {
+            return await _context.Contracts
+                 .Include(c => c.ContractPersonInvolvements)
+                 .ThenInclude(cpi => cpi.Role)
+                 .AnyAsync(c => c.ContractPersonInvolvements.Any(cpi => cpi.PersonId == personId) && c.ContractPersonInvolvements.Any(r => r.Role.Name == "Admin" && r.Role.OptionType.Name == "PlatformRole" && c.ContractDate.Year == DateTime.Now.Year));
+        }
+
         public async Task<List<ContractEntity>> GetAllWithPropsAsync()
         {
             return await _context.Contracts
-                   .Include(c => c.ContractPersonInvolvements)
-                   .ThenInclude(p => p.Person)
+                 .Include(c => c.ContractPersonInvolvements)
+                 .ThenInclude(p => p.Person)
                  .Include(pa => pa.ProductAgreements)
                  .ThenInclude(pr => pr.ProductDefinition)
                  .Include(pa => pa.PriceAgreements)
@@ -36,5 +44,7 @@ namespace MemberPlatformDAL.Repositories
                    && c.PriceAgreements.Any(pa => pa.ContractId == c.Id) && c.ProductAgreements.Any(pr =>pr.ProductDefinition.Id == pr.ProductDefinitionId))
                  .ToListAsync();
         }
+
+
     }
 }
