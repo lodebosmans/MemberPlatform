@@ -115,8 +115,31 @@ namespace MemberPlatformCore.Services
                         FirstName = person.FirstName,
 
                     };
-                    subs.Add(subscription);
-                    id = id + 1;
+                List<PriceAgreement> priceAgreements = new List<PriceAgreement>();
+                foreach (var agreement in x)
+                {
+                    var y = await _optionRepository.GetByIdAsync(agreement.PriceAgreementStatusId);
+                    PriceAgreement priceAgreement = new PriceAgreement
+                    {
+                        PriceAgreementStatusId = agreement.PriceAgreementStatusId,
+                        Id = agreement.Id,
+                        Status = y.Name,
+                        Comment = agreement.Comment,
+                        DiscountTypeId = agreement.DiscountTypeId,
+                        ApproverId = agreement.ApproverId,
+                        ContractId = agreement.ContractId,
+                        DiscountAmount = agreement.DiscountAmount,
+                        PriceBillable = agreement.PriceBillable,
+                        StructuredMessage = agreement.StructuredMessage,
+                        PaymentDate = agreement.PaymentDate,
+                    };
+
+                    priceAgreements.Add(priceAgreement);
+                }
+
+                subscription.PriceAgreements = priceAgreements;
+                subs.Add(subscription);
+                    id ++;
                 }
 
             return subs;
@@ -152,7 +175,6 @@ namespace MemberPlatformCore.Services
                 .SelectMany(c => c.ProductAgreements, (c, pa) => new { Contract = c, ProductAgreement = pa })
                 .SelectMany(cp => cp.Contract.PriceAgreements, (cp, pr) => new { cp.Contract, cp.ProductAgreement, PriceAgreement = pr })
                  .SelectMany(cp => cp.Contract.ContractPersonInvolvements, (cp, cpi) => new { cp.Contract, cp.PriceAgreement, cp.ProductAgreement, cpi.Person })
-
                 .Select(cp => new Subscription
                 {
                    
