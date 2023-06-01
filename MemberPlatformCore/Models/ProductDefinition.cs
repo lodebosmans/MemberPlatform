@@ -17,6 +17,7 @@ namespace MemberPlatformCore.Models
         public int? ParentProductDefinitionId { get; set; }
         public int ProductDefinitionStatusId { get; set; }
         public int ProductDefinitionFormatId { get; set; }
+        public string ProductDefinitionFormat { get; set; }
         public int ProductDefinitionSportId { get; set; }
         public string? ImageUrl { get; set; }
     }
