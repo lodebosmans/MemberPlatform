@@ -24,6 +24,7 @@ namespace MemberPlatformCore.Services
             foreach (ProductDefinitionEntity entity in entities)
             {
                 ProductDefinition productDefinition = _mapper.Map<ProductDefinition>(entity);
+                // productDefinition.ProductDefinitionFormat = entity.ProductDefinitionFormat.Name;
                 productDefinitions.Add(productDefinition);
             }
             return productDefinitions;
