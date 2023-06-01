@@ -299,7 +299,7 @@ namespace MemberPlatformDAL.Data
                         City = "Westerlo",
                         PostalCode = "2260",
                         Country = "België",
-                        AddressTypeId = 16,
+                        AddressTypeId = 26,
                     },
                     new AddressEntity
                     {
@@ -310,7 +310,7 @@ namespace MemberPlatformDAL.Data
                         City = "Geel",
                         PostalCode = "2440",
                         Country = "België",
-                        AddressTypeId = 17,
+                        AddressTypeId = 27,
                     },
                     new AddressEntity
                     {
@@ -320,7 +320,7 @@ namespace MemberPlatformDAL.Data
                         City = "Turnhout",
                         PostalCode = "2300",
                         Country = "België",
-                        AddressTypeId = 17,
+                        AddressTypeId = 27,
                     },
                     new AddressEntity
                     {
@@ -331,7 +331,7 @@ namespace MemberPlatformDAL.Data
                         City = "Geel",
                         PostalCode = "2440",
                         Country = "België",
-                        AddressTypeId = 17,
+                        AddressTypeId = 27,
                     },
                     new AddressEntity
                     {
@@ -342,7 +342,7 @@ namespace MemberPlatformDAL.Data
                         City = "Geel",
                         PostalCode = "2440",
                         Country = "België",
-                        AddressTypeId = 17,
+                        AddressTypeId = 27,
                     },
                     new AddressEntity
                     {
@@ -353,7 +353,7 @@ namespace MemberPlatformDAL.Data
                         City = "Geel",
                         PostalCode = "2440",
                         Country = "België",
-                        AddressTypeId = 17,
+                        AddressTypeId = 27,
                     },
                     new AddressEntity
                     {
@@ -364,7 +364,7 @@ namespace MemberPlatformDAL.Data
                         City = "Geel",
                         PostalCode = "2440",
                         Country = "België",
-                        AddressTypeId = 17,
+                        AddressTypeId = 27,
                     });
                 context.SaveChanges();
 
