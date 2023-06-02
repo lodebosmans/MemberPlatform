@@ -1,4 +1,4 @@
-﻿//using System;
+//using System;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
@@ -76,7 +76,6 @@
 
 //        }
 
-
 //        //public async Task<List<Subscription>> GetAllById(int personId, int year)
 //        //{
 //        //    var sub = await _productDefinitionRepository.GetAllByIdAsync(personId, year);
@@ -84,7 +83,6 @@
 //        //    int id = 0;
 //        //    foreach (var subItem in sub)
 //        //    {
-
 //        //        var x = await _priceAgreementRepository.GetByProductPersonYear(subItem.Id, personId, year);
 //        //        var status = await _optionRepository.GetByIdAsync(x[x.Count - 1].PriceAgreementStatusId);
 //        //        Subscription subscription = new Subscription
@@ -103,7 +101,6 @@
 
 //        //        //subscription.Status = status.Name;
 //        //        //subscription.Id = id;
-
 
 //        //        subs.Add(subscription);
 //        //        id = id + 1;

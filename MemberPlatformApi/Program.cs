@@ -1,4 +1,3 @@
-using MemberPlatformApi.Controllers;
 using MemberPlatformApi.Models;
 using MemberPlatformCore.Services;
 using MemberPlatformDAL.Data;
@@ -62,8 +61,6 @@ builder.Services.AddScoped<ITicketItemService, TicketItemService>();
 builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 builder.Services.AddScoped<IPersonAddressService, PersonAddressService>();
 
-
-
 // Prevent circular references
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
@@ -103,7 +100,6 @@ builder.Services.AddAuthentication(x =>
 }).AddCookie(x =>
 {
     x.Cookie.Name = "token";
-
 }).AddJwtBearer(x =>
 {
     x.RequireHttpsMetadata = false;
@@ -123,7 +119,6 @@ builder.Services.AddAuthentication(x =>
             return Task.CompletedTask;
         }
     };
-
 });
 
 builder.Services.AddHttpClient();

@@ -28,6 +28,7 @@ namespace MemberPlatformApi.Controllers
         {
             return await _productDefinitionService.GetByIdAsync(id);
         }
+
         [HttpGet("AllById/{id}/{year}")]
         public async Task<List<ProductDefinition>> GetAllByIdAsync(int id, int year)
         {

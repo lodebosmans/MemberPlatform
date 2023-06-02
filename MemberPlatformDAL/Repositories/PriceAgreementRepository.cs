@@ -13,6 +13,7 @@ namespace MemberPlatformDAL.Repositories
         {
             _context = context;
         }
+
         public async Task<PriceAgreementEntity> SaveAsync(PriceAgreementEntity priceAgreementEntity, int contractId)
         {
             priceAgreementEntity.ContractId = contractId;
@@ -20,6 +21,7 @@ namespace MemberPlatformDAL.Repositories
             await _context.SaveChangesAsync();
             return priceAgreementEntity;
         }
+
         public async Task<List<PriceAgreementEntity>> GetByProductPersonYear(int productId, int personId, int year)
         {
             return await _context.PriceAgreements

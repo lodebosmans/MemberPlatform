@@ -75,6 +75,5 @@ namespace MemberPlatformCore.Services
         {
             return await _contractRepository.AdminRightsExists(personId);
         }
-
     }
 }

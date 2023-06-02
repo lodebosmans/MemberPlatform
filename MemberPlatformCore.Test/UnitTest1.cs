@@ -21,10 +21,10 @@ namespace MemberPlatformCore.Test
                 Address = new AddressEntity() { City = "Geel", Street = "Kerkstraat", Number = "4" }
             };
         }
+
         [SetUp]
         public void Setup()
         {
-
         }
 
         [Test]
@@ -32,6 +32,7 @@ namespace MemberPlatformCore.Test
         {
             Assert.Fail();
         }
+
         [Test]
         public void WhenAddingTwoByTwo_ThenResultShouldBeFour()
         {
@@ -43,7 +44,6 @@ namespace MemberPlatformCore.Test
             int result = a + b;
             //Assert (Is het resultaat van de act wat we verwachten)
             Assert.AreEqual(4, result);
-
         }
 
         [Test]
@@ -68,7 +68,6 @@ namespace MemberPlatformCore.Test
             Assert.IsNotNull(personResult);
             Assert.AreEqual("Kerkstraat", personResult.Street);
             Assert.AreEqual("Jan Jansen", personResult.FullName);
-            
         }
     }
 }

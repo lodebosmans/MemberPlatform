@@ -67,6 +67,7 @@ namespace MemberPlatformCore.Services
             // Map the deleted entity back to an OptionType object and return it
             return _mapper.Map<Option>(entity);
         }
+
         public async Task<List<Option>> GetAllByTypeAsync(string type)
         {
             OptionTypeEntity optionTypeEntity = await _optionTypeRepository.GetOptionTypeAsync(type);

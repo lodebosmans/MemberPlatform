@@ -13,6 +13,7 @@ namespace MemberPlatformCore.Services
         Task<Option> UpdateAsync(int id, Option option);
 
         Task<Option> PostAsync(Option option);
+
         Task<List<Option>> GetAllByTypeAsync(string type);
     }
 }

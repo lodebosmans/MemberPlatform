@@ -48,6 +48,7 @@ namespace MemberPlatformApi.Controllers
         {
             return await _addressService.DeleteAsync(id);
         }
+
         [HttpGet("*")]
         public async Task<List<Address>> GetTrainingFacilities()
         {

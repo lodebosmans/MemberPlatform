@@ -36,6 +36,7 @@ namespace MemberPlatformCore.Services
             }
             return priceAgreements;
         }
+
         public async Task<List<PriceAgreement>> GetByProductPersonYear(int contractId, int personId, int year)
         {
             List<PriceAgreementEntity> entities = (List<PriceAgreementEntity>)await _priceAgreementRepository.GetByProductPersonYear(contractId, personId, year);

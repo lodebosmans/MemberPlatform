@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MemberPlatformCore.Models;
 
 namespace MemberPlatformApi.Controllers
 {
@@ -8,7 +6,6 @@ namespace MemberPlatformApi.Controllers
     [ApiController]
     public class InvolvementRoleController : ControllerBase
     {
-
         //private readonly IInvolvementRoleService _service;
 
         //public InvolvementRoleController(IInvolvementRoleService service)

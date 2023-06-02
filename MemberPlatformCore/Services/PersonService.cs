@@ -14,7 +14,7 @@ namespace MemberPlatformCore.Services
         private IOptionTypeRepository _optionTypeRepository;
         private IMapper _mapper;
 
-        public PersonService(IPersonRepository personRepository, 
+        public PersonService(IPersonRepository personRepository,
             IAddressRepository addressRepository,
             IOptionRepository optionRepository,
             IOptionTypeRepository optionTypeRepository,
@@ -73,11 +73,11 @@ namespace MemberPlatformCore.Services
             }
             else
             {
-                // 
+                //
                 List<Person> people = new List<Person>();
 
                 // Loop over the collected IDs
-                foreach (int id in ids) 
+                foreach (int id in ids)
                 {
                     // Fetch the person object with that ID
                     PersonEntity personEntity_bis = await _personRepository.GetByIdAsync(id);
@@ -158,13 +158,12 @@ namespace MemberPlatformCore.Services
                 {
                     // Add address to address repository
                     await _addressRepository.Insert(addressEntity);
-                    
+
                     // Add person to person repository
                     await _personRepository.Insert(personEntity);
 
                     // Commit the transaction
                     transaction.Complete();
-
                 }
                 catch (Exception ex)
                 {
@@ -172,7 +171,7 @@ namespace MemberPlatformCore.Services
                 }
 
                 return person;
-            } 
+            }
         }
 
         public async Task DeleteAsync(int id)

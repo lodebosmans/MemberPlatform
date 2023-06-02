@@ -1,4 +1,4 @@
-﻿namespace MemberPlatformApi.Models
+namespace MemberPlatformApi.Models
 {
     public class RefreshToken
     {

@@ -75,7 +75,6 @@ namespace MemberPlatformDAL.Data
                     );
                 context.SaveChanges();
 
-
                 context.Options.AddRange(
                     // Type of events
                     new OptionEntity
@@ -167,7 +166,7 @@ namespace MemberPlatformDAL.Data
                         // id = 14
                         Name = "Trainer",
                         OptionTypeId = 4
-                    },                    
+                    },
                     new OptionEntity
                     {
                         // id = 15
@@ -288,7 +287,6 @@ namespace MemberPlatformDAL.Data
                  );
                 context.SaveChanges();
 
-
                 context.Addresses.AddRange(
                     new AddressEntity
                     {
@@ -367,7 +365,6 @@ namespace MemberPlatformDAL.Data
                         AddressTypeId = 27,
                     });
                 context.SaveChanges();
-
 
                 context.Persons.AddRange(
                     new PersonEntity
@@ -502,9 +499,8 @@ namespace MemberPlatformDAL.Data
                         AddressId = 3,
                         ParentId = 3
                     }
-                ) ;
+                );
                 context.SaveChanges();
-
 
                 context.ProductDefinitions.AddRange(
                      new ProductDefinitionEntity
@@ -569,7 +565,7 @@ namespace MemberPlatformDAL.Data
                     new ContractEntity
                     {
                         // id = 2
-                        ContractDate = new DateTime(2022,02,20),
+                        ContractDate = new DateTime(2022, 02, 20),
                         StartDate = new DateTime(2023, 1, 1),
                         EndDate = new DateTime(2023, 12, 31),
                         ContractTypeId = 9,
