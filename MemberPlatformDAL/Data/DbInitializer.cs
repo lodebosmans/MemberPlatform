@@ -507,13 +507,13 @@ namespace MemberPlatformDAL.Data
                      {
                          Name = "Triatlon",
                          Description = "Start to triatlon",
-                         StartDate = DateTime.Parse("2022-01-01"),
-                         EndDate = DateTime.Parse("2022-12-31"),
+                         StartDate = DateTime.Parse("2023-01-01"),
+                         EndDate = DateTime.Parse("2023-12-31"),
                          NumberOfSessions = 10,
                          MaxAmountMembers = 50,
                          Price = 100,
-                         SubscriptionOpening = DateTime.Parse("2021-12-01"),
-                         SubscriptionClosing = DateTime.Parse("2021-12-31"),
+                         SubscriptionOpening = DateTime.Parse("2022-12-01"),
+                         SubscriptionClosing = DateTime.Parse("2022-12-31"),
 
                          ProductDefinitionStatusId = 5,
                          ProductDefinitionFormatId = 1,
@@ -525,13 +525,13 @@ namespace MemberPlatformDAL.Data
             {
                 Name = "Running",
                 Description = "Running",
-                StartDate = DateTime.Parse("2022-02-01"),
-                EndDate = DateTime.Parse("2022-12-31"),
+                StartDate = DateTime.Parse("2023-02-01"),
+                EndDate = DateTime.Parse("2023-12-31"),
                 NumberOfSessions = 5,
                 MaxAmountMembers = 20,
                 Price = 50,
-                SubscriptionOpening = DateTime.Parse("2022-01-01"),
-                SubscriptionClosing = DateTime.Parse("2022-01-31"),
+                SubscriptionOpening = DateTime.Parse("2022-12-01"),
+                SubscriptionClosing = DateTime.Parse("2022-12-31"),
                 ParentProductDefinitionId = 1,
                 ProductDefinitionStatusId = 5,
                 ProductDefinitionFormatId = 1,
@@ -694,7 +694,7 @@ namespace MemberPlatformDAL.Data
                         ContractId = 1,
                         DiscountTypeId = 9,
                         ApproverId = 1,
-                        PriceAgreementStatusId = 16,
+                        PriceAgreementStatusId = 20,
                     },
                     new PriceAgreementEntity
                     {
@@ -706,7 +706,7 @@ namespace MemberPlatformDAL.Data
                         ContractId = 2,
                         DiscountTypeId = 9,
                         ApproverId = 1,
-                        PriceAgreementStatusId = 16,
+                        PriceAgreementStatusId = 20,
                     },
                     new PriceAgreementEntity
                     {
@@ -718,7 +718,7 @@ namespace MemberPlatformDAL.Data
                         ContractId = 1,
                         DiscountTypeId = 9,
                         ApproverId = 1,
-                        PriceAgreementStatusId = 18,
+                        PriceAgreementStatusId = 20,
                     },
                     new PriceAgreementEntity
                     {
@@ -730,7 +730,7 @@ namespace MemberPlatformDAL.Data
                         ContractId = 2,
                         DiscountTypeId = 9,
                         ApproverId = 1,
-                        PriceAgreementStatusId = 18,
+                        PriceAgreementStatusId = 20,
                     }
                     );
                 context.SaveChanges();

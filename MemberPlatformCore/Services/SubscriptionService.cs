@@ -96,8 +96,10 @@ namespace MemberPlatformCore.Services
             {
                 var x = await _priceAgreementRepository.GetByProductPersonYear(subItem.Id, personId, year);
 
+
                 var status = await _optionRepository.GetByIdAsync(x[x.Count - 1].PriceAgreementStatusId);
                 var person = await _personRepository.GetByIdAsync(personId);
+
                 Subscription subscription = new Subscription
                 {
                     Name = subItem.Name,
@@ -108,7 +110,9 @@ namespace MemberPlatformCore.Services
                     Id = id,
                     LastName = person.LastName,
                     FirstName = person.FirstName,
+
                 };
+
                 List<PriceAgreement> priceAgreements = new List<PriceAgreement>();
                 foreach (var agreement in x)
                 {
@@ -161,14 +165,17 @@ namespace MemberPlatformCore.Services
 
         //    return subscriptions;
         //}
+
         public async Task<List<Subscription>> GetSubscriptionsAsync()
         {
+            // Op basis van persoonId
+
             var contracts = await _contractRepository.GetAllWithPropsAsync();
 
             var subscriptions = contracts
                 .SelectMany(c => c.ProductAgreements, (c, pa) => new { Contract = c, ProductAgreement = pa })
                 .SelectMany(cp => cp.Contract.PriceAgreements, (cp, pr) => new { cp.Contract, cp.ProductAgreement, PriceAgreement = pr })
-                 .SelectMany(cp => cp.Contract.ContractPersonInvolvements, (cp, cpi) => new { cp.Contract, cp.PriceAgreement, cp.ProductAgreement, cpi.Person })
+                .SelectMany(cp => cp.Contract.ContractPersonInvolvements, (cp, cpi) => new { cp.Contract, cp.PriceAgreement, cp.ProductAgreement, cpi.Person })
                 .Select(cp => new Subscription
                 {
                     ContractId = cp.Contract.Id,
