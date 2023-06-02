@@ -13,6 +13,7 @@ namespace MemberPlatformCore.Services
         Task<Address> DeleteAsync(int id);
 
         Task<Address> PostAsync(Address address);
+
         Task<List<Address>> GetTrainingFacilities();
     }
 }

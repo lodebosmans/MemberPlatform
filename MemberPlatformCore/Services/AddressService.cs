@@ -75,7 +75,7 @@ namespace MemberPlatformCore.Services
             return _mapper.Map<Address>(entity);
         }
 
-        public async  Task<List<Address>> GetTrainingFacilities()
+        public async Task<List<Address>> GetTrainingFacilities()
         {
             List<AddressEntity> entities = (List<AddressEntity>)await _addressRepository.GetTrainingFacilities();
             List<Address> addresses = new List<Address>();

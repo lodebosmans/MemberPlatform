@@ -96,6 +96,5 @@ namespace MemberPlatformDAL.UoW
         {
             return await table.AnyAsync(e => e.Id == id);
         }
-
     }
 }

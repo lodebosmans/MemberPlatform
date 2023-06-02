@@ -1,4 +1,4 @@
-﻿//using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Http;
 //using Microsoft.AspNetCore.Mvc;
 //using Google.Apis.Auth;
 //using Microsoft.AspNetCore.Mvc;
@@ -27,7 +27,6 @@
 //        private readonly HttpClient _httpClient;
 //        private readonly IPersonService _personService;
 
-
 //        public AuthController(IOptions<AppSettings> _applicationSettings, HttpClient httpClient, IPersonService personService)
 //        {
 //            this._applicationSettings = _applicationSettings.Value;
@@ -35,14 +34,12 @@
 //            _personService = personService;
 //        }
 
-
 //        [HttpPost("Login")]
 //        public async Task<IActionResult> LoginAsync([FromBody] Person person)
 //        {
 //            //var user = UserList.Where(x => x.UserName == personApi.UserName).FirstOrDefault();
 
 //            //personList = await _personController.GetAllWithAddress();
-
 
 //            //if (user == null)
 //            //{
@@ -143,7 +140,6 @@
 
 //        private void SetRefreshToken(RefreshToken refreshToken, Person person)
 //        {
-
 //            HttpContext.Response.Cookies.Append("X-Refresh-Token", refreshToken.Token,
 //                 new CookieOptions
 //                 {
@@ -172,7 +168,6 @@
 
 //        //    return Ok();
 //        //}
-
 
 //        [HttpPost("LoginWithGoogle")]
 //        public async Task<IActionResult> LoginWithGoogle([FromBody] string credential)

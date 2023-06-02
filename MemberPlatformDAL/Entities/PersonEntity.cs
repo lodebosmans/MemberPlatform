@@ -1,5 +1,4 @@
 using MemberPlatformDAL.UoW;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,14 +8,18 @@ namespace MemberPlatformDAL.Entities
     {
         // Attributes
         public int Id { get; set; }
+
         public bool PrivacyApproval { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int AddressId { get; set; }
+
         [EmailAddress]
         public string? EmailAddress { get; set; }
+
         [MaxLength(50)]
         [Required]
         public string FirstName { get; set; }
+
         public string Gender { get; set; }
         public string IdentityNumber { get; set; }
         public string LastName { get; set; }
@@ -24,9 +27,9 @@ namespace MemberPlatformDAL.Entities
         public string? InsuranceCompany { get; set; }
         public int? ParentId { get; set; }
 
-
         // Navigation properties
         public AddressEntity? Address { get; set; }
+
         public ICollection<ContractPersonInvolvementEntity>? ContractPersonInvolvements { get; set; }
 
         //[InverseProperty("Approver")]

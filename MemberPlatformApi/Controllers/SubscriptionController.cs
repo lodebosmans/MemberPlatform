@@ -1,6 +1,5 @@
 using MemberPlatformCore.Models;
 using MemberPlatformCore.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MemberPlatformApi.Controllers
@@ -29,23 +28,18 @@ namespace MemberPlatformApi.Controllers
                 return StatusCode(500, new { error = ex.Message });
             }
         }
-        [HttpGet("{personId}/{year}")]
 
+        [HttpGet("{personId}/{year}")]
         public async Task<List<Subscription>> GetAllById(int personId, int year)
         {
             return await _service.GetAllById(personId, year);
-            
         }
-        [HttpGet("all")]
 
+        [HttpGet("all")]
         public async Task<List<Subscription>> GetSubscriptionsAsync()
         {
             return await _service.GetSubscriptionsAsync();
         }
-
-
-
-
 
         //public async Task<IActionResult> SaveDataAsync([FromBody] SubscriptionDTO myData)
         //{

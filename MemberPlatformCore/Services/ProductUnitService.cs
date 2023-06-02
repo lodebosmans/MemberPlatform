@@ -10,7 +10,7 @@ namespace MemberPlatformCore.Services
         private IProductUnitRepository _ProductUnitRepository;
         private IMapper _mapper;
 
-        public ProductUnitService(IProductUnitRepository productUnitRepository,IMapper mapper)
+        public ProductUnitService(IProductUnitRepository productUnitRepository, IMapper mapper)
         {
             _ProductUnitRepository = productUnitRepository;
             _mapper = mapper;

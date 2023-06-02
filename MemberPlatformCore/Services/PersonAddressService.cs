@@ -2,11 +2,6 @@ using AutoMapper;
 using MemberPlatformCore.Models;
 using MemberPlatformDAL.Entities;
 using MemberPlatformDAL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Transactions;
 
 namespace MemberPlatformCore.Services
@@ -26,6 +21,7 @@ namespace MemberPlatformCore.Services
             _addressRepository = addressRepository;
             _mapper = mapper;
         }
+
         public async Task SaveDataAsync(
             Person person, Address address)
         {
@@ -37,7 +33,6 @@ namespace MemberPlatformCore.Services
                 await _addressRepository.Insert(addressEntity);
                 var savedAddress = await _addressRepository.GetByIdAsync(addressEntity.Id);
                 await _personRepository.SaveAsync(personEntity, savedAddress.Id);
-
 
                 transaction.Complete();
             }

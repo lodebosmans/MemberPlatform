@@ -22,7 +22,7 @@ namespace MemberPlatformDAL.Repositories
                 .ToListAsync();
         }
 
-        public async override Task<PersonEntity> GetByIdAsync(int id)
+        public override async Task<PersonEntity> GetByIdAsync(int id)
         {
             return await _context.Persons
                .Include(p => p.Address)
@@ -31,8 +31,6 @@ namespace MemberPlatformDAL.Repositories
                .SingleAsync();
         }
 
-
-
         public async Task<PersonEntity> GetByEmailAddressAsync(string emailAddress)
         {
             return await _context.Persons
@@ -40,6 +38,7 @@ namespace MemberPlatformDAL.Repositories
                .Include(p => p.Children)
                .SingleOrDefaultAsync();
         }
+
         public async Task<PersonEntity> SaveAsync(PersonEntity personEntity, int addressId)
         {
             personEntity.AddressId = addressId;
@@ -47,7 +46,6 @@ namespace MemberPlatformDAL.Repositories
             await _context.SaveChangesAsync();
             return personEntity;
         }
-
 
         public async Task<PersonEntity> UpdateAsync(PersonEntity entity)
         {
@@ -58,10 +56,7 @@ namespace MemberPlatformDAL.Repositories
 
         //public async Task<List<PersonEntity>> GetAllSubscriptionsByIdAsync(int personId)
         //{
-
         //}
-
-
 
         //public async Task DeleteAsync(PersonEntity entity)
         //{

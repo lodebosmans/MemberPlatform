@@ -41,10 +41,8 @@ namespace MemberPlatformDAL.Repositories
                  .Include(pa => pa.PriceAgreements)
                  .ThenInclude(o => o.PriceAgreementStatus)
                  .Where(c => c.ContractPersonInvolvements.Any(cpi => cpi.ContractId == c.Id)
-                   && c.PriceAgreements.Any(pa => pa.ContractId == c.Id) && c.ProductAgreements.Any(pr =>pr.ProductDefinition.Id == pr.ProductDefinitionId))
+                   && c.PriceAgreements.Any(pa => pa.ContractId == c.Id) && c.ProductAgreements.Any(pr => pr.ProductDefinition.Id == pr.ProductDefinitionId))
                  .ToListAsync();
         }
-
-
     }
 }

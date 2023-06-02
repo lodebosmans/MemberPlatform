@@ -31,7 +31,7 @@ namespace MemberPlatformDAL.Repositories
                 .ThenInclude(pa => pa.ProductDefinition)
                 .Include(c => c.ContractPersonInvolvements)
                 .ThenInclude(cpi => cpi.Person)
-                .Where(c => c.ContractPersonInvolvements.Any(cpi => cpi.PersonId == personId)&& c.ContractDate.Year == year)
+                .Where(c => c.ContractPersonInvolvements.Any(cpi => cpi.PersonId == personId) && c.ContractDate.Year == year)
                 .ToListAsync();
 
             var productAgreements = contracts.SelectMany(c => c.ProductAgreements).ToList();
@@ -40,6 +40,5 @@ namespace MemberPlatformDAL.Repositories
 
             return productDefinitions;
         }
-
     }
 }

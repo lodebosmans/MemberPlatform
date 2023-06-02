@@ -23,6 +23,5 @@ namespace MemberPlatformDAL.Repositories
             }
             return optionType;
         }
-
     }
 }

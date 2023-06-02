@@ -38,6 +38,7 @@ namespace MemberPlatformApi.Controllers
         {
             return await _ticketItemService.PostAsync(ticketItem);
         }
+
         [HttpDelete("{id}")]
         public async Task<TicketItem> DeleteAsync(int id)
         {

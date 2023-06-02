@@ -1,13 +1,8 @@
-using MemberPlatformDAL.Repositories;
-using MemberPlatformDAL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
-using MemberPlatformCore.Models;
 using AutoMapper;
+using MemberPlatformCore.Models;
+using MemberPlatformDAL.Entities;
+using MemberPlatformDAL.Repositories;
+using System.Transactions;
 
 namespace MemberPlatformCore.Services
 {
@@ -44,6 +39,7 @@ namespace MemberPlatformCore.Services
             _personRepository = personRepository;
             _mapper = mapper;
         }
+
         public async Task SaveDataAsync(int productId, int personId)
         {
             var exist = await _contractRepository.ContractExists(productId, personId);
@@ -89,8 +85,8 @@ namespace MemberPlatformCore.Services
                     throw new ApplicationException("Failed to save data.", ex);
                 }
             }
-
         }
+
         public async Task<List<Subscription>> GetAllById(int personId, int year)
         {
             var sub = await _productDefinitionRepository.GetAllByIdAsync(personId, year);
@@ -98,23 +94,21 @@ namespace MemberPlatformCore.Services
             int id = 0;
             foreach (var subItem in sub)
             {
-
                 var x = await _priceAgreementRepository.GetByProductPersonYear(subItem.Id, personId, year);
 
-                    var status = await _optionRepository.GetByIdAsync(x[x.Count - 1].PriceAgreementStatusId);
-                    var person = await _personRepository.GetByIdAsync(personId);
-                    Subscription subscription = new Subscription
-                    {
-                        Name = subItem.Name,
-                        PersonId = personId,
-                        PriceAgreementStatusId = x[x.Count - 1].PriceAgreementStatusId,
-                        PriceAgreementId = x[x.Count - 1].Id,
-                        Status = status.Name,
-                        Id = id,
-                        LastName = person.LastName,
-                        FirstName = person.FirstName,
-
-                    };
+                var status = await _optionRepository.GetByIdAsync(x[x.Count - 1].PriceAgreementStatusId);
+                var person = await _personRepository.GetByIdAsync(personId);
+                Subscription subscription = new Subscription
+                {
+                    Name = subItem.Name,
+                    PersonId = personId,
+                    PriceAgreementStatusId = x[x.Count - 1].PriceAgreementStatusId,
+                    PriceAgreementId = x[x.Count - 1].Id,
+                    Status = status.Name,
+                    Id = id,
+                    LastName = person.LastName,
+                    FirstName = person.FirstName,
+                };
                 List<PriceAgreement> priceAgreements = new List<PriceAgreement>();
                 foreach (var agreement in x)
                 {
@@ -139,11 +133,12 @@ namespace MemberPlatformCore.Services
 
                 subscription.PriceAgreements = priceAgreements;
                 subs.Add(subscription);
-                    id ++;
-                }
+                id++;
+            }
 
             return subs;
         }
+
         //public async Task<List<Subscription>> GetSubscriptionsAsync()
         //{
         //    var contracts = await _contractRepository.GetAllWithPropsAsync();
@@ -156,7 +151,6 @@ namespace MemberPlatformCore.Services
         //      .Select(g => g.OrderByDescending(cp => cp.PriceAgreement.Id).FirstOrDefault())
         //        .Select(cp => new Subscription
         //        {
-
         //            Name = cp.ProductAgreement.ProductDefinition.Name,
         //            PriceAgreementStatusId = cp.PriceAgreement.PriceAgreementStatusId,
         //            PriceAgreementId = cp.PriceAgreement.Id,
@@ -177,9 +171,8 @@ namespace MemberPlatformCore.Services
                  .SelectMany(cp => cp.Contract.ContractPersonInvolvements, (cp, cpi) => new { cp.Contract, cp.PriceAgreement, cp.ProductAgreement, cpi.Person })
                 .Select(cp => new Subscription
                 {
-                   
-                    ContractId= cp.Contract.Id,
-                  
+                    ContractId = cp.Contract.Id,
+
                     PriceAgreements = new List<PriceAgreement> // Create an empty list of price agreements
                     {
                 new PriceAgreement // Add a new price agreement object
@@ -222,16 +215,11 @@ namespace MemberPlatformCore.Services
                     FirstName = g.Select(s => s.FirstName).FirstOrDefault(),
                     ContractDate = g.Select(s => s.ContractDate).FirstOrDefault(),
 
-
                     PriceAgreements = g.SelectMany(s => s.PriceAgreements).ToList() // Flatten the list of price agreements
-        })
+                })
                 .ToList();
 
             return contractSubscriptions;
         }
-
-
-
     }
 }
-

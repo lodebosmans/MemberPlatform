@@ -26,10 +26,11 @@ namespace MemberPlatformApi.Controllers
         {
             return await _priceAgreementService.GetByIdAsync(id);
         }
+
         [HttpGet("ByContractIdAndPersonId/{contractId}/{personId}/{year}")]
         public async Task<List<PriceAgreement>> GetByProductPersonYear(int contractId, int personId, int year)
         {
-            return await _priceAgreementService.GetByProductPersonYear(contractId,personId,year);
+            return await _priceAgreementService.GetByProductPersonYear(contractId, personId, year);
         }
 
         [HttpPut("{id}")]
@@ -49,8 +50,5 @@ namespace MemberPlatformApi.Controllers
         {
             return await _priceAgreementService.DeleteAsync(id);
         }
-
-
-
     }
 }
