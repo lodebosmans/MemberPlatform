@@ -10,5 +10,6 @@ namespace MemberPlatformDAL.Repositories
         Task<OptionEntity> GetOptionAsync(string optionName, int optionTypeId);
 
         Task<List<OptionEntity>> GetAllByType(int typeId);
+        Task<List<OptionEntity>> GetAllAsync();
     }
 }
