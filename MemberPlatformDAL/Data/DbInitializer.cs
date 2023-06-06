@@ -505,7 +505,7 @@ namespace MemberPlatformDAL.Data
                 context.ProductDefinitions.AddRange(
                      new ProductDefinitionEntity
                      {
-                         Name = "Triatlon",
+                         Name = "Triatlon 2023",
                          Description = "Start to triatlon",
                          StartDate = DateTime.Parse("2023-01-01"),
                          EndDate = DateTime.Parse("2023-12-31"),
@@ -523,7 +523,7 @@ namespace MemberPlatformDAL.Data
                 context.ProductDefinitions.AddRange(
             new ProductDefinitionEntity
             {
-                Name = "Running",
+                Name = "Running 2023",
                 Description = "Running",
                 StartDate = DateTime.Parse("2023-02-01"),
                 EndDate = DateTime.Parse("2023-12-31"),
