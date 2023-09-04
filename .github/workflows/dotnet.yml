@@ -1,0 +1,44 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+#       
+    - name: Restore dependencies
+      run: dotnet restore MemberPlatformDAL/MemberPlatformDAL.csproj
+    - name: Restore dependencies
+      run: dotnet restore MemberPlatformCore/MemberPlatformCore.csproj
+    - name: Restore dependencies
+      run: dotnet restore MemberPlatformApi/MemberPlatformApi.csproj
+    - name: Build
+      run: dotnet build MemberPlatformDAL/MemberPlatformDAL.csproj --no-restore
+    - name: Build
+      run: dotnet build MemberPlatformCore/MemberPlatformCore.csproj --no-restore
+    - name: Build
+      run: dotnet build MemberPlatformApi/MemberPlatformApi.csproj --no-restore
+    - name: Docker login
+      run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+    - name: Docker Build
+      run: docker build -t ${{ secrets.DOCKER_USER }}/memberplatform:latest .
+    - name: Upload container to Docker Hub with Push
+      run: docker push ${{ secrets.DOCKER_USER }}/memberplatform:latest
+     
+#     - name: Test
+#       run: dotnet test --no-build --verbosity normal
