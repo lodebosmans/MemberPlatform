@@ -10,6 +10,10 @@ using System.Text;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var auth0Domain = "lodebosmans.eu.auth0.com";
+var apiAudience = "https://lodebosmans.eu.auth0.com/api/v2/";
+
 ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
@@ -93,33 +97,31 @@ builder.Services.AddCors(options =>
 builder.Services.Configure<AppSettings>(
     builder.Configuration.GetSection("ApplicationSettings"));
 
-builder.Services.AddAuthentication(x =>
-{
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddCookie(x =>
-{
-    x.Cookie.Name = "token";
-}).AddJwtBearer(x =>
-{
-    x.RequireHttpsMetadata = false;
-    x.SaveToken = true;
-    x.TokenValidationParameters = new TokenValidationParameters
+// To secure the backend
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//        .AddJwtBearer(options =>
+//        {
+//            options.Authority = auth0Domain;
+//            options.Audience = apiAudience;
+//            options.RequireHttpsMetadata = false;
+//        });
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
     {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["ApplicationSettings:Secret"])),
-        ValidateIssuer = false,
-        ValidateAudience = false
-    };
-    x.Events = new JwtBearerEvents
-    {
-        OnMessageReceived = context =>
+        options.Authority = auth0Domain;
+        options.Audience = apiAudience;
+        options.RequireHttpsMetadata = false;
+        options.TokenValidationParameters = new TokenValidationParameters
         {
-            context.Token = context.Request.Cookies["X-Access-Token"];
-            return Task.CompletedTask;
-        }
-    };
-});
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["ApplicationSettings:Secret"])),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
+
+
 
 builder.Services.AddHttpClient();
 
